@@ -1,0 +1,818 @@
+2025-04-06 17:49:57,722 - JSPGymEnvironment - INFO - Environment reset
+2025-04-06 17:49:57,761 - JSPGymEnvironment - INFO - Environment reset
+2025-04-06 17:49:57,785 - JSPGymEnvironment - INFO - Material change on machine M1:  -> Racebike_Hauptrahmen_zugeschnitten, setup time: 0
+2025-04-06 17:49:57,786 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 0, Machine M1, Start: 0.0, End: 32.0, Setup: 0
+2025-04-06 17:49:57,805 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:57,805 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 0, Machine M1, Start: 72.0, End: 106.0, Setup: 40
+2025-04-06 17:49:57,818 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:57,818 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 0, Machine M1, Start: 146.0, End: 184.0, Setup: 40
+2025-04-06 17:49:57,830 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:57,830 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 0, Machine M1, Start: 224.0, End: 246.0, Setup: 40
+2025-04-06 17:49:57,841 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:57,842 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 0, Machine M1, Start: 286.0, End: 304.0, Setup: 40
+2025-04-06 17:49:57,853 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:57,853 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 0, Machine M1, Start: 344.0, End: 379.0, Setup: 40
+2025-04-06 17:49:57,865 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 0, Machine M1, Start: 404.0, End: 429.0, Setup: 25
+2025-04-06 17:49:57,877 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:57,877 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 0, Machine M1, Start: 469.0, End: 485.0, Setup: 40
+2025-04-06 17:49:57,888 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:57,888 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 0, Machine M1, Start: 525.0, End: 556.0, Setup: 40
+2025-04-06 17:49:57,900 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 0, Machine M1, Start: 581.0, End: 600.0, Setup: 25
+2025-04-06 17:49:57,913 - JSPGymEnvironment - INFO - Material change on machine M2:  -> Racebike_Schaltauge_bearbeitet, setup time: 0
+2025-04-06 17:49:57,913 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 1, Machine M2, Start: 600.0, End: 623.0, Setup: 0
+2025-04-06 17:49:57,925 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:57,925 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 1, Machine M2, Start: 643.0, End: 659.0, Setup: 20
+2025-04-06 17:49:57,936 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:57,937 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 1, Machine M2, Start: 679.0, End: 699.0, Setup: 20
+2025-04-06 17:49:57,949 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:57,949 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 1, Machine M2, Start: 719.0, End: 739.0, Setup: 20
+2025-04-06 17:49:57,960 - JSPGymEnvironment - INFO - Material change on machine M3:  -> Mountainbike_Antrieb_installiert, setup time: 0
+2025-04-06 17:49:57,960 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 2, Machine M3, Start: 739.0, End: 768.0, Setup: 0
+2025-04-06 17:49:58,047 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Mountainbike_Bremsen_justiert, setup time: 15
+2025-04-06 17:49:58,047 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 3, Machine M3, Start: 783.0, End: 838.0, Setup: 15
+2025-04-06 17:49:58,059 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:58,059 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 1, Machine M2, Start: 858.0, End: 873.0, Setup: 20
+2025-04-06 17:49:58,070 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:58,070 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 1, Machine M2, Start: 893.0, End: 915.0, Setup: 20
+2025-04-06 17:49:58,082 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 0, Machine M1, Start: 940.0, End: 976.0, Setup: 25
+2025-04-06 17:49:58,093 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:58,093 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 0, Machine M1, Start: 1016.0, End: 1035.0, Setup: 40
+2025-04-06 17:49:58,105 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> E-Bike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:58,105 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 1, Machine M2, Start: 1055.0, End: 1075.0, Setup: 20
+2025-04-06 17:49:58,117 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:58,117 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 0, Machine M1, Start: 1115.0, End: 1151.0, Setup: 40
+2025-04-06 17:49:58,129 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Bremsen_justiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,129 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 2, Machine M3, Start: 1166.0, End: 1188.0, Setup: 15
+2025-04-06 17:49:58,140 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:58,140 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 0, Machine M1, Start: 1228.0, End: 1259.0, Setup: 40
+2025-04-06 17:49:58,153 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:58,153 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 0, Machine M1, Start: 1299.0, End: 1314.0, Setup: 40
+2025-04-06 17:49:58,164 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Schaltauge_bearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:58,164 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 1, Machine M2, Start: 1334.0, End: 1347.0, Setup: 20
+2025-04-06 17:49:58,177 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:58,177 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 1, Machine M2, Start: 1367.0, End: 1392.0, Setup: 20
+2025-04-06 17:49:58,188 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 1, Machine M2, Start: 1407.0, End: 1420.0, Setup: 15
+2025-04-06 17:49:58,198 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:58,198 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 1, Machine M2, Start: 1440.0, End: 1450.0, Setup: 20
+2025-04-06 17:49:58,210 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Mountainbike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:58,210 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 4, Machine M2, Start: 1470.0, End: 1483.0, Setup: 20
+2025-04-06 17:49:58,210 - JSPGymEnvironment - INFO - Job J18 completed at time 1483.0, deadline: 2880, met: True, priority: 6
+2025-04-06 17:49:58,221 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 2, Machine M3, Start: 1493.0, End: 1521.0, Setup: 10
+2025-04-06 17:49:58,232 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,232 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 2, Machine M3, Start: 1536.0, End: 1574.0, Setup: 15
+2025-04-06 17:49:58,242 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,243 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 2, Machine M3, Start: 1589.0, End: 1631.0, Setup: 15
+2025-04-06 17:49:58,254 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 0, Machine M1, Start: 1656.0, End: 1697.0, Setup: 25
+2025-04-06 17:49:58,341 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Fahrrad_endmontiert -> Citybike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:58,341 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 3, Machine M2, Start: 1717.0, End: 1735.0, Setup: 20
+2025-04-06 17:49:58,352 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Bremsaufnahme_gebohrt -> E-Bike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:58,352 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 1, Machine M2, Start: 1755.0, End: 1778.0, Setup: 20
+2025-04-06 17:49:58,364 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> E-Bike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,364 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 2, Machine M3, Start: 1793.0, End: 1846.0, Setup: 15
+2025-04-06 17:49:58,375 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Antrieb_installiert -> Citybike_Bremsen_justiert, setup time: 15
+2025-04-06 17:49:58,375 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 3, Machine M3, Start: 1861.0, End: 1883.0, Setup: 15
+2025-04-06 17:49:58,387 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsen_justiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,387 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 2, Machine M3, Start: 1898.0, End: 1943.0, Setup: 15
+2025-04-06 17:49:58,399 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Schaltauge_bearbeitet -> Citybike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:58,399 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 3, Machine M2, Start: 1963.0, End: 1984.0, Setup: 20
+2025-04-06 17:49:58,412 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,412 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 2, Machine M3, Start: 1999.0, End: 2039.0, Setup: 15
+2025-04-06 17:49:58,425 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,425 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 2, Machine M3, Start: 2054.0, End: 2088.0, Setup: 15
+2025-04-06 17:49:58,436 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Bremsaufnahme_gebohrt -> Mountainbike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:58,437 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 3, Machine M2, Start: 2108.0, End: 2134.0, Setup: 20
+2025-04-06 17:49:58,449 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Bremsaufnahme_gebohrt -> E-Bike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:58,449 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 3, Machine M2, Start: 2154.0, End: 2176.0, Setup: 20
+2025-04-06 17:49:58,459 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> E-Bike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,459 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 2, Machine M3, Start: 2191.0, End: 2249.0, Setup: 15
+2025-04-06 17:49:58,470 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Bremsaufnahme_gebohrt -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:58,470 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 4, Machine M2, Start: 2269.0, End: 2293.0, Setup: 20
+2025-04-06 17:49:58,483 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Antrieb_installiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:49:58,483 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 5, Machine M3, Start: 2308.0, End: 2329.0, Setup: 15
+2025-04-06 17:49:58,483 - JSPGymEnvironment - INFO - Job J2 completed at time 2329.0, deadline: 2880, met: True, priority: 3
+2025-04-06 17:49:58,494 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,494 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 2, Machine M3, Start: 2344.0, End: 2383.0, Setup: 15
+2025-04-06 17:49:58,505 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:49:58,505 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 4, Machine M3, Start: 2398.0, End: 2437.0, Setup: 15
+2025-04-06 17:49:58,516 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 4, Machine M2, Start: 2452.0, End: 2481.0, Setup: 15
+2025-04-06 17:49:58,526 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:58,526 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 4, Machine M2, Start: 2501.0, End: 2529.0, Setup: 20
+2025-04-06 17:49:58,537 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:58,537 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 1, Machine M2, Start: 2549.0, End: 2562.0, Setup: 20
+2025-04-06 17:49:58,548 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,548 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 2, Machine M3, Start: 2577.0, End: 2631.0, Setup: 15
+2025-04-06 17:49:58,634 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:58,634 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 5, Machine M2, Start: 2651.0, End: 2668.0, Setup: 20
+2025-04-06 17:49:58,645 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:58,645 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 5, Machine M2, Start: 2688.0, End: 2716.0, Setup: 20
+2025-04-06 17:49:58,657 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Citybike_Bremsen_justiert, setup time: 15
+2025-04-06 17:49:58,657 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 3, Machine M3, Start: 2731.0, End: 2789.0, Setup: 15
+2025-04-06 17:49:58,669 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> E-Bike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:58,669 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 1, Machine M2, Start: 2809.0, End: 2839.0, Setup: 20
+2025-04-06 17:49:58,680 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsen_justiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,680 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 2, Machine M3, Start: 2854.0, End: 2878.0, Setup: 15
+2025-04-06 17:49:58,691 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Schaltauge_bearbeitet -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:58,691 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 1, Machine M2, Start: 2898.0, End: 2913.0, Setup: 20
+2025-04-06 17:49:58,702 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,702 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 2, Machine M3, Start: 2928.0, End: 2953.0, Setup: 15
+2025-04-06 17:49:58,713 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:58,713 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 3, Machine M2, Start: 2973.0, End: 2987.0, Setup: 20
+2025-04-06 17:49:58,725 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 3, Machine M2, Start: 3002.0, End: 3025.0, Setup: 15
+2025-04-06 17:49:58,737 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Mountainbike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:58,737 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 3, Machine M2, Start: 3045.0, End: 3060.0, Setup: 20
+2025-04-06 17:49:58,748 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Citybike_Bremsen_justiert, setup time: 15
+2025-04-06 17:49:58,748 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 3, Machine M3, Start: 3075.0, End: 3101.0, Setup: 15
+2025-04-06 17:49:58,759 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Bremsaufnahme_gebohrt -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:58,759 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 5, Machine M2, Start: 3121.0, End: 3151.0, Setup: 20
+2025-04-06 17:49:58,771 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsen_justiert -> E-Bike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:49:58,771 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 4, Machine M3, Start: 3166.0, End: 3219.0, Setup: 15
+2025-04-06 17:49:58,771 - JSPGymEnvironment - INFO - Job J13 completed at time 3219.0, deadline: 2863, met: False, priority: 7
+2025-04-06 17:49:58,784 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Fahrrad_endmontiert -> E-Bike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:58,784 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 2, Machine M3, Start: 3234.0, End: 3256.0, Setup: 15
+2025-04-06 17:49:58,797 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:58,797 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 4, Machine M2, Start: 3276.0, End: 3302.0, Setup: 20
+2025-04-06 17:49:58,811 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Antrieb_installiert -> Racebike_Bremsen_justiert, setup time: 15
+2025-04-06 17:49:58,811 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 3, Machine M3, Start: 3317.0, End: 3375.0, Setup: 15
+2025-04-06 17:49:58,824 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Bremsen_justiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:49:58,824 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 4, Machine M3, Start: 3390.0, End: 3440.0, Setup: 15
+2025-04-06 17:49:58,836 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Mountainbike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:58,836 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 6, Machine M2, Start: 3460.0, End: 3482.0, Setup: 20
+2025-04-06 17:49:58,836 - JSPGymEnvironment - INFO - Job J12 completed at time 3482.0, deadline: 2863, met: False, priority: 2
+2025-04-06 17:49:58,848 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Fahrrad_endmontiert -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:58,848 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 4, Machine M2, Start: 3502.0, End: 3532.0, Setup: 20
+2025-04-06 17:49:58,935 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:58,935 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 5, Machine M2, Start: 3552.0, End: 3570.0, Setup: 20
+2025-04-06 17:49:58,946 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> E-Bike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:58,946 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 3, Machine M2, Start: 3590.0, End: 3620.0, Setup: 20
+2025-04-06 17:49:58,957 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Bremsaufnahme_gebohrt -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:58,957 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 4, Machine M2, Start: 3640.0, End: 3657.0, Setup: 20
+2025-04-06 17:49:58,968 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:58,969 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 3, Machine M2, Start: 3677.0, End: 3699.0, Setup: 20
+2025-04-06 17:49:58,980 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Mountainbike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:58,980 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 5, Machine M2, Start: 3719.0, End: 3741.0, Setup: 20
+2025-04-06 17:49:58,980 - JSPGymEnvironment - INFO - Job J5 completed at time 3741.0, deadline: 2880, met: False, priority: 1
+2025-04-06 17:49:58,994 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:58,994 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 4, Machine M2, Start: 3761.0, End: 3772.0, Setup: 20
+2025-04-06 17:49:59,004 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 5, Machine M3, Start: 3782.0, End: 3841.0, Setup: 10
+2025-04-06 17:49:59,016 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,016 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 6, Machine M2, Start: 3861.0, End: 3883.0, Setup: 20
+2025-04-06 17:49:59,027 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:59,027 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 0, Machine M1, Start: 3923.0, End: 3946.0, Setup: 40
+2025-04-06 17:49:59,039 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Citybike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:59,039 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 7, Machine M2, Start: 3966.0, End: 3995.0, Setup: 20
+2025-04-06 17:49:59,039 - JSPGymEnvironment - INFO - Job J11 completed at time 3995.0, deadline: 2880, met: False, priority: 7
+2025-04-06 17:49:59,051 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Fahrrad_endmontiert -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,051 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 5, Machine M2, Start: 4015.0, End: 4036.0, Setup: 20
+2025-04-06 17:49:59,062 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:59,062 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 1, Machine M2, Start: 4056.0, End: 4069.0, Setup: 20
+2025-04-06 17:49:59,074 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:59,074 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 2, Machine M3, Start: 4084.0, End: 4119.0, Setup: 15
+2025-04-06 17:49:59,085 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> E-Bike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:59,085 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 6, Machine M2, Start: 4139.0, End: 4149.0, Setup: 20
+2025-04-06 17:49:59,085 - JSPGymEnvironment - INFO - Job J3 completed at time 4149.0, deadline: 2862, met: False, priority: 8
+2025-04-06 17:49:59,097 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:49:59,097 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 6, Machine M3, Start: 4164.0, End: 4189.0, Setup: 15
+2025-04-06 17:49:59,097 - JSPGymEnvironment - INFO - Job J17 completed at time 4189.0, deadline: 2880, met: False, priority: 6
+2025-04-06 17:49:59,108 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,108 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 5, Machine M2, Start: 4209.0, End: 4227.0, Setup: 20
+2025-04-06 17:49:59,119 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 4, Machine M2, Start: 4242.0, End: 4267.0, Setup: 15
+2025-04-06 17:49:59,130 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 5, Machine M2, Start: 4282.0, End: 4306.0, Setup: 15
+2025-04-06 17:49:59,141 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 6, Machine M2, Start: 4321.0, End: 4332.0, Setup: 15
+2025-04-06 17:49:59,226 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 4, Machine M3, Start: 4342.0, End: 4391.0, Setup: 10
+2025-04-06 17:49:59,236 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 6, Machine M2, Start: 4406.0, End: 4421.0, Setup: 15
+2025-04-06 17:49:59,249 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:49:59,249 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 4, Machine M3, Start: 4436.0, End: 4477.0, Setup: 15
+2025-04-06 17:49:59,249 - JSPGymEnvironment - INFO - Job J6 completed at time 4477.0, deadline: 2880, met: False, priority: 10
+2025-04-06 17:49:59,260 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Fahrrad_endmontiert -> Racebike_Bremsen_justiert, setup time: 15
+2025-04-06 17:49:59,260 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 3, Machine M3, Start: 4492.0, End: 4519.0, Setup: 15
+2025-04-06 17:49:59,271 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:59,272 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 7, Machine M2, Start: 4539.0, End: 4564.0, Setup: 20
+2025-04-06 17:49:59,272 - JSPGymEnvironment - INFO - Job J7 completed at time 4564.0, deadline: 2880, met: False, priority: 9
+2025-04-06 17:49:59,283 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,283 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 6, Machine M2, Start: 4584.0, End: 4608.0, Setup: 20
+2025-04-06 17:49:59,294 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,294 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 4, Machine M2, Start: 4628.0, End: 4648.0, Setup: 20
+2025-04-06 17:49:59,305 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:59,305 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 5, Machine M2, Start: 4668.0, End: 4698.0, Setup: 20
+2025-04-06 17:49:59,305 - JSPGymEnvironment - INFO - Job J8 completed at time 4698.0, deadline: 2762, met: False, priority: 5
+2025-04-06 17:49:59,317 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Bremsen_justiert -> Racebike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:49:59,317 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 6, Machine M3, Start: 4713.0, End: 4739.0, Setup: 15
+2025-04-06 17:49:59,317 - JSPGymEnvironment - INFO - Job J4 completed at time 4739.0, deadline: 2757, met: False, priority: 7
+2025-04-06 17:49:59,328 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 7, Machine M2, Start: 4754.0, End: 4775.0, Setup: 15
+2025-04-06 17:49:59,328 - JSPGymEnvironment - INFO - Job J14 completed at time 4775.0, deadline: 2880, met: False, priority: 3
+2025-04-06 17:49:59,339 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,339 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 5, Machine M2, Start: 4795.0, End: 4818.0, Setup: 20
+2025-04-06 17:49:59,350 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 6, Machine M3, Start: 4828.0, End: 4855.0, Setup: 10
+2025-04-06 17:49:59,362 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:59,362 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 1, Machine M2, Start: 4875.0, End: 4900.0, Setup: 20
+2025-04-06 17:49:59,373 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 0, Machine M1, Start: 4925.0, End: 4965.0, Setup: 25
+2025-04-06 17:49:59,384 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 7, Machine M3, Start: 4975.0, End: 5021.0, Setup: 10
+2025-04-06 17:49:59,384 - JSPGymEnvironment - INFO - Job J15 completed at time 5021.0, deadline: 2833, met: False, priority: 10
+2025-04-06 17:49:59,394 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Fahrrad_endmontiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:59,394 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 2, Machine M3, Start: 5036.0, End: 5060.0, Setup: 15
+2025-04-06 17:49:59,406 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Mountainbike_Bremsen_justiert, setup time: 15
+2025-04-06 17:49:59,406 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 3, Machine M3, Start: 5075.0, End: 5116.0, Setup: 15
+2025-04-06 17:49:59,418 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:59,418 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 7, Machine M2, Start: 5136.0, End: 5148.0, Setup: 20
+2025-04-06 17:49:59,418 - JSPGymEnvironment - INFO - Job J10 completed at time 5148.0, deadline: 2880, met: False, priority: 9
+2025-04-06 17:49:59,429 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:59,429 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 0, Machine M1, Start: 5188.0, End: 5228.0, Setup: 40
+2025-04-06 17:49:59,517 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,517 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 4, Machine M2, Start: 5248.0, End: 5265.0, Setup: 20
+2025-04-06 17:49:59,527 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:59,527 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 1, Machine M2, Start: 5285.0, End: 5301.0, Setup: 20
+2025-04-06 17:49:59,538 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:59,538 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 1, Machine M2, Start: 5321.0, End: 5337.0, Setup: 20
+2025-04-06 17:49:59,550 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Bremsen_justiert -> Mountainbike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:49:59,550 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 5, Machine M3, Start: 5352.0, End: 5377.0, Setup: 15
+2025-04-06 17:49:59,561 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 6, Machine M3, Start: 5387.0, End: 5427.0, Setup: 10
+2025-04-06 17:49:59,562 - JSPGymEnvironment - INFO - Job J20 completed at time 5427.0, deadline: 2744, met: False, priority: 3
+2025-04-06 17:49:59,572 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Fahrrad_endmontiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:59,572 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 2, Machine M3, Start: 5442.0, End: 5496.0, Setup: 15
+2025-04-06 17:49:59,583 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Citybike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:59,583 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 3, Machine M2, Start: 5516.0, End: 5539.0, Setup: 20
+2025-04-06 17:49:59,595 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:59,595 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 2, Machine M3, Start: 5554.0, End: 5590.0, Setup: 15
+2025-04-06 17:49:59,606 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Bremsaufnahme_gebohrt -> E-Bike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:59,606 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 3, Machine M2, Start: 5610.0, End: 5623.0, Setup: 20
+2025-04-06 17:49:59,618 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Bremsaufnahme_gebohrt -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,619 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 4, Machine M2, Start: 5643.0, End: 5660.0, Setup: 20
+2025-04-06 17:49:59,630 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,630 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 4, Machine M2, Start: 5680.0, End: 5692.0, Setup: 20
+2025-04-06 17:49:59,642 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,642 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 5, Machine M2, Start: 5712.0, End: 5733.0, Setup: 20
+2025-04-06 17:49:59,655 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:49:59,655 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 0, Machine M1, Start: 5773.0, End: 5799.0, Setup: 40
+2025-04-06 17:49:59,667 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:49:59,667 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 1, Machine M2, Start: 5819.0, End: 5834.0, Setup: 20
+2025-04-06 17:49:59,679 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> E-Bike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:59,679 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 6, Machine M2, Start: 5854.0, End: 5879.0, Setup: 20
+2025-04-06 17:49:59,679 - JSPGymEnvironment - INFO - Job J19 completed at time 5879.0, deadline: 2737, met: False, priority: 8
+2025-04-06 17:49:59,690 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:49:59,690 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 5, Machine M3, Start: 5894.0, End: 5945.0, Setup: 15
+2025-04-06 17:49:59,721 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Fahrrad_endmontiert -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:59,721 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 3, Machine M2, Start: 5965.0, End: 5983.0, Setup: 20
+2025-04-06 17:49:59,732 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 6, Machine M3, Start: 5993.0, End: 6016.0, Setup: 10
+2025-04-06 17:49:59,732 - JSPGymEnvironment - INFO - Job J9 completed at time 6016.0, deadline: 2880, met: False, priority: 8
+2025-04-06 17:49:59,744 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:49:59,744 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 2, Machine M3, Start: 6031.0, End: 6061.0, Setup: 15
+2025-04-06 17:49:59,832 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,832 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 4, Machine M2, Start: 6081.0, End: 6103.0, Setup: 20
+2025-04-06 17:49:59,844 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:59,844 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 5, Machine M2, Start: 6123.0, End: 6135.0, Setup: 20
+2025-04-06 17:49:59,844 - JSPGymEnvironment - INFO - Job J1 completed at time 6135.0, deadline: 2790, met: False, priority: 7
+2025-04-06 17:49:59,858 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:49:59,858 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 3, Machine M2, Start: 6155.0, End: 6178.0, Setup: 20
+2025-04-06 17:49:59,870 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:49:59,870 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 4, Machine M2, Start: 6198.0, End: 6212.0, Setup: 20
+2025-04-06 17:49:59,883 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:49:59,883 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 5, Machine M2, Start: 6232.0, End: 6262.0, Setup: 20
+2025-04-06 17:49:59,883 - JSPGymEnvironment - INFO - Job J16 completed at time 6262.0, deadline: 2855, met: False, priority: 7
+2025-04-06 17:50:28,475 - JSPGymEnvironment - INFO - Environment reset
+2025-04-06 17:50:28,487 - JSPGymEnvironment - INFO - Material change on machine M1:  -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 0
+2025-04-06 17:50:28,487 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 0, Machine M1, Start: 0.0, End: 41.0, Setup: 0
+2025-04-06 17:50:28,501 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,501 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 0, Machine M1, Start: 81.0, End: 107.0, Setup: 40
+2025-04-06 17:50:28,514 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,514 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 0, Machine M1, Start: 147.0, End: 166.0, Setup: 40
+2025-04-06 17:50:28,526 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,526 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 0, Machine M1, Start: 206.0, End: 229.0, Setup: 40
+2025-04-06 17:50:28,614 - JSPGymEnvironment - INFO - Material change on machine M2:  -> Racebike_Schaltauge_bearbeitet, setup time: 0
+2025-04-06 17:50:28,614 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 1, Machine M2, Start: 229.0, End: 244.0, Setup: 0
+2025-04-06 17:50:28,627 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,627 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 0, Machine M1, Start: 284.0, End: 306.0, Setup: 40
+2025-04-06 17:50:28,640 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,640 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 0, Machine M1, Start: 346.0, End: 381.0, Setup: 40
+2025-04-06 17:50:28,654 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,654 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 0, Machine M1, Start: 421.0, End: 437.0, Setup: 40
+2025-04-06 17:50:28,667 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,667 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 0, Machine M1, Start: 477.0, End: 513.0, Setup: 40
+2025-04-06 17:50:28,682 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,682 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 0, Machine M1, Start: 553.0, End: 591.0, Setup: 40
+2025-04-06 17:50:28,698 - JSPGymEnvironment - INFO - Material change on machine M3:  -> Racebike_Antrieb_installiert, setup time: 0
+2025-04-06 17:50:28,699 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 2, Machine M3, Start: 591.0, End: 621.0, Setup: 0
+2025-04-06 17:50:28,716 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 0, Machine M1, Start: 646.0, End: 686.0, Setup: 25
+2025-04-06 17:50:28,732 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,733 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 0, Machine M1, Start: 726.0, End: 766.0, Setup: 40
+2025-04-06 17:50:28,748 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,748 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 0, Machine M1, Start: 806.0, End: 837.0, Setup: 40
+2025-04-06 17:50:28,763 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 1, Machine M2, Start: 852.0, End: 868.0, Setup: 15
+2025-04-06 17:50:28,777 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,777 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 0, Machine M1, Start: 908.0, End: 927.0, Setup: 40
+2025-04-06 17:50:28,790 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:28,790 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 0, Machine M1, Start: 967.0, End: 999.0, Setup: 40
+2025-04-06 17:50:28,804 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 2, Machine M3, Start: 1009.0, End: 1045.0, Setup: 10
+2025-04-06 17:50:28,818 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:28,818 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 1, Machine M2, Start: 1065.0, End: 1075.0, Setup: 20
+2025-04-06 17:50:28,831 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 1, Machine M2, Start: 1090.0, End: 1106.0, Setup: 15
+2025-04-06 17:50:28,844 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:28,844 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 3, Machine M2, Start: 1126.0, End: 1144.0, Setup: 20
+2025-04-06 17:50:28,859 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:28,859 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 4, Machine M2, Start: 1164.0, End: 1186.0, Setup: 20
+2025-04-06 17:50:28,872 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:28,872 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 1, Machine M2, Start: 1206.0, End: 1219.0, Setup: 20
+2025-04-06 17:50:28,963 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:28,963 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 5, Machine M2, Start: 1239.0, End: 1251.0, Setup: 20
+2025-04-06 17:50:28,963 - JSPGymEnvironment - INFO - Job J1 completed at time 1251.0, deadline: 2790, met: True, priority: 7
+2025-04-06 17:50:28,976 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:28,976 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 1, Machine M2, Start: 1271.0, End: 1284.0, Setup: 20
+2025-04-06 17:50:28,991 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:28,991 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 3, Machine M2, Start: 1304.0, End: 1327.0, Setup: 20
+2025-04-06 17:50:29,007 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,007 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 2, Machine M3, Start: 1342.0, End: 1370.0, Setup: 15
+2025-04-06 17:50:29,019 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:29,019 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 4, Machine M2, Start: 1390.0, End: 1404.0, Setup: 20
+2025-04-06 17:50:29,033 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 0, Machine M1, Start: 1429.0, End: 1454.0, Setup: 25
+2025-04-06 17:50:29,045 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,045 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 1, Machine M2, Start: 1474.0, End: 1494.0, Setup: 20
+2025-04-06 17:50:29,058 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Citybike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:29,058 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 3, Machine M2, Start: 1514.0, End: 1535.0, Setup: 20
+2025-04-06 17:50:29,073 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Bremsaufnahme_gebohrt -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:29,073 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 5, Machine M2, Start: 1555.0, End: 1585.0, Setup: 20
+2025-04-06 17:50:29,073 - JSPGymEnvironment - INFO - Job J16 completed at time 1585.0, deadline: 2855, met: True, priority: 7
+2025-04-06 17:50:29,086 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,086 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 1, Machine M2, Start: 1605.0, End: 1618.0, Setup: 20
+2025-04-06 17:50:29,099 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:29,099 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 4, Machine M2, Start: 1638.0, End: 1662.0, Setup: 20
+2025-04-06 17:50:29,114 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:29,114 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 0, Machine M1, Start: 1702.0, End: 1738.0, Setup: 40
+2025-04-06 17:50:29,129 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 2, Machine M3, Start: 1748.0, End: 1802.0, Setup: 10
+2025-04-06 17:50:29,145 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:29,145 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 0, Machine M1, Start: 1842.0, End: 1860.0, Setup: 40
+2025-04-06 17:50:29,167 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,167 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 2, Machine M3, Start: 1875.0, End: 1904.0, Setup: 15
+2025-04-06 17:50:29,179 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Mountainbike_Bremsen_justiert, setup time: 15
+2025-04-06 17:50:29,180 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 3, Machine M3, Start: 1919.0, End: 1974.0, Setup: 15
+2025-04-06 17:50:29,192 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Citybike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:29,192 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 3, Machine M2, Start: 1994.0, End: 2017.0, Setup: 20
+2025-04-06 17:50:29,207 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Bremsaufnahme_gebohrt -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:29,207 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 4, Machine M2, Start: 2037.0, End: 2049.0, Setup: 20
+2025-04-06 17:50:29,219 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Bremsen_justiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:29,219 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 5, Machine M3, Start: 2064.0, End: 2115.0, Setup: 15
+2025-04-06 17:50:29,316 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,316 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 1, Machine M2, Start: 2135.0, End: 2155.0, Setup: 20
+2025-04-06 17:50:29,330 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 6, Machine M3, Start: 2165.0, End: 2188.0, Setup: 10
+2025-04-06 17:50:29,330 - JSPGymEnvironment - INFO - Job J9 completed at time 2188.0, deadline: 2880, met: True, priority: 8
+2025-04-06 17:50:29,343 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,343 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 2, Machine M3, Start: 2203.0, End: 2238.0, Setup: 15
+2025-04-06 17:50:29,356 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 1, Machine M2, Start: 2253.0, End: 2266.0, Setup: 15
+2025-04-06 17:50:29,369 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,369 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 1, Machine M2, Start: 2286.0, End: 2301.0, Setup: 20
+2025-04-06 17:50:29,384 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 1, Machine M2, Start: 2316.0, End: 2339.0, Setup: 15
+2025-04-06 17:50:29,397 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,397 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 1, Machine M2, Start: 2359.0, End: 2375.0, Setup: 20
+2025-04-06 17:50:29,411 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,411 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 2, Machine M3, Start: 2390.0, End: 2424.0, Setup: 15
+2025-04-06 17:50:29,425 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,425 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 2, Machine M3, Start: 2439.0, End: 2479.0, Setup: 15
+2025-04-06 17:50:29,438 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,438 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 1, Machine M2, Start: 2499.0, End: 2524.0, Setup: 20
+2025-04-06 17:50:29,451 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> E-Bike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,452 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 1, Machine M2, Start: 2544.0, End: 2567.0, Setup: 20
+2025-04-06 17:50:29,465 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Racebike_Bremsen_justiert, setup time: 15
+2025-04-06 17:50:29,465 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 3, Machine M3, Start: 2582.0, End: 2609.0, Setup: 15
+2025-04-06 17:50:29,479 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Schaltauge_bearbeitet -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:29,479 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 3, Machine M2, Start: 2629.0, End: 2643.0, Setup: 20
+2025-04-06 17:50:29,493 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,493 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 1, Machine M2, Start: 2663.0, End: 2688.0, Setup: 20
+2025-04-06 17:50:29,505 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:29,505 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 4, Machine M2, Start: 2708.0, End: 2733.0, Setup: 20
+2025-04-06 17:50:29,518 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Bremsen_justiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,518 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 2, Machine M3, Start: 2748.0, End: 2772.0, Setup: 15
+2025-04-06 17:50:29,535 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:29,535 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 5, Machine M3, Start: 2787.0, End: 2808.0, Setup: 15
+2025-04-06 17:50:29,535 - JSPGymEnvironment - INFO - Job J2 completed at time 2808.0, deadline: 2880, met: True, priority: 3
+2025-04-06 17:50:29,548 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,548 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 2, Machine M3, Start: 2823.0, End: 2865.0, Setup: 15
+2025-04-06 17:50:29,561 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,561 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 1, Machine M2, Start: 2885.0, End: 2900.0, Setup: 20
+2025-04-06 17:50:29,652 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Citybike_Bremsen_justiert, setup time: 15
+2025-04-06 17:50:29,652 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 3, Machine M3, Start: 2915.0, End: 2941.0, Setup: 15
+2025-04-06 17:50:29,665 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsen_justiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,665 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 2, Machine M3, Start: 2956.0, End: 2980.0, Setup: 15
+2025-04-06 17:50:29,679 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Mountainbike_Bremsen_justiert, setup time: 15
+2025-04-06 17:50:29,679 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 3, Machine M3, Start: 2995.0, End: 3036.0, Setup: 15
+2025-04-06 17:50:29,691 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:29,691 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 5, Machine M2, Start: 3056.0, End: 3080.0, Setup: 20
+2025-04-06 17:50:29,705 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:29,705 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 0, Machine M1, Start: 3120.0, End: 3154.0, Setup: 40
+2025-04-06 17:50:29,717 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Bremsen_justiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,717 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 2, Machine M3, Start: 3169.0, End: 3208.0, Setup: 15
+2025-04-06 17:50:29,731 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:29,731 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 4, Machine M2, Start: 3228.0, End: 3245.0, Setup: 20
+2025-04-06 17:50:29,752 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> E-Bike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,752 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 1, Machine M2, Start: 3265.0, End: 3285.0, Setup: 20
+2025-04-06 17:50:29,769 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,769 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 2, Machine M3, Start: 3300.0, End: 3322.0, Setup: 15
+2025-04-06 17:50:29,788 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> E-Bike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,788 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 2, Machine M3, Start: 3337.0, End: 3395.0, Setup: 15
+2025-04-06 17:50:29,803 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Hauptrahmen_zugeschnitten -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:29,803 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 0, Machine M1, Start: 3435.0, End: 3466.0, Setup: 40
+2025-04-06 17:50:29,818 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Schaltauge_bearbeitet -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,818 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 1, Machine M2, Start: 3486.0, End: 3508.0, Setup: 20
+2025-04-06 17:50:29,831 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:29,831 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 3, Machine M2, Start: 3528.0, End: 3551.0, Setup: 20
+2025-04-06 17:50:29,844 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Citybike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:29,844 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 3, Machine M2, Start: 3571.0, End: 3589.0, Setup: 20
+2025-04-06 17:50:29,859 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Bremsaufnahme_gebohrt -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:29,859 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 3, Machine M2, Start: 3609.0, End: 3631.0, Setup: 20
+2025-04-06 17:50:29,872 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Antrieb_installiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:29,872 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 2, Machine M3, Start: 3646.0, End: 3671.0, Setup: 15
+2025-04-06 17:50:29,885 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Hauptrahmen_zugeschnitten -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:29,885 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 0, Machine M1, Start: 3711.0, End: 3726.0, Setup: 40
+2025-04-06 17:50:29,899 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> E-Bike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:29,899 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 3, Machine M2, Start: 3746.0, End: 3776.0, Setup: 20
+2025-04-06 17:50:29,913 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Bremsaufnahme_gebohrt -> E-Bike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:29,913 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 1, Machine M2, Start: 3796.0, End: 3826.0, Setup: 20
+2025-04-06 17:50:30,003 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Schaltauge_bearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,003 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 4, Machine M2, Start: 3846.0, End: 3866.0, Setup: 20
+2025-04-06 17:50:30,017 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Citybike_Bremsen_justiert, setup time: 15
+2025-04-06 17:50:30,017 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 3, Machine M3, Start: 3881.0, End: 3903.0, Setup: 15
+2025-04-06 17:50:30,034 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Mountainbike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:30,034 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 4, Machine M2, Start: 3923.0, End: 3936.0, Setup: 20
+2025-04-06 17:50:30,034 - JSPGymEnvironment - INFO - Job J18 completed at time 3936.0, deadline: 2880, met: False, priority: 6
+2025-04-06 17:50:30,048 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsen_justiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:30,048 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 2, Machine M3, Start: 3951.0, End: 3989.0, Setup: 15
+2025-04-06 17:50:30,060 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Racebike_Bremsen_justiert, setup time: 15
+2025-04-06 17:50:30,060 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 3, Machine M3, Start: 4004.0, End: 4062.0, Setup: 15
+2025-04-06 17:50:30,074 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Bremsen_justiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:30,074 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 4, Machine M3, Start: 4077.0, End: 4127.0, Setup: 15
+2025-04-06 17:50:30,089 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:30,089 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 6, Machine M3, Start: 4142.0, End: 4168.0, Setup: 15
+2025-04-06 17:50:30,089 - JSPGymEnvironment - INFO - Job J4 completed at time 4168.0, deadline: 2757, met: False, priority: 7
+2025-04-06 17:50:30,102 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 4, Machine M3, Start: 4178.0, End: 4219.0, Setup: 10
+2025-04-06 17:50:30,102 - JSPGymEnvironment - INFO - Job J6 completed at time 4219.0, deadline: 2880, met: False, priority: 10
+2025-04-06 17:50:30,115 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,115 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 5, Machine M2, Start: 4239.0, End: 4262.0, Setup: 20
+2025-04-06 17:50:30,129 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Fahrrad_endmontiert -> Mountainbike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:30,129 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 5, Machine M3, Start: 4277.0, End: 4302.0, Setup: 15
+2025-04-06 17:50:30,143 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Fahrrad_endmontiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:30,143 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 4, Machine M3, Start: 4317.0, End: 4356.0, Setup: 15
+2025-04-06 17:50:30,156 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> E-Bike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:30,156 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 2, Machine M3, Start: 4371.0, End: 4424.0, Setup: 15
+2025-04-06 17:50:30,176 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Antrieb_installiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:30,176 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 2, Machine M3, Start: 4439.0, End: 4493.0, Setup: 15
+2025-04-06 17:50:30,189 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:30,189 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 5, Machine M3, Start: 4508.0, End: 4567.0, Setup: 15
+2025-04-06 17:50:30,202 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:30,202 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 6, Machine M3, Start: 4582.0, End: 4609.0, Setup: 15
+2025-04-06 17:50:30,219 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 7, Machine M3, Start: 4619.0, End: 4665.0, Setup: 10
+2025-04-06 17:50:30,219 - JSPGymEnvironment - INFO - Job J15 completed at time 4665.0, deadline: 2833, met: False, priority: 10
+2025-04-06 17:50:30,232 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,232 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 5, Machine M2, Start: 4685.0, End: 4702.0, Setup: 20
+2025-04-06 17:50:30,247 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Mountainbike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:30,247 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 3, Machine M2, Start: 4722.0, End: 4737.0, Setup: 20
+2025-04-06 17:50:30,261 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Fahrrad_endmontiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:30,261 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 2, Machine M3, Start: 4752.0, End: 4797.0, Setup: 15
+2025-04-06 17:50:30,350 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Bremsaufnahme_gebohrt -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,351 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 4, Machine M2, Start: 4817.0, End: 4847.0, Setup: 20
+2025-04-06 17:50:30,364 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,364 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 4, Machine M2, Start: 4867.0, End: 4896.0, Setup: 20
+2025-04-06 17:50:30,377 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,377 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 4, Machine M2, Start: 4916.0, End: 4927.0, Setup: 20
+2025-04-06 17:50:30,389 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Mountainbike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:30,389 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 5, Machine M2, Start: 4947.0, End: 4969.0, Setup: 20
+2025-04-06 17:50:30,389 - JSPGymEnvironment - INFO - Job J5 completed at time 4969.0, deadline: 2880, met: False, priority: 1
+2025-04-06 17:50:30,403 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Fahrrad_endmontiert -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,403 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 4, Machine M2, Start: 4989.0, End: 5006.0, Setup: 20
+2025-04-06 17:50:30,417 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> Mountainbike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:30,417 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 3, Machine M2, Start: 5026.0, End: 5052.0, Setup: 20
+2025-04-06 17:50:30,431 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Citybike_Bremsen_justiert, setup time: 15
+2025-04-06 17:50:30,431 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 3, Machine M3, Start: 5067.0, End: 5125.0, Setup: 15
+2025-04-06 17:50:30,445 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Bremsaufnahme_gebohrt -> E-Bike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:30,445 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 3, Machine M2, Start: 5145.0, End: 5167.0, Setup: 20
+2025-04-06 17:50:30,458 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Bremsaufnahme_gebohrt -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,458 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 5, Machine M2, Start: 5187.0, End: 5208.0, Setup: 20
+2025-04-06 17:50:30,471 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsen_justiert -> E-Bike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:30,471 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 4, Machine M3, Start: 5223.0, End: 5276.0, Setup: 15
+2025-04-06 17:50:30,471 - JSPGymEnvironment - INFO - Job J13 completed at time 5276.0, deadline: 2863, met: False, priority: 7
+2025-04-06 17:50:30,487 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,487 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 6, Machine M2, Start: 5296.0, End: 5318.0, Setup: 20
+2025-04-06 17:50:30,500 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Fahrrad_endmontiert -> Mountainbike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:30,500 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 6, Machine M3, Start: 5333.0, End: 5373.0, Setup: 15
+2025-04-06 17:50:30,500 - JSPGymEnvironment - INFO - Job J20 completed at time 5373.0, deadline: 2744, met: False, priority: 3
+2025-04-06 17:50:30,513 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> E-Bike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:30,513 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 6, Machine M2, Start: 5393.0, End: 5403.0, Setup: 20
+2025-04-06 17:50:30,513 - JSPGymEnvironment - INFO - Job J3 completed at time 5403.0, deadline: 2862, met: False, priority: 8
+2025-04-06 17:50:30,525 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Fahrrad_endmontiert -> Citybike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:30,525 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 7, Machine M2, Start: 5423.0, End: 5452.0, Setup: 20
+2025-04-06 17:50:30,525 - JSPGymEnvironment - INFO - Job J11 completed at time 5452.0, deadline: 2880, met: False, priority: 7
+2025-04-06 17:50:30,538 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,538 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 4, Machine M2, Start: 5472.0, End: 5498.0, Setup: 20
+2025-04-06 17:50:30,553 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 5, Machine M2, Start: 5513.0, End: 5531.0, Setup: 15
+2025-04-06 17:50:30,566 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Fahrrad_endmontiert -> E-Bike_Antrieb_installiert, setup time: 15
+2025-04-06 17:50:30,566 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 2, Machine M3, Start: 5546.0, End: 5568.0, Setup: 15
+2025-04-06 17:50:30,579 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Antrieb_installiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:50:30,579 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 6, Machine M3, Start: 5583.0, End: 5608.0, Setup: 15
+2025-04-06 17:50:30,579 - JSPGymEnvironment - INFO - Job J17 completed at time 5608.0, deadline: 2880, met: False, priority: 6
+2025-04-06 17:50:30,591 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,591 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 4, Machine M2, Start: 5628.0, End: 5656.0, Setup: 20
+2025-04-06 17:50:30,680 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> E-Bike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:50:30,680 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 3, Machine M2, Start: 5676.0, End: 5689.0, Setup: 20
+2025-04-06 17:50:30,693 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Bremsaufnahme_gebohrt -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,693 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 5, Machine M2, Start: 5709.0, End: 5737.0, Setup: 20
+2025-04-06 17:50:30,707 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> Mountainbike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:30,707 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 6, Machine M2, Start: 5757.0, End: 5779.0, Setup: 20
+2025-04-06 17:50:30,707 - JSPGymEnvironment - INFO - Job J12 completed at time 5779.0, deadline: 2863, met: False, priority: 2
+2025-04-06 17:50:30,720 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 4, Machine M3, Start: 5789.0, End: 5838.0, Setup: 10
+2025-04-06 17:50:30,732 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,732 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 5, Machine M2, Start: 5858.0, End: 5876.0, Setup: 20
+2025-04-06 17:50:30,746 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:30,746 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 5, Machine M2, Start: 5896.0, End: 5926.0, Setup: 20
+2025-04-06 17:50:30,746 - JSPGymEnvironment - INFO - Job J8 completed at time 5926.0, deadline: 2762, met: False, priority: 5
+2025-04-06 17:50:30,760 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,760 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 6, Machine M2, Start: 5946.0, End: 5961.0, Setup: 20
+2025-04-06 17:50:30,775 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,775 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 5, Machine M2, Start: 5981.0, End: 6011.0, Setup: 20
+2025-04-06 17:50:30,789 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 6, Machine M2, Start: 6026.0, End: 6050.0, Setup: 15
+2025-04-06 17:50:30,802 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Citybike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:30,802 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 7, Machine M2, Start: 6070.0, End: 6091.0, Setup: 20
+2025-04-06 17:50:30,802 - JSPGymEnvironment - INFO - Job J14 completed at time 6091.0, deadline: 2880, met: False, priority: 3
+2025-04-06 17:50:30,819 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,819 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 6, Machine M2, Start: 6111.0, End: 6122.0, Setup: 20
+2025-04-06 17:50:30,837 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:30,837 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 7, Machine M2, Start: 6142.0, End: 6154.0, Setup: 20
+2025-04-06 17:50:30,837 - JSPGymEnvironment - INFO - Job J10 completed at time 6154.0, deadline: 2880, met: False, priority: 9
+2025-04-06 17:50:30,854 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:50:30,854 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 4, Machine M2, Start: 6174.0, End: 6191.0, Setup: 20
+2025-04-06 17:50:30,870 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 5, Machine M2, Start: 6206.0, End: 6227.0, Setup: 15
+2025-04-06 17:50:30,883 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:30,883 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 7, Machine M2, Start: 6247.0, End: 6272.0, Setup: 20
+2025-04-06 17:50:30,883 - JSPGymEnvironment - INFO - Job J7 completed at time 6272.0, deadline: 2880, met: False, priority: 9
+2025-04-06 17:50:30,895 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> E-Bike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:50:30,895 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 6, Machine M2, Start: 6292.0, End: 6317.0, Setup: 20
+2025-04-06 17:50:30,895 - JSPGymEnvironment - INFO - Job J19 completed at time 6317.0, deadline: 2737, met: False, priority: 8
+2025-04-06 17:50:59,799 - JSPGymEnvironment - INFO - Environment reset
+2025-04-06 17:50:59,815 - JSPGymEnvironment - INFO - Material change on machine M1:  -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 0
+2025-04-06 17:50:59,815 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 0, Machine M1, Start: 0.0, End: 31.0, Setup: 0
+2025-04-06 17:50:59,829 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:59,829 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 0, Machine M1, Start: 71.0, End: 111.0, Setup: 40
+2025-04-06 17:50:59,843 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:59,843 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 0, Machine M1, Start: 151.0, End: 191.0, Setup: 40
+2025-04-06 17:50:59,856 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:59,857 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 0, Machine M1, Start: 231.0, End: 246.0, Setup: 40
+2025-04-06 17:50:59,872 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:59,872 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 0, Machine M1, Start: 286.0, End: 317.0, Setup: 40
+2025-04-06 17:50:59,887 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:59,887 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 0, Machine M1, Start: 357.0, End: 391.0, Setup: 40
+2025-04-06 17:50:59,901 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:59,901 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 0, Machine M1, Start: 431.0, End: 456.0, Setup: 40
+2025-04-06 17:50:59,915 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:59,915 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 0, Machine M1, Start: 496.0, End: 534.0, Setup: 40
+2025-04-06 17:50:59,929 - JSPGymEnvironment - INFO - Material change on machine M2:  -> E-Bike_Schaltauge_bearbeitet, setup time: 0
+2025-04-06 17:50:59,929 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 1, Machine M2, Start: 534.0, End: 554.0, Setup: 0
+2025-04-06 17:50:59,944 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:50:59,944 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 0, Machine M1, Start: 594.0, End: 620.0, Setup: 40
+2025-04-06 17:50:59,960 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 1, Machine M2, Start: 635.0, End: 665.0, Setup: 15
+2025-04-06 17:50:59,974 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Schaltauge_bearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:50:59,974 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 1, Machine M2, Start: 685.0, End: 701.0, Setup: 20
+2025-04-06 17:51:00,071 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:51:00,071 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 0, Machine M1, Start: 741.0, End: 777.0, Setup: 40
+2025-04-06 17:51:00,085 - JSPGymEnvironment - INFO - Material change on machine M3:  -> Racebike_Antrieb_installiert, setup time: 0
+2025-04-06 17:51:00,085 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 2, Machine M3, Start: 777.0, End: 813.0, Setup: 0
+2025-04-06 17:51:00,099 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:51:00,099 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 0, Machine M1, Start: 853.0, End: 876.0, Setup: 40
+2025-04-06 17:51:00,113 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 0, Machine M1, Start: 901.0, End: 933.0, Setup: 25
+2025-04-06 17:51:00,126 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:51:00,126 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 0, Machine M1, Start: 973.0, End: 992.0, Setup: 40
+2025-04-06 17:51:00,138 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:51:00,138 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 0, Machine M1, Start: 1032.0, End: 1073.0, Setup: 40
+2025-04-06 17:51:00,153 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,153 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 1, Machine M2, Start: 1093.0, End: 1115.0, Setup: 20
+2025-04-06 17:51:00,169 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:51:00,169 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 0, Machine M1, Start: 1155.0, End: 1191.0, Setup: 40
+2025-04-06 17:51:00,183 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:51:00,183 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 0, Machine M1, Start: 1231.0, End: 1247.0, Setup: 40
+2025-04-06 17:51:00,199 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,199 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 1, Machine M2, Start: 1267.0, End: 1283.0, Setup: 20
+2025-04-06 17:51:00,213 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> E-Bike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:00,213 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 2, Machine M3, Start: 1298.0, End: 1320.0, Setup: 15
+2025-04-06 17:51:00,226 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 1, Machine M2, Start: 1335.0, End: 1348.0, Setup: 15
+2025-04-06 17:51:00,241 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:00,242 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 3, Machine M2, Start: 1368.0, End: 1386.0, Setup: 20
+2025-04-06 17:51:00,258 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,258 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 1, Machine M2, Start: 1406.0, End: 1421.0, Setup: 20
+2025-04-06 17:51:00,273 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Hauptrahmen_zugeschnitten -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:51:00,274 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 0, Machine M1, Start: 1461.0, End: 1496.0, Setup: 40
+2025-04-06 17:51:00,288 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:51:00,288 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 0, Machine M1, Start: 1536.0, End: 1558.0, Setup: 40
+2025-04-06 17:51:00,303 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 2, Machine M3, Start: 1568.0, End: 1626.0, Setup: 10
+2025-04-06 17:51:00,316 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 0, Machine M1, Start: 1651.0, End: 1670.0, Setup: 25
+2025-04-06 17:51:00,330 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Antrieb_installiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:00,330 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 2, Machine M3, Start: 1685.0, End: 1730.0, Setup: 15
+2025-04-06 17:51:00,417 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> E-Bike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,417 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 1, Machine M2, Start: 1750.0, End: 1773.0, Setup: 20
+2025-04-06 17:51:00,431 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Schaltauge_bearbeitet -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,431 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 1, Machine M2, Start: 1793.0, End: 1818.0, Setup: 20
+2025-04-06 17:51:00,446 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,446 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 1, Machine M2, Start: 1838.0, End: 1853.0, Setup: 20
+2025-04-06 17:51:00,464 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 1, Machine M2, Start: 1868.0, End: 1881.0, Setup: 15
+2025-04-06 17:51:00,479 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,479 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 1, Machine M2, Start: 1901.0, End: 1916.0, Setup: 20
+2025-04-06 17:51:00,492 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> E-Bike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:00,493 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 2, Machine M3, Start: 1931.0, End: 1984.0, Setup: 15
+2025-04-06 17:51:00,506 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:00,506 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 4, Machine M2, Start: 2004.0, End: 2026.0, Setup: 20
+2025-04-06 17:51:00,519 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Antrieb_installiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:00,519 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 2, Machine M3, Start: 2041.0, End: 2066.0, Setup: 15
+2025-04-06 17:51:00,533 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:00,533 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 2, Machine M3, Start: 2081.0, End: 2121.0, Setup: 15
+2025-04-06 17:51:00,547 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:00,547 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 2, Machine M3, Start: 2136.0, End: 2190.0, Setup: 15
+2025-04-06 17:51:00,563 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:00,563 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 2, Machine M3, Start: 2205.0, End: 2235.0, Setup: 15
+2025-04-06 17:51:00,578 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,578 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 1, Machine M2, Start: 2255.0, End: 2275.0, Setup: 20
+2025-04-06 17:51:00,591 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> E-Bike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:00,591 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 3, Machine M2, Start: 2295.0, End: 2308.0, Setup: 20
+2025-04-06 17:51:00,605 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 2, Machine M3, Start: 2318.0, End: 2353.0, Setup: 10
+2025-04-06 17:51:00,620 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Bremsaufnahme_gebohrt -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:00,620 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 3, Machine M2, Start: 2373.0, End: 2396.0, Setup: 20
+2025-04-06 17:51:00,635 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,635 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 1, Machine M2, Start: 2416.0, End: 2429.0, Setup: 20
+2025-04-06 17:51:00,651 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:00,651 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 5, Machine M2, Start: 2449.0, End: 2461.0, Setup: 20
+2025-04-06 17:51:00,651 - JSPGymEnvironment - INFO - Job J1 completed at time 2461.0, deadline: 2790, met: True, priority: 7
+2025-04-06 17:51:00,669 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:00,669 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 2, Machine M3, Start: 2476.0, End: 2530.0, Setup: 15
+2025-04-06 17:51:00,689 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Hauptrahmen_zugeschnitten -> Citybike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-04-06 17:51:00,689 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 0, Machine M1, Start: 2570.0, End: 2588.0, Setup: 40
+2025-04-06 17:51:00,791 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:00,791 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 4, Machine M2, Start: 2608.0, End: 2625.0, Setup: 20
+2025-04-06 17:51:00,807 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 2, Machine M3, Start: 2635.0, End: 2669.0, Setup: 10
+2025-04-06 17:51:00,822 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,822 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 1, Machine M2, Start: 2689.0, End: 2714.0, Setup: 20
+2025-04-06 17:51:00,835 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:00,835 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 5, Machine M2, Start: 2734.0, End: 2755.0, Setup: 20
+2025-04-06 17:51:00,849 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Racebike_Bremsen_justiert, setup time: 15
+2025-04-06 17:51:00,849 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 3, Machine M3, Start: 2770.0, End: 2797.0, Setup: 15
+2025-04-06 17:51:00,863 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,863 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 1, Machine M2, Start: 2817.0, End: 2833.0, Setup: 20
+2025-04-06 17:51:00,877 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:00,877 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 4, Machine M2, Start: 2853.0, End: 2867.0, Setup: 20
+2025-04-06 17:51:00,892 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> E-Bike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:00,893 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 3, Machine M2, Start: 2887.0, End: 2917.0, Setup: 20
+2025-04-06 17:51:00,907 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Bremsaufnahme_gebohrt -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:00,907 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 5, Machine M2, Start: 2937.0, End: 2967.0, Setup: 20
+2025-04-06 17:51:00,907 - JSPGymEnvironment - INFO - Job J16 completed at time 2967.0, deadline: 2855, met: False, priority: 7
+2025-04-06 17:51:00,921 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> E-Bike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:00,921 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 3, Machine M2, Start: 2987.0, End: 3009.0, Setup: 20
+2025-04-06 17:51:00,937 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Bremsen_justiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:00,937 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 2, Machine M3, Start: 3024.0, End: 3046.0, Setup: 15
+2025-04-06 17:51:00,953 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Bremsaufnahme_gebohrt -> Citybike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:00,953 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 3, Machine M2, Start: 3066.0, End: 3084.0, Setup: 20
+2025-04-06 17:51:00,966 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 3, Machine M2, Start: 3099.0, End: 3122.0, Setup: 15
+2025-04-06 17:51:00,981 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> E-Bike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:00,981 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 4, Machine M3, Start: 3137.0, End: 3190.0, Setup: 15
+2025-04-06 17:51:00,981 - JSPGymEnvironment - INFO - Job J13 completed at time 3190.0, deadline: 2863, met: False, priority: 7
+2025-04-06 17:51:00,995 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Bremsaufnahme_gebohrt -> Mountainbike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:00,995 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 1, Machine M2, Start: 3210.0, End: 3230.0, Setup: 20
+2025-04-06 17:51:01,009 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Schaltauge_bearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,009 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 4, Machine M2, Start: 3250.0, End: 3262.0, Setup: 20
+2025-04-06 17:51:01,024 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:01,024 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 1, Machine M2, Start: 3282.0, End: 3295.0, Setup: 20
+2025-04-06 17:51:01,039 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> E-Bike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:01,039 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 6, Machine M2, Start: 3315.0, End: 3340.0, Setup: 20
+2025-04-06 17:51:01,039 - JSPGymEnvironment - INFO - Job J19 completed at time 3340.0, deadline: 2737, met: False, priority: 8
+2025-04-06 17:51:01,054 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Fahrrad_endmontiert -> Mountainbike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:01,054 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 3, Machine M2, Start: 3360.0, End: 3386.0, Setup: 20
+2025-04-06 17:51:01,158 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Bremsaufnahme_gebohrt -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,158 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 4, Machine M2, Start: 3406.0, End: 3426.0, Setup: 20
+2025-04-06 17:51:01,172 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 5, Machine M2, Start: 3441.0, End: 3464.0, Setup: 15
+2025-04-06 17:51:01,186 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:01,186 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 1, Machine M2, Start: 3484.0, End: 3494.0, Setup: 20
+2025-04-06 17:51:01,200 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Fahrrad_endmontiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:01,200 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 5, Machine M3, Start: 3509.0, End: 3560.0, Setup: 15
+2025-04-06 17:51:01,216 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Mountainbike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:01,216 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 3, Machine M2, Start: 3580.0, End: 3595.0, Setup: 20
+2025-04-06 17:51:01,230 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Bremsaufnahme_gebohrt -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:01,230 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 3, Machine M2, Start: 3615.0, End: 3629.0, Setup: 20
+2025-04-06 17:51:01,246 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,246 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 4, Machine M2, Start: 3649.0, End: 3677.0, Setup: 20
+2025-04-06 17:51:01,259 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:01,259 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 2, Machine M3, Start: 3692.0, End: 3734.0, Setup: 15
+2025-04-06 17:51:01,274 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:01,274 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 2, Machine M3, Start: 3749.0, End: 3773.0, Setup: 15
+2025-04-06 17:51:01,288 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:01,288 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 2, Machine M3, Start: 3788.0, End: 3827.0, Setup: 15
+2025-04-06 17:51:01,303 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 4, Machine M2, Start: 3842.0, End: 3872.0, Setup: 15
+2025-04-06 17:51:01,319 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> Racebike_Schaltauge_bearbeitet, setup time: 20
+2025-04-06 17:51:01,319 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 1, Machine M2, Start: 3892.0, End: 3915.0, Setup: 20
+2025-04-06 17:51:01,333 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Schaltauge_bearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,333 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 4, Machine M2, Start: 3935.0, End: 3960.0, Setup: 20
+2025-04-06 17:51:01,348 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:01,348 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 6, Machine M3, Start: 3975.0, End: 3998.0, Setup: 15
+2025-04-06 17:51:01,348 - JSPGymEnvironment - INFO - Job J9 completed at time 3998.0, deadline: 2880, met: False, priority: 8
+2025-04-06 17:51:01,363 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:01,363 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 2, Machine M3, Start: 4013.0, End: 4051.0, Setup: 15
+2025-04-06 17:51:01,378 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Citybike_Bremsen_justiert, setup time: 15
+2025-04-06 17:51:01,378 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 3, Machine M3, Start: 4066.0, End: 4092.0, Setup: 15
+2025-04-06 17:51:01,392 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsen_justiert -> Racebike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:01,392 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 2, Machine M3, Start: 4107.0, End: 4131.0, Setup: 15
+2025-04-06 17:51:01,408 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,408 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 4, Machine M2, Start: 4151.0, End: 4168.0, Setup: 20
+2025-04-06 17:51:01,421 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Antrieb_installiert -> Mountainbike_Bremsen_justiert, setup time: 15
+2025-04-06 17:51:01,422 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 3, Machine M3, Start: 4183.0, End: 4224.0, Setup: 15
+2025-04-06 17:51:01,514 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Bremsen_justiert -> Citybike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:01,514 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 2, Machine M3, Start: 4239.0, End: 4267.0, Setup: 15
+2025-04-06 17:51:01,527 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Antrieb_installiert -> Citybike_Bremsen_justiert, setup time: 15
+2025-04-06 17:51:01,527 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 3, Machine M3, Start: 4282.0, End: 4340.0, Setup: 15
+2025-04-06 17:51:01,544 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:01,544 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 3, Machine M2, Start: 4360.0, End: 4382.0, Setup: 20
+2025-04-06 17:51:01,558 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsen_justiert -> Racebike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:01,558 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 6, Machine M3, Start: 4397.0, End: 4424.0, Setup: 15
+2025-04-06 17:51:01,572 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Fahrrad_endmontiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:01,572 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 4, Machine M3, Start: 4439.0, End: 4489.0, Setup: 15
+2025-04-06 17:51:01,586 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Mountainbike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:01,586 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 5, Machine M2, Start: 4509.0, End: 4531.0, Setup: 20
+2025-04-06 17:51:01,586 - JSPGymEnvironment - INFO - Job J5 completed at time 4531.0, deadline: 2880, met: False, priority: 1
+2025-04-06 17:51:01,601 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Fahrrad_endmontiert -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,601 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 4, Machine M2, Start: 4551.0, End: 4568.0, Setup: 20
+2025-04-06 17:51:01,615 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> Citybike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:01,616 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 3, Machine M2, Start: 4588.0, End: 4609.0, Setup: 20
+2025-04-06 17:51:01,629 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 5, Machine M3, Start: 4619.0, End: 4678.0, Setup: 10
+2025-04-06 17:51:01,644 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Citybike_Bremsen_justiert, setup time: 15
+2025-04-06 17:51:01,644 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 3, Machine M3, Start: 4693.0, End: 4715.0, Setup: 15
+2025-04-06 17:51:01,657 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsen_justiert -> Mountainbike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:01,657 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 5, Machine M3, Start: 4730.0, End: 4755.0, Setup: 15
+2025-04-06 17:51:01,670 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Bremsaufnahme_gebohrt -> Mountainbike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,670 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 5, Machine M2, Start: 4775.0, End: 4803.0, Setup: 20
+2025-04-06 17:51:01,685 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Fahrrad_endmontiert -> Mountainbike_Antrieb_installiert, setup time: 15
+2025-04-06 17:51:01,685 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 2, Machine M3, Start: 4818.0, End: 4847.0, Setup: 15
+2025-04-06 17:51:01,699 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_nachbearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,699 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 4, Machine M2, Start: 4867.0, End: 4891.0, Setup: 20
+2025-04-06 17:51:01,714 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Antrieb_installiert -> Mountainbike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:01,714 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 6, Machine M3, Start: 4906.0, End: 4946.0, Setup: 15
+2025-04-06 17:51:01,714 - JSPGymEnvironment - INFO - Job J20 completed at time 4946.0, deadline: 2744, met: False, priority: 3
+2025-04-06 17:51:01,730 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Fahrrad_endmontiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:01,730 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 4, Machine M3, Start: 4961.0, End: 5010.0, Setup: 15
+2025-04-06 17:51:01,746 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,746 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 5, Machine M2, Start: 5030.0, End: 5054.0, Setup: 20
+2025-04-06 17:51:01,759 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Mountainbike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:01,759 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 6, Machine M2, Start: 5074.0, End: 5096.0, Setup: 20
+2025-04-06 17:51:01,759 - JSPGymEnvironment - INFO - Job J12 completed at time 5096.0, deadline: 2863, met: False, priority: 2
+2025-04-06 17:51:01,773 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,773 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 4, Machine M2, Start: 5116.0, End: 5127.0, Setup: 20
+2025-04-06 17:51:01,866 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:01,866 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 7, Machine M3, Start: 5142.0, End: 5188.0, Setup: 15
+2025-04-06 17:51:01,866 - JSPGymEnvironment - INFO - Job J15 completed at time 5188.0, deadline: 2833, met: False, priority: 10
+2025-04-06 17:51:01,881 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,881 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 4, Machine M2, Start: 5208.0, End: 5237.0, Setup: 20
+2025-04-06 17:51:01,895 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 6, Machine M3, Start: 5247.0, End: 5273.0, Setup: 10
+2025-04-06 17:51:01,895 - JSPGymEnvironment - INFO - Job J4 completed at time 5273.0, deadline: 2757, met: False, priority: 7
+2025-04-06 17:51:01,909 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Fahrrad_endmontiert -> Mountainbike_Bremsen_justiert, setup time: 15
+2025-04-06 17:51:01,909 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 3, Machine M3, Start: 5288.0, End: 5343.0, Setup: 15
+2025-04-06 17:51:01,923 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> E-Bike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,923 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 5, Machine M2, Start: 5363.0, End: 5384.0, Setup: 20
+2025-04-06 17:51:01,936 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Bremsen_justiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:01,937 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 5, Machine M3, Start: 5399.0, End: 5420.0, Setup: 15
+2025-04-06 17:51:01,937 - JSPGymEnvironment - INFO - Job J2 completed at time 5420.0, deadline: 2880, met: False, priority: 3
+2025-04-06 17:51:01,951 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_nachbearbeitet -> E-Bike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:01,951 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 6, Machine M2, Start: 5440.0, End: 5450.0, Setup: 20
+2025-04-06 17:51:01,951 - JSPGymEnvironment - INFO - Job J3 completed at time 5450.0, deadline: 2862, met: False, priority: 8
+2025-04-06 17:51:01,966 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Bremsen_justiert, setup time: 15
+2025-04-06 17:51:01,966 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 3, Machine M3, Start: 5465.0, End: 5523.0, Setup: 15
+2025-04-06 17:51:01,982 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Bremsen_justiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:01,982 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 4, Machine M3, Start: 5538.0, End: 5577.0, Setup: 15
+2025-04-06 17:51:01,996 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Fahrrad_endmontiert -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:01,996 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 5, Machine M2, Start: 5597.0, End: 5627.0, Setup: 20
+2025-04-06 17:51:02,009 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Mountainbike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:02,009 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 4, Machine M2, Start: 5647.0, End: 5660.0, Setup: 20
+2025-04-06 17:51:02,009 - JSPGymEnvironment - INFO - Job J18 completed at time 5660.0, deadline: 2880, met: False, priority: 6
+2025-04-06 17:51:02,023 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Fahrrad_endmontiert -> Racebike_Bremsaufnahme_gebohrt, setup time: 20
+2025-04-06 17:51:02,023 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 3, Machine M2, Start: 5680.0, End: 5703.0, Setup: 20
+2025-04-06 17:51:02,043 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsaufnahme_gebohrt -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:02,043 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 6, Machine M2, Start: 5723.0, End: 5747.0, Setup: 20
+2025-04-06 17:51:02,058 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Racebike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:02,058 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 4, Machine M3, Start: 5762.0, End: 5803.0, Setup: 15
+2025-04-06 17:51:02,058 - JSPGymEnvironment - INFO - Job J6 completed at time 5803.0, deadline: 2880, met: False, priority: 10
+2025-04-06 17:51:02,073 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Citybike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:02,073 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 7, Machine M2, Start: 5823.0, End: 5844.0, Setup: 20
+2025-04-06 17:51:02,073 - JSPGymEnvironment - INFO - Job J14 completed at time 5844.0, deadline: 2880, met: False, priority: 3
+2025-04-06 17:51:02,087 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Fahrrad_endmontiert -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:02,087 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 5, Machine M2, Start: 5864.0, End: 5881.0, Setup: 20
+2025-04-06 17:51:02,099 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:02,099 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 4, Machine M2, Start: 5901.0, End: 5927.0, Setup: 20
+2025-04-06 17:51:02,114 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 5, Machine M2, Start: 5942.0, End: 5960.0, Setup: 15
+2025-04-06 17:51:02,126 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 5, Machine M2, Start: 5975.0, End: 5993.0, Setup: 15
+2025-04-06 17:51:02,212 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:02,212 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 5, Machine M2, Start: 6013.0, End: 6043.0, Setup: 20
+2025-04-06 17:51:02,212 - JSPGymEnvironment - INFO - Job J8 completed at time 6043.0, deadline: 2762, met: False, priority: 5
+2025-04-06 17:51:02,227 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Fahrrad_endmontiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-04-06 17:51:02,227 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 6, Machine M3, Start: 6058.0, End: 6083.0, Setup: 15
+2025-04-06 17:51:02,227 - JSPGymEnvironment - INFO - Job J17 completed at time 6083.0, deadline: 2880, met: False, priority: 6
+2025-04-06 17:51:02,245 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:02,245 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 6, Machine M2, Start: 6103.0, End: 6114.0, Setup: 20
+2025-04-06 17:51:02,259 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:02,259 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 6, Machine M2, Start: 6134.0, End: 6156.0, Setup: 20
+2025-04-06 17:51:02,273 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_nachbearbeitet -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:02,273 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 7, Machine M2, Start: 6176.0, End: 6188.0, Setup: 20
+2025-04-06 17:51:02,273 - JSPGymEnvironment - INFO - Job J10 completed at time 6188.0, deadline: 2880, met: False, priority: 9
+2025-04-06 17:51:02,288 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> Citybike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:02,288 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 7, Machine M2, Start: 6208.0, End: 6237.0, Setup: 20
+2025-04-06 17:51:02,288 - JSPGymEnvironment - INFO - Job J11 completed at time 6237.0, deadline: 2880, met: False, priority: 7
+2025-04-06 17:51:02,302 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Fahrrad_endmontiert -> Racebike_Rahmen_nachbearbeitet, setup time: 20
+2025-04-06 17:51:02,302 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 6, Machine M2, Start: 6257.0, End: 6272.0, Setup: 20
+2025-04-06 17:51:02,317 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-04-06 17:51:02,317 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 7, Machine M2, Start: 6292.0, End: 6317.0, Setup: 20
+2025-04-06 17:51:02,317 - JSPGymEnvironment - INFO - Job J7 completed at time 6317.0, deadline: 2880, met: False, priority: 9
