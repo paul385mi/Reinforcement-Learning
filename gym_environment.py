@@ -500,18 +500,7 @@ class JSPGymEnvironment(gym.Env):
                 idle_penalty = -1.5 * min(1.0, machine_idle_time / (avg_proc_time * 2.0)) * (1 - priority_factor * 0.5)
             else:
                 idle_penalty = 0.8 * (1 + priority_factor * 0.5)  # Bonus für keine Leerlaufzeit
-            
-            # 4. Maschinenbalance - mit Prioritätsberücksichtigung
-            mean_machine_time = sum(self.machine_times) / self.num_machines
-            machine_time_variance = sum((t - mean_machine_time) ** 2 for t in self.machine_times) / self.num_machines
-            machine_time_std = machine_time_variance ** 0.5
-            
-            if current_time > 0:
-                relative_imbalance = machine_time_std / current_time
-                # Jobs mit hoher Priorität dürfen mehr Ungleichgewicht verursachen
-                balance_reward = 0.6 * (1.0 - min(1.0, relative_imbalance * (1 - priority_factor * 0.5)))
-            else:
-                balance_reward = 0.0
+       
             
             # 5. Deadline-Einhaltung - DRASTISCH erhöhte Gewichtung mit Prioritätsberücksichtigung
             deadline_reward = 0.0
