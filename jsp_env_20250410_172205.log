@@ -1,0 +1,4 @@
+2025-04-10 17:22:05,875 - JSPGymEnvironment - INFO - Environment reset
+2025-04-10 17:22:05,944 - JSPGymEnvironment - INFO - Environment reset
+2025-04-10 17:22:05,983 - JSPGymEnvironment - INFO - Material change on machine M1:  -> Racebike_Hauptrahmen_zugeschnitten, setup time: 0
+2025-04-10 17:22:05,983 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 0, Machine M1, Start: 0.0, End: 35.0, Setup: 0

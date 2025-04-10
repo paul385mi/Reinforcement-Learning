@@ -114,20 +114,13 @@ class JSPGymEnvironment(gym.Env):
         Args:
             log_level: Logging level
         """
-        # Create logger
         self.logger = logging.getLogger('JSPGymEnvironment')
         self.logger.setLevel(log_level)
-        
-        # Create file handler
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         fh = logging.FileHandler(f'jsp_env_{timestamp}.log')
         fh.setLevel(log_level)
-        
-        # Create formatter
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         fh.setFormatter(formatter)
-        
-        # Add handler to logger
         self.logger.addHandler(fh)
     
     def reset(self):
@@ -137,39 +130,47 @@ class JSPGymEnvironment(gym.Env):
         Returns:
             observation: The initial observation
         """
-        # Reset job progress
         self.job_progress = np.zeros(self.num_jobs, dtype=np.int32)
-        
-        # Reset machine times
         self.machine_times = np.zeros(self.num_machines, dtype=np.float32)
-        
-        # Reset current time
         self.current_time = 0.0
-        
-        # Reset completed jobs
         self.completed_jobs = 0
-        
-        # Reset current material on each machine
         self.current_machine_material = [""] * self.num_machines
         self.machine_material_idx = np.zeros(self.num_machines, dtype=np.int32)
         
-        # Track episode statistics
+        # Episode statistics
         self.episode_reward = 0.0
         self.episode_steps = 0
         self.episode_makespan = 0.0
         self.episode_completed_jobs = 0
         self.episode_met_deadlines = 0
         
-        # Reset operation tracking for detailed logging
+        # Initialize cumulative reward components
+        self.cumulative_reward_components = {
+            'makespan_reward': 0.0,
+            'setup_reward': 0.0,
+            'idle_penalty': 0.0,
+            'deadline_reward': 0.0,
+            'priority_reward': 0.0,
+            'critical_job_reward': 0.0,
+            'global_progress_reward': 0.0,
+            'objective_reward': 0.0,
+            'placement_reward': 0.0,
+            'lookahead_reward': 0.0
+        }
+        
+        # Reset tracking variables
         self.operation_history = []
         self.machine_utilization = [[] for _ in range(self.num_machines)]
         self.material_changes = []
         self.job_completion_times = {}
         
+        # Retain previous insights if available
+        if not hasattr(self, 'placement_insights'):
+            self.placement_insights = {}
+        
         if self.enable_logging:
             self.logger.info("Environment reset")
         
-        # Get initial observation
         return self._get_observation()
     
     def _get_observation(self):
@@ -179,14 +180,10 @@ class JSPGymEnvironment(gym.Env):
         Returns:
             observation: Dictionary containing the current state
         """
-        # Calculate job priorities and deadlines for observation
         job_priorities = np.array([job["priority"] for job in self.jobs], dtype=np.float32)
         job_deadlines = np.array([job["deadline"] for job in self.jobs], dtype=np.float32)
-        
-        # Calculate valid actions mask
         valid_actions_mask = np.zeros(self.num_jobs, dtype=np.int32)
         for job_idx in range(self.num_jobs):
-            # Check if job is not completed and predecessors are completed
             if (self.job_progress[job_idx] < len(self.jobs[job_idx]["operations"]) and
                 self._check_predecessors(job_idx, self.job_progress[job_idx])):
                 valid_actions_mask[job_idx] = 1
@@ -212,37 +209,22 @@ class JSPGymEnvironment(gym.Env):
         Returns:
             bool: True if all predecessors are completed, False otherwise
         """
-        # If operation index is out of bounds, return False
         if op_idx >= len(self.jobs[job_idx]["operations"]):
             return False
-            
         operation = self.jobs[job_idx]["operations"][op_idx]
-        
-        # If no predecessors defined, operation can be executed
         if not operation.get("predecessors", []):
             return True
-        
-        # Check all predecessors
         for pred in operation["predecessors"]:
-            # Format of predecessors is "J1:OP1"
             pred_job_id, pred_op_id = pred.split(":")
             pred_job_idx = self.job_id_to_idx[pred_job_id]
-            
-            # Find the index of the predecessor operation
             pred_op_idx = None
             for i, op in enumerate(self.jobs[pred_job_idx]["operations"]):
                 if op["id"] == pred_op_id:
                     pred_op_idx = i
                     break
-            
-            if pred_op_idx is None:
-                return False  # Predecessor operation not found
-            
-            # Check if the predecessor operation is completed
-            if self.job_progress[pred_job_idx] <= pred_op_idx:
-                return False  # Predecessor operation not completed yet
-        
-        return True  # All predecessors are completed
+            if pred_op_idx is None or self.job_progress[pred_job_idx] <= pred_op_idx:
+                return False
+        return True
     
     def _calculate_setup_time(self, machine_id, new_material):
         """
@@ -257,24 +239,20 @@ class JSPGymEnvironment(gym.Env):
         """
         machine_idx = self.machine_id_to_idx[machine_id]
         current_material = self.current_machine_material[machine_idx]
-        
-        # If machine hasn't processed any material yet, no setup time
         if current_material == "":
             return 0
-        
-        # If material remains the same, standard setup time
         if current_material == new_material:
             return self.setupTimes[machine_id]["standard"]
         else:
-            # For material change, higher setup time
             return self.setupTimes[machine_id]["materialChange"]
     
-    def step(self, action):
+    def step(self, action, model=None):
         """
         Execute one step in the environment.
         
         Args:
             action: Index of the job to process next
+            model: Optional vortrainiertes Modell für Lookahead-Bewertung
             
         Returns:
             observation: New observation after taking the action
@@ -282,20 +260,14 @@ class JSPGymEnvironment(gym.Env):
             done: Whether the episode is finished
             info: Additional information
         """
-        # Increment step counter
         self.episode_steps += 1
-        
-        # Check if action is valid
         if action >= self.num_jobs:
             return self._get_observation(), -10.0, False, {"error": "Invalid job index"}
-        
         job_idx = action
-        
-        # Check if job is already completed
         if self.job_progress[job_idx] >= len(self.jobs[job_idx]["operations"]):
             return self._get_observation(), -10.0, False, {"error": "Job already completed"}
         
-        # Get next operation of the job
+        # Get the next operation for the job
         op_idx = self.job_progress[job_idx]
         op = self.jobs[job_idx]["operations"][op_idx]
         machine_id = op["machineId"]
@@ -303,24 +275,14 @@ class JSPGymEnvironment(gym.Env):
         proc_time = op["processingTime"]
         material = op["material"]
         
-        # Check if all predecessors are completed
         if not self._check_predecessors(job_idx, op_idx):
             return self._get_observation(), -10.0, False, {"error": "Predecessors not completed"}
         
-        # Calculate setup time
         setup_time = self._calculate_setup_time(machine_id, material)
-        
-        # Earliest possible start time (max of machine availability and current time)
-        start_time = max(self.machine_times[machine_idx], self.current_time)
-        
-        # Add setup time
-        start_time += setup_time
-        
-        # Execute operation
+        start_time = max(self.machine_times[machine_idx], self.current_time) + setup_time
         end_time = start_time + proc_time
         self.machine_times[machine_idx] = end_time
         
-        # Update current material of the machine
         old_material = self.current_machine_material[machine_idx]
         self.current_machine_material[machine_idx] = material
         self.machine_material_idx[machine_idx] = self.material_to_idx.get(material, 0)
@@ -337,14 +299,11 @@ class JSPGymEnvironment(gym.Env):
                 'time': self.current_time
             }
             self.material_changes.append(material_change)
-            
             if self.enable_logging:
                 self.logger.info(f"Material change on machine {machine_id}: {old_material} -> {material}, setup time: {setup_time}")
         
-        # Update job progress
         self.job_progress[job_idx] += 1
         
-        # Record operation execution
         operation_record = {
             'step': self.episode_steps,
             'job_id': self.idx_to_job_id[job_idx],
@@ -360,7 +319,6 @@ class JSPGymEnvironment(gym.Env):
         }
         self.operation_history.append(operation_record)
         
-        # Update machine utilization record
         machine_util = {
             'step': self.episode_steps,
             'machine_id': machine_id,
@@ -373,20 +331,15 @@ class JSPGymEnvironment(gym.Env):
         self.machine_utilization[machine_idx].append(machine_util)
         
         if self.enable_logging:
-            self.logger.info(f"Executed operation: Job {self.idx_to_job_id[job_idx]}, Op {op_idx}, Machine {machine_id}, "
-                           f"Start: {start_time}, End: {end_time}, Setup: {setup_time}")
+            self.logger.info(f"Executed operation: Job {self.idx_to_job_id[job_idx]}, Op {op_idx}, Machine {machine_id}, Start: {start_time}, End: {end_time}, Setup: {setup_time}")
         
-        # Update current time to the maximum machine time
         prev_time = self.current_time
         self.current_time = max(self.machine_times)
         
-        # Check if job is completed
         job_completed = False
         if self.job_progress[job_idx] >= len(self.jobs[job_idx]["operations"]):
             job_completed = True
             self.completed_jobs += 1
-            
-            # Record job completion time
             job_id = self.idx_to_job_id[job_idx]
             deadline = self.jobs[job_idx]["deadline"]
             deadline_met = self.current_time <= deadline
@@ -396,272 +349,419 @@ class JSPGymEnvironment(gym.Env):
                 'deadline_met': deadline_met,
                 'priority': self.jobs[job_idx]["priority"]
             }
-            
-            # Check if deadline is met
             if deadline_met:
                 self.episode_met_deadlines += 1
-                
             if self.enable_logging:
-                self.logger.info(f"Job {job_id} completed at time {self.current_time}, deadline: {deadline}, "
-                               f"met: {deadline_met}, priority: {self.jobs[job_idx]['priority']}")
+                self.logger.info(f"Job {job_id} completed at time {self.current_time}, deadline: {deadline}, met: {deadline_met}, priority: {self.jobs[job_idx]['priority']}")
         
-        # Check if all jobs are completed
+        reward = self._calculate_reward(job_idx, job_completed, setup_time, prev_time, self.current_time, model)
+        observation = self._get_observation()
         done = self.completed_jobs >= self.num_jobs
         
-        # Calculate reward
-        reward = self._calculate_reward(job_idx, job_completed, setup_time, 
-                                       prev_time, self.current_time)
-        
-        # Update episode statistics
-        self.episode_reward += reward
-        self.episode_makespan = max(self.machine_times)
-        
-        # Get new observation
-        observation = self._get_observation()
-        
-        # Additional info
         info = {
-            "makespan": self.episode_makespan,
+            "makespan": max(self.machine_times),
             "completed_jobs": self.completed_jobs,
-            "met_deadlines": self.episode_met_deadlines,
-            "job_completed": job_completed,
-            "setup_time": setup_time
+            "met_deadlines": self.episode_met_deadlines
         }
         
+        if done:
+            critical_path = self.analyze_critical_path()
+            insights = self.identify_suboptimal_placements(critical_path)
+            self.update_reward_function(insights)
+            info["critical_path_length"] = len(critical_path)
+            info["suboptimal_placements"] = len(insights)
+            # Füge Reward-Statistiken hinzu
+            info["reward_stats"] = self.get_reward_stats()
+            if self.enable_logging:
+                self.logger.info(f"Episode completed. Critical path: {len(critical_path)} operations, Suboptimal placements: {len(insights)}")
+                self.logger.info(f"Reward components: {self.reward_components}")
+        
         return observation, reward, done, info
+
+    def analyze_critical_path(self):
+        """
+        Analyzes the critical path and identifies suboptimal placements in the schedule.
+        """
+        if not self.operation_history:
+            return []
+        
+        makespan = max(op['end_time'] for op in self.operation_history)
+        critical_ops = [op for op in self.operation_history if abs(op['end_time'] - makespan) < 0.001]
+        if len(critical_ops) > 1:
+            critical_ops.sort(key=lambda op: op['processing_time'] + op['setup_time'], reverse=True)
+        critical_path = [critical_ops[0]]
+        current_op = critical_ops[0]
+        
+        while current_op['start_time'] > 0.001:
+            prev_machine_ops = [op for op in self.operation_history 
+                                if op['machine_idx'] == current_op['machine_idx'] and 
+                                abs(op['end_time'] - current_op['start_time']) < 0.001]
+            prev_job_ops = []
+            if current_op['operation_idx'] > 0:
+                prev_job_ops = [op for op in self.operation_history 
+                                if op['job_idx'] == current_op['job_idx'] and 
+                                op['operation_idx'] == current_op['operation_idx'] - 1]
+            prev_ops = prev_machine_ops + prev_job_ops
+            if not prev_ops:
+                break
+            prev_ops.sort(key=lambda op: op['end_time'], reverse=True)
+            current_op = prev_ops[0]
+            critical_path.append(current_op)
+        critical_path.sort(key=lambda op: op['start_time'])
+        return critical_path
     
-    def _calculate_reward(self, job_idx, job_completed, setup_time, prev_time, current_time):
+    def identify_suboptimal_placements(self, critical_path):
         """
-        Calculate reward based on various factors.
-        
-        Args:
-            job_idx: Index of the job
-            job_completed: Whether the job was completed
-            setup_time: Setup time for the operation
-            prev_time: Previous current time
-            current_time: New current time
-            
-        Returns:
-            float: Reward
+        Identifies suboptimal placements in the schedule based on the critical path.
         """
-        # Initialize reward components
-        total_reward = 0.0
+        insights = []
+        for i, op in enumerate(critical_path):
+            if op['setup_time'] > self.setupTimes[op['machine_id']]['standard']:
+                insights.append({
+                    'type': 'material_change_on_critical_path',
+                    'job_idx': op['job_idx'],
+                    'operation_idx': op['operation_idx'],
+                    'machine_idx': op['machine_idx'],
+                    'time': op['start_time'],
+                    'severity': op['setup_time'] / self.setupTimes[op['machine_id']]['materialChange'],
+                    'message': f"Material change on critical path at Job {op['job_idx']} Operation {op['operation_idx']} on Machine {op['machine_id']}"
+                })
+            if i > 0:
+                prev_op = critical_path[i-1]
+                if op['machine_idx'] == prev_op['machine_idx'] and op['start_time'] > prev_op['end_time'] + 0.001:
+                    idle_time = op['start_time'] - prev_op['end_time']
+                    insights.append({
+                        'type': 'idle_time_on_critical_path',
+                        'job_idx': op['job_idx'],
+                        'operation_idx': op['operation_idx'],
+                        'machine_idx': op['machine_idx'],
+                        'time': prev_op['end_time'],
+                        'idle_time': idle_time,
+                        'severity': idle_time / op['processing_time'],
+                        'message': f"Idle time on critical path before Job {op['job_idx']} Operation {op['operation_idx']} on Machine {op['machine_id']}"
+                    })
+            job_priority = self.jobs[op['job_idx']]['priority']
+            if job_priority < 5:
+                insights.append({
+                    'type': 'low_priority_on_critical_path',
+                    'job_idx': op['job_idx'],
+                    'operation_idx': op['operation_idx'],
+                    'machine_idx': op['machine_idx'],
+                    'time': op['start_time'],
+                    'priority': job_priority,
+                    'severity': (5 - job_priority) / 5,
+                    'message': f"Low priority ({job_priority}) on critical path: Job {op['job_idx']} Operation {op['operation_idx']}"
+                })
+        non_critical_ops = [op for op in self.operation_history if op not in critical_path]
+        for op in non_critical_ops:
+            job_priority = self.jobs[op['job_idx']]['priority']
+            if job_priority > 7:
+                insights.append({
+                    'type': 'high_priority_not_on_critical_path',
+                    'job_idx': op['job_idx'],
+                    'operation_idx': op['operation_idx'],
+                    'machine_idx': op['machine_idx'],
+                    'time': op['start_time'],
+                    'priority': job_priority,
+                    'severity': (job_priority - 7) / 3,
+                    'message': f"High priority ({job_priority}) not on critical path: Job {op['job_idx']} Operation {op['operation_idx']}"
+                })
+        return insights
+    
+    def update_reward_function(self, insights):
+        """
+        Updates the reward function based on insights from the critical path analysis.
+        """
+        self.placement_insights = {}
+        for insight in insights:
+            key = (insight['job_idx'], insight['operation_idx'], insight['machine_idx'])
+            if key not in self.placement_insights:
+                self.placement_insights[key] = []
+            self.placement_insights[key].append(insight)
+        if self.enable_logging and insights:
+            self.logger.info(f"Reward function updated with {len(insights)} insights")
+            for insight in insights:
+                self.logger.info(f"  {insight['message']} (Severity: {insight['severity']:.2f})")
+    
+    def _calculate_reward(self, job_idx, job_completed, setup_time, prev_time, current_time, model):
+        """
+        Calculate the reward for the current action.
+        """
+        # Initialize reward components dictionary if it doesn't exist
+        if not hasattr(self, 'reward_components'):
+            self.reward_components = {
+                'makespan_reward': 0.0,
+                'setup_reward': 0.0,
+                'idle_penalty': 0.0,
+                'deadline_reward': 0.0,
+                'priority_reward': 0.0,
+                'critical_job_reward': 0.0,
+                'global_progress_reward': 0.0,
+                'objective_reward': 0.0,
+                'placement_reward': 0.0,
+                'lookahead_reward': 0.0
+            }
         
-        # Get operation details
+        # Reset reward components for this step
+        for key in self.reward_components:
+            self.reward_components[key] = 0.0
+        
+        # Calculate makespan reward - penalize longer makespans
+        makespan_reward = -0.01 * (current_time - prev_time)
+        
+        # Calculate setup time penalty
+        setup_reward = -0.5 * setup_time if setup_time > 0 else 0.0
+        
+        # Get the processing time for the current operation
         op_idx = self.job_progress[job_idx] - 1  # The operation that was just completed
-        if op_idx >= 0:  # Make sure we have a valid operation
-            operation = self.jobs[job_idx]["operations"][op_idx]
-            machine_id = operation["machineId"]
-            machine_idx = self.machine_id_to_idx[machine_id]
-            proc_time = operation["processingTime"]
-            
-            # Berechne aktuelle Zielfunktion: makespan + makespan * (1 - timelines)
-            current_makespan = max(self.machine_times)
-            timelines_ratio = self.episode_met_deadlines / max(1, self.completed_jobs) if self.completed_jobs > 0 else 0
-            current_objective = current_makespan + current_makespan * (1 - timelines_ratio)
-            
-            # Priorität des aktuellen Jobs (immer berücksichtigen)
-            priority = self.jobs[job_idx]["priority"]
-            priority_factor = priority / 10.0  # Normalisiert auf 0-1
-            
-            # 1. Makespan-Optimierung mit Berücksichtigung der Zielfunktion
-            # Berechne durchschnittliche Prozesszeit für diese Maschine
-            machine_ops = [op for job in self.jobs for op in job["operations"] if op["machineId"] == machine_id]
-            avg_proc_time = sum(op["processingTime"] for op in machine_ops) / len(machine_ops) if machine_ops else proc_time
-            
-            # Belohne effiziente Operationen
-            time_efficiency = (avg_proc_time - proc_time) / avg_proc_time if avg_proc_time > 0 else 0
-            
-            # Kritischer Pfad: Bewertung basierend auf Zielfunktion
-            if self.machine_times[machine_idx] < current_makespan:
-                # Operation ist nicht auf dem kritischen Pfad
-                makespan_reward = 3.0 + time_efficiency
-            else:
-                # Operation ist auf dem kritischen Pfad
-                # Höhere Bestrafung für Jobs mit niedriger Priorität auf dem kritischen Pfad
-                makespan_reward = -2.0 + time_efficiency + priority_factor * 2.0
-            
-            # 2. Umrüstzeit-Optimierung - mit Prioritätsberücksichtigung
-            if setup_time == 0:
-                setup_reward = 1.5 * (1 + priority_factor)  # Bonus für keine Umrüstung, verstärkt durch Priorität
-            elif setup_time <= self.setupTimes[machine_id]["standard"]:
-                setup_reward = 0.7 * (1 + priority_factor)  # Moderater Bonus für Standard-Umrüstung
-            else:
-                # Bestrafung für Materialwechsel, gemildert durch hohe Priorität
-                setup_reward = -1.5 + priority_factor
-            
-            # 3. Maschinenauslastung - mit Prioritätsberücksichtigung
-            machine_idle_time = 0.0
-            if prev_time > self.machine_times[machine_idx]:
-                machine_idle_time = prev_time - self.machine_times[machine_idx]
-                
-            # Bestrafung für Leerlaufzeiten, gemildert durch hohe Priorität
-            if machine_idle_time > 0:
-                idle_penalty = -1.5 * min(1.0, machine_idle_time / (avg_proc_time * 2.0)) * (1 - priority_factor * 0.5)
-            else:
-                idle_penalty = 0.8 * (1 + priority_factor * 0.5)  # Bonus für keine Leerlaufzeit
-       
-            
-            # 5. Deadline-Einhaltung - DRASTISCH erhöhte Gewichtung mit Prioritätsberücksichtigung
-            deadline_reward = 0.0
-            job_deadline = self.jobs[job_idx]["deadline"]
-            
-            # Schätze die verbleibende Zeit für diesen Job
-            remaining_ops = len(self.jobs[job_idx]["operations"]) - self.job_progress[job_idx]
-            estimated_finish_time = current_time
-            
-            if remaining_ops > 0:
-                avg_op_time = sum(op["processingTime"] for op in self.jobs[job_idx]["operations"]) / len(self.jobs[job_idx]["operations"])
-                estimated_finish_time += remaining_ops * avg_op_time
-            
-            # Drastisch erhöhte Belohnung für Deadline-Einhaltung
-            if job_completed:
-                completion_time = self.machine_times[machine_idx]
-                
-                if completion_time <= job_deadline:
-                    # Massive Belohnung für eingehaltene Deadlines, verstärkt durch Priorität
-                    deadline_reward = 12.0 * (1 + priority_factor * 0.5)
-                else:
-                    # Starke Bestrafung für verpasste Deadlines, gemildert durch niedrige Priorität
-                    overdue_ratio = (completion_time - job_deadline) / job_deadline
-                    deadline_reward = -7.0 * min(1.0, overdue_ratio) * (1 - priority_factor * 0.3)
-            else:
-                # Belohne auch Fortschritt bei Jobs, die voraussichtlich die Deadline einhalten
-                time_margin = job_deadline - estimated_finish_time
-                if time_margin > 0:
-                    deadline_reward = 3.0 * (self.job_progress[job_idx] / len(self.jobs[job_idx]["operations"])) * (1 + priority_factor * 0.5)
-                else:
-                    # Bestrafung für Jobs, die voraussichtlich die Deadline nicht einhalten
-                    deadline_reward = -1.5 * (1.0 - self.job_progress[job_idx] / len(self.jobs[job_idx]["operations"])) * (1 - priority_factor * 0.3)
-            
-            # 6. Prioritätsbasierte Belohnung - STARK erhöht
-            # Direkte Belohnung basierend auf Priorität
-            priority_reward = 2.5 * priority_factor
-            
-            # 7. Fortschrittsbelohnung - mit Prioritätsberücksichtigung
-            #progress_ratio = self.job_progress[job_idx] / len(self.jobs[job_idx]["operations"])
-            #progress_reward = 0.5 * progress_ratio * (1 + priority_factor * 0.5)
-            
-            # 8. Jobabschluss-Bonus - mit Prioritätsberücksichtigung
-            completion_reward = 0.0
-            #if job_completed:
-             #   completion_reward = 4.0 * (1 + priority_factor)  # Starker Bonus für Jobabschluss
-            
-            # 9. Kritische Jobs bevorzugen - mit Prioritätsberücksichtigung
-            critical_job_reward = 0.0
-            if not job_completed:
-                # Berechne Dringlichkeit basierend auf verbleibender Zeit und verbleibenden Operationen
-                if remaining_ops > 0:
-                    urgency = (job_deadline - current_time) / (remaining_ops * avg_op_time)
-                    if urgency < 1.0:  # Sehr kritischer Job
-                        critical_job_reward = 4.0 * (1 + priority_factor * 0.5)
-                    elif urgency < 1.5:  # Kritischer Job
-                        critical_job_reward = 2.0 * (1 + priority_factor * 0.3)
-            
-            # 10. Globaler Fortschritt - mit Prioritätsberücksichtigung
-            global_progress = sum(self.job_progress) / sum(len(job["operations"]) for job in self.jobs)
-            global_progress_reward = 0.5 * global_progress * (1 + priority_factor * 0.2)
-            
-            # 11. Zielfunktionsverbesserung - NEU
-            # Belohne Aktionen, die die Zielfunktion verbessern
-            if hasattr(self, 'previous_objective'):
-                objective_improvement = self.previous_objective - current_objective
-                if objective_improvement > 0:
-                    objective_reward = 3.0 * min(1.0, objective_improvement / current_objective) * (1 + priority_factor * 0.5)
-                else:
-                    objective_reward = -1.0 * min(1.0, -objective_improvement / current_objective) * (1 - priority_factor * 0.3)
-            else:
-                objective_reward = 0.0
-            
-            # Speichere aktuelle Zielfunktion für nächsten Vergleich
-            self.previous_objective = current_objective
-            
-            # Kombiniere alle Belohnungskomponenten mit angepassten Gewichtungen
-            total_reward = (
-                makespan_reward * 3.5 +           # Erhöht
-                setup_reward * 1.2 +              # Erhöht
-                idle_penalty * 1.2 +              # Erhöht
-                # balance_reward * 0.7 +          # Diese Variable ist nicht definiert
-                deadline_reward * 6.0 +           # Drastisch erhöht
-                priority_reward * 3.0 +           # Stark erhöht
-                #progress_reward * 0.5 +           # Leicht erhöht
-                #completion_reward * 2.5 +         # Erhöht
-                critical_job_reward * 2.5 +       # Erhöht
-                global_progress_reward * 0.5 +    # Leicht erhöht
-                objective_reward * 4.0            # NEU: Zielfunktionsverbesserung
-            )
+        if op_idx >= 0:
+            processing_time = self.jobs[job_idx]["operations"][op_idx]["processingTime"]
+        else:
+            processing_time = 0
         
-        # Erlaube größere Belohnungen und Bestrafungen
-        total_reward = max(min(total_reward, 20.0), -15.0)
+        # Calculate idle time penalty
+        idle_time = max(0, current_time - prev_time - setup_time - processing_time)
+        idle_penalty = -0.2 * idle_time if idle_time > 0 else 0.0
+        
+        # Calculate deadline reward
+        job_id = self.idx_to_job_id[job_idx]
+        deadline_reward = 0.0
+        if job_completed:
+            deadline = self.jobs[job_idx]["deadline"]
+            if current_time <= deadline:
+                deadline_reward = 10.0  # Bonus for meeting deadline
+            else:
+                deadline_reward = -5.0 * (current_time - deadline) / deadline  # Penalty for missing deadline
+        
+        # Calculate priority reward
+        priority_reward = 0.0
+        if job_completed:
+            priority = self.jobs[job_idx]["priority"]
+            priority_reward = 2.0 * priority  # Higher priority jobs give more reward
+        
+        # Calculate critical job reward
+        critical_job_reward = 0.0
+        if job_completed:
+            priority = self.jobs[job_idx]["priority"]
+            if priority >= 8:  # Consider jobs with priority >= 8 as critical
+                critical_job_reward = 15.0
+        
+        # Calculate global progress reward
+        global_progress_reward = 0.0
+        if self.num_jobs > 0:
+            progress_ratio = self.completed_jobs / self.num_jobs
+            global_progress_reward = 5.0 * progress_ratio
+        
+        # Calculate objective reward based on model prediction
+        objective_reward = 0.0
+        if model is not None:
+            # Verwende das Modell, um die Verbesserung des Ziels zu bewerten
+            # Berechne den Reward basierend auf der Differenz zwischen dem aktuellen Zustand
+            # und dem vorhergesagten Zustand nach der Aktion
+            current_observation = self._get_observation()
+            saved_state = self._save_state()
+            
+            try:
+                # Simuliere einen Schritt vorwärts mit dem Modell
+                next_action, _ = model.predict(current_observation, deterministic=True)
+                _, next_reward, _, next_info = self.step(next_action)
+                
+                # Berechne den Objective-Reward basierend auf der Verbesserung
+                objective_improvement = next_reward - self.episode_reward
+                objective_reward = 2.0 * objective_improvement if objective_improvement > 0 else 0.0
+            except Exception as e:
+                print(f"Error in objective reward calculation: {e}")
+                objective_reward = 0.0
+            finally:
+                # Stelle den ursprünglichen Zustand wieder her
+                self._restore_state(saved_state)
+        
+        # Calculate placement reward - reward for good operation placement
+        placement_reward = 0.0
+        # Überprüfe, ob die aktuelle Operation in den Placement-Insights enthalten ist
+        op_idx = self.job_progress[job_idx] - 1  # Die gerade abgeschlossene Operation
+        if op_idx >= 0:
+            key = (job_idx, op_idx, self.machine_id_to_idx[self.jobs[job_idx]["operations"][op_idx]["machineId"]])
+            if hasattr(self, 'placement_insights') and key in self.placement_insights:
+                # Wenn die Operation in den Insights enthalten ist, bestrafe sie basierend auf der Schwere
+                insights = self.placement_insights[key]
+                severity_sum = sum(insight['severity'] for insight in insights)
+                placement_reward = -5.0 * severity_sum
+            else:
+                # Belohne Operationen, die nicht in den Insights enthalten sind
+                placement_reward = 1.0
+                
+                # Zusätzliche Belohnung für Operationen mit hoher Priorität
+                if self.jobs[job_idx]["priority"] >= 7:
+                    placement_reward += 2.0
+                
+                # Zusätzliche Belohnung für Operationen ohne Materialwechsel
+                if setup_time <= self.setupTimes[self.jobs[job_idx]["operations"][op_idx]["machineId"]]['standard']:
+                    placement_reward += 1.5
+        
+        # Calculate lookahead reward - reward for actions that enable future good decisions
+        lookahead_reward = 0.0
+        if model is not None and self.completed_jobs < self.num_jobs:
+            try:
+                # Simulate future schedule with the current model
+                sim_info = self.simulate_future_schedule(model, max_steps=min(20, self.num_jobs - self.completed_jobs))
+                
+                # Reward based on simulated makespan (lower is better)
+                base_makespan = max(self.machine_times)
+                if sim_info["makespan"] > base_makespan:
+                    makespan_factor = base_makespan / sim_info["makespan"] if sim_info["makespan"] > 0 else 1.0
+                    lookahead_reward += 5.0 * makespan_factor
+                
+                # Reward based on completed jobs in simulation
+                completion_ratio = sim_info["completed_jobs"] / self.num_jobs if self.num_jobs > 0 else 0
+                lookahead_reward += 10.0 * completion_ratio
+                
+                # Reward based on met deadlines in simulation
+                if sim_info["completed_jobs"] > 0:
+                    deadline_ratio = sim_info["met_deadlines"] / sim_info["completed_jobs"]
+                    lookahead_reward += 15.0 * deadline_ratio
+                
+                # Penalty for suboptimal placements identified in simulation
+                if "suboptimal_placements" in sim_info and sim_info["completed_jobs"] == self.num_jobs:
+                    suboptimal_ratio = sim_info["suboptimal_placements"] / len(sim_info.get("critical_path", [1]))
+                    lookahead_reward -= 10.0 * suboptimal_ratio
+            except Exception as e:
+                print(f"Error in lookahead reward calculation: {e}")
+                lookahead_reward = 0.0
+        
+        # Store each reward component
+        self.reward_components['makespan_reward'] = makespan_reward
+        self.reward_components['setup_reward'] = setup_reward
+        self.reward_components['idle_penalty'] = idle_penalty
+        self.reward_components['deadline_reward'] = deadline_reward
+        self.reward_components['priority_reward'] = priority_reward
+        self.reward_components['critical_job_reward'] = critical_job_reward
+        self.reward_components['global_progress_reward'] = global_progress_reward
+        self.reward_components['objective_reward'] = objective_reward
+        self.reward_components['placement_reward'] = placement_reward
+        self.reward_components['lookahead_reward'] = lookahead_reward
+        
+        # Update cumulative reward components
+        for key in self.reward_components:
+            self.cumulative_reward_components[key] += self.reward_components[key]
+        
+        # Calculate total reward
+        total_reward = (makespan_reward + setup_reward + idle_penalty + deadline_reward + 
+                        priority_reward + critical_job_reward + global_progress_reward + 
+                        objective_reward + placement_reward + lookahead_reward)
         
         return total_reward
-    
-    def render(self, mode='human'):
+
+    def _save_state(self):
         """
-        Render the environment.
-        
-        Args:
-            mode: Rendering mode
-            
+        Saves the current state of the environment for simulation.
+
         Returns:
-            None
+            dict: A dictionary representing the saved state.
         """
-        if mode == 'human': 
-            print(f"Current Time: {self.current_time}")
-            print(f"Job Progress: {self.job_progress}")
-            print(f"Machine Times: {self.machine_times}")
-            print(f"Completed Jobs: {self.completed_jobs}/{self.num_jobs}")
-            print(f"Met Deadlines: {self.episode_met_deadlines}/{self.num_jobs}")
-            print(f"Current Makespan: {max(self.machine_times)}")
-            
-            # Print machine utilization
-            print("\nMachine Utilization:")
-            for machine_idx in range(self.num_machines):
-                machine_id = self.idx_to_machine_id[machine_idx]
-                if self.current_time > 0:
-                    utilization = self.machine_times[machine_idx] / self.current_time
-                    print(f"  Machine {machine_id}: {utilization:.2f}")
-                else:
-                    print(f"  Machine {machine_id}: 0.00")
-            
-            # Print material on each machine
-            print("\nCurrent Materials:")
-            for machine_idx in range(self.num_machines):
-                machine_id = self.idx_to_machine_id[machine_idx]
-                material = self.current_machine_material[machine_idx]
-                print(f"  Machine {machine_id}: {material}")
-            
-            print("---")
+        return {
+            'job_progress': self.job_progress.copy(),
+            'machine_times': self.machine_times.copy(),
+            'current_time': self.current_time,
+            'completed_jobs': self.completed_jobs,
+            'current_machine_material': self.current_machine_material.copy(),
+            'machine_material_idx': self.machine_material_idx.copy(),
+            'episode_steps': self.episode_steps,
+            'episode_reward': self.episode_reward,
+            'episode_makespan': self.episode_makespan,
+            'episode_completed_jobs': self.episode_completed_jobs,
+            'episode_met_deadlines': self.episode_met_deadlines,
+            'operation_history': self.operation_history.copy(),
+            'machine_utilization': [util.copy() for util in self.machine_utilization],
+            'material_changes': self.material_changes.copy(),
+            'job_completion_times': self.job_completion_times.copy()
+        }
     
-    def close(self):
+    def _restore_state(self, saved_state):
         """
-        Clean up resources.
+        Restores a previously saved state.
+
+        Args:
+            saved_state: The state dictionary to restore.
         """
-        if self.enable_logging:
-            # Log final statistics
-            self.logger.info(f"Environment closed. Final statistics:")
-            self.logger.info(f"  Makespan: {max(self.machine_times)}")
-            self.logger.info(f"  Completed Jobs: {self.completed_jobs}/{self.num_jobs}")
-            self.logger.info(f"  Met Deadlines: {self.episode_met_deadlines}/{self.num_jobs}")
-            
-            # Close log handlers
-            for handler in self.logger.handlers:
-                handler.close()
-                self.logger.removeHandler(handler)
+        self.job_progress = saved_state['job_progress']
+        self.machine_times = saved_state['machine_times']
+        self.current_time = saved_state['current_time']
+        self.completed_jobs = saved_state['completed_jobs']
+        self.current_machine_material = saved_state['current_machine_material']
+        self.machine_material_idx = saved_state['machine_material_idx']
+        self.episode_steps = saved_state['episode_steps']
+        self.episode_reward = saved_state['episode_reward']
+        self.episode_makespan = saved_state['episode_makespan']
+        self.episode_completed_jobs = saved_state['episode_completed_jobs']
+        self.episode_met_deadlines = saved_state['episode_met_deadlines']
+        self.operation_history = saved_state['operation_history']
+        self.machine_utilization = saved_state['machine_utilization']
+        self.material_changes = saved_state['material_changes']
+        self.job_completion_times = saved_state['job_completion_times']
     
+    def simulate_future_schedule(self, model, max_steps=50):
+        """
+        Simulates the remainder of the schedule using a pre-trained model.
+
+        Args:
+            model: The pre-trained model to use for simulation.
+            max_steps: Maximum number of simulation steps.
+
+        Returns:
+            dict: A dictionary containing simulation details.
+        """
+        saved_state = self._save_state()
+        sim_steps = 0
+        sim_rewards = []
+        done = False
+        observation = self._get_observation()
+        
+        while not done and sim_steps < max_steps:
+            if np.sum(observation['valid_actions_mask']) == 0:
+                break
+            model_action, _ = model.predict(observation, deterministic=True)
+            observation, reward, done, info = self.step(model_action)
+            sim_rewards.append(reward)
+            sim_steps += 1
+        
+        final_makespan = max(self.machine_times)
+        completed_jobs = self.completed_jobs
+        met_deadlines = self.episode_met_deadlines
+        
+        critical_path_info = {}
+        if completed_jobs == self.num_jobs:
+            critical_path = self.analyze_critical_path()
+            insights = self.identify_suboptimal_placements(critical_path)
+            critical_path_info = {
+                "critical_path_length": len(critical_path),
+                "suboptimal_placements": len(insights),
+                "critical_path": critical_path
+            }
+        
+        self._restore_state(saved_state)
+        
+        simulation_info = {
+            "makespan": final_makespan,
+            "completed_jobs": completed_jobs,
+            "met_deadlines": met_deadlines,
+            "simulation_steps": sim_steps,
+            "cumulative_reward": sum(sim_rewards)
+        }
+        simulation_info.update(critical_path_info)
+        return simulation_info
+
     def get_machine_utilization_stats(self):
         """
-        Get detailed machine utilization statistics.
-        
+        Returns detailed machine utilization statistics.
+
         Returns:
-            dict: Dictionary containing machine utilization statistics
+            dict: Dictionary containing machine utilization statistics.
         """
         stats = {}
-        
         for machine_idx in range(self.num_machines):
             machine_id = self.idx_to_machine_id[machine_idx]
             machine_records = self.machine_utilization[machine_idx]
-            
             if not machine_records:
                 stats[machine_id] = {
                     'utilization': 0.0,
@@ -670,13 +770,9 @@ class JSPGymEnvironment(gym.Env):
                     'processing_time_ratio': 0.0
                 }
                 continue
-            
-            # Calculate total times
             total_busy_time = sum(record['busy_time'] for record in machine_records)
             total_setup_time = sum(record['setup_time'] for record in machine_records)
             total_idle_time = sum(record['idle_time'] for record in machine_records)
-            
-            # Calculate ratios
             if self.current_time > 0:
                 utilization = self.machine_times[machine_idx] / self.current_time
                 setup_time_ratio = total_setup_time / self.current_time
@@ -687,7 +783,6 @@ class JSPGymEnvironment(gym.Env):
                 setup_time_ratio = 0.0
                 idle_time_ratio = 0.0
                 processing_time_ratio = 0.0
-            
             stats[machine_id] = {
                 'utilization': utilization,
                 'setup_time_ratio': setup_time_ratio,
@@ -697,72 +792,50 @@ class JSPGymEnvironment(gym.Env):
                 'total_setup_time': total_setup_time,
                 'total_idle_time': total_idle_time
             }
-        
         return stats
-    
+
     def get_material_change_stats(self):
         """
-        Get statistics about material changes.
-        
+        Returns statistics about material changes.
+
         Returns:
-            dict: Dictionary containing material change statistics
+            dict: Dictionary containing material change statistics.
         """
         stats = {}
-        
         for machine_idx in range(self.num_machines):
             machine_id = self.idx_to_machine_id[machine_idx]
-            
-            # Filter material changes for this machine
-            machine_changes = [change for change in self.material_changes 
-                              if change['machine_idx'] == machine_idx]
-            
-            # Count changes by material type
+            machine_changes = [change for change in self.material_changes if change['machine_idx'] == machine_idx]
             material_counts = {}
             for change in machine_changes:
                 new_material = change['new_material']
-                if new_material in material_counts:
-                    material_counts[new_material] += 1
-                else:
-                    material_counts[new_material] = 1
-            
-            # Calculate total setup time
+                material_counts[new_material] = material_counts.get(new_material, 0) + 1
             total_setup_time = sum(change['setup_time'] for change in machine_changes)
-            
             stats[machine_id] = {
                 'total_changes': len(machine_changes),
                 'total_setup_time': total_setup_time,
                 'material_counts': material_counts
             }
-        
         return stats
-    
+
     def get_job_completion_stats(self):
         """
-        Get statistics about job completions.
-        
+        Returns statistics about job completions.
+
         Returns:
-            dict: Dictionary containing job completion statistics
+            dict: Dictionary containing job completion statistics.
         """
-        # Calculate average completion time
         if self.job_completion_times:
             avg_completion_time = sum(job['completion_time'] for job in self.job_completion_times.values()) / len(self.job_completion_times)
         else:
             avg_completion_time = 0.0
-        
-        # Calculate deadline statistics
         met_deadlines = sum(1 for job in self.job_completion_times.values() if job['deadline_met'])
         deadline_ratio = met_deadlines / len(self.job_completion_times) if self.job_completion_times else 0.0
-        
-        # Calculate priority-weighted statistics
         priority_weighted_completion = sum(job['completion_time'] * job['priority'] for job in self.job_completion_times.values()) if self.job_completion_times else 0.0
         total_priority = sum(job['priority'] for job in self.job_completion_times.values()) if self.job_completion_times else 0.0
         priority_weighted_avg = priority_weighted_completion / total_priority if total_priority > 0 else 0.0
-        
-        # High priority jobs (priority >= 7)
         high_priority_jobs = {job_id: job for job_id, job in self.job_completion_times.items() if job['priority'] >= 7}
         high_priority_met = sum(1 for job in high_priority_jobs.values() if job['deadline_met'])
         high_priority_ratio = high_priority_met / len(high_priority_jobs) if high_priority_jobs else 0.0
-        
         return {
             'completed_jobs': len(self.job_completion_times),
             'avg_completion_time': avg_completion_time,
@@ -771,3 +844,24 @@ class JSPGymEnvironment(gym.Env):
             'priority_weighted_avg_completion': priority_weighted_avg,
             'high_priority_met_ratio': high_priority_ratio
         }
+    
+    def get_reward_stats(self):
+        """
+        Returns statistics about rewards.
+
+        Returns:
+            dict: Dictionary containing reward statistics.
+        """
+        if not hasattr(self, 'cumulative_reward_components'):
+            return {}
+        
+        # Kopiere die kumulierten Reward-Komponenten, um sie zurückzugeben
+        reward_stats = self.cumulative_reward_components.copy()
+        
+        # Füge die Summe aller Komponenten hinzu
+        reward_stats['total'] = sum(reward_stats.values())
+        
+        return reward_stats
+
+    
+    

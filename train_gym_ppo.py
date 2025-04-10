@@ -140,10 +140,15 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
         episode_util.append(machine_util)
         
         # Show progress
-        if verbose and episode % 10 == 0:
+        if verbose:
+            # Get reward components
+            reward_stats = env.get_reward_stats()
+            reward_components_str = ", ".join([f"{k}: {v:.2f}" for k, v in reward_stats.items()])
+            
             print(f"Episode {episode}/{num_episodes}, Reward: {total_reward:.2f}, Makespan: {makespan}, "
                   f"Loss: {loss:.4f}, Deadlines: {met_deadlines}/{len(agent.jsp_data['jobs'])}, "
                   f"Util: {machine_util:.2f}")
+            print(f"Reward Components: {reward_components_str}")
         
         # Save checkpoint
         if episode % save_interval == 0:
