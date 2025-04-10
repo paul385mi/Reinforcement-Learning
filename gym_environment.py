@@ -539,13 +539,13 @@ class JSPGymEnvironment(gym.Env):
             priority_reward = 2.5 * priority_factor
             
             # 7. Fortschrittsbelohnung - mit Prioritätsberücksichtigung
-            progress_ratio = self.job_progress[job_idx] / len(self.jobs[job_idx]["operations"])
-            progress_reward = 0.5 * progress_ratio * (1 + priority_factor * 0.5)
+            #progress_ratio = self.job_progress[job_idx] / len(self.jobs[job_idx]["operations"])
+            #progress_reward = 0.5 * progress_ratio * (1 + priority_factor * 0.5)
             
             # 8. Jobabschluss-Bonus - mit Prioritätsberücksichtigung
             completion_reward = 0.0
-            if job_completed:
-                completion_reward = 4.0 * (1 + priority_factor)  # Starker Bonus für Jobabschluss
+            #if job_completed:
+             #   completion_reward = 4.0 * (1 + priority_factor)  # Starker Bonus für Jobabschluss
             
             # 9. Kritische Jobs bevorzugen - mit Prioritätsberücksichtigung
             critical_job_reward = 0.0
@@ -581,11 +581,11 @@ class JSPGymEnvironment(gym.Env):
                 makespan_reward * 3.5 +           # Erhöht
                 setup_reward * 1.2 +              # Erhöht
                 idle_penalty * 1.2 +              # Erhöht
-                balance_reward * 0.7 +            # Leicht erhöht
+                # balance_reward * 0.7 +          # Diese Variable ist nicht definiert
                 deadline_reward * 6.0 +           # Drastisch erhöht
                 priority_reward * 3.0 +           # Stark erhöht
-                progress_reward * 0.5 +           # Leicht erhöht
-                completion_reward * 2.5 +         # Erhöht
+                #progress_reward * 0.5 +           # Leicht erhöht
+                #completion_reward * 2.5 +         # Erhöht
                 critical_job_reward * 2.5 +       # Erhöht
                 global_progress_reward * 0.5 +    # Leicht erhöht
                 objective_reward * 4.0            # NEU: Zielfunktionsverbesserung

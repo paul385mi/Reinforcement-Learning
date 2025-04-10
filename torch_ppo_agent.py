@@ -42,16 +42,22 @@ class TorchPPOAgent:
         # Node-Embedding-Layer: wandelt Rohfeatures in einen kontinuierlichen Vektor um
         self.node_embedding = nn.Linear(node_features, self.embedding_dim)
         
-        # Statt TransformerConv verwenden wir GATConv (Graph Attention Network)
-        # Dies ist besser geeignet für unseren Anwendungsfall und hat weniger Probleme mit der Dimensionalität
+        #Graph Transformer mit TransformerConv
         self.graph_transformer_layers = nn.ModuleList([
-            pyg_nn.GATConv(
+            pyg_nn.TransformerConv(
                 in_channels=self.embedding_dim,
-                out_channels=self.embedding_dim // self.nhead,
+                out_channels=self.embedding_dim // self.nhead,  # Wichtig: out_channels * heads = embedding_dim
                 heads=self.nhead,
                 dropout=0.1,
-                edge_dim=2  # Für edge_type (1 oder 2)
+                edge_dim=2,
+                beta=True
             ) for _ in range(self.transformer_layers)
+        ])
+        
+        # Layer Normalization nach jedem Transformer-Layer
+        # Angepasst an die tatsächliche Ausgabedimension
+        self.layer_norms = nn.ModuleList([
+            nn.LayerNorm(self.embedding_dim) for _ in range(self.transformer_layers)
         ])
         
         # Output-Layer: Wandelt den globalen Zustandsvektor in Logits (für Job-Aktionswahrscheinlichkeiten) um
@@ -61,6 +67,7 @@ class TorchPPOAgent:
         self.optimizer = torch.optim.Adam(
             list(self.node_embedding.parameters()) +
             list(self.graph_transformer_layers.parameters()) +
+            list(self.layer_norms.parameters()) +
             list(self.output_layer.parameters()),
             lr=0.001, weight_decay=1e-5
         )
@@ -188,13 +195,25 @@ class TorchPPOAgent:
         
         # Wende Graph Transformer Layer an
         x = graph.x
-        for layer in self.graph_transformer_layers:
-            # GATConv erwartet andere Parameter als TransformerConv
+        for i, layer in enumerate(self.graph_transformer_layers):
+            # TransformerConv anwenden
             if graph.edge_index.size(1) > 0:  # Nur wenn Kanten vorhanden sind
+                # Residual connection
+                residual = x
                 x = layer(x, graph.edge_index, edge_attr=graph.edge_attr)
-            else:
-                # Wenn keine Kanten vorhanden sind, behalte die Features bei
-                pass
+                
+                # TransformerConv gibt [num_nodes, heads * out_channels] zurück
+                # Wir müssen sicherstellen, dass die Dimensionen mit embedding_dim übereinstimmen
+                if x.size(-1) != self.embedding_dim:
+                    # Reshape zu [num_nodes, embedding_dim]
+                    x = x.reshape(-1, self.embedding_dim)
+                
+                # Layer Normalization
+                x = self.layer_norms[i](x)
+                
+                # Residual connection hinzufügen
+                x = x + residual
+            
             x = torch.nn.functional.relu(x)
         
         # Aggregiere Knoten pro Job
@@ -345,28 +364,36 @@ class TorchPPOAgent:
         self.experiences = []
         return total_loss / len(rewards)
     
+    # Auskommentieren der get_makespan_reward-Methode, da wir nur die Reward-Funktion aus der Gym-Umgebung verwenden wollen
+    """
     def get_makespan_reward(self, state, action, next_state):
-        # Belohnungsberechnung (wie bisher)
-        current_makespan = max(state['machine_times'])
-        next_makespan = max(next_state['machine_times'])
-        makespan_diff = next_makespan - current_makespan
-        if 'current_time' in next_state:
+        # Belohnungsberechnung 
+        current_makespan = max(state['machine_times']) #aktueller Bearbeitungszeitwert aller Maschinen
+        next_makespan = max(next_state['machine_times']) #der neue höchste Bearbeitungszeitwert aller Maschinen
+        makespan_diff = next_makespan - current_makespan #Berechnet die Änderung der Gesamtbearbeitungszeit
+        
+        if 'current_time' in next_state: #Stellt sicher, dass immer ein zulässiger Zeitwert vorhanden ist - verschiedene Fallbackansätze. Zeitwert wird für weitere Berechnungen benötigt
             if isinstance(next_state['current_time'], (list, np.ndarray)):
                 current_time = next_state['current_time'][0]
             else:
                 current_time = next_state['current_time']
         else:
             current_time = next_makespan
+        #Berechnung der Maschinenauslastung 
         machine_times = next_state['machine_times']
         if next_makespan > 0:
             mean_time = sum(machine_times) / len(machine_times)
             variance = sum((t - mean_time) ** 2 for t in machine_times) / len(machine_times)
             std_dev = variance ** 0.5
+            #Gesamtauslastung, berechnet als Summe aller Maschinenzeiten geteilt durch (aktuelle Zeit * Anzahl Maschinen)
             total_util = sum(machine_times) / (current_time * len(machine_times)) if current_time > 0 else 0
+            #Misst, wie gleichmäßig die Auslastung verteilt ist; geringere Standardabweichung führt zu höherem Wert.
             balance_util = 1.0 / (1.0 + std_dev / mean_time) if mean_time > 0 else 0
+            #Eine gewichtete Kombination aus total_util (70 %) und balance_util (30 %)
             machine_util = (total_util * 0.7) + (balance_util * 0.3)
         else:
             machine_util = 0
+        #Berechnung des Job-Fortschritts
         job_progress = next_state['job_progress']
         total_operations = 0
         weighted_progress = 0
@@ -380,7 +407,13 @@ class TorchPPOAgent:
             if progress >= job_ops_count:
                 completed_jobs += 1
         total_priority = sum(job["priority"] for job in self.jsp_data["jobs"])
+        #Gibt an, wie weit die Jobs im Durchschnitt fortgeschritten sind, normiert an der Gesamtzahl und den Prioritäten.
         progress_ratio = weighted_progress / (total_operations * total_priority / self.num_jobs) if total_operations > 0 else 0
+        #Für den durch action bestimmten Job wird geprüft, ob er im Übergang von state zu next_state abgeschlossen wurde.
+        #job_completed wird True.
+        #Es werden die Priorität und Deadline des Jobs übernommen.
+        #Es wird überprüft, ob die Deadline des Jobs überschritten wurde.
+        #Wenn dies der Fall ist, wird berechnet wie sehr die Deadline überschritten wurde.
         job_completed = False
         job_priority = 0
         job_deadline = 0
@@ -396,17 +429,37 @@ class TorchPPOAgent:
                 deadline_exceeded = current_time > job_deadline
                 if deadline_exceeded:
                     remaining_time = current_time - job_deadline
+        
+        #Berechnung der Deadline-Einhaltungsrate
+        #Für alle Jobs wird gezählt, wie viele abgeschlossen wurden und dabei ihre Deadline eingehalten haben
+        #deadline_ratio ist der Anteil dieser Jobs im Vergleich zu allen abgeschlossenen Jobs (mit Schutz vor Division durch 0
+        #Problem: Deadlines werden selten eingehalten -> vermutlich Datenproblem
         met_deadlines = 0
         for job_idx, progress in enumerate(job_progress):
             job = self.jsp_data["jobs"][job_idx]
             if progress >= len(job["operations"]) and current_time <= job["deadline"]:
                 met_deadlines += 1
         deadline_ratio = met_deadlines / max(1, completed_jobs) if completed_jobs > 0 else 0
+        
+        #Wenn sich der Makespan erhöht (makespan_diff > 0), wird eine negative Strafe proportional zur Erhöhung (drei Mal makespan_diff) vergeben
+        #Wenn sich der Makespan nicht erhöht (oder sinkt), gibt es einen positiven Reward von 10
+        #Ein Anstieg um 10 Minuten würde zu -30 führen, während keine Verschlechterung einen Bonus von 10 gibt
         makespan_reward = -makespan_diff * 3.0 if makespan_diff > 0 else 10.0
+        #Eine höhere Maschinen-Auslastung (bzw. ein hoher kombinierten Wert aus Gesamt- und Balance-Auslastung) wird positiv belohnt, skaliert mit dem Faktor 8.
+        #Ein machine_util von 0.9 führt zu 0.9 × 8.0 = 7.2, was einen deutlichen positiven Beitrag darstellt
         utilization_reward = machine_util * 8.0
+        #Ein höherer Fortschrittsanteil (progress_ratio) führt zu einem proportionalen positiven Reward (Faktor 5)
+        #Ein Fortschritt von 50 % ergibt einen Reward von 0.5 × 5.0 = 2.5
+        #könnte man aber vielleicht auch rauslassen -> wird sowieso immer vergeben
         progress_reward = progress_ratio * 5.0
+        #Wenn ein hoher Anteil der abgeschlossenen Jobs ihre Deadline einhält, wird dies mit 7-facher Gewichtung belohnt.
+        #Eine Deadline-Einhaltungsrate von 80 % führt zu 0.8 × 7.0 = 5.6.
+        #könnte man bestimmt höher gewichten -> wichtig 
         deadline_overall_reward = deadline_ratio * 7.0
+        #Belohnt abgeschlossene Jobs zusätzlich in Höhe ihrer Priorität multipliziert mit 3.
         priority_reward = 0.0
+        #Wenn der Job die Deadline nicht einhält (deadline_exceeded), gibt es eine Strafnote von -15 minus einem zusätzlichen Mal (remaining_time/5), je mehr die Deadline überschritten wird.
+        #Wenn die Deadline eingehalten wird, gibt es einen Bonus von 20 plus einem Bonusanteil, der davon abhängt, wie früh der Job abgeschlossen wurde (time_before_deadline geteilt durch 3)
         deadline_job_reward = 0.0
         if job_completed:
             priority_reward = job_priority * 3.0
@@ -415,27 +468,34 @@ class TorchPPOAgent:
             else:
                 time_before_deadline = job_deadline - current_time
                 deadline_job_reward = 20.0 + (time_before_deadline / 3.0)
+        #Lange Setup-Zeiten werden bestraft.
+        #Eine Setup-Zeit von 6 Minuten ergibt -6*1,5 = -9.
         setup_reward = 0.0
         if 'setup_time' in next_state:
             setup_time = next_state['setup_time']
-            setup_reward = -setup_time / 3.0
+            setup_reward = -setup_time*1,5
+        #Falls es ein Feld für den kritischen Pfad gibt, wird belohnt, wenn sich dieser verkürzt (d.h. state kritischer Pfad größer als im nächsten Zustand). Der Unterschied wird mit Faktor 5 multipliziert
         critical_path_reward = 0.0
         if 'critical_path' in next_state:
             critical_path = next_state['critical_path']
             if 'critical_path' in state:
                 critical_path_diff = state['critical_path'] - critical_path
-                critical_path_reward = critical_path_diff * 2.0
+                critical_path_reward = critical_path_diff * 5.0
         reward = (makespan_reward + utilization_reward + progress_reward + priority_reward +
                   deadline_job_reward + deadline_overall_reward + setup_reward + critical_path_reward)
+        #Job-Abschlussbonus: Wenn im next_state signalisiert wird, dass ein Job abgeschlossen wurde (job_completed True), wird zusätzlich ein Bonus von 15 gegeben
         if 'job_completed' in next_state and next_state['job_completed']:
             reward += 15.0
+        #Clipping: Abschließend wird der Reward auf den Bereich [-75, 75] beschränkt, um extreme Werte zu verhindern
         reward = max(min(reward, 75.0), -75.0)
         return reward
+    """
     
     def save_model(self, path):
         model_state = {
             'node_embedding': self.node_embedding.state_dict(),
             'graph_transformer_layers': [layer.state_dict() for layer in self.graph_transformer_layers],
+            'layer_norms': [norm.state_dict() for norm in self.layer_norms],  # Layer-Norms hinzufügen
             'output_layer': self.output_layer.state_dict()
         }
         torch.save(model_state, path)
@@ -445,9 +505,12 @@ class TorchPPOAgent:
         self.node_embedding.load_state_dict(model_state['node_embedding'])
         for i, layer_state in enumerate(model_state['graph_transformer_layers']):
             self.graph_transformer_layers[i].load_state_dict(layer_state)
+        for i, norm_state in enumerate(model_state['layer_norms']):  # Layer-Norms laden
+            self.layer_norms[i].load_state_dict(norm_state)
         self.output_layer.load_state_dict(model_state['output_layer'])
         
     def parameters(self):
         return list(self.node_embedding.parameters()) + \
                list(self.graph_transformer_layers.parameters()) + \
+               list(self.layer_norms.parameters()) + \
                list(self.output_layer.parameters())

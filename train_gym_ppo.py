@@ -88,11 +88,11 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
             # Log step data
             logger.log_step(state, action, reward, next_state, done, info)
             
-            # Better reward based on makespan improvement
-            makespan_reward = agent.get_makespan_reward(state, action, next_state)
+            # Verwende den ursprünglichen Reward aus der Umgebung statt eines separaten Makespan-Rewards
+            # makespan_reward = agent.get_makespan_reward(state, action, next_state)
             
-            # Store experience
-            agent.store_experience(state, action, action_prob, makespan_reward, next_state, done)
+            # Store experience mit dem ursprünglichen Reward
+            agent.store_experience(state, action, action_prob, reward, next_state, done)
             
             # Update state
             state = next_state
