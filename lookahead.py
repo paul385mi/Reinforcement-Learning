@@ -3,6 +3,7 @@ import numpy as np
 from stable_baselines3 import PPO
 from gym_environment import JSPGymEnvironment
 import json
+import os
 
 # Pfad zu deinem vortrainierten Modell
 MODEL_PATH = "/Users/timoelkers/Desktop/Transformer_Graph/Reinforcement-Learning/results/models/gym_ppo_model_20250407_214258.pt"
@@ -20,8 +21,20 @@ def main():
     # Erstelle die Umgebung
     env = JSPGymEnvironment(jsp_data, enable_logging=True)
     
+    # Überprüfe, ob das Modell existiert
+    if not os.path.exists(MODEL_PATH):
+        print(f"FEHLER: Modell nicht gefunden unter {MODEL_PATH}")
+        available_models = [f for f in os.listdir(os.path.dirname(MODEL_PATH)) if f.endswith('.pt') or f.endswith('.zip')]
+        if available_models:
+            print(f"Verfügbare Modelle: {available_models}")
+        return
+    
     # Lade das vortrainierte Modell
-    pretrained_model = PPO.load(MODEL_PATH)
+    try:
+        pretrained_model = PPO.load(MODEL_PATH)
+    except Exception as e:
+        print(f"Fehler beim Laden des Modells: {e}")
+        return
     
     # Setze die Umgebung zurück
     obs = env.reset()

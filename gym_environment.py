@@ -260,7 +260,10 @@ class JSPGymEnvironment(gym.Env):
             done: Whether the episode is finished
             info: Additional information
         """
+        # Remove the debug statement
         self.episode_steps += 1
+        
+        # Rest of the method remains unchanged
         if action >= self.num_jobs:
             return self._get_observation(), -10.0, False, {"error": "Invalid job index"}
         job_idx = action
@@ -602,6 +605,7 @@ class JSPGymEnvironment(gym.Env):
         # Calculate lookahead reward - reward for actions that enable future good decisions
         lookahead_reward = 0.0
         if model is not None and self.completed_jobs < self.num_jobs:
+            # Remove all debug print statements
             try:
                 # Simulate future schedule with the current model
                 sim_info = self.simulate_future_schedule(model, max_steps=min(20, self.num_jobs - self.completed_jobs))
@@ -625,6 +629,7 @@ class JSPGymEnvironment(gym.Env):
                 if "suboptimal_placements" in sim_info and sim_info["completed_jobs"] == self.num_jobs:
                     suboptimal_ratio = sim_info["suboptimal_placements"] / len(sim_info.get("critical_path", [1]))
                     lookahead_reward -= 10.0 * suboptimal_ratio
+                
             except Exception as e:
                 print(f"Error in lookahead reward calculation: {e}")
                 lookahead_reward = 0.0
@@ -711,45 +716,59 @@ class JSPGymEnvironment(gym.Env):
         Returns:
             dict: A dictionary containing simulation details.
         """
+        # Remove all debug print statements
         saved_state = self._save_state()
         sim_steps = 0
         sim_rewards = []
         done = False
         observation = self._get_observation()
         
-        while not done and sim_steps < max_steps:
-            if np.sum(observation['valid_actions_mask']) == 0:
-                break
-            model_action, _ = model.predict(observation, deterministic=True)
-            observation, reward, done, info = self.step(model_action)
-            sim_rewards.append(reward)
-            sim_steps += 1
-        
-        final_makespan = max(self.machine_times)
-        completed_jobs = self.completed_jobs
-        met_deadlines = self.episode_met_deadlines
-        
-        critical_path_info = {}
-        if completed_jobs == self.num_jobs:
-            critical_path = self.analyze_critical_path()
-            insights = self.identify_suboptimal_placements(critical_path)
-            critical_path_info = {
-                "critical_path_length": len(critical_path),
-                "suboptimal_placements": len(insights),
-                "critical_path": critical_path
+        try:
+            while not done and sim_steps < max_steps:
+                if np.sum(observation['valid_actions_mask']) == 0:
+                    break
+                model_action, _ = model.predict(observation, deterministic=True)
+                # Pass None as the model to avoid infinite recursion
+                observation, reward, done, info = self.step(model_action, model=None)
+                sim_rewards.append(reward)
+                sim_steps += 1
+            
+            final_makespan = max(self.machine_times)
+            completed_jobs = self.completed_jobs
+            met_deadlines = self.episode_met_deadlines
+            
+            critical_path_info = {}
+            if completed_jobs == self.num_jobs:
+                critical_path = self.analyze_critical_path()
+                insights = self.identify_suboptimal_placements(critical_path)
+                critical_path_info = {
+                    "critical_path_length": len(critical_path),
+                    "suboptimal_placements": len(insights),
+                    "critical_path": critical_path
+                }
+            
+            self._restore_state(saved_state)
+            
+            simulation_info = {
+                "makespan": final_makespan,
+                "completed_jobs": completed_jobs,
+                "met_deadlines": met_deadlines,
+                "simulation_steps": sim_steps,
+                "cumulative_reward": sum(sim_rewards)
             }
-        
-        self._restore_state(saved_state)
-        
-        simulation_info = {
-            "makespan": final_makespan,
-            "completed_jobs": completed_jobs,
-            "met_deadlines": met_deadlines,
-            "simulation_steps": sim_steps,
-            "cumulative_reward": sum(sim_rewards)
-        }
-        simulation_info.update(critical_path_info)
-        return simulation_info
+            simulation_info.update(critical_path_info)
+            return simulation_info
+        except Exception as e:
+            print(f"Error in simulate_future_schedule: {e}")
+            self._restore_state(saved_state)
+            return {
+                "makespan": max(self.machine_times),
+                "completed_jobs": 0,
+                "met_deadlines": 0,
+                "simulation_steps": 0,
+                "cumulative_reward": 0,
+                "error": str(e)
+            }
 
     def get_machine_utilization_stats(self):
         """
