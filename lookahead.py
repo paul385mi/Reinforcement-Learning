@@ -1,17 +1,17 @@
 import gym
 import numpy as np
-from stable_baselines3 import PPO
+from torch_ppo_agent import TorchPPOAgent
 from gym_environment import JSPGymEnvironment
 import json
 import os
 
 # Pfad zu deinem vortrainierten Modell
-MODEL_PATH = "/Users/timoelkers/Desktop/Transformer_Graph/Reinforcement-Learning/results/models/gym_ppo_model_20250407_214258.pt"
+MODEL_PATH = "/Users/paulmill/Desktop/2025/Reinforcement Learning/Reinforcement/results/models/gym_ppo_model_20250414_144908.pt"
 
 # Lade das JSP-Daten (ersetze dies durch deine tatsächlichen Daten)
 def load_jsp_data():
     # Lade JSP-Daten aus einer JSON-Datei
-    with open('/Users/timoelkers/Desktop/Transformer_Graph/Reinforcement-Learning/data/jsp_data.json', 'r') as f:
+    with open('/Users/paulmill/Desktop/2025/Reinforcement Learning/Reinforcement/data.json', 'r') as f:
         return json.load(f)
 
 def main():
@@ -29,9 +29,13 @@ def main():
             print(f"Verfügbare Modelle: {available_models}")
         return
     
+    # Erstelle eine Instanz des TorchPPOAgent
+    pretrained_model = TorchPPOAgent(len(jsp_data["jobs"]), jsp_data)
+    
     # Lade das vortrainierte Modell
     try:
-        pretrained_model = PPO.load(MODEL_PATH)
+        pretrained_model.load_model(MODEL_PATH)
+        print(f"Modell erfolgreich geladen: {MODEL_PATH}")
     except Exception as e:
         print(f"Fehler beim Laden des Modells: {e}")
         return
@@ -45,7 +49,7 @@ def main():
     # Führe Schritte mit dem Lookahead-Mechanismus aus
     while not done:
         # Wähle eine Aktion basierend auf der aktuellen Beobachtung
-        action, _ = pretrained_model.predict(obs, deterministic=True)
+        action, _ = pretrained_model.select_action(obs)
         
         # Führe die Aktion aus und übergebe das Modell für den Lookahead
         obs, reward, done, info = env.step(action, model=pretrained_model)
