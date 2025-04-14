@@ -504,7 +504,8 @@ class JSPGymEnvironment(gym.Env):
                 'placement_reward': 0.0,
                 'lookahead_reward': 0.0,
                 'timeliness_reward': 0.0,  # TIMELINESS: Neue Komponente für die Pünktlichkeit
-                'machine_idle_penalty': 0.0  # MASCHINENSTILLSTAND: Neue Komponente für Maschinenstillstand
+                'machine_idle_penalty': 0.0,  # MASCHINENSTILLSTAND: Neue Komponente für Maschinenstillstand
+                'credit_assignment_penalty': 0.0  # CREDIT_ASSIGNMENT_PROBLEM: Neue Komponente für Credit Assignment
             }
             
         # TIMELINES: Initialize cumulative reward components dictionary if it doesn't exist
@@ -516,6 +517,14 @@ class JSPGymEnvironment(gym.Env):
                 if key not in self.cumulative_reward_components:
                     self.cumulative_reward_components[key] = 0.0
         
+        # CREDIT_ASSIGNMENT_PROBLEM: Initialize action history if it doesn't exist
+        if not hasattr(self, 'action_history'):
+            self.action_history = []
+            
+        # CREDIT_ASSIGNMENT_PROBLEM: Initialize pending penalties if it doesn't exist
+        if not hasattr(self, 'pending_penalties'):
+            self.pending_penalties = []
+            
         # Reset reward components for this step
         for key in self.reward_components:
             self.reward_components[key] = 0.0
@@ -716,6 +725,55 @@ class JSPGymEnvironment(gym.Env):
                 print(f"Error in lookahead reward calculation: {e}")
                 lookahead_reward = 0.0
         
+        # CREDIT_ASSIGNMENT_PROBLEM: Apply any pending penalties for this step
+        credit_assignment_penalty = 0.0
+        if hasattr(self, 'pending_penalties') and self.pending_penalties:
+            current_step = self.episode_steps
+            applicable_penalties = [p for p in self.pending_penalties if p['step'] == current_step]
+            for penalty in applicable_penalties:
+                credit_assignment_penalty += penalty['value']
+                if self.enable_logging:
+                    self.logger.info(f"CREDIT_ASSIGNMENT_PROBLEM: Applied delayed penalty of {penalty['value']:.2f} from issue: {penalty['issue']}")
+            # Remove applied penalties
+            self.pending_penalties = [p for p in self.pending_penalties if p['step'] != current_step]
+        
+        # CREDIT_ASSIGNMENT_PROBLEM: Record current action for future credit assignment
+        if op_idx >= 0:
+            action_record = {
+                'step': self.episode_steps,
+                'job_idx': job_idx,
+                'operation_idx': op_idx,
+                'machine_idx': self.machine_id_to_idx[self.jobs[job_idx]["operations"][op_idx]["machineId"]],
+                'time': current_time
+            }
+            self.action_history.append(action_record)
+        
+        # CREDIT_ASSIGNMENT_PROBLEM: Check for issues that should trigger credit assignment
+        if job_completed:
+            deadline = self.jobs[job_idx]["deadline"]
+            # If job missed deadline, assign penalties to past actions
+            if current_time > deadline:
+                delay_amount = current_time - deadline
+                severity = delay_amount / deadline if deadline > 0 else 1.0
+                base_penalty = -5.0 * severity
+                
+                # CREDIT_ASSIGNMENT_PROBLEM: Distribute penalties to past actions related to this job
+                self._distribute_penalties(job_idx, base_penalty, "missed_deadline")
+        
+        # CREDIT_ASSIGNMENT_PROBLEM: Check for machine idle time issues
+        if op_idx >= 0:
+            machine_id = self.jobs[job_idx]["operations"][op_idx]["machineId"]
+            machine_idx = self.machine_id_to_idx[machine_id]
+            
+            # If there was significant idle time, assign penalties to past actions
+            idle_time = max(0, current_time - prev_time - setup_time - processing_time)
+            if idle_time > 0.2 * processing_time:  # Significant idle time
+                severity = idle_time / processing_time
+                base_penalty = -2.0 * severity
+                
+                # CREDIT_ASSIGNMENT_PROBLEM: Distribute penalties to past actions related to this machine
+                self._distribute_penalties(job_idx, base_penalty, "excessive_idle_time", machine_idx=machine_idx)
+        
         # Store each reward component
         self.reward_components['makespan_reward'] = makespan_reward
         self.reward_components['setup_reward'] = setup_reward
@@ -729,6 +787,7 @@ class JSPGymEnvironment(gym.Env):
         self.reward_components['lookahead_reward'] = lookahead_reward
         self.reward_components['timeliness_reward'] = timeliness_reward  # TIMELINESS: Speichere die Pünktlichkeitsbelohnung
         self.reward_components['machine_idle_penalty'] = machine_idle_penalty  # MASCHINENSTILLSTAND: Speichere die Maschinenstillstandsstrafe
+        self.reward_components['credit_assignment_penalty'] = credit_assignment_penalty  # CREDIT_ASSIGNMENT_PROBLEM: Speichere die Credit-Assignment-Strafe
         
         # Update cumulative reward components
         for key in self.reward_components:
@@ -738,9 +797,68 @@ class JSPGymEnvironment(gym.Env):
         total_reward = (makespan_reward + setup_reward + idle_penalty + deadline_reward + 
                         priority_reward + critical_job_reward + global_progress_reward + 
                         objective_reward + placement_reward + lookahead_reward + timeliness_reward +
-                        machine_idle_penalty)  # MASCHINENSTILLSTAND: Füge Maschinenstillstandsstrafe zur Gesamtbelohnung hinzu
+                        machine_idle_penalty + credit_assignment_penalty)  # CREDIT_ASSIGNMENT_PROBLEM: Füge Credit-Assignment-Strafe zur Gesamtbelohnung hinzu
         
         return total_reward
+    
+    # CREDIT_ASSIGNMENT_PROBLEM: Neue Methode zur Verteilung von Strafen auf vergangene Aktionen
+    def _distribute_penalties(self, current_job_idx, base_penalty, issue_type, machine_idx=None):
+        """
+        Distributes penalties to past actions that contributed to the current issue.
+        
+        Args:
+            current_job_idx: Index of the current job
+            base_penalty: Base penalty value to distribute
+            issue_type: Type of issue that triggered the penalty
+            machine_idx: Optional machine index for machine-specific issues
+        """
+        if not hasattr(self, 'action_history') or not self.action_history:
+            return
+            
+        # Get relevant past actions (up to 10 steps back)
+        current_step = self.episode_steps
+        max_lookback = 10
+        decay_factor = 0.7  # Exponential decay factor
+        
+        # Filter relevant actions based on the issue type
+        relevant_actions = []
+        if issue_type == "missed_deadline":
+            # For missed deadlines, consider past actions on the same job
+            relevant_actions = [a for a in self.action_history 
+                               if a['job_idx'] == current_job_idx and 
+                               a['step'] > current_step - max_lookback]
+        elif issue_type == "excessive_idle_time" and machine_idx is not None:
+            # For idle time issues, consider past actions on the same machine
+            relevant_actions = [a for a in self.action_history 
+                               if a['machine_idx'] == machine_idx and 
+                               a['step'] > current_step - max_lookback]
+        else:
+            # For other issues, consider all recent actions
+            relevant_actions = [a for a in self.action_history 
+                               if a['step'] > current_step - max_lookback]
+        
+        # Sort actions by recency
+        relevant_actions.sort(key=lambda a: a['step'], reverse=True)
+        
+        # Distribute penalties with exponential decay
+        for i, action in enumerate(relevant_actions):
+            # Skip the current action (it already gets the full penalty through other means)
+            if action['step'] == current_step:
+                continue
+                
+            # Calculate decayed penalty
+            penalty_factor = decay_factor ** i  # Exponential decay
+            penalty_value = base_penalty * penalty_factor
+            
+            # Add to pending penalties
+            self.pending_penalties.append({
+                'step': action['step'],
+                'value': penalty_value,
+                'issue': f"{issue_type} at step {current_step}"
+            })
+            
+            if self.enable_logging:
+                self.logger.info(f"CREDIT_ASSIGNMENT_PROBLEM: Scheduled penalty of {penalty_value:.2f} for step {action['step']} due to {issue_type} at step {current_step}")
 
     def _save_state(self):
         """
