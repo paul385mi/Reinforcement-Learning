@@ -511,10 +511,12 @@ class JSPGymEnvironment(gym.Env):
             self.reward_components[key] = 0.0
         
         # Calculate makespan reward - penalize longer makespans
-        makespan_reward = -0.01 * (current_time - prev_time)
+        makespan_value = -0.01 * (current_time - prev_time)
+        makespan_reward = makespan_value / 2.0 if makespan_value < 0 else makespan_value * 2.0
         
         # Calculate setup time penalty
-        setup_reward = -0.5 * setup_time if setup_time > 0 else 0.0
+        setup_value = -0.5 * setup_time if setup_time > 0 else 0.0
+        setup_reward = setup_value / 2.0 if setup_value < 0 else setup_value * 2.0
         
         # Get the processing time for the current operation
         op_idx = self.job_progress[job_idx] - 1  # The operation that was just completed
@@ -525,7 +527,8 @@ class JSPGymEnvironment(gym.Env):
         
         # Calculate idle time penalty
         idle_time = max(0, current_time - prev_time - setup_time - processing_time)
-        idle_penalty = -0.2 * idle_time if idle_time > 0 else 0.0
+        idle_value = -0.2 * idle_time if idle_time > 0 else 0.0
+        idle_penalty = idle_value / 2.0 if idle_value < 0 else idle_value * 2.0
         
         # Calculate deadline reward
         job_id = self.idx_to_job_id[job_idx]
@@ -533,28 +536,33 @@ class JSPGymEnvironment(gym.Env):
         if job_completed:
             deadline = self.jobs[job_idx]["deadline"]
             if current_time <= deadline:
-                deadline_reward = 10.0  # Bonus for meeting deadline
+                deadline_value = 10.0  # Bonus for meeting deadline
+                deadline_reward = deadline_value * 2.0
             else:
-                deadline_reward = -5.0 * (current_time - deadline) / deadline  # Penalty for missing deadline
+                deadline_value = -5.0 * (current_time - deadline) / deadline  # Penalty for missing deadline
+                deadline_reward = deadline_value / 2.0
         
         # Calculate priority reward
         priority_reward = 0.0
         if job_completed:
             priority = self.jobs[job_idx]["priority"]
-            priority_reward = 2.0 * priority  # Higher priority jobs give more reward
+            priority_value = 2.0 * priority  # Higher priority jobs give more reward
+            priority_reward = priority_value * 2.0  # Always positive, so multiply
         
         # Calculate critical job reward
         critical_job_reward = 0.0
         if job_completed:
             priority = self.jobs[job_idx]["priority"]
             if priority >= 8:  # Consider jobs with priority >= 8 as critical
-                critical_job_reward = 15.0
+                critical_job_value = 15.0
+                critical_job_reward = critical_job_value * 2.0  # Always positive, so multiply
         
         # Calculate global progress reward
         global_progress_reward = 0.0
         if self.num_jobs > 0:
             progress_ratio = self.completed_jobs / self.num_jobs
-            global_progress_reward = 5.0 * progress_ratio
+            global_progress_value = 5.0 * progress_ratio
+            global_progress_reward = global_progress_value * 2.0  # Always positive, so multiply
         
         # TIMELINESS: Berechne die Pünktlichkeitsbelohnung basierend auf dem Verhältnis von Makespan und Deadlines
         timeliness_reward = 0.0
@@ -564,7 +572,8 @@ class JSPGymEnvironment(gym.Env):
             if avg_deadline > 0:
                 timeliness_factor = 1.0 - min(1.0, current_time / avg_deadline)
                 # TIMELINESS: Positive Belohnung für gute Pünktlichkeit, negative für Verzögerungen
-                timeliness_reward = 8.0 * timeliness_factor
+                timeliness_value = 8.0 * timeliness_factor
+                timeliness_reward = timeliness_value * 2.0 if timeliness_value >= 0 else timeliness_value / 2.0
             
             # TIMELINESS: Zusätzliche Belohnung für die aktuelle Operation
             if op_idx >= 0:
@@ -572,7 +581,8 @@ class JSPGymEnvironment(gym.Env):
                 op_expected_completion = op_deadline * (op_idx + 1) / len(self.jobs[job_idx]["operations"])
                 if current_time <= op_expected_completion:
                     # TIMELINESS: Belohnung für frühzeitige Fertigstellung der Operation
-                    timeliness_reward += 2.0 * (1.0 - current_time / op_expected_completion)
+                    additional_value = 2.0 * (1.0 - current_time / op_expected_completion)
+                    timeliness_reward += additional_value * 2.0  # Always positive, so multiply
         
         # Calculate objective reward based on model prediction
         objective_reward = 0.0
@@ -590,7 +600,8 @@ class JSPGymEnvironment(gym.Env):
                 
                 # Berechne den Objective-Reward basierend auf der Verbesserung
                 objective_improvement = next_reward - self.episode_reward
-                objective_reward = 2.0 * objective_improvement if objective_improvement > 0 else 0.0
+                objective_value = 2.0 * objective_improvement if objective_improvement > 0 else 0.0
+                objective_reward = objective_value * 2.0  # Always positive or zero, so multiply
             except Exception as e:
                 print(f"Error in objective reward calculation: {e}")
                 objective_reward = 0.0
@@ -608,23 +619,24 @@ class JSPGymEnvironment(gym.Env):
                 # Wenn die Operation in den Insights enthalten ist, bestrafe sie basierend auf der Schwere
                 insights = self.placement_insights[key]
                 severity_sum = sum(insight['severity'] for insight in insights)
-                placement_reward = -5.0 * severity_sum
+                placement_value = -5.0 * severity_sum
+                placement_reward = placement_value / 2.0  # Negative value, so divide
             else:
                 # Belohne Operationen, die nicht in den Insights enthalten sind
-                placement_reward = 1.0
+                placement_value = 1.0
+                placement_reward = placement_value * 2.0  # Positive value, so multiply
                 
                 # Zusätzliche Belohnung für Operationen mit hoher Priorität
                 if self.jobs[job_idx]["priority"] >= 7:
-                    placement_reward += 2.0
+                    placement_reward += 2.0 * 2.0  # Positive value, so multiply
                 
                 # Zusätzliche Belohnung für Operationen ohne Materialwechsel
                 if setup_time <= self.setupTimes[self.jobs[job_idx]["operations"][op_idx]["machineId"]]['standard']:
-                    placement_reward += 1.5
+                    placement_reward += 1.5 * 2.0  # Positive value, so multiply
         
         # Calculate lookahead reward - reward for actions that enable future good decisions
         lookahead_reward = 0.0
         if model is not None and self.completed_jobs < self.num_jobs:
-            # Remove all debug print statements
             try:
                 # Simulate future schedule with the current model
                 sim_info = self.simulate_future_schedule(model, max_steps=min(20, self.num_jobs - self.completed_jobs))
@@ -633,21 +645,25 @@ class JSPGymEnvironment(gym.Env):
                 base_makespan = max(self.machine_times)
                 if sim_info["makespan"] > base_makespan:
                     makespan_factor = base_makespan / sim_info["makespan"] if sim_info["makespan"] > 0 else 1.0
-                    lookahead_reward += 5.0 * makespan_factor
+                    lookahead_value = 5.0 * makespan_factor
+                    lookahead_reward += lookahead_value * 2.0  # Positive value, so multiply
                 
                 # Reward based on completed jobs in simulation
                 completion_ratio = sim_info["completed_jobs"] / self.num_jobs if self.num_jobs > 0 else 0
-                lookahead_reward += 10.0 * completion_ratio
+                completion_value = 10.0 * completion_ratio
+                lookahead_reward += completion_value * 2.0  # Positive value, so multiply
                 
                 # Reward based on met deadlines in simulation
                 if sim_info["completed_jobs"] > 0:
                     deadline_ratio = sim_info["met_deadlines"] / sim_info["completed_jobs"]
-                    lookahead_reward += 15.0 * deadline_ratio
+                    deadline_value = 15.0 * deadline_ratio
+                    lookahead_reward += deadline_value * 2.0  # Positive value, so multiply
                 
                 # Penalty for suboptimal placements identified in simulation
                 if "suboptimal_placements" in sim_info and sim_info["completed_jobs"] == self.num_jobs:
                     suboptimal_ratio = sim_info["suboptimal_placements"] / len(sim_info.get("critical_path", [1]))
-                    lookahead_reward -= 10.0 * suboptimal_ratio
+                    suboptimal_value = -10.0 * suboptimal_ratio
+                    lookahead_reward += suboptimal_value / 2.0  # Negative value, so divide
                 
             except Exception as e:
                 print(f"Error in lookahead reward calculation: {e}")
