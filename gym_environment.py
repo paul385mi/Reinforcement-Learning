@@ -503,8 +503,18 @@ class JSPGymEnvironment(gym.Env):
                 'objective_reward': 0.0,
                 'placement_reward': 0.0,
                 'lookahead_reward': 0.0,
-                'timeliness_reward': 0.0  # TIMELINESS: Neue Komponente für die Pünktlichkeit
+                'timeliness_reward': 0.0,  # TIMELINESS: Neue Komponente für die Pünktlichkeit
+                'machine_idle_penalty': 0.0  # MASCHINENSTILLSTAND: Neue Komponente für Maschinenstillstand
             }
+            
+        # TIMELINES: Initialize cumulative reward components dictionary if it doesn't exist
+        if not hasattr(self, 'cumulative_reward_components'):
+            self.cumulative_reward_components = {key: 0.0 for key in self.reward_components}
+        # TIMELINES: Make sure any new keys in reward_components are also in cumulative_reward_components
+        elif any(key not in self.cumulative_reward_components for key in self.reward_components):
+            for key in self.reward_components:
+                if key not in self.cumulative_reward_components:
+                    self.cumulative_reward_components[key] = 0.0
         
         # Reset reward components for this step
         for key in self.reward_components:
@@ -529,6 +539,43 @@ class JSPGymEnvironment(gym.Env):
         idle_time = max(0, current_time - prev_time - setup_time - processing_time)
         idle_value = -0.2 * idle_time if idle_time > 0 else 0.0
         idle_penalty = idle_value / 2.0 if idle_value < 0 else idle_value * 2.0
+        
+        # MASCHINENSTILLSTAND: Calculate machine idle penalty - penalize machines that are idle
+        machine_idle_penalty = 0.0
+        if op_idx >= 0:
+            # MASCHINENSTILLSTAND: Get the current machine
+            machine_id = self.jobs[job_idx]["operations"][op_idx]["machineId"]
+            machine_idx = self.machine_id_to_idx[machine_id]
+            
+            # MASCHINENSTILLSTAND: Calculate total idle time across all machines
+            total_machine_idle_time = 0.0
+            for m_idx in range(self.num_machines):
+                # MASCHINENSTILLSTAND: Skip the current machine as it's being used
+                if m_idx == machine_idx:
+                    continue
+                
+                # MASCHINENSTILLSTAND: Calculate how long this machine has been idle
+                machine_idle_time = max(0, current_time - self.machine_times[m_idx])
+                total_machine_idle_time += machine_idle_time
+            
+            # MASCHINENSTILLSTAND: Calculate average idle time per machine (excluding current machine)
+            if self.num_machines > 1:
+                avg_machine_idle_time = total_machine_idle_time / (self.num_machines - 1)
+                # MASCHINENSTILLSTAND: Penalty increases with longer average idle time
+                machine_idle_value = -0.3 * avg_machine_idle_time
+                machine_idle_penalty = machine_idle_value / 2.0  # MASCHINENSTILLSTAND: Negative value, so divide
+            
+            # MASCHINENSTILLSTAND: Additional penalty for machines that have been idle for too long (e.g., > 20% of current time)
+            if current_time > 0:
+                long_idle_machines = 0
+                for m_idx in range(self.num_machines):
+                    machine_idle_time = max(0, current_time - self.machine_times[m_idx])
+                    if machine_idle_time > 0.2 * current_time:
+                        long_idle_machines += 1
+                
+                if long_idle_machines > 0:
+                    long_idle_penalty = -0.5 * long_idle_machines
+                    machine_idle_penalty += long_idle_penalty / 2.0  # MASCHINENSTILLSTAND: Negative value, so divide
         
         # Calculate deadline reward
         job_id = self.idx_to_job_id[job_idx]
@@ -681,6 +728,7 @@ class JSPGymEnvironment(gym.Env):
         self.reward_components['placement_reward'] = placement_reward
         self.reward_components['lookahead_reward'] = lookahead_reward
         self.reward_components['timeliness_reward'] = timeliness_reward  # TIMELINESS: Speichere die Pünktlichkeitsbelohnung
+        self.reward_components['machine_idle_penalty'] = machine_idle_penalty  # MASCHINENSTILLSTAND: Speichere die Maschinenstillstandsstrafe
         
         # Update cumulative reward components
         for key in self.reward_components:
@@ -689,7 +737,8 @@ class JSPGymEnvironment(gym.Env):
         # Calculate total reward
         total_reward = (makespan_reward + setup_reward + idle_penalty + deadline_reward + 
                         priority_reward + critical_job_reward + global_progress_reward + 
-                        objective_reward + placement_reward + lookahead_reward + timeliness_reward)  # TIMELINESS: Füge zur Gesamtbelohnung hinzu
+                        objective_reward + placement_reward + lookahead_reward + timeliness_reward +
+                        machine_idle_penalty)  # MASCHINENSTILLSTAND: Füge Maschinenstillstandsstrafe zur Gesamtbelohnung hinzu
         
         return total_reward
 
