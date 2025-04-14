@@ -502,7 +502,8 @@ class JSPGymEnvironment(gym.Env):
                 'global_progress_reward': 0.0,
                 'objective_reward': 0.0,
                 'placement_reward': 0.0,
-                'lookahead_reward': 0.0
+                'lookahead_reward': 0.0,
+                'timeliness_reward': 0.0  # TIMELINESS: Neue Komponente für die Pünktlichkeit
             }
         
         # Reset reward components for this step
@@ -554,6 +555,24 @@ class JSPGymEnvironment(gym.Env):
         if self.num_jobs > 0:
             progress_ratio = self.completed_jobs / self.num_jobs
             global_progress_reward = 5.0 * progress_ratio
+        
+        # TIMELINESS: Berechne die Pünktlichkeitsbelohnung basierend auf dem Verhältnis von Makespan und Deadlines
+        timeliness_reward = 0.0
+        if self.num_jobs > 0:
+            # TIMELINESS: Berechne das Verhältnis zwischen aktueller Zeit und durchschnittlicher Deadline
+            avg_deadline = sum(job["deadline"] for job in self.jobs) / self.num_jobs
+            if avg_deadline > 0:
+                timeliness_factor = 1.0 - min(1.0, current_time / avg_deadline)
+                # TIMELINESS: Positive Belohnung für gute Pünktlichkeit, negative für Verzögerungen
+                timeliness_reward = 8.0 * timeliness_factor
+            
+            # TIMELINESS: Zusätzliche Belohnung für die aktuelle Operation
+            if op_idx >= 0:
+                op_deadline = self.jobs[job_idx]["deadline"]
+                op_expected_completion = op_deadline * (op_idx + 1) / len(self.jobs[job_idx]["operations"])
+                if current_time <= op_expected_completion:
+                    # TIMELINESS: Belohnung für frühzeitige Fertigstellung der Operation
+                    timeliness_reward += 2.0 * (1.0 - current_time / op_expected_completion)
         
         # Calculate objective reward based on model prediction
         objective_reward = 0.0
@@ -645,6 +664,7 @@ class JSPGymEnvironment(gym.Env):
         self.reward_components['objective_reward'] = objective_reward
         self.reward_components['placement_reward'] = placement_reward
         self.reward_components['lookahead_reward'] = lookahead_reward
+        self.reward_components['timeliness_reward'] = timeliness_reward  # TIMELINESS: Speichere die Pünktlichkeitsbelohnung
         
         # Update cumulative reward components
         for key in self.reward_components:
@@ -653,7 +673,7 @@ class JSPGymEnvironment(gym.Env):
         # Calculate total reward
         total_reward = (makespan_reward + setup_reward + idle_penalty + deadline_reward + 
                         priority_reward + critical_job_reward + global_progress_reward + 
-                        objective_reward + placement_reward + lookahead_reward)
+                        objective_reward + placement_reward + lookahead_reward + timeliness_reward)  # TIMELINESS: Füge zur Gesamtbelohnung hinzu
         
         return total_reward
 
