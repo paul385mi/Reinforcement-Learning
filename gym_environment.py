@@ -155,7 +155,8 @@ class JSPGymEnvironment(gym.Env):
             'global_progress_reward': 0.0,
             'objective_reward': 0.0,
             'placement_reward': 0.0,
-            'lookahead_reward': 0.0
+            'lookahead_reward': 0.0,
+            'timeliness_reward': 0.0
         }
         
         # Reset tracking variables
@@ -502,7 +503,8 @@ class JSPGymEnvironment(gym.Env):
                 'global_progress_reward': 0.0,
                 'objective_reward': 0.0,
                 'placement_reward': 0.0,
-                'lookahead_reward': 0.0
+                'lookahead_reward': 0.0,
+                'timeliness_reward': 0.0,
             }
         
         # Reset reward components for this step
@@ -532,107 +534,33 @@ class JSPGymEnvironment(gym.Env):
         if job_completed:
             deadline = self.jobs[job_idx]["deadline"]
             if current_time <= deadline:
-                deadline_reward = 10.0  # Bonus for meeting deadline
+                # Increase the bonus for meeting deadline - was 10.0
+                deadline_reward = 20.0  # Higher bonus for meeting deadline
+                # Add more reward for completing significantly before deadline
+                time_margin = deadline - current_time
+                deadline_reward += 5.0 * (time_margin / deadline) if deadline > 0 else 0.0
             else:
-                deadline_reward = -5.0 * (current_time - deadline) / deadline  # Penalty for missing deadline
-        
-        # Calculate priority reward
-        priority_reward = 0.0
+                # Make the penalty more severe for missing deadline - was -5.0
+                deadline_reward = -10.0 * (current_time - deadline) / deadline # Penalty for missing deadline
+
+        # Calculate timeliness reward
+        timeliness_reward = 0.0
         if job_completed:
-            priority = self.jobs[job_idx]["priority"]
-            priority_reward = 2.0 * priority  # Higher priority jobs give more reward
-        
-        # Calculate critical job reward
-        critical_job_reward = 0.0
-        if job_completed:
-            priority = self.jobs[job_idx]["priority"]
-            if priority >= 8:  # Consider jobs with priority >= 8 as critical
-                critical_job_reward = 15.0
-        
-        # Calculate global progress reward
-        global_progress_reward = 0.0
-        if self.num_jobs > 0:
-            progress_ratio = self.completed_jobs / self.num_jobs
-            global_progress_reward = 5.0 * progress_ratio
-        
-        # Calculate objective reward based on model prediction
-        objective_reward = 0.0
-        if model is not None:
-            # Verwende das Modell, um die Verbesserung des Ziels zu bewerten
-            # Berechne den Reward basierend auf der Differenz zwischen dem aktuellen Zustand
-            # und dem vorhergesagten Zustand nach der Aktion
-            current_observation = self._get_observation()
-            saved_state = self._save_state()
+            # Get all completed jobs
+            completed_jobs_indices = [i for i, progress in enumerate(self.job_progress) 
+                                    if progress >= len(self.jobs[i]["operations"])]
             
-            try:
-                # Simuliere einen Schritt vorwärts mit dem Modell
-                next_action, _ = model.predict(current_observation, deterministic=True)
-                _, next_reward, _, next_info = self.step(next_action)
+            if completed_jobs_indices:
+                # Calculate the average timeliness across completed jobs
+                timeliness_sum = 0.0
+                for j_idx in completed_jobs_indices:
+                    j_deadline = self.jobs[j_idx]["deadline"]
+                    j_completion_time = self.job_completion_times.get(j_idx, current_time)
+                    j_timeliness = 1.0 if j_completion_time <= j_deadline else j_deadline / j_completion_time
+                    timeliness_sum += j_timeliness
                 
-                # Berechne den Objective-Reward basierend auf der Verbesserung
-                objective_improvement = next_reward - self.episode_reward
-                objective_reward = 2.0 * objective_improvement if objective_improvement > 0 else 0.0
-            except Exception as e:
-                print(f"Error in objective reward calculation: {e}")
-                objective_reward = 0.0
-            finally:
-                # Stelle den ursprünglichen Zustand wieder her
-                self._restore_state(saved_state)
-        
-        # Calculate placement reward - reward for good operation placement
-        placement_reward = 0.0
-        # Überprüfe, ob die aktuelle Operation in den Placement-Insights enthalten ist
-        op_idx = self.job_progress[job_idx] - 1  # Die gerade abgeschlossene Operation
-        if op_idx >= 0:
-            key = (job_idx, op_idx, self.machine_id_to_idx[self.jobs[job_idx]["operations"][op_idx]["machineId"]])
-            if hasattr(self, 'placement_insights') and key in self.placement_insights:
-                # Wenn die Operation in den Insights enthalten ist, bestrafe sie basierend auf der Schwere
-                insights = self.placement_insights[key]
-                severity_sum = sum(insight['severity'] for insight in insights)
-                placement_reward = -5.0 * severity_sum
-            else:
-                # Belohne Operationen, die nicht in den Insights enthalten sind
-                placement_reward = 1.0
-                
-                # Zusätzliche Belohnung für Operationen mit hoher Priorität
-                if self.jobs[job_idx]["priority"] >= 7:
-                    placement_reward += 2.0
-                
-                # Zusätzliche Belohnung für Operationen ohne Materialwechsel
-                if setup_time <= self.setupTimes[self.jobs[job_idx]["operations"][op_idx]["machineId"]]['standard']:
-                    placement_reward += 1.5
-        
-        # Calculate lookahead reward - reward for actions that enable future good decisions
-        lookahead_reward = 0.0
-        if model is not None and self.completed_jobs < self.num_jobs:
-            # Remove all debug print statements
-            try:
-                # Simulate future schedule with the current model
-                sim_info = self.simulate_future_schedule(model, max_steps=min(20, self.num_jobs - self.completed_jobs))
-                
-                # Reward based on simulated makespan (lower is better)
-                base_makespan = max(self.machine_times)
-                if sim_info["makespan"] > base_makespan:
-                    makespan_factor = base_makespan / sim_info["makespan"] if sim_info["makespan"] > 0 else 1.0
-                    lookahead_reward += 5.0 * makespan_factor
-                
-                # Reward based on completed jobs in simulation
-                completion_ratio = sim_info["completed_jobs"] / self.num_jobs if self.num_jobs > 0 else 0
-                lookahead_reward += 10.0 * completion_ratio
-                
-                # Reward based on met deadlines in simulation
-                if sim_info["completed_jobs"] > 0:
-                    deadline_ratio = sim_info["met_deadlines"] / sim_info["completed_jobs"]
-                    lookahead_reward += 15.0 * deadline_ratio
-                
-                # Penalty for suboptimal placements identified in simulation
-                if "suboptimal_placements" in sim_info and sim_info["completed_jobs"] == self.num_jobs:
-                    suboptimal_ratio = sim_info["suboptimal_placements"] / len(sim_info.get("critical_path", [1]))
-                    lookahead_reward -= 10.0 * suboptimal_ratio
-                
-            except Exception as e:
-                print(f"Error in lookahead reward calculation: {e}")
-                lookahead_reward = 0.0
+                avg_timeliness = timeliness_sum / len(completed_jobs_indices)
+                timeliness_reward = 15.0 * avg_timeliness
         
         # Store each reward component
         self.reward_components['makespan_reward'] = makespan_reward
@@ -645,15 +573,17 @@ class JSPGymEnvironment(gym.Env):
         self.reward_components['objective_reward'] = objective_reward
         self.reward_components['placement_reward'] = placement_reward
         self.reward_components['lookahead_reward'] = lookahead_reward
+        # Add timeliness reward to components
+        self.reward_components['timeliness_reward'] = timeliness_reward
         
         # Update cumulative reward components
         for key in self.reward_components:
             self.cumulative_reward_components[key] += self.reward_components[key]
         
-        # Calculate total reward
+        # Calculate total reward - now including timeliness_reward
         total_reward = (makespan_reward + setup_reward + idle_penalty + deadline_reward + 
                         priority_reward + critical_job_reward + global_progress_reward + 
-                        objective_reward + placement_reward + lookahead_reward)
+                        objective_reward + placement_reward + lookahead_reward + timeliness_reward)
         
         return total_reward
 
