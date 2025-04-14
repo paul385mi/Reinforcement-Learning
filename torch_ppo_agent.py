@@ -54,6 +54,23 @@ class TorchPPOAgent:
             ) for _ in range(self.transformer_layers)
         ])
         
+        # Dieser wird nach den Graph-Attention-Layers angewendet
+        encoder_layer = nn.TransformerEncoderLayer(
+            d_model=self.embedding_dim,
+            nhead=self.nhead,
+            dim_feedforward=self.embedding_dim * 4,
+            dropout=0.1,
+            batch_first=True
+        )
+        self.transformer_encoder = nn.TransformerEncoder(
+            encoder_layer,
+            num_layers=2
+        )
+        
+        # Positional Encoding für den Transformer
+        self.pos_encoder = nn.Parameter(torch.zeros(1, 100, self.embedding_dim))  # Max 100 Knoten
+        nn.init.normal_(self.pos_encoder, mean=0, std=0.02)
+        
         # Output-Layer: Wandelt den globalen Zustandsvektor in Logits (für Job-Aktionswahrscheinlichkeiten) um
         self.output_layer = nn.Linear(self.embedding_dim, num_jobs)
         
@@ -61,11 +78,12 @@ class TorchPPOAgent:
         self.optimizer = torch.optim.Adam(
             list(self.node_embedding.parameters()) +
             list(self.graph_transformer_layers.parameters()) +
+            list(self.transformer_encoder.parameters()) +  # NEU: Transformer-Parameter
             list(self.output_layer.parameters()),
             lr=0.001, weight_decay=1e-5
         )
         
-        # PPO-Parameter und weitere Einstellungen (wie bisher)
+        # Rest des Konstruktors bleibt unverändert
         self.epsilon = 0.3
         self.gamma = 0.99
         self.exploration_rate = 0.8
@@ -197,13 +215,27 @@ class TorchPPOAgent:
                 pass
             x = torch.nn.functional.relu(x)
         
+        # NEU: Wende Standard-Transformer an
+        # Füge Batch-Dimension hinzu und schneide Positional Encoding auf richtige Größe zu
+        batch_x = x.unsqueeze(0)  # [1, num_nodes, embedding_dim]
+        pos_encoding = self.pos_encoder[:, :batch_x.size(1), :]
+        
+        # Addiere Positional Encoding
+        transformer_input = batch_x + pos_encoding
+        
+        # Wende Transformer-Encoder an
+        transformer_output = self.transformer_encoder(transformer_input)
+        
+        # Entferne Batch-Dimension
+        transformer_output = transformer_output.squeeze(0)  # [num_nodes, embedding_dim]
+        
         # Aggregiere Knoten pro Job
         job_embeddings = []
         for job_idx in range(self.num_jobs):
             # Finde alle Knoten, die zu diesem Job gehören
             job_mask = (graph.job_indices == job_idx)
             if job_mask.any():
-                job_nodes = x[job_mask]
+                job_nodes = transformer_output[job_mask]  # NEU: Verwende Transformer-Output
                 job_embedding = torch.mean(job_nodes, dim=0)
                 job_embeddings.append(job_embedding)
         
@@ -344,6 +376,7 @@ class TorchPPOAgent:
         total_loss /= epochs
         self.experiences = []
         return total_loss / len(rewards)
+  
     
     def get_makespan_reward(self, state, action, next_state):
         # Belohnungsberechnung (wie bisher)
@@ -436,6 +469,8 @@ class TorchPPOAgent:
         model_state = {
             'node_embedding': self.node_embedding.state_dict(),
             'graph_transformer_layers': [layer.state_dict() for layer in self.graph_transformer_layers],
+            'transformer_encoder': self.transformer_encoder.state_dict(),  # NEU
+            'pos_encoder': self.pos_encoder,  # NEU
             'output_layer': self.output_layer.state_dict()
         }
         torch.save(model_state, path)
@@ -445,9 +480,13 @@ class TorchPPOAgent:
         self.node_embedding.load_state_dict(model_state['node_embedding'])
         for i, layer_state in enumerate(model_state['graph_transformer_layers']):
             self.graph_transformer_layers[i].load_state_dict(layer_state)
+        self.transformer_encoder.load_state_dict(model_state['transformer_encoder'])  # NEU
+        self.pos_encoder = model_state['pos_encoder']  # NEU
         self.output_layer.load_state_dict(model_state['output_layer'])
         
     def parameters(self):
         return list(self.node_embedding.parameters()) + \
                list(self.graph_transformer_layers.parameters()) + \
+               list(self.transformer_encoder.parameters()) + \
+               list([self.pos_encoder]) + \
                list(self.output_layer.parameters())

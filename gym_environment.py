@@ -446,6 +446,8 @@ class JSPGymEnvironment(gym.Env):
         """
         # Initialize reward components
         total_reward = 0.0
+
+
         
         # Get operation details
         op_idx = self.job_progress[job_idx] - 1  # The operation that was just completed
@@ -490,17 +492,10 @@ class JSPGymEnvironment(gym.Env):
                 # Bestrafung für Materialwechsel, gemildert durch hohe Priorität
                 setup_reward = -1.5 + priority_factor
             
-            # 3. Maschinenauslastung - mit Prioritätsberücksichtigung
-            machine_idle_time = 0.0
-            if prev_time > self.machine_times[machine_idx]:
-                machine_idle_time = prev_time - self.machine_times[machine_idx]
-                
-            # Bestrafung für Leerlaufzeiten, gemildert durch hohe Priorität
-            if machine_idle_time > 0:
-                idle_penalty = -1.5 * min(1.0, machine_idle_time / (avg_proc_time * 2.0)) * (1 - priority_factor * 0.5)
-            else:
-                idle_penalty = 0.8 * (1 + priority_factor * 0.5)  # Bonus für keine Leerlaufzeit
-       
+
+            # 3. Maschinenstillstand gibt es eine Bestrafung !!!
+
+
             
             # 5. Deadline-Einhaltung - DRASTISCH erhöhte Gewichtung mit Prioritätsberücksichtigung
             deadline_reward = 0.0
@@ -537,33 +532,8 @@ class JSPGymEnvironment(gym.Env):
             # 6. Prioritätsbasierte Belohnung - STARK erhöht
             # Direkte Belohnung basierend auf Priorität
             priority_reward = 2.5 * priority_factor
-            
-            # 7. Fortschrittsbelohnung - mit Prioritätsberücksichtigung
-            progress_ratio = self.job_progress[job_idx] / len(self.jobs[job_idx]["operations"])
-            progress_reward = 0.5 * progress_ratio * (1 + priority_factor * 0.5)
-            
-            # 8. Jobabschluss-Bonus - mit Prioritätsberücksichtigung
-            completion_reward = 0.0
-            if job_completed:
-                completion_reward = 4.0 * (1 + priority_factor)  # Starker Bonus für Jobabschluss
-            
-            # 9. Kritische Jobs bevorzugen - mit Prioritätsberücksichtigung
-            critical_job_reward = 0.0
-            if not job_completed:
-                # Berechne Dringlichkeit basierend auf verbleibender Zeit und verbleibenden Operationen
-                if remaining_ops > 0:
-                    urgency = (job_deadline - current_time) / (remaining_ops * avg_op_time)
-                    if urgency < 1.0:  # Sehr kritischer Job
-                        critical_job_reward = 4.0 * (1 + priority_factor * 0.5)
-                    elif urgency < 1.5:  # Kritischer Job
-                        critical_job_reward = 2.0 * (1 + priority_factor * 0.3)
-            
-            # 10. Globaler Fortschritt - mit Prioritätsberücksichtigung
-            global_progress = sum(self.job_progress) / sum(len(job["operations"]) for job in self.jobs)
-            global_progress_reward = 0.5 * global_progress * (1 + priority_factor * 0.2)
-            
+                        
             # 11. Zielfunktionsverbesserung - NEU
-            # Belohne Aktionen, die die Zielfunktion verbessern
             if hasattr(self, 'previous_objective'):
                 objective_improvement = self.previous_objective - current_objective
                 if objective_improvement > 0:
@@ -576,23 +546,22 @@ class JSPGymEnvironment(gym.Env):
             # Speichere aktuelle Zielfunktion für nächsten Vergleich
             self.previous_objective = current_objective
             
-            # Kombiniere alle Belohnungskomponenten mit angepassten Gewichtungen
+            # Combine all reward components
             total_reward = (
-                makespan_reward * 3.5 +           # Erhöht
-                setup_reward * 1.2 +              # Erhöht
-                idle_penalty * 1.2 +              # Erhöht
-                balance_reward * 0.7 +            # Leicht erhöht
-                deadline_reward * 6.0 +           # Drastisch erhöht
-                priority_reward * 3.0 +           # Stark erhöht
-                progress_reward * 0.5 +           # Leicht erhöht
-                completion_reward * 2.5 +         # Erhöht
-                critical_job_reward * 2.5 +       # Erhöht
-                global_progress_reward * 0.5 +    # Leicht erhöht
-                objective_reward * 4.0            # NEU: Zielfunktionsverbesserung
+                makespan_reward +
+                setup_reward +
+                idle_penalty +
+                balance_reward +
+                deadline_reward +
+                priority_reward +
+                progress_reward +
+                completion_reward +
+                critical_job_reward +
+                global_progress_reward +
+                objective_reward
             )
         
-        # Erlaube größere Belohnungen und Bestrafungen
-        total_reward = max(min(total_reward, 20.0), -15.0)
+        total_reward = total_reward
         
         return total_reward
     
