@@ -690,12 +690,12 @@ class JSPGymEnvironment(gym.Env):
                     if simulated_makespan < self.previous_episode_makespan:
                         # Current action leads to better makespan than previous episode
                         improvement = (self.previous_episode_makespan - simulated_makespan) / self.previous_episode_makespan
-                        lookahead_value = 15.0 * improvement  # Reward proportional to improvement
+                        lookahead_value = 3.0 * improvement  # Reward proportional to improvement
                         lookahead_reward += lookahead_value * 2.0  # Positive value, so multiply
                     else:
                         # Current action leads to worse makespan than previous episode
                         deterioration = (simulated_makespan - self.previous_episode_makespan) / self.previous_episode_makespan
-                        lookahead_value = -10.0 * deterioration  # Penalty proportional to deterioration
+                        lookahead_value = -2.0 * deterioration  # Penalty proportional to deterioration
                         lookahead_reward += lookahead_value / 2.0  # Negative value, so divide
                     
                     if self.enable_logging:
@@ -704,19 +704,19 @@ class JSPGymEnvironment(gym.Env):
                     # No previous episode to compare with, use existing reward logic
                     # Reward based on completed jobs in simulation
                     completion_ratio = sim_info["completed_jobs"] / self.num_jobs if self.num_jobs > 0 else 0
-                    completion_value = 10.0 * completion_ratio
+                    completion_value = 2.0 * completion_ratio
                     lookahead_reward += completion_value * 2.0  # Positive value, so multiply
                     
                     # Reward based on met deadlines in simulation
                     if sim_info["completed_jobs"] > 0:
                         deadline_ratio = sim_info["met_deadlines"] / sim_info["completed_jobs"]
-                        deadline_value = 15.0 * deadline_ratio
+                        deadline_value = 3.0 * deadline_ratio
                         lookahead_reward += deadline_value * 2.0  # Positive value, so multiply
                     
                     # Penalty for suboptimal placements identified in simulation
                     if "suboptimal_placements" in sim_info and sim_info["completed_jobs"] == self.num_jobs:
                         suboptimal_ratio = sim_info["suboptimal_placements"] / len(sim_info.get("critical_path", [1]))
-                        suboptimal_value = -10.0 * suboptimal_ratio
+                        suboptimal_value = -2.0 * suboptimal_ratio
                         lookahead_reward += suboptimal_value / 2.0  # Negative value, so divide
                 
             except Exception as e:
@@ -906,7 +906,7 @@ class JSPGymEnvironment(gym.Env):
         self.machine_utilization = saved_state['machine_utilization']
         self.material_changes = saved_state['material_changes']
         self.job_completion_times = saved_state['job_completion_times']
-    
+
     def simulate_future_schedule(self, model, max_steps=50):
         """
         Simulates the remainder of the schedule using a pre-trained model.
@@ -919,6 +919,23 @@ class JSPGymEnvironment(gym.Env):
             dict: A dictionary containing simulation details.
         """
         saved_state = self._save_state()
+        
+        # Speichere die ursprünglichen Reward-Komponenten
+        original_reward_components = None
+        original_cumulative_reward_components = None
+        if hasattr(self, 'reward_components'):
+            original_reward_components = self.reward_components.copy()
+        if hasattr(self, 'cumulative_reward_components'):
+            original_cumulative_reward_components = self.cumulative_reward_components.copy()
+        
+        # Speichere auch action_history und pending_penalties
+        original_action_history = None
+        original_pending_penalties = None
+        if hasattr(self, 'action_history'):
+            original_action_history = self.action_history.copy()
+        if hasattr(self, 'pending_penalties'):
+            original_pending_penalties = self.pending_penalties.copy()
+        
         sim_steps = 0
         sim_rewards = []
         done = False
@@ -948,6 +965,18 @@ class JSPGymEnvironment(gym.Env):
                     "critical_path": critical_path
                 }
             
+            # Stelle die ursprünglichen Reward-Komponenten wieder her
+            if original_reward_components is not None:
+                self.reward_components = original_reward_components
+            if original_cumulative_reward_components is not None:
+                self.cumulative_reward_components = original_cumulative_reward_components
+            
+            # Stelle auch action_history und pending_penalties wieder her
+            if original_action_history is not None:
+                self.action_history = original_action_history
+            if original_pending_penalties is not None:
+                self.pending_penalties = original_pending_penalties
+            
             self._restore_state(saved_state)
             
             simulation_info = {
@@ -961,6 +990,19 @@ class JSPGymEnvironment(gym.Env):
             return simulation_info
         except Exception as e:
             print(f"Error in simulate_future_schedule: {e}")
+            
+            # Stelle die ursprünglichen Reward-Komponenten wieder her
+            if original_reward_components is not None:
+                self.reward_components = original_reward_components
+            if original_cumulative_reward_components is not None:
+                self.cumulative_reward_components = original_cumulative_reward_components
+            
+            # Stelle auch action_history und pending_penalties wieder her
+            if original_action_history is not None:
+                self.action_history = original_action_history
+            if original_pending_penalties is not None:
+                self.pending_penalties = original_pending_penalties
+                
             self._restore_state(saved_state)
             return {
                 "makespan": max(self.machine_times),
@@ -969,7 +1011,7 @@ class JSPGymEnvironment(gym.Env):
                 "simulation_steps": 0,
                 "cumulative_reward": 0,
                 "error": str(e)
-            }    
+            }         
     def get_machine_utilization_stats(self):
         """
         Returns detailed machine utilization statistics.
