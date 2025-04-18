@@ -64,8 +64,8 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
             # Select action
             action, action_prob = agent.select_action(state)
             
-            # Execute action
-            next_state, reward, done, info = env.step(action)
+            # Execute action with model for lookahead
+            next_state, reward, done, info = env.step(action, model=agent)
             
             # Enhance info with material change data for logging
             if 'setup_time' in info and info['setup_time'] > 0:
@@ -387,9 +387,11 @@ def test_gym_ppo(agent, env, log_dir="logs"):
     print("\nTest run with trained agent:")
     while not done:
         step += 1
+        # In der test_gym_ppo Funktion, ca. Zeile 389
         action, _ = agent.select_action(state)
         actions.append(action)
-        next_state, reward, done, info = env.step(action)
+        # Execute action with model for lookahead
+        next_state, reward, done, info = env.step(action, model=agent)
         
         # Enhance info with material change data for logging
         if 'setup_time' in info and info['setup_time'] > 0:

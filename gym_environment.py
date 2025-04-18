@@ -130,20 +130,30 @@ class JSPGymEnvironment(gym.Env):
         Returns:
             observation: The initial observation
         """
-        self.job_progress = np.zeros(self.num_jobs, dtype=np.int32)
-        self.machine_times = np.zeros(self.num_machines, dtype=np.float32)
-        self.current_time = 0.0
+        
+        if hasattr(self, 'machine_times') and len(self.machine_times) > 0:
+            self.previous_episode_makespan = max(self.machine_times)
+        else:
+            self.previous_episode_makespan = 0
+    
+        # Bestehender Reset-Code hier...
+        self.job_progress = [0] * self.num_jobs
+        self.machine_times = [0] * self.num_machines
+        self.current_time = 0
         self.completed_jobs = 0
         self.current_machine_material = [""] * self.num_machines
-        self.machine_material_idx = np.zeros(self.num_machines, dtype=np.int32)
-        
-        # Episode statistics
-        self.episode_reward = 0.0
+        self.machine_material_idx = [0] * self.num_machines
         self.episode_steps = 0
-        self.episode_makespan = 0.0
+        self.episode_reward = 0
+        self.episode_makespan = 0
         self.episode_completed_jobs = 0
         self.episode_met_deadlines = 0
-        
+        self.operation_history = []
+        self.machine_utilization = [[] for _ in range(self.num_machines)]
+        self.material_changes = []
+        self.job_completion_times = {}
+        self.action_history = []
+        self.pending_penalties = []
         # Initialize cumulative reward components
         self.cumulative_reward_components = {
             'makespan_reward': 0.0,
@@ -153,7 +163,6 @@ class JSPGymEnvironment(gym.Env):
             'priority_reward': 0.0,
             'critical_job_reward': 0.0,
             'global_progress_reward': 0.0,
-            'objective_reward': 0.0,
             'placement_reward': 0.0,
             'lookahead_reward': 0.0
         }
@@ -500,7 +509,6 @@ class JSPGymEnvironment(gym.Env):
                 'priority_reward': 0.0,
                 'critical_job_reward': 0.0,
                 'global_progress_reward': 0.0,
-                'objective_reward': 0.0,
                 'placement_reward': 0.0,
                 'lookahead_reward': 0.0,
                 'timeliness_reward': 0.0,  # TIMELINESS: Neue Komponente für die Pünktlichkeit
@@ -640,31 +648,6 @@ class JSPGymEnvironment(gym.Env):
                     additional_value = 2.0 * (1.0 - current_time / op_expected_completion)
                     timeliness_reward += additional_value * 2.0  # Always positive, so multiply
         
-        # Calculate objective reward based on model prediction
-        objective_reward = 0.0
-        if model is not None:
-            # Verwende das Modell, um die Verbesserung des Ziels zu bewerten
-            # Berechne den Reward basierend auf der Differenz zwischen dem aktuellen Zustand
-            # und dem vorhergesagten Zustand nach der Aktion
-            current_observation = self._get_observation()
-            saved_state = self._save_state()
-            
-            try:
-                # Simuliere einen Schritt vorwärts mit dem Modell
-                next_action, _ = model.predict(current_observation, deterministic=True)
-                _, next_reward, _, next_info = self.step(next_action)
-                
-                # Berechne den Objective-Reward basierend auf der Verbesserung
-                objective_improvement = next_reward - self.episode_reward
-                objective_value = 2.0 * objective_improvement if objective_improvement > 0 else 0.0
-                objective_reward = objective_value * 2.0  # Always positive or zero, so multiply
-            except Exception as e:
-                print(f"Error in objective reward calculation: {e}")
-                objective_reward = 0.0
-            finally:
-                # Stelle den ursprünglichen Zustand wieder her
-                self._restore_state(saved_state)
-        
         # Calculate placement reward - reward for good operation placement
         placement_reward = 0.0
         # Überprüfe, ob die aktuelle Operation in den Placement-Insights enthalten ist
@@ -690,6 +673,7 @@ class JSPGymEnvironment(gym.Env):
                 if setup_time <= self.setupTimes[self.jobs[job_idx]["operations"][op_idx]["machineId"]]['standard']:
                     placement_reward += 1.5 * 2.0  # Positive value, so multiply
         
+        # Dieser Teil ersetzt den bestehenden Lookahead-Reward-Teil in der _calculate_reward Methode
         # Calculate lookahead reward - reward for actions that enable future good decisions
         lookahead_reward = 0.0
         if model is not None and self.completed_jobs < self.num_jobs:
@@ -697,33 +681,49 @@ class JSPGymEnvironment(gym.Env):
                 # Simulate future schedule with the current model
                 sim_info = self.simulate_future_schedule(model, max_steps=min(20, self.num_jobs - self.completed_jobs))
                 
-                # Reward based on simulated makespan (lower is better)
-                base_makespan = max(self.machine_times)
-                if sim_info["makespan"] > base_makespan:
-                    makespan_factor = base_makespan / sim_info["makespan"] if sim_info["makespan"] > 0 else 1.0
-                    lookahead_value = 5.0 * makespan_factor
-                    lookahead_reward += lookahead_value * 2.0  # Positive value, so multiply
+                # Get the simulated makespan
+                simulated_makespan = sim_info["makespan"]
                 
-                # Reward based on completed jobs in simulation
-                completion_ratio = sim_info["completed_jobs"] / self.num_jobs if self.num_jobs > 0 else 0
-                completion_value = 10.0 * completion_ratio
-                lookahead_reward += completion_value * 2.0  # Positive value, so multiply
-                
-                # Reward based on met deadlines in simulation
-                if sim_info["completed_jobs"] > 0:
-                    deadline_ratio = sim_info["met_deadlines"] / sim_info["completed_jobs"]
-                    deadline_value = 15.0 * deadline_ratio
-                    lookahead_reward += deadline_value * 2.0  # Positive value, so multiply
-                
-                # Penalty for suboptimal placements identified in simulation
-                if "suboptimal_placements" in sim_info and sim_info["completed_jobs"] == self.num_jobs:
-                    suboptimal_ratio = sim_info["suboptimal_placements"] / len(sim_info.get("critical_path", [1]))
-                    suboptimal_value = -10.0 * suboptimal_ratio
-                    lookahead_reward += suboptimal_value / 2.0  # Negative value, so divide
+                # Compare with previous episode's makespan (if available)
+                if hasattr(self, 'previous_episode_makespan') and self.previous_episode_makespan > 0:
+                    # Calculate improvement ratio
+                    if simulated_makespan < self.previous_episode_makespan:
+                        # Current action leads to better makespan than previous episode
+                        improvement = (self.previous_episode_makespan - simulated_makespan) / self.previous_episode_makespan
+                        lookahead_value = 15.0 * improvement  # Reward proportional to improvement
+                        lookahead_reward += lookahead_value * 2.0  # Positive value, so multiply
+                    else:
+                        # Current action leads to worse makespan than previous episode
+                        deterioration = (simulated_makespan - self.previous_episode_makespan) / self.previous_episode_makespan
+                        lookahead_value = -10.0 * deterioration  # Penalty proportional to deterioration
+                        lookahead_reward += lookahead_value / 2.0  # Negative value, so divide
+                    
+                    if self.enable_logging:
+                        self.logger.info(f"Lookahead comparison: Current sim makespan: {simulated_makespan}, Previous episode makespan: {self.previous_episode_makespan}, Reward: {lookahead_reward:.2f}")
+                else:
+                    # No previous episode to compare with, use existing reward logic
+                    # Reward based on completed jobs in simulation
+                    completion_ratio = sim_info["completed_jobs"] / self.num_jobs if self.num_jobs > 0 else 0
+                    completion_value = 10.0 * completion_ratio
+                    lookahead_reward += completion_value * 2.0  # Positive value, so multiply
+                    
+                    # Reward based on met deadlines in simulation
+                    if sim_info["completed_jobs"] > 0:
+                        deadline_ratio = sim_info["met_deadlines"] / sim_info["completed_jobs"]
+                        deadline_value = 15.0 * deadline_ratio
+                        lookahead_reward += deadline_value * 2.0  # Positive value, so multiply
+                    
+                    # Penalty for suboptimal placements identified in simulation
+                    if "suboptimal_placements" in sim_info and sim_info["completed_jobs"] == self.num_jobs:
+                        suboptimal_ratio = sim_info["suboptimal_placements"] / len(sim_info.get("critical_path", [1]))
+                        suboptimal_value = -10.0 * suboptimal_ratio
+                        lookahead_reward += suboptimal_value / 2.0  # Negative value, so divide
                 
             except Exception as e:
                 print(f"Error in lookahead reward calculation: {e}")
                 lookahead_reward = 0.0
+
+        # Update previous episode makespan for the next iteration    
         
         # CREDIT_ASSIGNMENT_PROBLEM: Apply any pending penalties for this step
         credit_assignment_penalty = 0.0
@@ -782,7 +782,6 @@ class JSPGymEnvironment(gym.Env):
         self.reward_components['priority_reward'] = priority_reward
         self.reward_components['critical_job_reward'] = critical_job_reward
         self.reward_components['global_progress_reward'] = global_progress_reward
-        self.reward_components['objective_reward'] = objective_reward
         self.reward_components['placement_reward'] = placement_reward
         self.reward_components['lookahead_reward'] = lookahead_reward
         self.reward_components['timeliness_reward'] = timeliness_reward  # TIMELINESS: Speichere die Pünktlichkeitsbelohnung
@@ -796,7 +795,7 @@ class JSPGymEnvironment(gym.Env):
         # Calculate total reward
         total_reward = (makespan_reward + setup_reward + idle_penalty + deadline_reward + 
                         priority_reward + critical_job_reward + global_progress_reward + 
-                        objective_reward + placement_reward + lookahead_reward + timeliness_reward +
+                        placement_reward + lookahead_reward + timeliness_reward +
                         machine_idle_penalty + credit_assignment_penalty)  # CREDIT_ASSIGNMENT_PROBLEM: Füge Credit-Assignment-Strafe zur Gesamtbelohnung hinzu
         
         return total_reward
@@ -919,7 +918,6 @@ class JSPGymEnvironment(gym.Env):
         Returns:
             dict: A dictionary containing simulation details.
         """
-        # Remove all debug print statements
         saved_state = self._save_state()
         sim_steps = 0
         sim_rewards = []
@@ -930,7 +928,7 @@ class JSPGymEnvironment(gym.Env):
             while not done and sim_steps < max_steps:
                 if np.sum(observation['valid_actions_mask']) == 0:
                     break
-                model_action, _ = model.predict(observation, deterministic=True)
+                model_action, _ = model.select_action(observation)
                 # Pass None as the model to avoid infinite recursion
                 observation, reward, done, info = self.step(model_action, model=None)
                 sim_rewards.append(reward)
@@ -971,8 +969,7 @@ class JSPGymEnvironment(gym.Env):
                 "simulation_steps": 0,
                 "cumulative_reward": 0,
                 "error": str(e)
-            }
-
+            }    
     def get_machine_utilization_stats(self):
         """
         Returns detailed machine utilization statistics.

@@ -6,12 +6,12 @@ import json
 import os
 
 # Pfad zu deinem vortrainierten Modell
-MODEL_PATH = "/Users/paulmill/Desktop/2025/Reinforcement Learning/Reinforcement/results/models/gym_ppo_model_20250414_144908.pt"
+MODEL_PATH = "/Users/timoelkers/Desktop/Transformer_Graph/Reinforcement-Learning/results/models/gym_ppo_model_20250407_214258.pt"
 
 # Lade das JSP-Daten (ersetze dies durch deine tatsächlichen Daten)
 def load_jsp_data():
     # Lade JSP-Daten aus einer JSON-Datei
-    with open('/Users/paulmill/Desktop/2025/Reinforcement Learning/Reinforcement/data.json', 'r') as f:
+    with open('/Users/timoelkers/Desktop/Transformer_Graph/Reinforcement-Learning/data.json', 'r') as f:
         return json.load(f)
 
 def main():
