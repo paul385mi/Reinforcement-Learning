@@ -579,7 +579,7 @@ class JSPGymEnvironment(gym.Env):
             if self.num_machines > 1:
                 avg_machine_idle_time = total_machine_idle_time / (self.num_machines - 1)
                 # MASCHINENSTILLSTAND: Penalty increases with longer average idle time
-                machine_idle_value = -0.3 * avg_machine_idle_time
+                machine_idle_value = -0.05 * avg_machine_idle_time
                 machine_idle_penalty = machine_idle_value / 2.0  # MASCHINENSTILLSTAND: Negative value, so divide
             
             # MASCHINENSTILLSTAND: Additional penalty for machines that have been idle for too long (e.g., > 20% of current time)
@@ -587,11 +587,11 @@ class JSPGymEnvironment(gym.Env):
                 long_idle_machines = 0
                 for m_idx in range(self.num_machines):
                     machine_idle_time = max(0, current_time - self.machine_times[m_idx])
-                    if machine_idle_time > 0.2 * current_time:
+                    if machine_idle_time > 0.4 * current_time:
                         long_idle_machines += 1
                 
                 if long_idle_machines > 0:
-                    long_idle_penalty = -0.5 * long_idle_machines
+                    long_idle_penalty = -0.1 * long_idle_machines
                     machine_idle_penalty += long_idle_penalty / 2.0  # MASCHINENSTILLSTAND: Negative value, so divide
         
         # Calculate deadline reward

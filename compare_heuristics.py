@@ -231,8 +231,8 @@ def compare_heuristics(jsp_data_path, model_path, num_episodes=10):
 
 if __name__ == "__main__":
     # Angepasste Pfade für dein System
-    jsp_data_path = "/Users/paulmill/Desktop/Reinforcement Learning/Reinforcement/data.json"
-    model_path = "/Users/paulmill/Desktop/Reinforcement Learning/Reinforcement/results/models/gym_ppo_model_20250406_180503.pt"
+    jsp_data_path = "/Users/timoelkers/Desktop/Transformer_Graph/Reinforcement-Learning/data.json"
+    model_path = "/Users/timoelkers/Desktop/Transformer_Graph/Reinforcement-Learning/results/models/gym_ppo_model_20250419_160656.pt"
     
     # Run comparison with 10 episodes per heuristic
     compare_heuristics(jsp_data_path, model_path, num_episodes=10)
