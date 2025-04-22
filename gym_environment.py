@@ -15,7 +15,7 @@ class JSPGymEnvironment(gym.Env):
     
     metadata = {'render.modes': ['human']}
     
-    def __init__(self, jsp_data, enable_logging=False, log_level=logging.INFO):
+    def __init__(self, jsp_data, enable_logging=True, log_level=logging.INFO):
         """
         Initialize the JSP Gym environment.
         
@@ -511,9 +511,9 @@ class JSPGymEnvironment(gym.Env):
                 'global_progress_reward': 0.0,
                 'placement_reward': 0.0,
                 'lookahead_reward': 0.0,
-                'timeliness_reward': 0.0,  # TIMELINESS: Neue Komponente für die Pünktlichkeit
-                'machine_idle_penalty': 0.0,  # MASCHINENSTILLSTAND: Neue Komponente für Maschinenstillstand
-                'credit_assignment_penalty': 0.0  # CREDIT_ASSIGNMENT_PROBLEM: Neue Komponente für Credit Assignment
+                'timeliness_reward': 0.0,
+                'machine_idle_penalty': 0.0,
+                'credit_assignment_penalty': 0.0
             }
             
         # TIMELINES: Initialize cumulative reward components dictionary if it doesn't exist
@@ -718,7 +718,7 @@ class JSPGymEnvironment(gym.Env):
                         suboptimal_ratio = sim_info["suboptimal_placements"] / len(sim_info.get("critical_path", [1]))
                         suboptimal_value = -2.0 * suboptimal_ratio
                         lookahead_reward += suboptimal_value / 2.0  # Negative value, so divide
-                
+
             except Exception as e:
                 print(f"Error in lookahead reward calculation: {e}")
                 lookahead_reward = 0.0
@@ -784,9 +784,9 @@ class JSPGymEnvironment(gym.Env):
         self.reward_components['global_progress_reward'] = global_progress_reward
         self.reward_components['placement_reward'] = placement_reward
         self.reward_components['lookahead_reward'] = lookahead_reward
-        self.reward_components['timeliness_reward'] = timeliness_reward  # TIMELINESS: Speichere die Pünktlichkeitsbelohnung
-        self.reward_components['machine_idle_penalty'] = machine_idle_penalty  # MASCHINENSTILLSTAND: Speichere die Maschinenstillstandsstrafe
-        self.reward_components['credit_assignment_penalty'] = credit_assignment_penalty  # CREDIT_ASSIGNMENT_PROBLEM: Speichere die Credit-Assignment-Strafe
+        self.reward_components['timeliness_reward'] = timeliness_reward
+        self.reward_components['machine_idle_penalty'] = machine_idle_penalty
+        self.reward_components['credit_assignment_penalty'] = credit_assignment_penalty
         
         # Update cumulative reward components
         for key in self.reward_components:
@@ -796,10 +796,64 @@ class JSPGymEnvironment(gym.Env):
         total_reward = (makespan_reward + setup_reward + idle_penalty + deadline_reward + 
                         priority_reward + critical_job_reward + global_progress_reward + 
                         placement_reward + lookahead_reward + timeliness_reward +
-                        machine_idle_penalty + credit_assignment_penalty)  # CREDIT_ASSIGNMENT_PROBLEM: Füge Credit-Assignment-Strafe zur Gesamtbelohnung hinzu
+                        machine_idle_penalty + credit_assignment_penalty)
+        
+        # *** NEUES DETAILLIERTES LOGGING DER REWARDS ***
+        if self.enable_logging:
+            log_message = f"\n===== REWARD DETAILS FOR STEP {self.episode_steps} =====\n"
+            log_message += f"Job: {self.idx_to_job_id[job_idx]}, Operation: {op_idx}, Job Completed: {job_completed}\n"
+            log_message += f"Current Time: {prev_time:.2f} -> {current_time:.2f}, Setup Time: {setup_time:.2f}\n"
+            log_message += f"Processing Time: {processing_time:.2f}, Idle Time: {idle_time:.2f}\n"
+            log_message += f"Completed Jobs: {self.completed_jobs}/{self.num_jobs}\n"
+            
+            if op_idx >= 0:
+                machine_id = self.jobs[job_idx]["operations"][op_idx]["machineId"]
+                material = self.jobs[job_idx]["operations"][op_idx]["material"]
+                log_message += f"Machine: {machine_id}, Material: {material}\n"
+                if job_completed:
+                    job_deadline = self.jobs[job_idx]["deadline"]
+                    job_priority = self.jobs[job_idx]["priority"]
+                    deadline_met = current_time <= job_deadline
+                    log_message += f"Job Deadline: {job_deadline:.2f} ({'Met' if deadline_met else 'Missed'}), Priority: {job_priority}\n"
+            
+            # Detailed component values
+            log_message += "\nREWARD COMPONENTS:\n"
+            for component, value in self.reward_components.items():
+                log_message += f"- {component}: {value:.4f}\n"
+            
+            log_message += f"\nTOTAL REWARD: {total_reward:.4f}\n"
+            
+            # Cumulative values
+            log_message += "\nCUMULATIVE REWARD COMPONENTS:\n"
+            for component, value in self.cumulative_reward_components.items():
+                log_message += f"- {component}: {value:.4f}\n"
+            
+            log_message += f"\nCUMULATIVE TOTAL: {sum(self.cumulative_reward_components.values()):.4f}\n"
+            
+            # Important flags and state info
+            log_message += "\nCRITICAL STATE INFO:\n"
+            
+            # Valid actions
+            valid_actions = []
+            for j_idx in range(self.num_jobs):
+                if (self.job_progress[j_idx] < len(self.jobs[j_idx]["operations"]) and 
+                    self._check_predecessors(j_idx, self.job_progress[j_idx])):
+                    valid_actions.append(self.idx_to_job_id[j_idx])
+            log_message += f"- Valid actions: {valid_actions}\n"
+            
+            # Machine states
+            log_message += "- Machine states:\n"
+            for m_idx in range(self.num_machines):
+                m_id = self.idx_to_machine_id[m_idx]
+                material = self.current_machine_material[m_idx] if self.current_machine_material[m_idx] else "None"
+                idle_time = max(0, current_time - self.machine_times[m_idx])
+                log_message += f"  - Machine {m_id}: Time={self.machine_times[m_idx]:.2f}, Idle={idle_time:.2f}, Material={material}\n"
+            
+            # End of log
+            log_message += "=" * 50 + "\n"
+            self.logger.info(log_message)
         
         return total_reward
-    
     # CREDIT_ASSIGNMENT_PROBLEM: Neue Methode zur Verteilung von Strafen auf vergangene Aktionen
     def _distribute_penalties(self, current_job_idx, base_penalty, issue_type, machine_idx=None):
         """

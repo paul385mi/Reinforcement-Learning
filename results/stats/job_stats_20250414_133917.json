@@ -1,0 +1,8 @@
+{
+  "completed_jobs": 20,
+  "avg_completion_time": 4341.85009765625,
+  "met_deadlines": 5,
+  "deadline_ratio": 0.25,
+  "priority_weighted_avg_completion": 4240.5556640625,
+  "high_priority_met_ratio": 0.25
+}
