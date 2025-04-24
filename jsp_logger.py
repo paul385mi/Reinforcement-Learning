@@ -82,17 +82,30 @@ class JSPLogger:
         current_time = next_state['current_time'][0]
         makespan = max(machine_times)
         
-        # Log step data
+        # Extract operation ID if available
+        operation_id = info.get('operation_id', f"J{job_idx+1}:OP?")
+        
+        # Extract reward components if available
+        reward_components = info.get('reward_components', {})
+        
+        # Log step data with more detailed information
         step_info = {
             'episode': self.current_episode,
             'step': self.current_step,
             'job_idx': job_idx,
+            'operation_id': operation_id,
             'reward': reward,
             'makespan': makespan,
             'current_time': current_time,
             'setup_time': info.get('setup_time', 0),
             'job_completed': info.get('job_completed', False)
         }
+        
+        # Add reward components if available
+        if reward_components:
+            for component_name, component_value in reward_components.items():
+                step_info[f'reward_{component_name}'] = component_value
+        
         self.step_data.append(step_info)
         
         # Log machine utilization

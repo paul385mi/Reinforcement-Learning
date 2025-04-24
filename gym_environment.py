@@ -373,9 +373,15 @@ class JSPGymEnvironment(gym.Env):
         info = {
             "makespan": max(self.machine_times),
             "completed_jobs": self.completed_jobs,
-            "met_deadlines": self.episode_met_deadlines
+            "met_deadlines": self.episode_met_deadlines,
+            "operation_id": f"{self.idx_to_job_id[job_idx]}:{op['id']}",  # Füge die Operations-ID hinzu
+            "setup_time": setup_time,
+            "job_completed": job_completed
         }
-        
+        if hasattr(self, 'cumulative_reward_components'):
+            info["reward_components"] = self.cumulative_reward_components.copy()
+
+            
         if done:
             critical_path = self.analyze_critical_path()
             insights = self.identify_suboptimal_placements(critical_path)
