@@ -158,11 +158,9 @@ class JSPGymEnvironment(gym.Env):
         self.cumulative_reward_components = {
             'makespan_reward': 0.0,
             'setup_reward': 0.0,
-            'idle_penalty': 0.0,
             'deadline_reward': 0.0,
             'priority_reward': 0.0,
             'critical_job_reward': 0.0,
-            'global_progress_reward': 0.0,
             'placement_reward': 0.0,
             'lookahead_reward': 0.0
         }
@@ -510,11 +508,9 @@ class JSPGymEnvironment(gym.Env):
             self.reward_components = {
                 'makespan_reward': 0.0,
                 'setup_reward': 0.0,
-                'idle_penalty': 0.0,
                 'deadline_reward': 0.0,
                 'priority_reward': 0.0,
                 'critical_job_reward': 0.0,
-                'global_progress_reward': 0.0,
                 'placement_reward': 0.0,
                 'lookahead_reward': 0.0,
                 'timeliness_reward': 0.0,
@@ -561,7 +557,7 @@ class JSPGymEnvironment(gym.Env):
         # Calculate idle time penalty
         idle_time = max(0, current_time - prev_time - setup_time - processing_time)
         idle_value = -0.2 * idle_time if idle_time > 0 else 0.0
-        idle_penalty = idle_value / 2.0 if idle_value < 0 else idle_value * 2.0
+        # idle_penalty = idle_value / 2.0 if idle_value < 0 else idle_value * 2.0
         
         # MASCHINENSTILLSTAND: Calculate machine idle penalty - penalize machines that are idle
         machine_idle_penalty = 0.0
@@ -628,11 +624,11 @@ class JSPGymEnvironment(gym.Env):
                 critical_job_reward = critical_job_value * 2.0  # Always positive, so multiply
         
         # Calculate global progress reward
-        global_progress_reward = 0.0
-        if self.num_jobs > 0:
-            progress_ratio = self.completed_jobs / self.num_jobs
-            global_progress_value = 5.0 * progress_ratio
-            global_progress_reward = global_progress_value * 2.0  # Always positive, so multiply
+        # global_progress_reward = 0.0
+        # if self.num_jobs > 0:
+        #     progress_ratio = self.completed_jobs / self.num_jobs
+        #     global_progress_value = 5.0 * progress_ratio
+        #     global_progress_reward = global_progress_value * 2.0  # Always positive, so multiply
         
         # TIMELINESS: Berechne die Pünktlichkeitsbelohnung basierend auf dem Verhältnis von Makespan und Deadlines
         timeliness_reward = 0.0
@@ -666,18 +662,18 @@ class JSPGymEnvironment(gym.Env):
                 severity_sum = sum(insight['severity'] for insight in insights)
                 placement_value = -5.0 * severity_sum
                 placement_reward = placement_value / 2.0  # Negative value, so divide
-            else:
-                # Belohne Operationen, die nicht in den Insights enthalten sind
-                placement_value = 1.0
-                placement_reward = placement_value * 2.0  # Positive value, so multiply
+            # else:
+            #     # Belohne Operationen, die nicht in den Insights enthalten sind
+            #     placement_value = 1.0
+            #     placement_reward = placement_value * 2.0  # Positive value, so multiply
                 
-                # Zusätzliche Belohnung für Operationen mit hoher Priorität
-                if self.jobs[job_idx]["priority"] >= 7:
-                    placement_reward += 2.0 * 2.0  # Positive value, so multiply
+            #     # Zusätzliche Belohnung für Operationen mit hoher Priorität
+            #     if self.jobs[job_idx]["priority"] >= 7:
+            #         placement_reward += 2.0 * 2.0  # Positive value, so multiply
                 
-                # Zusätzliche Belohnung für Operationen ohne Materialwechsel
-                if setup_time <= self.setupTimes[self.jobs[job_idx]["operations"][op_idx]["machineId"]]['standard']:
-                    placement_reward += 1.5 * 2.0  # Positive value, so multiply
+            #     # Zusätzliche Belohnung für Operationen ohne Materialwechsel
+            #     if setup_time <= self.setupTimes[self.jobs[job_idx]["operations"][op_idx]["machineId"]]['standard']:
+            #         placement_reward += 1.5 * 2.0  # Positive value, so multiply
         
         # Dieser Teil ersetzt den bestehenden Lookahead-Reward-Teil in der _calculate_reward Methode
         # Calculate lookahead reward - reward for actions that enable future good decisions
@@ -783,11 +779,10 @@ class JSPGymEnvironment(gym.Env):
         # Store each reward component
         self.reward_components['makespan_reward'] = makespan_reward
         self.reward_components['setup_reward'] = setup_reward
-        self.reward_components['idle_penalty'] = idle_penalty
         self.reward_components['deadline_reward'] = deadline_reward
         self.reward_components['priority_reward'] = priority_reward
         self.reward_components['critical_job_reward'] = critical_job_reward
-        self.reward_components['global_progress_reward'] = global_progress_reward
+        # self.reward_components['global_progress_reward'] = global_progress_reward
         self.reward_components['placement_reward'] = placement_reward
         self.reward_components['lookahead_reward'] = lookahead_reward
         self.reward_components['timeliness_reward'] = timeliness_reward
@@ -799,7 +794,7 @@ class JSPGymEnvironment(gym.Env):
             self.cumulative_reward_components[key] += self.reward_components[key]
         
         # Calculate total reward
-        total_reward = (makespan_reward + setup_reward + idle_penalty + deadline_reward + 
+        total_reward = (makespan_reward + setup_reward + deadline_reward + 
                         priority_reward + critical_job_reward + global_progress_reward + 
                         placement_reward + lookahead_reward + timeliness_reward +
                         machine_idle_penalty + credit_assignment_penalty)
