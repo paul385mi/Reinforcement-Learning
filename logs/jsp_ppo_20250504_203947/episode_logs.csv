@@ -1,0 +1,3 @@
+episode,total_reward,steps,makespan,completed_jobs,fully_completed_jobs,met_deadlines,deadline_ratio,avg_machine_util,machine_util_std
+1,1522.3136025558822,134,6202,20,20,0,0.0,0.95135975,0.035693638
+2,604.7419229730588,134,6277,20,20,0,0.0,0.89480114,0.1448488

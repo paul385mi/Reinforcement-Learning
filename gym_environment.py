@@ -560,41 +560,31 @@ class JSPGymEnvironment(gym.Env):
         # idle_penalty = idle_value / 2.0 if idle_value < 0 else idle_value * 2.0
         
         # MASCHINENSTILLSTAND: Calculate machine idle penalty - penalize machines that are idle
+        # Stark vereinfachte Machine Idle Penalty - einfach und effektiv
+        # Ausgewogene Machine Idle - kann positiv oder negativ sein
         machine_idle_penalty = 0.0
         if op_idx >= 0:
-            # MASCHINENSTILLSTAND: Get the current machine
-            machine_id = self.jobs[job_idx]["operations"][op_idx]["machineId"]
-            machine_idx = self.machine_id_to_idx[machine_id]
+            # Zeitgewichtung
+            progress = self.completed_jobs / self.num_jobs if self.num_jobs > 0 else 0
+            time_weight = max(0.3, 1.0 - progress * 0.7)
             
-            # MASCHINENSTILLSTAND: Calculate total idle time across all machines
-            total_machine_idle_time = 0.0
-            for m_idx in range(self.num_machines):
-                # MASCHINENSTILLSTAND: Skip the current machine as it's being used
-                if m_idx == machine_idx:
-                    continue
+            # Einfache Auslastung: Aktive Zeit vs. Gesamtzeit
+            total_active_time = sum(self.machine_times)
+            total_possible_time = current_time * self.num_machines
+            
+            if total_possible_time > 0:
+                utilization = total_active_time / total_possible_time
                 
-                # MASCHINENSTILLSTAND: Calculate how long this machine has been idle
-                machine_idle_time = max(0, current_time - self.machine_times[m_idx])
-                total_machine_idle_time += machine_idle_time
-            
-            # MASCHINENSTILLSTAND: Calculate average idle time per machine (excluding current machine)
-            if self.num_machines > 1:
-                avg_machine_idle_time = total_machine_idle_time / (self.num_machines - 1)
-                # MASCHINENSTILLSTAND: Penalty increases with longer average idle time
-                machine_idle_value = -0.05 * avg_machine_idle_time
-                machine_idle_penalty = machine_idle_value / 2.0  # MASCHINENSTILLSTAND: Negative value, so divide
-            
-            # MASCHINENSTILLSTAND: Additional penalty for machines that have been idle for too long (e.g., > 20% of current time)
-            if current_time > 0:
-                long_idle_machines = 0
-                for m_idx in range(self.num_machines):
-                    machine_idle_time = max(0, current_time - self.machine_times[m_idx])
-                    if machine_idle_time > 0.4 * current_time:
-                        long_idle_machines += 1
+                # Einfache Belohnung/Strafe
+                if utilization >= 0.7:
+                    machine_idle_penalty = 0.2 * time_weight  # Positive Belohnung
+                elif utilization >= 0.5:
+                    machine_idle_penalty = 0.0  # Neutral
+                else:
+                    machine_idle_penalty = -0.3 * time_weight  # Negative Strafe
                 
-                if long_idle_machines > 0:
-                    long_idle_penalty = -0.1 * long_idle_machines
-                    machine_idle_penalty += long_idle_penalty / 2.0  # MASCHINENSTILLSTAND: Negative value, so divide
+                # Sanfter Cap
+                machine_idle_penalty = max(-0.5, min(0.5, machine_idle_penalty))
         
         # Calculate deadline reward
         job_id = self.idx_to_job_id[job_idx]
@@ -615,13 +605,27 @@ class JSPGymEnvironment(gym.Env):
             priority_value = 2.0 * priority  # Higher priority jobs give more reward
             priority_reward = priority_value * 2.0  # Always positive, so multiply
         
-        # Calculate critical job reward
+        # --------------------------------------------------------------------
+        # ❶ Neuen shaping‑Bonus für jeden gewählten Arbeitsschritt
+        #    eines kritischen Jobs (Priority ≥ 8) hinzufügen
+        # --------------------------------------------------------------------
         critical_job_reward = 0.0
-        if job_completed:
-            priority = self.jobs[job_idx]["priority"]
-            if priority >= 8:  # Consider jobs with priority >= 8 as critical
-                critical_job_value = 15.0
-                critical_job_reward = critical_job_value * 2.0  # Always positive, so multiply
+        if self.jobs[job_idx]["priority"] >= 8:
+            # kleine stetige Verstärkung, sobald ein kritischer Job bedient wird
+            critical_job_reward += 0.5          # ← Fein‑Tuning möglich
+
+
+        # --------------------------------------------------------------------
+        # ❷ Abschluss‑Bonus (bzw. ‑Malus) an Deadline‑Slack koppeln
+        # --------------------------------------------------------------------
+        if job_completed and self.jobs[job_idx]["priority"] >= 8:
+            deadline   = self.jobs[job_idx]["deadline"]
+            slack      = deadline - current_time          # < 0 ⇒ zu spät
+            norm_slack = np.clip(slack / max(deadline, 1.0), -1.0, 1.0)
+
+            # Early‑Finish ⇒ bis zu +24 Pkt., Late‑Finish ⇒ bis 0 Pkt.
+            completion_bonus = 12.0 * (1.0 + norm_slack)  # Bereich [0 … 24]
+            critical_job_reward += completion_bonus
         
         # Calculate global progress reward
         # global_progress_reward = 0.0
@@ -630,25 +634,34 @@ class JSPGymEnvironment(gym.Env):
         #     global_progress_value = 5.0 * progress_ratio
         #     global_progress_reward = global_progress_value * 2.0  # Always positive, so multiply
         
-        # TIMELINESS: Berechne die Pünktlichkeitsbelohnung basierend auf dem Verhältnis von Makespan und Deadlines
+        # TIMELINESS
         timeliness_reward = 0.0
-        if self.num_jobs > 0:
-            # TIMELINESS: Berechne das Verhältnis zwischen aktueller Zeit und durchschnittlicher Deadline
-            avg_deadline = sum(job["deadline"] for job in self.jobs) / self.num_jobs
-            if avg_deadline > 0:
-                timeliness_factor = 1.0 - min(1.0, current_time / avg_deadline)
-                # TIMELINESS: Positive Belohnung für gute Pünktlichkeit, negative für Verzögerungen
-                timeliness_value = 8.0 * timeliness_factor
-                timeliness_reward = timeliness_value * 2.0 if timeliness_value >= 0 else timeliness_value / 2.0
+
+        open_jobs = [j for j in self.jobs if self.job_progress[self.job_id_to_idx[j["id"]]] < len(j["operations"])]
+        if open_jobs:
+            # Zeitdruck-Faktor für Gewichtung
+            deadlines = np.array([j["deadline"] for j in open_jobs], dtype=np.float32)
+            time_pressure = np.maximum(0.1, (deadlines - current_time) / deadlines)
+            weights = np.array([(j["priority"] ** 2) for j in open_jobs], dtype=np.float32)
             
-            # TIMELINESS: Zusätzliche Belohnung für die aktuelle Operation
-            if op_idx >= 0:
-                op_deadline = self.jobs[job_idx]["deadline"]
-                op_expected_completion = op_deadline * (op_idx + 1) / len(self.jobs[job_idx]["operations"])
-                if current_time <= op_expected_completion:
-                    # TIMELINESS: Belohnung für frühzeitige Fertigstellung der Operation
-                    additional_value = 2.0 * (1.0 - current_time / op_expected_completion)
-                    timeliness_reward += additional_value * 2.0  # Always positive, so multiply
+            # Kombinierte Gewichtung: Priorität × Zeitdruck
+            combined_weights = weights * time_pressure
+            w_avg_deadline = np.average(deadlines, weights=combined_weights)
+            
+            # Nichtlinearer Timeliness Factor
+            timeliness_factor = (w_avg_deadline - current_time) / w_avg_deadline
+            timeliness_factor = np.tanh(3 * timeliness_factor)  # Sigmoid-ähnlich, aber symmetrisch
+            
+            timeliness_value = 8.0 * timeliness_factor
+            timeliness_reward += timeliness_value
+
+        # Dynamischer Operation Bonus
+        if op_idx >= 0:
+            job_deadline = self.jobs[job_idx]["deadline"]
+            urgency = 1.0 - max(0, (job_deadline - current_time) / job_deadline)
+            operation_bonus = 1.2 * (1 + urgency)
+            timeliness_reward += operation_bonus
+
         
         # Calculate placement reward - reward for good operation placement
         placement_reward = 0.0
@@ -795,7 +808,7 @@ class JSPGymEnvironment(gym.Env):
         
         # Calculate total reward
         total_reward = (makespan_reward + setup_reward + deadline_reward + 
-                        priority_reward + critical_job_reward + global_progress_reward + 
+                        priority_reward + critical_job_reward + 
                         placement_reward + lookahead_reward + timeliness_reward +
                         machine_idle_penalty + credit_assignment_penalty)
         

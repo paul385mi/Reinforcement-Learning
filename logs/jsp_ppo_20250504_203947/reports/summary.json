@@ -1,0 +1,12 @@
+{
+  "total_episodes": 2,
+  "avg_reward": 1063.5277627644705,
+  "avg_makespan": 6239.5,
+  "avg_deadline_ratio": 0.0,
+  "avg_machine_util": 0.9230804443359375,
+  "best_episode": 1.0,
+  "best_reward": 1522.3136025558822,
+  "best_makespan": 6202,
+  "best_deadline_ratio": 0.0,
+  "best_machine_util": 0.951359748840332
+}

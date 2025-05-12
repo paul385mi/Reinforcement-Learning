@@ -1,0 +1,29 @@
+{
+  "M1": {
+    "utilization": 0.8851567498400512,
+    "setup_time_ratio": 0.104766474728087,
+    "idle_time_ratio": 0.0,
+    "processing_time_ratio": 0.09229046705054382,
+    "total_busy_time": 577,
+    "total_setup_time": 655,
+    "total_idle_time": 0
+  },
+  "M2": {
+    "utilization": 1.0,
+    "setup_time_ratio": 0.21992962252079334,
+    "idle_time_ratio": 0.0,
+    "processing_time_ratio": 0.23128598848368523,
+    "total_busy_time": 1446,
+    "total_setup_time": 1375,
+    "total_idle_time": 0
+  },
+  "M3": {
+    "utilization": 0.97552783109405,
+    "setup_time_ratio": 0.09676903390914907,
+    "idle_time_ratio": 0.0,
+    "processing_time_ratio": 0.25495841330774155,
+    "total_busy_time": 1594,
+    "total_setup_time": 605,
+    "total_idle_time": 0
+  }
+}
