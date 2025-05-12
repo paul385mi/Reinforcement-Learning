@@ -562,29 +562,42 @@ class JSPGymEnvironment(gym.Env):
         # MASCHINENSTILLSTAND: Calculate machine idle penalty - penalize machines that are idle
         # Stark vereinfachte Machine Idle Penalty - einfach und effektiv
         # Ausgewogene Machine Idle - kann positiv oder negativ sein
+# MASCHINENSTILLSTAND: Calculate machine idle penalty - penalize machines that are idle
         machine_idle_penalty = 0.0
         if op_idx >= 0:
-            # Zeitgewichtung
-            progress = self.completed_jobs / self.num_jobs if self.num_jobs > 0 else 0
-            time_weight = max(0.3, 1.0 - progress * 0.7)
+            # MASCHINENSTILLSTAND: Get the current machine
+            machine_id = self.jobs[job_idx]["operations"][op_idx]["machineId"]
+            machine_idx = self.machine_id_to_idx[machine_id]
             
-            # Einfache Auslastung: Aktive Zeit vs. Gesamtzeit
-            total_active_time = sum(self.machine_times)
-            total_possible_time = current_time * self.num_machines
+            # MASCHINENSTILLSTAND: Calculate total idle time across all machines
+            total_machine_idle_time = 0.0
+            for m_idx in range(self.num_machines):
+                # MASCHINENSTILLSTAND: Skip the current machine as it's being used
+                if m_idx == machine_idx:
+                    continue
+                
+                # MASCHINENSTILLSTAND: Calculate how long this machine has been idle
+                machine_idle_time = max(0, current_time - self.machine_times[m_idx])
+                total_machine_idle_time += machine_idle_time
             
-            if total_possible_time > 0:
-                utilization = total_active_time / total_possible_time
+            # MASCHINENSTILLSTAND: Calculate average idle time per machine (excluding current machine)
+            if self.num_machines > 1:
+                avg_machine_idle_time = total_machine_idle_time / (self.num_machines - 1)
+                # MASCHINENSTILLSTAND: Penalty increases with longer average idle time
+                machine_idle_value = -0.05 * avg_machine_idle_time
+                machine_idle_penalty = machine_idle_value / 2.0  # MASCHINENSTILLSTAND: Negative value, so divide
+            
+            # MASCHINENSTILLSTAND: Additional penalty for machines that have been idle for too long (e.g., > 20% of current time)
+            if current_time > 0:
+                long_idle_machines = 0
+                for m_idx in range(self.num_machines):
+                    machine_idle_time = max(0, current_time - self.machine_times[m_idx])
+                    if machine_idle_time > 0.4 * current_time:
+                        long_idle_machines += 1
                 
-                # Einfache Belohnung/Strafe
-                if utilization >= 0.7:
-                    machine_idle_penalty = 0.2 * time_weight  # Positive Belohnung
-                elif utilization >= 0.5:
-                    machine_idle_penalty = 0.0  # Neutral
-                else:
-                    machine_idle_penalty = -0.3 * time_weight  # Negative Strafe
-                
-                # Sanfter Cap
-                machine_idle_penalty = max(-0.5, min(0.5, machine_idle_penalty))
+                if long_idle_machines > 0:
+                    long_idle_penalty = -0.1 * long_idle_machines
+                    machine_idle_penalty += long_idle_penalty / 2.0  # MASCHINENSTILLSTAND: Negative value, so divide
         
         # Calculate deadline reward
         job_id = self.idx_to_job_id[job_idx]
