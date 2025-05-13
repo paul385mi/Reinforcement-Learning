@@ -675,19 +675,30 @@ class JSPGymEnvironment(gym.Env):
             operation_bonus = 1.2 * (1 + urgency)
             timeliness_reward += operation_bonus
 
-        
         # Calculate placement reward - reward for good operation placement
         placement_reward = 0.0
-        # Überprüfe, ob die aktuelle Operation in den Placement-Insights enthalten ist
-        op_idx = self.job_progress[job_idx] - 1  # Die gerade abgeschlossene Operation
-        if op_idx >= 0:
-            key = (job_idx, op_idx, self.machine_id_to_idx[self.jobs[job_idx]["operations"][op_idx]["machineId"]])
-            if hasattr(self, 'placement_insights') and key in self.placement_insights:
-                # Wenn die Operation in den Insights enthalten ist, bestrafe sie basierend auf der Schwere
-                insights = self.placement_insights[key]
-                severity_sum = sum(insight['severity'] for insight in insights)
-                placement_value = -5.0 * severity_sum
-                placement_reward = placement_value / 2.0  # Negative value, so divide
+
+        # Nur ab Episode 2 anwenden (in Episode 1 bleibt placement_reward == 0.0)
+        if getattr(self, 'previous_episode_makespan', 0) > 0:
+            # Index der gerade abgeschlossenen Operation
+            op_idx = self.job_progress[job_idx] - 1
+            if op_idx >= 0:
+                # Schlüssel zum Nachschlagen in den Insights
+                key = (
+                    job_idx,
+                    op_idx,
+                    self.machine_id_to_idx[
+                        self.jobs[job_idx]["operations"][op_idx]["machineId"]
+                    ]
+                )
+                # Falls zu dieser Operation Suboptimalitäts-Insights vorliegen,
+                # bestrafe proportional zur Schwere (severity)
+                if hasattr(self, 'placement_insights') and key in self.placement_insights:
+                    insights = self.placement_insights[key]
+                    severity_sum = sum(insight['severity'] for insight in insights)
+                    placement_value = -5.0 * severity_sum
+                    placement_reward = placement_value / 2.0  # negative value → durch 2 teilen
+
             # else:
             #     # Belohne Operationen, die nicht in den Insights enthalten sind
             #     placement_value = 1.0

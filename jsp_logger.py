@@ -205,6 +205,9 @@ class JSPLogger:
         material_change_df = pd.DataFrame(self.material_change_data)
         job_completion_df = pd.DataFrame(self.job_completion_data)
         
+        # Debug-Ausgabe: Anzahl der Episoden vor dem Speichern prüfen
+        print(f"DEBUG: Anzahl der Episoden in episode_data vor dem Speichern: {len(self.episode_data)}") # <-- Hinzugefügte Zeile
+
         # Save DataFrames to CSV
         episode_df.to_csv(os.path.join(self.experiment_dir, "episode_logs.csv"), index=False)
         step_df.to_csv(os.path.join(self.experiment_dir, "step_logs.csv"), index=False)

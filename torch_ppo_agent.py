@@ -4,9 +4,11 @@ import numpy as np
 from jsp_graph import create_jsp_graph
 import torch_geometric.nn as pyg_nn
 from torch_geometric.data import Data
+import torch.optim.lr_scheduler as lr_scheduler # Add this import
 
 class TorchPPOAgent:
-    def __init__(self, num_jobs, jsp_data):
+    def __init__(self, num_jobs, jsp_data, initial_lr=0.001, final_lr=0.0001, lr_decay_episodes=500,
+                 initial_entropy_coef=0.01): # Add initial_entropy_coef
         self.num_jobs = num_jobs
         self.jsp_data = jsp_data
         
@@ -69,7 +71,17 @@ class TorchPPOAgent:
             list(self.graph_transformer_layers.parameters()) +
             list(self.layer_norms.parameters()) +
             list(self.output_layer.parameters()),
-            lr=0.001, weight_decay=1e-5
+            lr=initial_lr, # Use initial_lr
+            weight_decay=1e-5
+        )
+
+        # Learning Rate Scheduler (Linear Decay)
+        # Decay over lr_decay_episodes, starting after 0 episodes
+        self.scheduler = lr_scheduler.LinearLR(
+            self.optimizer,
+            start_factor=1.0,      # Start with initial_lr
+            end_factor=final_lr / initial_lr, # Ratio of final_lr to initial_lr
+            total_iters=lr_decay_episodes # Number of episodes for decay
         )
         
         # PPO-Parameter und weitere Einstellungen (wie bisher)
@@ -281,7 +293,7 @@ class TorchPPOAgent:
             'done': done
         })
     
-    def update(self, batch_size=32):
+    def update(self, batch_size=32, current_entropy_coef=0.01): # Add current_entropy_coef parameter
         # Update-Logik (PPO) – hier bleibt der Großteil der Logik erhalten.
         if len(self.experiences) < batch_size:
             return 0.0

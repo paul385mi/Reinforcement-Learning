@@ -10,7 +10,9 @@ from jsp_logger import JSPLogger, convert_numpy_types
 
 
 
-def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=50, batch_size=32, log_dir="logs"):
+def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=50, batch_size=32, log_dir="logs",
+                  initial_lr=0.001, final_lr=0.0001,
+                  initial_entropy_coef=0.01, final_entropy_coef=0.001): # Add entropy params
     """
     Train a PyTorch-based PPO agent for the JSP problem using a Gym environment.
     
@@ -33,7 +35,10 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
     
     # Create Gym environment with logging enabled, agent, and logger
     env = JSPGymEnvironment(jsp_data, enable_logging=True)
-    agent = TorchPPOAgent(len(jsp_data["jobs"]), jsp_data)
+    # Pass LR parameters to agent constructor
+    agent = TorchPPOAgent(len(jsp_data["jobs"]), jsp_data,
+                          initial_lr=initial_lr, final_lr=final_lr, lr_decay_episodes=num_episodes,
+                          initial_entropy_coef=initial_entropy_coef) # Pass initial entropy coef
     
     # Initialize logger
     experiment_name = f"jsp_ppo_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
@@ -98,9 +103,16 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
             state = next_state
             total_reward += reward
         
-        # Update after each episode with potentially larger batch size
-        loss = agent.update(batch_size=batch_size)
+        # Calculate current entropy coefficient using linear decay
+        decay_fraction = max(0.0, 1.0 - (episode / num_episodes)) # Linear decay from 1 to 0
+        current_entropy_coef = final_entropy_coef + (initial_entropy_coef - final_entropy_coef) * decay_fraction
         
+        # Update after each episode with potentially larger batch size
+        loss = agent.update(batch_size=batch_size, current_entropy_coef=current_entropy_coef) # Pass current coef
+        
+        # Step the LR scheduler
+        agent.scheduler.step()
+
         # Calculate makespan
         makespan = max(state['machine_times'])
         
@@ -147,7 +159,8 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
             
             print(f"Episode {episode}/{num_episodes}, Reward: {total_reward:.2f}, Makespan: {makespan}, "
                   f"Loss: {loss:.4f}, Deadlines: {met_deadlines}/{len(agent.jsp_data['jobs'])}, "
-                  f"Util: {machine_util:.2f}")
+                  f"Util: {machine_util:.2f}, LR: {agent.optimizer.param_groups[0]['lr']:.6f}, " # Show LR
+                  f"Entropy Coef: {current_entropy_coef:.4f}") # Show Entropy Coef
             print(f"Reward Components: {reward_components_str}")
         
         # Save checkpoint
@@ -354,7 +367,7 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
     
     print(f"Training progress saved at: {filename}")
     
-    return agent, env, logger
+    return agent, env, logger # Return logger as well
 
 
 def test_gym_ppo(agent, env, log_dir="logs"):
@@ -536,3 +549,18 @@ if __name__ == "__main__":
         # Perform detailed machine analysis
         from jsp_logger import detailed_machine_analysis
         detailed_machine_analysis("logs", test_logger.experiment_name)
+
+
+# Example usage with new parameters
+jsp_file = "data.json" # Or your data file
+trained_agent, trained_env, training_logger = train_gym_ppo(
+    jsp_file,
+    num_episodes=1000, # Example: Increase episodes
+    save_interval=100,
+    batch_size=64,
+    initial_lr=5e-4,
+    final_lr=1e-5,
+    initial_entropy_coef=0.02,
+    final_entropy_coef=0.001
+)
+    # ... testing code ...
