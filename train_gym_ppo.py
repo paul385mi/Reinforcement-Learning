@@ -74,22 +74,23 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
             
             # Enhance info with material change data for logging
             if 'setup_time' in info and info['setup_time'] > 0:
-                # Get operation details for logging
-                job_idx = action
-                op_idx = env.job_progress[job_idx] - 1  # The operation that was just completed
-                if op_idx >= 0:
-                    operation = env.jobs[job_idx]["operations"][op_idx]
-                    machine_id = operation["machineId"]
-                    machine_idx = env.machine_id_to_idx[machine_id]
-                    new_material = operation["material"]
-                    old_material = env.current_machine_material[machine_idx] if machine_idx < len(env.current_machine_material) else ""
-                    
-                    # Add material change info
-                    info['material_change'] = True
-                    info['machine_idx'] = machine_idx
-                    info['old_material'] = old_material
-                    info['new_material'] = new_material
-            
+                # Unpack the triple, das der Agent gewählt hat
+                job_idx, op_idx, machine_id = env.all_actions[action]
+                machine_idx = env.machine_id_to_idx[machine_id]
+
+                # Hole genau diese Operation
+                operation = env.jobs[job_idx]["operations"][op_idx]
+                new_material = operation["material"]
+                old_material = (
+                    env.current_machine_material[machine_idx]
+                    if machine_idx < len(env.current_machine_material) else ""
+                )
+                
+                # Füge Materialwechsel-Infos hinzu
+                info['material_change'] = True
+                info['machine_idx']     = machine_idx
+                info['old_material']    = old_material
+                info['new_material']    = new_material
             # Log step data
             logger.log_step(state, action, reward, next_state, done, info)
             

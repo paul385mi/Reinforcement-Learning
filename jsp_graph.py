@@ -8,6 +8,7 @@ def create_jsp_graph(data):
     """
     Erstellt einen Graphen für ein JSP-Problem mit disjunktiven und konjunktiven Kanten.
     Unterstützt die neue Datenstruktur mit IDs wie "J1" und "OP1" sowie Vorgängerbeziehungen.
+    Unterstützt sowohl einzelne Maschinen (machineId) als auch mehrere Maschinenoptionen (machineIds).
     """
     # Graph erstellen
     G = nx.DiGraph()
@@ -30,7 +31,19 @@ def create_jsp_graph(data):
         
         for op_idx, op in enumerate(job["operations"]):
             op_id = op["id"]
-            machine_id = op["machineId"]
+            
+            # Unterstützung für beide Formate: machineId (einzeln) oder machineIds (mehrere)
+            if "machineId" in op:
+                # Altes Format mit einer Maschine
+                machine_id = op["machineId"]
+                machine_ids = [machine_id]
+            elif "machineIds" in op:
+                # Neues Format mit mehreren Maschinenoptionen
+                machine_ids = op["machineIds"]
+                machine_id = machine_ids[0]  # Primäre Maschine (erste in der Liste)
+            else:
+                raise KeyError("Weder 'machineId' noch 'machineIds' in Operation gefunden")
+                
             machine_idx = machine_id_to_idx[machine_id]
             proc_time = op["processingTime"]
             material = op["material"]
@@ -51,6 +64,7 @@ def create_jsp_graph(data):
                       job_id=job_id,  # Original-ID
                       op_id=op_id,    # Original-ID
                       machine_id=machine_id,  # Original-ID
+                      machine_ids=machine_ids,  # Alle möglichen Maschinen
                       priority=job_priority,
                       deadline=job_deadline,
                       material=material)
@@ -91,7 +105,9 @@ def create_jsp_graph(data):
         for job in data["jobs"]:
             job_id = job["id"]
             for op in job["operations"]:
-                if op["machineId"] == machine_id:
+                # Prüfe, ob diese Operation auf dieser Maschine laufen kann
+                if ("machineId" in op and op["machineId"] == machine_id) or \
+                   ("machineIds" in op and machine_id in op["machineIds"]):
                     ops_on_machine.append((job_id, op["id"]))
         
         # Disjunktive Kanten zwischen allen Operationen auf dieser Maschine

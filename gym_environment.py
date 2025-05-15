@@ -3,7 +3,7 @@ from gym import spaces
 import numpy as np
 import logging
 from datetime import datetime
-
+from gym import spaces
 
 class JSPGymEnvironment(gym.Env):
     """
@@ -177,7 +177,20 @@ class JSPGymEnvironment(gym.Env):
         
         if self.enable_logging:
             self.logger.info("Environment reset")
-        
+        # --- NEU: Aktions-Mapping aufbauen ---
+        # Jedes Tripel (job_idx, op_idx, machine_id) wird zu einer diskreten Aktion
+        self.all_actions = []
+        for job_idx in range(self.num_jobs):
+            op_idx = self.job_progress[job_idx]
+            # Nur, wenn noch Operationen übrig sind
+            if op_idx < len(self.jobs[job_idx]["operations"]):
+                for machine_id in self.jobs[job_idx]["operations"][op_idx]["machineIds"]:
+                    self.all_actions.append((job_idx, op_idx, machine_id))
+
+        # Action-Space auf die Anzahl dieser Tripel setzen
+        self.action_space = spaces.Discrete(len(self.all_actions))
+
+
         return self._get_observation()
     
     def _get_observation(self):
@@ -269,21 +282,28 @@ class JSPGymEnvironment(gym.Env):
         """
         # Remove the debug statement
         self.episode_steps += 1
-        
-        # Rest of the method remains unchanged
-        if action >= self.num_jobs:
-            return self._get_observation(), -10.0, False, {"error": "Invalid job index"}
-        job_idx = action
-        if self.job_progress[job_idx] >= len(self.jobs[job_idx]["operations"]):
-            return self._get_observation(), -10.0, False, {"error": "Job already completed"}
-        
-        # Get the next operation for the job
-        op_idx = self.job_progress[job_idx]
+
+        self.all_actions = []
+        for j in range(self.num_jobs):
+            idx = self.job_progress[j]
+            if idx < len(self.jobs[j]["operations"]):
+                for mid in self.jobs[j]["operations"][idx]["machineIds"]:
+                    self.all_actions.append((j, idx, mid))
+    
+        self.action_space = spaces.Discrete(len(self.all_actions))
+
+        # Prüfe, ob Aktion gültig ist
+        if action < 0 or action >= len(self.all_actions):
+            return self._get_observation(), -10.0, False, {"error": "Invalid action index"}
+
+        # Entpacke die gewählte Aktion
+        job_idx, op_idx, machine_id = self.all_actions[action]
+
+        # Hole die Operation und alle nötigen Parameter
         op = self.jobs[job_idx]["operations"][op_idx]
-        machine_id = op["machineId"]
         machine_idx = self.machine_id_to_idx[machine_id]
-        proc_time = op["processingTime"]
-        material = op["material"]
+        proc_time  = op["processingTime"]
+        material   = op["material"]
         
         if not self._check_predecessors(job_idx, op_idx):
             return self._get_observation(), -10.0, False, {"error": "Predecessors not completed"}
@@ -364,7 +384,7 @@ class JSPGymEnvironment(gym.Env):
             if self.enable_logging:
                 self.logger.info(f"Job {job_id} completed at time {self.current_time}, deadline: {deadline}, met: {deadline_met}, priority: {self.jobs[job_idx]['priority']}")
         
-        reward = self._calculate_reward(job_idx, job_completed, setup_time, prev_time, self.current_time, model)
+        reward = self._calculate_reward(job_idx, op_idx, machine_id, job_completed, setup_time, prev_time, self.current_time, model)
         observation = self._get_observation()
         done = self.completed_jobs >= self.num_jobs
         
@@ -499,7 +519,7 @@ class JSPGymEnvironment(gym.Env):
             for insight in insights:
                 self.logger.info(f"  {insight['message']} (Severity: {insight['severity']:.2f})")
     
-    def _calculate_reward(self, job_idx, job_completed, setup_time, prev_time, current_time, model):
+    def _calculate_reward(self, job_idx, op_idx, machine_id, job_completed, setup_time, prev_time, current_time, model):
         """
         Calculate the reward for the current action.
         """
@@ -517,6 +537,11 @@ class JSPGymEnvironment(gym.Env):
                 'machine_idle_penalty': 0.0,
                 'credit_assignment_penalty': 0.0
             }
+        if op_idx >= 0:
+            op = self.jobs[job_idx]["operations"][op_idx]
+            material = op.get("material", "")
+        else:
+            material = ""
             
         # TIMELINES: Initialize cumulative reward components dictionary if it doesn't exist
         if not hasattr(self, 'cumulative_reward_components'):
@@ -566,9 +591,7 @@ class JSPGymEnvironment(gym.Env):
         machine_idle_penalty = 0.0
         if op_idx >= 0:
             # MASCHINENSTILLSTAND: Get the current machine
-            machine_id = self.jobs[job_idx]["operations"][op_idx]["machineId"]
             machine_idx = self.machine_id_to_idx[machine_id]
-            
             # MASCHINENSTILLSTAND: Calculate total idle time across all machines
             total_machine_idle_time = 0.0
             for m_idx in range(self.num_machines):
@@ -782,7 +805,7 @@ class JSPGymEnvironment(gym.Env):
                 'step': self.episode_steps,
                 'job_idx': job_idx,
                 'operation_idx': op_idx,
-                'machine_idx': self.machine_id_to_idx[self.jobs[job_idx]["operations"][op_idx]["machineId"]],
+                'machine_idx': self.machine_id_to_idx[machine_id],
                 'time': current_time
             }
             self.action_history.append(action_record)
@@ -801,7 +824,6 @@ class JSPGymEnvironment(gym.Env):
         
         # CREDIT_ASSIGNMENT_PROBLEM: Check for machine idle time issues
         if op_idx >= 0:
-            machine_id = self.jobs[job_idx]["operations"][op_idx]["machineId"]
             machine_idx = self.machine_id_to_idx[machine_id]
             
             # If there was significant idle time, assign penalties to past actions
@@ -845,8 +867,6 @@ class JSPGymEnvironment(gym.Env):
             log_message += f"Completed Jobs: {self.completed_jobs}/{self.num_jobs}\n"
             
             if op_idx >= 0:
-                machine_id = self.jobs[job_idx]["operations"][op_idx]["machineId"]
-                material = self.jobs[job_idx]["operations"][op_idx]["material"]
                 log_message += f"Machine: {machine_id}, Material: {material}\n"
                 if job_completed:
                     job_deadline = self.jobs[job_idx]["deadline"]

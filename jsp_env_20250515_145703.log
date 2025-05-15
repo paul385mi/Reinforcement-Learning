@@ -1,0 +1,4 @@
+2025-05-15 14:57:03,688 - JSPGymEnvironment - INFO - Environment reset
+2025-05-15 14:57:03,807 - JSPGymEnvironment - INFO - Environment reset
+2025-05-15 14:57:03,989 - JSPGymEnvironment - INFO - Material change on machine M3:  -> Mountainbike_Rahmen_lackiert, setup time: 0
+2025-05-15 14:57:03,989 - JSPGymEnvironment - INFO - Executed operation: Job J7, Op 0, Machine M3, Start: 0, End: 25, Setup: 0

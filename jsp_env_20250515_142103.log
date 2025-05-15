@@ -1,0 +1,4 @@
+2025-05-15 14:21:03,050 - JSPGymEnvironment - INFO - Environment reset
+2025-05-15 14:21:03,178 - JSPGymEnvironment - INFO - Environment reset
+2025-05-15 14:21:03,375 - JSPGymEnvironment - INFO - Material change on machine M1:  -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 0
+2025-05-15 14:21:03,376 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 0, Machine M1, Start: 0, End: 43, Setup: 0

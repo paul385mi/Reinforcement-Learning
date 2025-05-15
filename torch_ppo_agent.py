@@ -7,11 +7,11 @@ from torch_geometric.data import Data
 import torch.optim.lr_scheduler as lr_scheduler # Add this import
 
 class TorchPPOAgent:
-    def __init__(self, num_jobs, jsp_data, initial_lr=0.001, final_lr=0.0001, lr_decay_episodes=500,
-                 initial_entropy_coef=0.01): # Add initial_entropy_coef
+    def __init__(self, num_jobs, jsp_data, initial_lr=0.001, final_lr=0.0001, lr_decay_episodes=500, initial_entropy_coef=0.1):
         self.num_jobs = num_jobs
         self.jsp_data = jsp_data
-        
+        self.entropy_coef = initial_entropy_coef
+
         # Erstelle Mapping von Job-IDs zu Indizes und umgekehrt
         self.job_id_to_idx = {job["id"]: idx for idx, job in enumerate(jsp_data["jobs"])}
         self.idx_to_job_id = {idx: job["id"] for idx, job in enumerate(jsp_data["jobs"])}
@@ -173,9 +173,20 @@ class TorchPPOAgent:
                 all_job_indices.append(job_idx)
                 
                 # Berechne Features
-                machine_id = operation["machineId"]
+                # Check if machineId exists, otherwise check for machineIds list
+                if "machineId" in operation:
+                    machine_id = operation["machineId"]
+                elif "machineIds" in operation:
+                    machine_ids = operation["machineIds"]
+                    machine_id = machine_ids[0]  # primäre Wahl (erste Maschine)
+                else:
+                    # Fehler werfen, wenn keine Maschineninformation vorhanden ist
+                    raise KeyError(f"Operation ohne machineId(s): {operation['id']} in job {job_id}")
+                
                 machine_idx = self.machine_id_to_idx[machine_id]
-                material = operation["material"]
+                
+                # Similar check for material
+                material = operation.get("material", "default_material")
                 material_idx = self._get_material_index(material)
                 progress = job_progress[job_idx]
                 completed = 1.0 if progress > op_idx else 0.0
@@ -184,9 +195,9 @@ class TorchPPOAgent:
                     job_idx / self.num_jobs,                                # Job-Index
                     op_idx / max(1, len(job["operations"])),                # Operation-Index
                     machine_idx / len(self.jsp_data["machines"]),           # Maschinen-Index
-                    operation["processingTime"] / 100.0,                     # Bearbeitungszeit
-                    job["priority"] / 10.0,                                  # Priorität
-                    job["deadline"] / 200.0,                                 # Deadline
+                    operation.get("processingTime", 0) / 100.0,              # Bearbeitungszeit
+                    job.get("priority", 5) / 10.0,                           # Priorität
+                    job.get("deadline", 100) / 200.0,                        # Deadline
                     material_idx / max(1, len(self.materials))               # Materialtyp
                 ]
                 
@@ -293,7 +304,7 @@ class TorchPPOAgent:
             'done': done
         })
     
-    def update(self, batch_size=32, current_entropy_coef=0.01): # Add current_entropy_coef parameter
+    def update(self, batch_size=32, current_entropy_coef=None):
         # Update-Logik (PPO) – hier bleibt der Großteil der Logik erhalten.
         if len(self.experiences) < batch_size:
             return 0.0
@@ -362,13 +373,21 @@ class TorchPPOAgent:
                 surr2 = torch.clamp(ratio, 1.0 - self.epsilon, 1.0 + self.epsilon) * batch_advantages
                 actor_loss = -torch.min(surr1, surr2).mean()
                 entropy_loss = batch_entropies.mean()
-                loss = actor_loss - 0.1 * entropy_loss
                 
+                # Verwende den übergebenen Entropie-Koeffizienten oder den Standardwert
+                entropy_coef = current_entropy_coef if current_entropy_coef is not None else self.entropy_coef
+                
+                # Berechne den Gesamtverlust
+                # Berechne den Gesamtverlust
+                loss = actor_loss - entropy_coef * entropy_loss
+
                 self.optimizer.zero_grad()
                 loss.backward()
                 torch.nn.utils.clip_grad_norm_(self.parameters(), max_norm=0.5)
                 self.optimizer.step()
                 
+                # Scheduler-Schritt
+                self.scheduler.step()
                 epoch_loss += loss.item() * len(batch_indices)
             total_loss += epoch_loss / len(self.experiences)
         
