@@ -92,7 +92,8 @@ class JSPGymEnvironment(gym.Env):
                 dtype=np.int32
             )
         })
-        
+
+  # Nun die Episode starten
         # Initialize state
         self.reset()
         
@@ -152,8 +153,6 @@ class JSPGymEnvironment(gym.Env):
         self.machine_utilization = [[] for _ in range(self.num_machines)]
         self.material_changes = []
         self.job_completion_times = {}
-        self.action_history = []
-        self.pending_penalties = []
         # Initialize cumulative reward components
         self.cumulative_reward_components = {
             'makespan_reward': 0.0,
@@ -162,7 +161,6 @@ class JSPGymEnvironment(gym.Env):
             'priority_reward': 0.0,
             'critical_job_reward': 0.0,
             'placement_reward': 0.0,
-            'lookahead_reward': 0.0
         }
         
         # Reset tracking variables
@@ -259,7 +257,7 @@ class JSPGymEnvironment(gym.Env):
         
         Args:
             action: Index of the job to process next
-            model: Optional vortrainiertes Modell für Lookahead-Bewertung
+           
             
         Returns:
             observation: New observation after taking the action
@@ -364,7 +362,32 @@ class JSPGymEnvironment(gym.Env):
             if self.enable_logging:
                 self.logger.info(f"Job {job_id} completed at time {self.current_time}, deadline: {deadline}, met: {deadline_met}, priority: {self.jobs[job_idx]['priority']}")
         
-        reward = self._calculate_reward(job_idx, job_completed, setup_time, prev_time, self.current_time, model)
+        reward = self._calculate_reward(job_idx, job_completed, setup_time, prev_time, self.current_time, model, action)
+        # -> Schritt 2: Retroaktives Credit Assignment
+        retro_bonus = 0.0
+        # Beispiel: Deadline-Erfolg / -Versäumnis
+        deadline   = self.jobs[job_idx]["deadline"]
+        priority   = self.jobs[job_idx]["priority"]
+        if job_completed:
+            if self.current_time <= deadline:
+                retro_bonus += 10.0   # positiver Spike
+            else:
+                retro_bonus -= 10.0   # negativer Spike
+            # Beispiel: zusätzlicher Bonus für hohe Priorität
+            if priority >= 8:
+                retro_bonus += 5.0
+        # Hier könntest du weitere Events abfragen:
+        #   - kritischer Job
+        #   - Engpass auf kritischem Pfad
+        #   - etc.
+        # Bonus dem aktuellen Reward aufschlagen
+        reward += retro_bonus
+
+        # Für Debugging / Logging
+        if self.enable_logging and abs(retro_bonus) > 0:
+            self.logger.info(f"Retro-Bonus für Job {job_id}: {retro_bonus:+.1f}")
+
+        
         observation = self._get_observation()
         done = self.completed_jobs >= self.num_jobs
         
@@ -391,6 +414,7 @@ class JSPGymEnvironment(gym.Env):
             if self.enable_logging:
                 self.logger.info(f"Episode completed. Critical path: {len(critical_path)} operations, Suboptimal placements: {len(insights)}")
                 self.logger.info(f"Reward components: {self.reward_components}")
+        
         
         return observation, reward, done, info
 
@@ -499,7 +523,7 @@ class JSPGymEnvironment(gym.Env):
             for insight in insights:
                 self.logger.info(f"  {insight['message']} (Severity: {insight['severity']:.2f})")
     
-    def _calculate_reward(self, job_idx, job_completed, setup_time, prev_time, current_time, model):
+    def _calculate_reward(self, job_idx, job_completed, setup_time, prev_time, current_time, model=None, action=None):
         """
         Calculate the reward for the current action.
         """
@@ -512,10 +536,8 @@ class JSPGymEnvironment(gym.Env):
                 'priority_reward': 0.0,
                 'critical_job_reward': 0.0,
                 'placement_reward': 0.0,
-                'lookahead_reward': 0.0,
                 'timeliness_reward': 0.0,
                 'machine_idle_penalty': 0.0,
-                'credit_assignment_penalty': 0.0
             }
             
         # TIMELINES: Initialize cumulative reward components dictionary if it doesn't exist
@@ -526,15 +548,7 @@ class JSPGymEnvironment(gym.Env):
             for key in self.reward_components:
                 if key not in self.cumulative_reward_components:
                     self.cumulative_reward_components[key] = 0.0
-        
-        # CREDIT_ASSIGNMENT_PROBLEM: Initialize action history if it doesn't exist
-        if not hasattr(self, 'action_history'):
-            self.action_history = []
-            
-        # CREDIT_ASSIGNMENT_PROBLEM: Initialize pending penalties if it doesn't exist
-        if not hasattr(self, 'pending_penalties'):
-            self.pending_penalties = []
-            
+                    
         # Reset reward components for this step
         for key in self.reward_components:
             self.reward_components[key] = 0.0
@@ -712,107 +726,21 @@ class JSPGymEnvironment(gym.Env):
             #     if setup_time <= self.setupTimes[self.jobs[job_idx]["operations"][op_idx]["machineId"]]['standard']:
             #         placement_reward += 1.5 * 2.0  # Positive value, so multiply
         
-        # Dieser Teil ersetzt den bestehenden Lookahead-Reward-Teil in der _calculate_reward Methode
-        # Calculate lookahead reward - reward for actions that enable future good decisions
-        lookahead_reward = 0.0
-        if model is not None and self.completed_jobs < self.num_jobs:
-            try:
-                # Simulate future schedule with the current model
-                sim_info = self.simulate_future_schedule(model, max_steps=min(20, self.num_jobs - self.completed_jobs))
-                
-                # Get the simulated makespan
-                simulated_makespan = sim_info["makespan"]
-                
-                # Compare with previous episode's makespan (if available)
-                if hasattr(self, 'previous_episode_makespan') and self.previous_episode_makespan > 0:
-                    # Calculate improvement ratio
-                    if simulated_makespan < self.previous_episode_makespan:
-                        # Current action leads to better makespan than previous episode
-                        improvement = (self.previous_episode_makespan - simulated_makespan) / self.previous_episode_makespan
-                        lookahead_value = 3.0 * improvement  # Reward proportional to improvement
-                        lookahead_reward += lookahead_value * 2.0  # Positive value, so multiply
-                    else:
-                        # Current action leads to worse makespan than previous episode
-                        deterioration = (simulated_makespan - self.previous_episode_makespan) / self.previous_episode_makespan
-                        lookahead_value = -2.0 * deterioration  # Penalty proportional to deterioration
-                        lookahead_reward += lookahead_value / 2.0  # Negative value, so divide
-                    
-                    if self.enable_logging:
-                        self.logger.info(f"Lookahead comparison: Current sim makespan: {simulated_makespan}, Previous episode makespan: {self.previous_episode_makespan}, Reward: {lookahead_reward:.2f}")
-                else:
-                    # No previous episode to compare with, use existing reward logic
-                    # Reward based on completed jobs in simulation
-                    completion_ratio = sim_info["completed_jobs"] / self.num_jobs if self.num_jobs > 0 else 0
-                    completion_value = 2.0 * completion_ratio
-                    lookahead_reward += completion_value * 2.0  # Positive value, so multiply
-                    
-                    # Reward based on met deadlines in simulation
-                    if sim_info["completed_jobs"] > 0:
-                        deadline_ratio = sim_info["met_deadlines"] / sim_info["completed_jobs"]
-                        deadline_value = 3.0 * deadline_ratio
-                        lookahead_reward += deadline_value * 2.0  # Positive value, so multiply
-                    
-                    # Penalty for suboptimal placements identified in simulation
-                    if "suboptimal_placements" in sim_info and sim_info["completed_jobs"] == self.num_jobs:
-                        suboptimal_ratio = sim_info["suboptimal_placements"] / len(sim_info.get("critical_path", [1]))
-                        suboptimal_value = -2.0 * suboptimal_ratio
-                        lookahead_reward += suboptimal_value / 2.0  # Negative value, so divide
-
-            except Exception as e:
-                print(f"Error in lookahead reward calculation: {e}")
-                lookahead_reward = 0.0
 
         # Update previous episode makespan for the next iteration    
         
-        # CREDIT_ASSIGNMENT_PROBLEM: Apply any pending penalties for this step
-        credit_assignment_penalty = 0.0
-        if hasattr(self, 'pending_penalties') and self.pending_penalties:
-            current_step = self.episode_steps
-            applicable_penalties = [p for p in self.pending_penalties if p['step'] == current_step]
-            for penalty in applicable_penalties:
-                credit_assignment_penalty += penalty['value']
-                if self.enable_logging:
-                    self.logger.info(f"CREDIT_ASSIGNMENT_PROBLEM: Applied delayed penalty of {penalty['value']:.2f} from issue: {penalty['issue']}")
-            # Remove applied penalties
-            self.pending_penalties = [p for p in self.pending_penalties if p['step'] != current_step]
-        
-        # CREDIT_ASSIGNMENT_PROBLEM: Record current action for future credit assignment
         if op_idx >= 0:
             action_record = {
                 'step': self.episode_steps,
                 'job_idx': job_idx,
+                'job_id': self.idx_to_job_id[job_idx],
                 'operation_idx': op_idx,
+                'operation_id': self.jobs[job_idx]["operations"][op_idx]["id"] if op_idx < len(self.jobs[job_idx]["operations"]) else None,
                 'machine_idx': self.machine_id_to_idx[self.jobs[job_idx]["operations"][op_idx]["machineId"]],
+                'machine_id': self.jobs[job_idx]["operations"][op_idx]["machineId"],
                 'time': current_time
             }
-            self.action_history.append(action_record)
-        
-        # CREDIT_ASSIGNMENT_PROBLEM: Check for issues that should trigger credit assignment
-        if job_completed:
-            deadline = self.jobs[job_idx]["deadline"]
-            # If job missed deadline, assign penalties to past actions
-            if current_time > deadline:
-                delay_amount = current_time - deadline
-                severity = delay_amount / deadline if deadline > 0 else 1.0
-                base_penalty = -5.0 * severity
-                
-                # CREDIT_ASSIGNMENT_PROBLEM: Distribute penalties to past actions related to this job
-                self._distribute_penalties(job_idx, base_penalty, "missed_deadline")
-        
-        # CREDIT_ASSIGNMENT_PROBLEM: Check for machine idle time issues
-        if op_idx >= 0:
-            machine_id = self.jobs[job_idx]["operations"][op_idx]["machineId"]
-            machine_idx = self.machine_id_to_idx[machine_id]
             
-            # If there was significant idle time, assign penalties to past actions
-            idle_time = max(0, current_time - prev_time - setup_time - processing_time)
-            if idle_time > 0.2 * processing_time:  # Significant idle time
-                severity = idle_time / processing_time
-                base_penalty = -2.0 * severity
-                
-                # CREDIT_ASSIGNMENT_PROBLEM: Distribute penalties to past actions related to this machine
-                self._distribute_penalties(job_idx, base_penalty, "excessive_idle_time", machine_idx=machine_idx)
-        
         # Store each reward component
         self.reward_components['makespan_reward'] = makespan_reward
         self.reward_components['setup_reward'] = setup_reward
@@ -821,20 +749,20 @@ class JSPGymEnvironment(gym.Env):
         self.reward_components['critical_job_reward'] = critical_job_reward
         # self.reward_components['global_progress_reward'] = global_progress_reward
         self.reward_components['placement_reward'] = placement_reward
-        self.reward_components['lookahead_reward'] = lookahead_reward
         self.reward_components['timeliness_reward'] = timeliness_reward
         self.reward_components['machine_idle_penalty'] = machine_idle_penalty
-        self.reward_components['credit_assignment_penalty'] = credit_assignment_penalty
-        
+
         # Update cumulative reward components
         for key in self.reward_components:
             self.cumulative_reward_components[key] += self.reward_components[key]
         
-        # Calculate total reward
-        total_reward = (makespan_reward + setup_reward + deadline_reward + 
-                        priority_reward + critical_job_reward + 
-                        placement_reward + lookahead_reward + timeliness_reward +
-                        machine_idle_penalty + credit_assignment_penalty)
+        base_reward = (
+            makespan_reward + setup_reward + deadline_reward +
+            priority_reward + critical_job_reward +
+            placement_reward + timeliness_reward +
+            machine_idle_penalty
+        )
+        total_reward = base_reward 
         
         # *** NEUES DETAILLIERTES LOGGING DER REWARDS ***
         if self.enable_logging:
@@ -891,66 +819,10 @@ class JSPGymEnvironment(gym.Env):
             log_message += "=" * 50 + "\n"
             self.logger.info(log_message)
         
-        return total_reward
-    # CREDIT_ASSIGNMENT_PROBLEM: Neue Methode zur Verteilung von Strafen auf vergangene Aktionen
-    def _distribute_penalties(self, current_job_idx, base_penalty, issue_type, machine_idx=None):
-        """
-        Distributes penalties to past actions that contributed to the current issue.
-        
-        Args:
-            current_job_idx: Index of the current job
-            base_penalty: Base penalty value to distribute
-            issue_type: Type of issue that triggered the penalty
-            machine_idx: Optional machine index for machine-specific issues
-        """
-        if not hasattr(self, 'action_history') or not self.action_history:
-            return
-            
-        # Get relevant past actions (up to 10 steps back)
-        current_step = self.episode_steps
-        max_lookback = 10
-        decay_factor = 0.7  # Exponential decay factor
-        
-        # Filter relevant actions based on the issue type
-        relevant_actions = []
-        if issue_type == "missed_deadline":
-            # For missed deadlines, consider past actions on the same job
-            relevant_actions = [a for a in self.action_history 
-                               if a['job_idx'] == current_job_idx and 
-                               a['step'] > current_step - max_lookback]
-        elif issue_type == "excessive_idle_time" and machine_idx is not None:
-            # For idle time issues, consider past actions on the same machine
-            relevant_actions = [a for a in self.action_history 
-                               if a['machine_idx'] == machine_idx and 
-                               a['step'] > current_step - max_lookback]
-        else:
-            # For other issues, consider all recent actions
-            relevant_actions = [a for a in self.action_history 
-                               if a['step'] > current_step - max_lookback]
-        
-        # Sort actions by recency
-        relevant_actions.sort(key=lambda a: a['step'], reverse=True)
-        
-        # Distribute penalties with exponential decay
-        for i, action in enumerate(relevant_actions):
-            # Skip the current action (it already gets the full penalty through other means)
-            if action['step'] == current_step:
-                continue
-                
-            # Calculate decayed penalty
-            penalty_factor = decay_factor ** i  # Exponential decay
-            penalty_value = base_penalty * penalty_factor
-            
-            # Add to pending penalties
-            self.pending_penalties.append({
-                'step': action['step'],
-                'value': penalty_value,
-                'issue': f"{issue_type} at step {current_step}"
-            })
-            
-            if self.enable_logging:
-                self.logger.info(f"CREDIT_ASSIGNMENT_PROBLEM: Scheduled penalty of {penalty_value:.2f} for step {action['step']} due to {issue_type} at step {current_step}")
 
+        return total_reward
+    
+   
     def _save_state(self):
         """
         Saves the current state of the environment for simulation.
@@ -1020,14 +892,6 @@ class JSPGymEnvironment(gym.Env):
         if hasattr(self, 'cumulative_reward_components'):
             original_cumulative_reward_components = self.cumulative_reward_components.copy()
         
-        # Speichere auch action_history und pending_penalties
-        original_action_history = None
-        original_pending_penalties = None
-        if hasattr(self, 'action_history'):
-            original_action_history = self.action_history.copy()
-        if hasattr(self, 'pending_penalties'):
-            original_pending_penalties = self.pending_penalties.copy()
-        
         sim_steps = 0
         sim_rewards = []
         done = False
@@ -1063,11 +927,6 @@ class JSPGymEnvironment(gym.Env):
             if original_cumulative_reward_components is not None:
                 self.cumulative_reward_components = original_cumulative_reward_components
             
-            # Stelle auch action_history und pending_penalties wieder her
-            if original_action_history is not None:
-                self.action_history = original_action_history
-            if original_pending_penalties is not None:
-                self.pending_penalties = original_pending_penalties
             
             self._restore_state(saved_state)
             
@@ -1088,12 +947,6 @@ class JSPGymEnvironment(gym.Env):
                 self.reward_components = original_reward_components
             if original_cumulative_reward_components is not None:
                 self.cumulative_reward_components = original_cumulative_reward_components
-            
-            # Stelle auch action_history und pending_penalties wieder her
-            if original_action_history is not None:
-                self.action_history = original_action_history
-            if original_pending_penalties is not None:
-                self.pending_penalties = original_pending_penalties
                 
             self._restore_state(saved_state)
             return {
@@ -1215,6 +1068,7 @@ class JSPGymEnvironment(gym.Env):
         reward_stats['total'] = sum(reward_stats.values())
         
         return reward_stats
+        
 
     
     
