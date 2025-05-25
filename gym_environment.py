@@ -244,12 +244,28 @@ class JSPGymEnvironment(gym.Env):
         """
         machine_idx = self.machine_id_to_idx[machine_id]
         current_material = self.current_machine_material[machine_idx]
+        
+        # If no current material (first operation on this machine), no setup time
         if current_material == "":
             return 0
+            
+        # If same material, use standard setup time
         if current_material == new_material:
             return self.setupTimes[machine_id]["standard"]
-        else:
-            return self.setupTimes[machine_id]["materialChange"]
+        
+        # Extract bike types from materials
+        # Materials are in format: "<BikeType>_<ProcessStep>"
+        current_bike_type = current_material.split("_")[0] if "_" in current_material else ""
+        new_bike_type = new_material.split("_")[0] if "_" in new_material else ""
+        
+        # If we have a specific transition time for these bike types, use it
+        transition_key = f"{current_bike_type}_to_{new_bike_type}"
+        
+        if "materialTransitions" in self.setupTimes[machine_id] and transition_key in self.setupTimes[machine_id]["materialTransitions"]:
+            return self.setupTimes[machine_id]["materialTransitions"][transition_key]
+        
+        # Fallback to general material change time
+        return self.setupTimes[machine_id]["materialChange"]
     
     def step(self, action, model=None):
         """

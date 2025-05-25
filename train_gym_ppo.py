@@ -551,16 +551,16 @@ if __name__ == "__main__":
         detailed_machine_analysis("logs", test_logger.experiment_name)
 
 
-# Example usage with new parameters
-jsp_file = "data.json" # Or your data file
-trained_agent, trained_env, training_logger = train_gym_ppo(
-    jsp_file,
-    num_episodes=1000, # Example: Increase episodes
-    save_interval=100,
-    batch_size=64,
-    initial_lr=5e-4,
-    final_lr=1e-5,
-    initial_entropy_coef=0.02,
-    final_entropy_coef=0.001
-)
-    # ... testing code ...
+# # Example usage with new parameters
+# jsp_file = "data.json" # Or your data file
+# trained_agent, trained_env, training_logger = train_gym_ppo(
+#     jsp_file,
+#     num_episodes=1000, # Example: Increase episodes
+#     save_interval=100,
+#     batch_size=64,
+#     initial_lr=5e-4,
+#     final_lr=1e-5,
+#     initial_entropy_coef=0.02,
+#     final_entropy_coef=0.001
+# )
+#     # ... testing code ...

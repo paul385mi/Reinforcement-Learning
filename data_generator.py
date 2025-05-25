@@ -28,9 +28,63 @@ def generate_jsp_data(num_jobs):
     
     # Umrüstzeiten zwischen verschiedenen Produktionsschritten (in Minuten)
     SETUP_TIMES = {
-        "M1": {"standard": 25, "materialChange": 40},  # Umrüstung der Schweissvorrichtungen dauert länger
-        "M2": {"standard": 15, "materialChange": 20},  # CNC-Maschinen können schneller umgerüstet werden
-        "M3": {"standard": 10, "materialChange": 15}   # Montagestation ist flexibler
+        "M1": {
+            "standard": 25,
+            "materialChange": 40,  # Wird als Fallback verwendet
+            "materialTransitions": {
+                # Übergänge zwischen Fahrradtypen
+                "Mountainbike_to_Racebike": random.randint(35, 50),
+                "Mountainbike_to_Citybike": random.randint(30, 45),
+                "Mountainbike_to_E-Bike": random.randint(45, 60),
+                "Racebike_to_Mountainbike": random.randint(35, 50),
+                "Racebike_to_Citybike": random.randint(30, 45),
+                "Racebike_to_E-Bike": random.randint(45, 60),
+                "Citybike_to_Mountainbike": random.randint(30, 45),
+                "Citybike_to_Racebike": random.randint(30, 45),
+                "Citybike_to_E-Bike": random.randint(40, 55),
+                "E-Bike_to_Mountainbike": random.randint(45, 60),
+                "E-Bike_to_Racebike": random.randint(45, 60),
+                "E-Bike_to_Citybike": random.randint(40, 55)
+            }
+        },
+        "M2": {
+            "standard": 15,
+            "materialChange": 20,  # Wird als Fallback verwendet
+            "materialTransitions": {
+                # Übergänge zwischen Fahrradtypen
+                "Mountainbike_to_Racebike": random.randint(15, 25),
+                "Mountainbike_to_Citybike": random.randint(15, 25),
+                "Mountainbike_to_E-Bike": random.randint(20, 30),
+                "Racebike_to_Mountainbike": random.randint(15, 25),
+                "Racebike_to_Citybike": random.randint(15, 25),
+                "Racebike_to_E-Bike": random.randint(20, 30),
+                "Citybike_to_Mountainbike": random.randint(15, 25),
+                "Citybike_to_Racebike": random.randint(15, 25),
+                "Citybike_to_E-Bike": random.randint(20, 30),
+                "E-Bike_to_Mountainbike": random.randint(20, 30),
+                "E-Bike_to_Racebike": random.randint(20, 30),
+                "E-Bike_to_Citybike": random.randint(20, 30)
+            }
+        },
+        "M3": {
+            "standard": 10,
+            "materialChange": 15,  # Wird als Fallback verwendet
+            "materialTransitions": {
+                # Übergänge zwischen Fahrradtypen
+                "Mountainbike_to_Racebike": random.randint(12, 20),
+                "Mountainbike_to_Citybike": random.randint(10, 18),
+                "Mountainbike_to_E-Bike": random.randint(15, 25),
+                "Racebike_to_Mountainbike": random.randint(12, 20),
+                "Racebike_to_Citybike": random.randint(10, 18),
+                "Racebike_to_E-Bike": random.randint(15, 25),
+                "Citybike_to_Mountainbike": random.randint(10, 18),
+                "Citybike_to_Racebike": random.randint(10, 18),
+                "Citybike_to_E-Bike": random.randint(15, 25),
+                "E-Bike_to_Mountainbike": random.randint(15, 25),
+                "E-Bike_to_Racebike": random.randint(15, 25),
+                "E-Bike_to_Citybike": random.randint(15, 25)
+            }
+        }
     }
     
     # Realistische Fahrradmodelle
@@ -41,33 +95,24 @@ def generate_jsp_data(num_jobs):
         "E-Bike",       # E-Bike-Modell
     ]
     
-    # Produktionsschritte und Komponenten nach Maschinengruppe
-    PRODUCTION_STEPS = {
-        # Rahmenfertigung
-        "M1": [
-            "Hauptrahmen_zugeschnitten",
-            "Hinterbau_vorbereitet", 
-            "Tretlageraufnahme_geschweisst", 
-            "Steuerrohr_montiert",
-            "Rahmen_komplettiert"
-        ],
-        # CNC-Bearbeitung
-        "M2": [
-            "Tretlager_gefraest", 
-            "Schaltauge_bearbeitet", 
-            "Steuerrohr_ausgerieben",
-            "Bremsaufnahme_gebohrt",
-            "Rahmen_nachbearbeitet"
-        ],
-        # Endmontage
-        "M3": [
-            "Rahmen_lackiert", 
-            "Laufraeder_montiert", 
-            "Antrieb_installiert",
-            "Bremsen_justiert",
-            "Fahrrad_endmontiert"
-        ]
-    }
+    # Produktionsschritte für alle Maschinen
+    ALL_PRODUCTION_STEPS = [
+        "Hauptrahmen_zugeschnitten",
+        "Hinterbau_vorbereitet", 
+        "Tretlageraufnahme_geschweisst", 
+        "Steuerrohr_montiert",
+        "Rahmen_komplettiert",
+        "Tretlager_gefraest", 
+        "Schaltauge_bearbeitet", 
+        "Steuerrohr_ausgerieben",
+        "Bremsaufnahme_gebohrt",
+        "Rahmen_nachbearbeitet",
+        "Rahmen_lackiert", 
+        "Laufraeder_montiert", 
+        "Antrieb_installiert",
+        "Bremsen_justiert",
+        "Fahrrad_endmontiert"
+    ]
     
     # Generiere Jobs
     jobs = []
@@ -86,32 +131,24 @@ def generate_jsp_data(num_jobs):
         deadline = 0
         
         # Ein realistischer Produktionsablauf hat 5-8 Schritte
-        # Jedes Fahrrad durchläuft alle drei Maschinenstationen, manche mehrfach
         num_operations = random.randint(5, 8)
         
         # Generiere Operationen
         operations = []
         
-        # Realistische Produktionsreihenfolge für Fahrräder:
-        # 1. Immer mit Rahmenfertigung beginnen (M1)
-        # 2. Dann CNC-Bearbeitung (M2)
-        # 3. Dann Endmontage (M3)
-        # 4. Bei Bedarf weitere Schritte in verschiedenen Stationen
+        # Generiere eine zufällige Maschinensequenz für die Operationen
+        machine_ids = []
+        for _ in range(num_operations):
+            machine_ids.append(random.choice(["M1", "M2", "M3"]))
         
-        # Basis-Sequenz für die ersten drei Operationen
-        machine_sequence = ["M1", "M2", "M3"]
-        
-        # Ergänze mit zufälligen weiteren Schritten wenn nötig
-        while len(machine_sequence) < num_operations:
-            # Zusätzliche Schritte folgen typischerweise einem realistischen Muster
-            # Häufig wird zwischen CNC und Endmontage gewechselt
-            machine_sequence.append(random.choice(["M2", "M3"]))
+        # Wähle zufällige Produktionsschritte
+        production_steps = random.sample(ALL_PRODUCTION_STEPS, num_operations)
         
         for op in range(1, num_operations + 1):
-            # Verwende die vorbereitete Maschinensequenz
-            machine_id = machine_sequence[op-1]
+            # Verwende die zufällig generierte Maschinensequenz
+            machine_id = machine_ids[op-1]
             
-            # Realistische Verarbeitungszeiten je nach Maschinentyp und Produktionsschritt
+            # Realistische Verarbeitungszeiten je nach Maschinentyp
             if machine_id == "M1":
                 # Rahmenfertigung dauert typischerweise länger (15-45 Minuten)
                 processing_time = random.randint(15, 45)
@@ -127,24 +164,8 @@ def generate_jsp_data(num_jobs):
             if op > 1:
                 predecessors.append(f"J{j}:OP{op-1}")
             
-            # Wähle einen realistischen Produktionsschritt basierend auf der Maschine
-            # und der Position im Produktionsablauf
-            if op == 1:
-                # Erster Schritt ist immer Rahmenvorbereitung
-                production_step = PRODUCTION_STEPS["M1"][0]
-            elif op == num_operations:
-                # Letzter Schritt ist immer Endmontage
-                production_step = "Fahrrad_endmontiert"
-            else:
-                # Zwischenschritte entsprechend der Maschinenstation
-                # Vermeide Wiederholung des gleichen Schritts
-                available_steps = PRODUCTION_STEPS[machine_id]
-                if op > 1 and op < len(machine_sequence):
-                    # Wähle Schritte basierend auf der Position im Produktionsablauf
-                    step_index = min(op-1, len(available_steps)-1)
-                    production_step = available_steps[step_index]
-                else:
-                    production_step = random.choice(available_steps)
+            # Wähle einen Produktionsschritt
+            production_step = production_steps[op-1]
             
             # Kombiniere Fahrradmodell mit Produktionsschritt
             material = f"{bike_model}_{production_step}"
