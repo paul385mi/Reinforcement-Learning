@@ -7,24 +7,22 @@
 #SBATCH --time=04:00:00
 #SBATCH --output=jsp_train_%j.out
 
-echo "== Lade Module =="
+echo "== Lade Python- & CUDA-Module =="
 module purge
-module load python
+module load python/3.10  # oder die Python-Version, die auf deinem Cluster verfügbar ist
+module load cuda/11.8    # passend zu PyTorch-Version
 
-echo "== Wechsle in das Projektverzeichnis =="
+echo "== Wechsle ins Projektverzeichnis =="
 cd ~/Reinforcement-Learning
 
-echo "== (Re)Erstelle venv auf GPU-Node =="
-rm -rf venv
-python3 -m venv venv
-source venv/bin/activate
+echo "== Installiere notwendige Pakete (falls nötig) =="
+pip install --user torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+[ -f requirements.txt ] && pip install --user -r requirements.txt
 
-echo "== Installiere CUDA-kompatibles PyTorch =="
-pip install --upgrade pip
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-
-echo "== Installiere restliche Abhängigkeiten =="
-pip install -r requirements.txt
+echo "== Verifiziere CUDA-Zugriff =="
+python -c "import torch; print('CUDA verfügbar:', torch.cuda.is_available())"
 
 echo "== Starte Training =="
-python train_gym_ppo.py --episodes 1000
+python train_gym_ppo.py --episodes 10
+
+echo "== Training beendet =="
