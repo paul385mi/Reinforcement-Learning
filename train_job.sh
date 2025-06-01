@@ -1,31 +1,25 @@
 #!/bin/bash
 #SBATCH --job-name=jsp_gpu_train
 #SBATCH --partition=scc-gpu
-#SBATCH --gres=gpu:1
+#SBATCH --gpus=A100:1                 # Spezifische GPU anfordern
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
 #SBATCH --time=04:00:00
 #SBATCH --output=jsp_train_%j.out
 
-echo "== Lade Module =="
+# Umgebung vorbereiten
 module purge
-module load python/3.10
-module load cuda/11.8
+module load python
 
-echo "== Erstelle/aktiviere virtuelle Umgebung =="
 cd ~/Reinforcement-Learning
-python3 -m venv venv
+
+# Virtuelle Umgebung aktivieren
 source venv/bin/activate
 
-echo "== Installiere Pakete =="
-pip install --upgrade pip
-pip install numpy matplotlib torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# CUDA-Verfügbarkeit prüfen
+python -c "import torch; print('CUDA verfügbar:', torch.cuda.is_available())"
 
-if [ -f requirements.txt ]; then
-    pip install -r requirements.txt
-fi
-
-echo "== Starte Training =="
+# Training starten
 python train_gym_ppo.py --episodes 10
 
 echo "== Job beendet =="
