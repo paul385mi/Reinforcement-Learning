@@ -2,7 +2,6 @@
 #SBATCH --job-name=jsp_gpu_train
 #SBATCH --partition=scc-gpu             # GPU-Partition der GWDG
 #SBATCH --gres=gpu:1                    # 1 GPU
-#SBATCH --constraint=a100               # GPU-Typ explizit anfordern (z. B. a100, v100, a40)
 #SBATCH --cpus-per-task=4               # CPU-Kerne pro Task
 #SBATCH --mem=16G                       # Arbeitsspeicher
 #SBATCH --time=04:00:00                 # Max. Laufzeit
