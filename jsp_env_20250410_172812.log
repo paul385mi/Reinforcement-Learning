@@ -1,4 +1,0 @@
-2025-04-10 17:28:12,210 - JSPGymEnvironment - INFO - Environment reset
-2025-04-10 17:28:12,282 - JSPGymEnvironment - INFO - Environment reset
-2025-04-10 17:28:12,318 - JSPGymEnvironment - INFO - Material change on machine M1:  -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 0
-2025-04-10 17:28:12,319 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 0, Machine M1, Start: 0.0, End: 19.0, Setup: 0

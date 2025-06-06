@@ -1,4 +1,0 @@
-2025-05-22 15:11:37,185 - JSPGymEnvironment - INFO - Environment reset
-2025-05-22 15:11:37,271 - JSPGymEnvironment - INFO - Environment reset
-2025-05-22 15:11:37,412 - JSPGymEnvironment - INFO - Material change on machine M1:  -> Citybike_Hauptrahmen_zugeschnitten, setup time: 0
-2025-05-22 15:11:37,412 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 0, Machine M1, Start: 0, End: 16, Setup: 0
