@@ -1,0 +1,157 @@
+{
+  "jobs": [
+    {
+      "id": "J1",
+      "priority": 3,
+      "deadline": 2413,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 42,
+          "predecessors": [],
+          "material": "Mountainbike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 30,
+          "predecessors": [
+            "J1:OP1"
+          ],
+          "material": "Mountainbike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 32,
+          "predecessors": [
+            "J1:OP2"
+          ],
+          "material": "Mountainbike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 52,
+          "predecessors": [
+            "J1:OP3"
+          ],
+          "material": "Mountainbike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 32,
+          "predecessors": [
+            "J1:OP4"
+          ],
+          "material": "Mountainbike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 20,
+          "predecessors": [
+            "J1:OP5"
+          ],
+          "material": "Mountainbike_Antrieb_installiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 18,
+          "predecessors": [
+            "J1:OP6"
+          ],
+          "material": "Mountainbike_Rahmen_komplettiert"
+        }
+      ]
+    }
+  ],
+  "machines": [
+    {
+      "id": "M1",
+      "name": "Rahmenfertigung",
+      "capabilities": [
+        "Rohrzuschnitt",
+        "Rahmenl\u00f6tung",
+        "Rahmenschweissung"
+      ]
+    },
+    {
+      "id": "M2",
+      "name": "CNC-Bearbeitung",
+      "capabilities": [
+        "Fr\u00e4sen",
+        "Bohren",
+        "Gewindeschneiden"
+      ]
+    },
+    {
+      "id": "M3",
+      "name": "Endmontage",
+      "capabilities": [
+        "Radmontage",
+        "Komponentenmontage",
+        "Qualit\u00e4tskontrolle"
+      ]
+    }
+  ],
+  "setupTimes": {
+    "M1": {
+      "standard": 25,
+      "materialChange": 40,
+      "materialTransitions": {
+        "Mountainbike_to_Racebike": 38,
+        "Mountainbike_to_Citybike": 39,
+        "Mountainbike_to_E-Bike": 46,
+        "Racebike_to_Mountainbike": 38,
+        "Racebike_to_Citybike": 45,
+        "Racebike_to_E-Bike": 49,
+        "Citybike_to_Mountainbike": 40,
+        "Citybike_to_Racebike": 39,
+        "Citybike_to_E-Bike": 40,
+        "E-Bike_to_Mountainbike": 53,
+        "E-Bike_to_Racebike": 45,
+        "E-Bike_to_Citybike": 40
+      }
+    },
+    "M2": {
+      "standard": 15,
+      "materialChange": 20,
+      "materialTransitions": {
+        "Mountainbike_to_Racebike": 25,
+        "Mountainbike_to_Citybike": 15,
+        "Mountainbike_to_E-Bike": 25,
+        "Racebike_to_Mountainbike": 25,
+        "Racebike_to_Citybike": 19,
+        "Racebike_to_E-Bike": 22,
+        "Citybike_to_Mountainbike": 18,
+        "Citybike_to_Racebike": 20,
+        "Citybike_to_E-Bike": 27,
+        "E-Bike_to_Mountainbike": 29,
+        "E-Bike_to_Racebike": 30,
+        "E-Bike_to_Citybike": 25
+      }
+    },
+    "M3": {
+      "standard": 10,
+      "materialChange": 15,
+      "materialTransitions": {
+        "Mountainbike_to_Racebike": 18,
+        "Mountainbike_to_Citybike": 18,
+        "Mountainbike_to_E-Bike": 21,
+        "Racebike_to_Mountainbike": 17,
+        "Racebike_to_Citybike": 17,
+        "Racebike_to_E-Bike": 24,
+        "Citybike_to_Mountainbike": 14,
+        "Citybike_to_Racebike": 13,
+        "Citybike_to_E-Bike": 19,
+        "E-Bike_to_Mountainbike": 23,
+        "E-Bike_to_Racebike": 19,
+        "E-Bike_to_Citybike": 21
+      }
+    }
+  }
+}

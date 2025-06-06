@@ -1,5 +1,4 @@
 exp
-venv/
 # Ignore specific log files
 jsp_env_*.log
 

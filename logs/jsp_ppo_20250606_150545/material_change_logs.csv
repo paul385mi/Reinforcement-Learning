@@ -1,0 +1,5 @@
+episode,step,machine_idx,old_material,new_material,setup_time
+1,3,0,Mountainbike_Tretlager_gefraest,Mountainbike_Tretlager_gefraest,40
+1,5,2,Mountainbike_Rahmen_lackiert,Mountainbike_Rahmen_lackiert,15
+1,6,1,Mountainbike_Antrieb_installiert,Mountainbike_Antrieb_installiert,20
+1,7,0,Mountainbike_Rahmen_komplettiert,Mountainbike_Rahmen_komplettiert,40

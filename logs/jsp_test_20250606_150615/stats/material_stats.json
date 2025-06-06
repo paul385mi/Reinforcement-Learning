@@ -1,0 +1,27 @@
+{
+  "M1": {
+    "total_changes": 3,
+    "total_setup_time": 80,
+    "material_counts": {
+      "Mountainbike_Steuerrohr_montiert": 1,
+      "Mountainbike_Tretlager_gefraest": 1,
+      "Mountainbike_Rahmen_komplettiert": 1
+    }
+  },
+  "M2": {
+    "total_changes": 2,
+    "total_setup_time": 20,
+    "material_counts": {
+      "Mountainbike_Fahrrad_endmontiert": 1,
+      "Mountainbike_Antrieb_installiert": 1
+    }
+  },
+  "M3": {
+    "total_changes": 2,
+    "total_setup_time": 15,
+    "material_counts": {
+      "Mountainbike_Rahmen_nachbearbeitet": 1,
+      "Mountainbike_Rahmen_lackiert": 1
+    }
+  }
+}
