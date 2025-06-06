@@ -1,2 +1,10 @@
 exp
 venv/
+# Ignore specific log files
+jsp_env_*.log
+
+# Ignore all log files in root directory
+/*.log
+
+# Alternatively, ignore all log files throughout the project
+**/*.log
