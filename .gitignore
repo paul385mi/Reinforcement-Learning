@@ -1,6 +1,7 @@
-exp
+lsexp
 # Ignore specific log files
 jsp_env_*.log
+venv
 
 # Ignore all log files in root directory
 /*.log
