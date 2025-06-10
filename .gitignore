@@ -8,6 +8,9 @@ venv
 # Ignore all log files throughout the project
 **/*.log
 
+# Ignore all CSV files in logs directory
+logs/**/*.csv
+
 # Exception: Include step_logs.csv specifically
 !**/step_logs.csv
-!step_logs.csv
+!logs/**/step_logs.csv

@@ -2,192 +2,237 @@
   "jobs": [
     {
       "id": "J1",
-      "priority": 8,
-      "deadline": 2762,
+      "priority": 7,
+      "deadline": 2835,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 11,
+          "machineId": "M3",
+          "processingTime": 47,
           "predecessors": [],
-          "material": "E-Bike_Rahmen_nachbearbeitet"
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
         },
         {
           "id": "OP2",
           "machineId": "M1",
-          "processingTime": 19,
+          "processingTime": 25,
           "predecessors": [
             "J1:OP1"
           ],
-          "material": "E-Bike_Tretlager_gefraest"
+          "material": "E-Bike_Steuerrohr_montiert"
         },
         {
           "id": "OP3",
           "machineId": "M1",
-          "processingTime": 34,
+          "processingTime": 16,
           "predecessors": [
             "J1:OP2"
+          ],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 21,
+          "predecessors": [
+            "J1:OP3"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 44,
+          "predecessors": [
+            "J1:OP4"
+          ],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 30,
+          "predecessors": [
+            "J1:OP5"
           ],
           "material": "E-Bike_Steuerrohr_ausgerieben"
         },
         {
-          "id": "OP4",
+          "id": "OP7",
           "machineId": "M3",
-          "processingTime": 56,
+          "processingTime": 58,
           "predecessors": [
-            "J1:OP3"
+            "J1:OP6"
           ],
-          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+          "material": "E-Bike_Fahrrad_endmontiert"
         },
         {
-          "id": "OP5",
-          "machineId": "M1",
-          "processingTime": 18,
+          "id": "OP8",
+          "machineId": "M3",
+          "processingTime": 45,
           "predecessors": [
-            "J1:OP4"
+            "J1:OP7"
           ],
-          "material": "E-Bike_Schaltauge_bearbeitet"
+          "material": "E-Bike_Tretlager_gefraest"
         }
       ]
     },
     {
       "id": "J2",
-      "priority": 8,
-      "deadline": 2794,
+      "priority": 7,
+      "deadline": 2819,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 25,
+          "machineId": "M1",
+          "processingTime": 30,
           "predecessors": [],
-          "material": "E-Bike_Bremsen_justiert"
+          "material": "E-Bike_Hinterbau_vorbereitet"
         },
         {
           "id": "OP2",
-          "machineId": "M3",
-          "processingTime": 26,
+          "machineId": "M1",
+          "processingTime": 44,
           "predecessors": [
             "J2:OP1"
           ],
-          "material": "E-Bike_Tretlager_gefraest"
+          "material": "E-Bike_Antrieb_installiert"
         },
         {
           "id": "OP3",
-          "machineId": "M3",
-          "processingTime": 32,
+          "machineId": "M2",
+          "processingTime": 23,
           "predecessors": [
             "J2:OP2"
-          ],
-          "material": "E-Bike_Rahmen_lackiert"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 19,
-          "predecessors": [
-            "J2:OP3"
           ],
           "material": "E-Bike_Tretlageraufnahme_geschweisst"
         },
         {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 17,
+          "predecessors": [
+            "J2:OP3"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        },
+        {
           "id": "OP5",
           "machineId": "M3",
-          "processingTime": 33,
+          "processingTime": 46,
           "predecessors": [
             "J2:OP4"
           ],
-          "material": "E-Bike_Rahmen_nachbearbeitet"
+          "material": "E-Bike_Steuerrohr_ausgerieben"
         },
         {
           "id": "OP6",
-          "machineId": "M1",
-          "processingTime": 33,
+          "machineId": "M2",
+          "processingTime": 16,
           "predecessors": [
             "J2:OP5"
           ],
-          "material": "E-Bike_Hinterbau_vorbereitet"
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 12,
+          "predecessors": [
+            "J2:OP6"
+          ],
+          "material": "E-Bike_Steuerrohr_montiert"
         }
       ]
     },
     {
       "id": "J3",
-      "priority": 8,
+      "priority": 7,
       "deadline": 2880,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M3",
-          "processingTime": 20,
+          "machineId": "M2",
+          "processingTime": 19,
           "predecessors": [],
-          "material": "E-Bike_Bremsen_justiert"
+          "material": "Racebike_Rahmen_komplettiert"
         },
         {
           "id": "OP2",
-          "machineId": "M2",
-          "processingTime": 25,
+          "machineId": "M3",
+          "processingTime": 44,
           "predecessors": [
             "J3:OP1"
           ],
-          "material": "E-Bike_Steuerrohr_ausgerieben"
+          "material": "Racebike_Bremsen_justiert"
         },
         {
           "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 17,
+          "machineId": "M1",
+          "processingTime": 41,
           "predecessors": [
             "J3:OP2"
           ],
-          "material": "E-Bike_Rahmen_nachbearbeitet"
+          "material": "Racebike_Bremsaufnahme_gebohrt"
         },
         {
           "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 20,
+          "machineId": "M3",
+          "processingTime": 57,
           "predecessors": [
             "J3:OP3"
           ],
-          "material": "E-Bike_Antrieb_installiert"
+          "material": "Racebike_Schaltauge_bearbeitet"
         },
         {
           "id": "OP5",
-          "machineId": "M1",
-          "processingTime": 42,
+          "machineId": "M2",
+          "processingTime": 12,
           "predecessors": [
             "J3:OP4"
           ],
-          "material": "E-Bike_Fahrrad_endmontiert"
+          "material": "Racebike_Antrieb_installiert"
         },
         {
           "id": "OP6",
-          "machineId": "M3",
-          "processingTime": 40,
+          "machineId": "M2",
+          "processingTime": 10,
           "predecessors": [
             "J3:OP5"
           ],
-          "material": "E-Bike_Rahmen_lackiert"
+          "material": "Racebike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J3:OP6"
+          ],
+          "material": "Racebike_Rahmen_nachbearbeitet"
         }
       ]
     },
     {
       "id": "J4",
-      "priority": 4,
-      "deadline": 2835,
+      "priority": 7,
+      "deadline": 2810,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 18,
+          "machineId": "M1",
+          "processingTime": 39,
           "predecessors": [],
-          "material": "Citybike_Steuerrohr_ausgerieben"
+          "material": "Racebike_Laufraeder_montiert"
         },
         {
           "id": "OP2",
           "machineId": "M1",
-          "processingTime": 20,
+          "processingTime": 43,
           "predecessors": [
             "J4:OP1"
           ],
-          "material": "Citybike_Schaltauge_bearbeitet"
+          "material": "Racebike_Rahmen_lackiert"
         },
         {
           "id": "OP3",
@@ -196,1010 +241,1001 @@
           "predecessors": [
             "J4:OP2"
           ],
-          "material": "Citybike_Hinterbau_vorbereitet"
+          "material": "Racebike_Rahmen_nachbearbeitet"
         },
         {
           "id": "OP4",
           "machineId": "M3",
-          "processingTime": 29,
+          "processingTime": 24,
           "predecessors": [
             "J4:OP3"
           ],
-          "material": "Citybike_Bremsen_justiert"
+          "material": "Racebike_Steuerrohr_ausgerieben"
         },
         {
           "id": "OP5",
-          "machineId": "M3",
-          "processingTime": 50,
+          "machineId": "M1",
+          "processingTime": 20,
           "predecessors": [
             "J4:OP4"
           ],
-          "material": "Citybike_Tretlager_gefraest"
-        },
-        {
-          "id": "OP6",
-          "machineId": "M3",
-          "processingTime": 32,
-          "predecessors": [
-            "J4:OP5"
-          ],
-          "material": "Citybike_Tretlageraufnahme_geschweisst"
+          "material": "Racebike_Bremsen_justiert"
         }
       ]
     },
     {
       "id": "J5",
-      "priority": 9,
+      "priority": 5,
       "deadline": 2880,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M1",
-          "processingTime": 32,
+          "machineId": "M3",
+          "processingTime": 25,
           "predecessors": [],
-          "material": "E-Bike_Bremsen_justiert"
+          "material": "Mountainbike_Schaltauge_bearbeitet"
         },
         {
           "id": "OP2",
-          "machineId": "M2",
-          "processingTime": 15,
+          "machineId": "M3",
+          "processingTime": 23,
           "predecessors": [
             "J5:OP1"
           ],
-          "material": "E-Bike_Rahmen_lackiert"
+          "material": "Mountainbike_Hinterbau_vorbereitet"
         },
         {
           "id": "OP3",
           "machineId": "M2",
-          "processingTime": 24,
+          "processingTime": 21,
           "predecessors": [
             "J5:OP2"
           ],
-          "material": "E-Bike_Bremsaufnahme_gebohrt"
+          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
         },
         {
           "id": "OP4",
           "machineId": "M2",
-          "processingTime": 30,
+          "processingTime": 15,
           "predecessors": [
             "J5:OP3"
           ],
-          "material": "E-Bike_Steuerrohr_ausgerieben"
+          "material": "Mountainbike_Tretlager_gefraest"
         },
         {
           "id": "OP5",
-          "machineId": "M2",
-          "processingTime": 14,
+          "machineId": "M1",
+          "processingTime": 28,
           "predecessors": [
             "J5:OP4"
           ],
-          "material": "E-Bike_Schaltauge_bearbeitet"
+          "material": "Mountainbike_Laufraeder_montiert"
         },
         {
           "id": "OP6",
           "machineId": "M2",
-          "processingTime": 16,
+          "processingTime": 28,
           "predecessors": [
             "J5:OP5"
           ],
-          "material": "E-Bike_Fahrrad_endmontiert"
+          "material": "Mountainbike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 33,
+          "predecessors": [
+            "J5:OP6"
+          ],
+          "material": "Mountainbike_Bremsen_justiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 20,
+          "predecessors": [
+            "J5:OP7"
+          ],
+          "material": "Mountainbike_Rahmen_lackiert"
         }
       ]
     },
     {
       "id": "J6",
       "priority": 8,
-      "deadline": 2744,
+      "deadline": 2880,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M3",
-          "processingTime": 43,
+          "machineId": "M1",
+          "processingTime": 36,
           "predecessors": [],
-          "material": "Racebike_Bremsen_justiert"
+          "material": "Citybike_Laufraeder_montiert"
         },
         {
           "id": "OP2",
           "machineId": "M3",
-          "processingTime": 37,
+          "processingTime": 26,
           "predecessors": [
             "J6:OP1"
           ],
-          "material": "Racebike_Hauptrahmen_zugeschnitten"
+          "material": "Citybike_Antrieb_installiert"
         },
         {
           "id": "OP3",
           "machineId": "M2",
-          "processingTime": 12,
+          "processingTime": 23,
           "predecessors": [
             "J6:OP2"
           ],
-          "material": "Racebike_Rahmen_lackiert"
+          "material": "Citybike_Hinterbau_vorbereitet"
         },
         {
           "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 26,
+          "machineId": "M1",
+          "processingTime": 37,
           "predecessors": [
             "J6:OP3"
           ],
-          "material": "Racebike_Bremsaufnahme_gebohrt"
+          "material": "Citybike_Fahrrad_endmontiert"
         },
         {
           "id": "OP5",
           "machineId": "M3",
-          "processingTime": 54,
+          "processingTime": 23,
           "predecessors": [
             "J6:OP4"
           ],
-          "material": "Racebike_Steuerrohr_ausgerieben"
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 35,
+          "predecessors": [
+            "J6:OP5"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [
+            "J6:OP6"
+          ],
+          "material": "Citybike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M3",
+          "processingTime": 22,
+          "predecessors": [
+            "J6:OP7"
+          ],
+          "material": "Citybike_Tretlager_gefraest"
         }
       ]
     },
     {
       "id": "J7",
       "priority": 7,
-      "deadline": 2841,
+      "deadline": 2749,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M3",
-          "processingTime": 54,
-          "predecessors": [],
-          "material": "Racebike_Bremsen_justiert"
-        },
-        {
-          "id": "OP2",
-          "machineId": "M1",
-          "processingTime": 38,
-          "predecessors": [
-            "J7:OP1"
-          ],
-          "material": "Racebike_Hauptrahmen_zugeschnitten"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M3",
-          "processingTime": 25,
-          "predecessors": [
-            "J7:OP2"
-          ],
-          "material": "Racebike_Rahmen_nachbearbeitet"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M3",
-          "processingTime": 50,
-          "predecessors": [
-            "J7:OP3"
-          ],
-          "material": "Racebike_Bremsaufnahme_gebohrt"
-        },
-        {
-          "id": "OP5",
-          "machineId": "M3",
-          "processingTime": 54,
-          "predecessors": [
-            "J7:OP4"
-          ],
-          "material": "Racebike_Steuerrohr_montiert"
-        },
-        {
-          "id": "OP6",
-          "machineId": "M3",
-          "processingTime": 51,
-          "predecessors": [
-            "J7:OP5"
-          ],
-          "material": "Racebike_Rahmen_komplettiert"
-        },
-        {
-          "id": "OP7",
           "machineId": "M2",
-          "processingTime": 29,
-          "predecessors": [
-            "J7:OP6"
-          ],
-          "material": "Racebike_Laufraeder_montiert"
-        }
-      ]
-    },
-    {
-      "id": "J8",
-      "priority": 2,
-      "deadline": 2880,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M3",
-          "processingTime": 29,
-          "predecessors": [],
-          "material": "Citybike_Rahmen_lackiert"
-        },
-        {
-          "id": "OP2",
-          "machineId": "M2",
-          "processingTime": 29,
-          "predecessors": [
-            "J8:OP1"
-          ],
-          "material": "Citybike_Schaltauge_bearbeitet"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M3",
-          "processingTime": 52,
-          "predecessors": [
-            "J8:OP2"
-          ],
-          "material": "Citybike_Rahmen_komplettiert"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 20,
-          "predecessors": [
-            "J8:OP3"
-          ],
-          "material": "Citybike_Steuerrohr_montiert"
-        },
-        {
-          "id": "OP5",
-          "machineId": "M2",
-          "processingTime": 16,
-          "predecessors": [
-            "J8:OP4"
-          ],
-          "material": "Citybike_Steuerrohr_ausgerieben"
-        },
-        {
-          "id": "OP6",
-          "machineId": "M3",
-          "processingTime": 51,
-          "predecessors": [
-            "J8:OP5"
-          ],
-          "material": "Citybike_Fahrrad_endmontiert"
-        },
-        {
-          "id": "OP7",
-          "machineId": "M1",
-          "processingTime": 18,
-          "predecessors": [
-            "J8:OP6"
-          ],
-          "material": "Citybike_Antrieb_installiert"
-        },
-        {
-          "id": "OP8",
-          "machineId": "M3",
-          "processingTime": 34,
-          "predecessors": [
-            "J8:OP7"
-          ],
-          "material": "Citybike_Laufraeder_montiert"
-        }
-      ]
-    },
-    {
-      "id": "J9",
-      "priority": 1,
-      "deadline": 2817,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M3",
-          "processingTime": 24,
+          "processingTime": 26,
           "predecessors": [],
           "material": "Citybike_Hauptrahmen_zugeschnitten"
         },
         {
           "id": "OP2",
           "machineId": "M2",
-          "processingTime": 20,
+          "processingTime": 26,
           "predecessors": [
-            "J9:OP1"
-          ],
-          "material": "Citybike_Tretlager_gefraest"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M1",
-          "processingTime": 27,
-          "predecessors": [
-            "J9:OP2"
+            "J7:OP1"
           ],
           "material": "Citybike_Rahmen_lackiert"
         },
         {
-          "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 21,
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 31,
           "predecessors": [
-            "J9:OP3"
+            "J7:OP2"
           ],
-          "material": "Citybike_Rahmen_komplettiert"
+          "material": "Citybike_Schaltauge_bearbeitet"
         },
         {
-          "id": "OP5",
-          "machineId": "M2",
-          "processingTime": 28,
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 35,
           "predecessors": [
-            "J9:OP4"
+            "J7:OP3"
           ],
           "material": "Citybike_Rahmen_nachbearbeitet"
         },
         {
-          "id": "OP6",
-          "machineId": "M3",
-          "processingTime": 27,
-          "predecessors": [
-            "J9:OP5"
-          ],
-          "material": "Citybike_Hinterbau_vorbereitet"
-        },
-        {
-          "id": "OP7",
-          "machineId": "M1",
-          "processingTime": 19,
-          "predecessors": [
-            "J9:OP6"
-          ],
-          "material": "Citybike_Antrieb_installiert"
-        },
-        {
-          "id": "OP8",
-          "machineId": "M2",
-          "processingTime": 25,
-          "predecessors": [
-            "J9:OP7"
-          ],
-          "material": "Citybike_Bremsaufnahme_gebohrt"
-        }
-      ]
-    },
-    {
-      "id": "J10",
-      "priority": 3,
-      "deadline": 2865,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 12,
-          "predecessors": [],
-          "material": "Mountainbike_Steuerrohr_ausgerieben"
-        },
-        {
-          "id": "OP2",
-          "machineId": "M2",
-          "processingTime": 25,
-          "predecessors": [
-            "J10:OP1"
-          ],
-          "material": "Mountainbike_Steuerrohr_montiert"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M1",
-          "processingTime": 45,
-          "predecessors": [
-            "J10:OP2"
-          ],
-          "material": "Mountainbike_Hinterbau_vorbereitet"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M3",
-          "processingTime": 24,
-          "predecessors": [
-            "J10:OP3"
-          ],
-          "material": "Mountainbike_Tretlager_gefraest"
-        },
-        {
-          "id": "OP5",
-          "machineId": "M1",
-          "processingTime": 20,
-          "predecessors": [
-            "J10:OP4"
-          ],
-          "material": "Mountainbike_Schaltauge_bearbeitet"
-        },
-        {
-          "id": "OP6",
-          "machineId": "M1",
-          "processingTime": 21,
-          "predecessors": [
-            "J10:OP5"
-          ],
-          "material": "Mountainbike_Bremsen_justiert"
-        }
-      ]
-    },
-    {
-      "id": "J11",
-      "priority": 10,
-      "deadline": 2880,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 16,
-          "predecessors": [],
-          "material": "Racebike_Steuerrohr_ausgerieben"
-        },
-        {
-          "id": "OP2",
-          "machineId": "M2",
-          "processingTime": 29,
-          "predecessors": [
-            "J11:OP1"
-          ],
-          "material": "Racebike_Rahmen_nachbearbeitet"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 24,
-          "predecessors": [
-            "J11:OP2"
-          ],
-          "material": "Racebike_Steuerrohr_montiert"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 21,
-          "predecessors": [
-            "J11:OP3"
-          ],
-          "material": "Racebike_Schaltauge_bearbeitet"
-        },
-        {
           "id": "OP5",
           "machineId": "M2",
-          "processingTime": 13,
+          "processingTime": 15,
           "predecessors": [
-            "J11:OP4"
+            "J7:OP4"
           ],
-          "material": "Racebike_Tretlager_gefraest"
-        },
-        {
-          "id": "OP6",
-          "machineId": "M2",
-          "processingTime": 25,
-          "predecessors": [
-            "J11:OP5"
-          ],
-          "material": "Racebike_Bremsaufnahme_gebohrt"
-        },
-        {
-          "id": "OP7",
-          "machineId": "M2",
-          "processingTime": 27,
-          "predecessors": [
-            "J11:OP6"
-          ],
-          "material": "Racebike_Rahmen_komplettiert"
-        },
-        {
-          "id": "OP8",
-          "machineId": "M1",
-          "processingTime": 20,
-          "predecessors": [
-            "J11:OP7"
-          ],
-          "material": "Racebike_Rahmen_lackiert"
+          "material": "Citybike_Steuerrohr_ausgerieben"
         }
       ]
     },
     {
-      "id": "J12",
+      "id": "J8",
       "priority": 7,
       "deadline": 2880,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M1",
-          "processingTime": 33,
+          "machineId": "M2",
+          "processingTime": 18,
           "predecessors": [],
-          "material": "Racebike_Steuerrohr_ausgerieben"
+          "material": "Citybike_Schaltauge_bearbeitet"
         },
         {
           "id": "OP2",
-          "machineId": "M2",
-          "processingTime": 19,
-          "predecessors": [
-            "J12:OP1"
-          ],
-          "material": "Racebike_Hauptrahmen_zugeschnitten"
-        },
-        {
-          "id": "OP3",
           "machineId": "M1",
-          "processingTime": 25,
+          "processingTime": 32,
           "predecessors": [
-            "J12:OP2"
-          ],
-          "material": "Racebike_Steuerrohr_montiert"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 30,
-          "predecessors": [
-            "J12:OP3"
-          ],
-          "material": "Racebike_Tretlageraufnahme_geschweisst"
-        },
-        {
-          "id": "OP5",
-          "machineId": "M3",
-          "processingTime": 42,
-          "predecessors": [
-            "J12:OP4"
-          ],
-          "material": "Racebike_Tretlager_gefraest"
-        }
-      ]
-    },
-    {
-      "id": "J13",
-      "priority": 8,
-      "deadline": 2867,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 16,
-          "predecessors": [],
-          "material": "Citybike_Bremsaufnahme_gebohrt"
-        },
-        {
-          "id": "OP2",
-          "machineId": "M2",
-          "processingTime": 20,
-          "predecessors": [
-            "J13:OP1"
-          ],
-          "material": "Citybike_Laufraeder_montiert"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 21,
-          "predecessors": [
-            "J13:OP2"
-          ],
-          "material": "Citybike_Rahmen_nachbearbeitet"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 20,
-          "predecessors": [
-            "J13:OP3"
+            "J8:OP1"
           ],
           "material": "Citybike_Hinterbau_vorbereitet"
         },
         {
-          "id": "OP5",
-          "machineId": "M1",
-          "processingTime": 20,
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 32,
           "predecessors": [
-            "J13:OP4"
+            "J8:OP2"
           ],
-          "material": "Citybike_Steuerrohr_ausgerieben"
+          "material": "Citybike_Steuerrohr_montiert"
         },
         {
-          "id": "OP6",
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 16,
+          "predecessors": [
+            "J8:OP3"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP5",
           "machineId": "M2",
           "processingTime": 10,
           "predecessors": [
-            "J13:OP5"
+            "J8:OP4"
           ],
           "material": "Citybike_Fahrrad_endmontiert"
         },
         {
-          "id": "OP7",
-          "machineId": "M3",
-          "processingTime": 22,
-          "predecessors": [
-            "J13:OP6"
-          ],
-          "material": "Citybike_Tretlager_gefraest"
-        }
-      ]
-    },
-    {
-      "id": "J14",
-      "priority": 8,
-      "deadline": 2754,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 20,
-          "predecessors": [],
-          "material": "Citybike_Hinterbau_vorbereitet"
-        },
-        {
-          "id": "OP2",
-          "machineId": "M2",
-          "processingTime": 18,
-          "predecessors": [
-            "J14:OP1"
-          ],
-          "material": "Citybike_Rahmen_lackiert"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M3",
-          "processingTime": 20,
-          "predecessors": [
-            "J14:OP2"
-          ],
-          "material": "Citybike_Bremsaufnahme_gebohrt"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M3",
-          "processingTime": 44,
-          "predecessors": [
-            "J14:OP3"
-          ],
-          "material": "Citybike_Schaltauge_bearbeitet"
-        },
-        {
-          "id": "OP5",
-          "machineId": "M1",
-          "processingTime": 29,
-          "predecessors": [
-            "J14:OP4"
-          ],
-          "material": "Citybike_Steuerrohr_montiert"
-        },
-        {
           "id": "OP6",
-          "machineId": "M1",
-          "processingTime": 20,
-          "predecessors": [
-            "J14:OP5"
-          ],
-          "material": "Citybike_Tretlageraufnahme_geschweisst"
-        },
-        {
-          "id": "OP7",
-          "machineId": "M1",
-          "processingTime": 35,
-          "predecessors": [
-            "J14:OP6"
-          ],
-          "material": "Citybike_Rahmen_komplettiert"
-        }
-      ]
-    },
-    {
-      "id": "J15",
-      "priority": 5,
-      "deadline": 2831,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M1",
-          "processingTime": 31,
-          "predecessors": [],
-          "material": "Mountainbike_Antrieb_installiert"
-        },
-        {
-          "id": "OP2",
           "machineId": "M2",
           "processingTime": 25,
           "predecessors": [
-            "J15:OP1"
+            "J8:OP5"
           ],
-          "material": "Mountainbike_Schaltauge_bearbeitet"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M3",
-          "processingTime": 56,
-          "predecessors": [
-            "J15:OP2"
-          ],
-          "material": "Mountainbike_Tretlager_gefraest"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M3",
-          "processingTime": 53,
-          "predecessors": [
-            "J15:OP3"
-          ],
-          "material": "Mountainbike_Rahmen_lackiert"
-        },
-        {
-          "id": "OP5",
-          "machineId": "M1",
-          "processingTime": 33,
-          "predecessors": [
-            "J15:OP4"
-          ],
-          "material": "Mountainbike_Bremsaufnahme_gebohrt"
-        },
-        {
-          "id": "OP6",
-          "machineId": "M1",
-          "processingTime": 30,
-          "predecessors": [
-            "J15:OP5"
-          ],
-          "material": "Mountainbike_Steuerrohr_ausgerieben"
-        },
-        {
-          "id": "OP7",
-          "machineId": "M1",
-          "processingTime": 40,
-          "predecessors": [
-            "J15:OP6"
-          ],
-          "material": "Mountainbike_Hinterbau_vorbereitet"
-        },
-        {
-          "id": "OP8",
-          "machineId": "M3",
-          "processingTime": 56,
-          "predecessors": [
-            "J15:OP7"
-          ],
-          "material": "Mountainbike_Laufraeder_montiert"
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
         }
       ]
     },
     {
-      "id": "J16",
-      "priority": 1,
-      "deadline": 2880,
+      "id": "J9",
+      "priority": 7,
+      "deadline": 2788,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M3",
-          "processingTime": 32,
+          "machineId": "M2",
+          "processingTime": 29,
           "predecessors": [],
-          "material": "Citybike_Antrieb_installiert"
+          "material": "E-Bike_Schaltauge_bearbeitet"
         },
         {
           "id": "OP2",
-          "machineId": "M1",
-          "processingTime": 38,
+          "machineId": "M2",
+          "processingTime": 14,
           "predecessors": [
-            "J16:OP1"
+            "J9:OP1"
           ],
-          "material": "Citybike_Schaltauge_bearbeitet"
+          "material": "E-Bike_Rahmen_komplettiert"
         },
         {
           "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 15,
-          "predecessors": [
-            "J16:OP2"
-          ],
-          "material": "Citybike_Steuerrohr_ausgerieben"
-        },
-        {
-          "id": "OP4",
           "machineId": "M3",
           "processingTime": 21,
           "predecessors": [
-            "J16:OP3"
-          ],
-          "material": "Citybike_Steuerrohr_montiert"
-        },
-        {
-          "id": "OP5",
-          "machineId": "M2",
-          "processingTime": 26,
-          "predecessors": [
-            "J16:OP4"
-          ],
-          "material": "Citybike_Bremsen_justiert"
-        }
-      ]
-    },
-    {
-      "id": "J17",
-      "priority": 9,
-      "deadline": 2777,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 12,
-          "predecessors": [],
-          "material": "E-Bike_Rahmen_lackiert"
-        },
-        {
-          "id": "OP2",
-          "machineId": "M3",
-          "processingTime": 23,
-          "predecessors": [
-            "J17:OP1"
-          ],
-          "material": "E-Bike_Bremsaufnahme_gebohrt"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 26,
-          "predecessors": [
-            "J17:OP2"
+            "J9:OP2"
           ],
           "material": "E-Bike_Tretlager_gefraest"
         },
         {
           "id": "OP4",
           "machineId": "M1",
-          "processingTime": 21,
+          "processingTime": 19,
           "predecessors": [
-            "J17:OP3"
-          ],
-          "material": "E-Bike_Laufraeder_montiert"
-        },
-        {
-          "id": "OP5",
-          "machineId": "M1",
-          "processingTime": 44,
-          "predecessors": [
-            "J17:OP4"
-          ],
-          "material": "E-Bike_Steuerrohr_ausgerieben"
-        }
-      ]
-    },
-    {
-      "id": "J18",
-      "priority": 10,
-      "deadline": 2871,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 15,
-          "predecessors": [],
-          "material": "E-Bike_Steuerrohr_ausgerieben"
-        },
-        {
-          "id": "OP2",
-          "machineId": "M1",
-          "processingTime": 34,
-          "predecessors": [
-            "J18:OP1"
+            "J9:OP3"
           ],
           "material": "E-Bike_Antrieb_installiert"
         },
         {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 25,
+          "predecessors": [
+            "J9:OP4"
+          ],
+          "material": "E-Bike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [
+            "J9:OP5"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        }
+      ]
+    },
+    {
+      "id": "J10",
+      "priority": 6,
+      "deadline": 2801,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [],
+          "material": "Mountainbike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 33,
+          "predecessors": [
+            "J10:OP1"
+          ],
+          "material": "Mountainbike_Bremsaufnahme_gebohrt"
+        },
+        {
           "id": "OP3",
           "machineId": "M2",
-          "processingTime": 19,
+          "processingTime": 16,
           "predecessors": [
-            "J18:OP2"
+            "J10:OP2"
           ],
-          "material": "E-Bike_Bremsen_justiert"
+          "material": "Mountainbike_Rahmen_komplettiert"
         },
         {
           "id": "OP4",
-          "machineId": "M3",
-          "processingTime": 49,
+          "machineId": "M2",
+          "processingTime": 16,
           "predecessors": [
-            "J18:OP3"
+            "J10:OP3"
           ],
-          "material": "E-Bike_Rahmen_nachbearbeitet"
+          "material": "Mountainbike_Fahrrad_endmontiert"
         },
         {
           "id": "OP5",
           "machineId": "M1",
           "processingTime": 29,
           "predecessors": [
-            "J18:OP4"
+            "J10:OP4"
           ],
-          "material": "E-Bike_Rahmen_lackiert"
+          "material": "Mountainbike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 22,
+          "predecessors": [
+            "J10:OP5"
+          ],
+          "material": "Mountainbike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 23,
+          "predecessors": [
+            "J10:OP6"
+          ],
+          "material": "Mountainbike_Bremsen_justiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M1",
+          "processingTime": 32,
+          "predecessors": [
+            "J10:OP7"
+          ],
+          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
         }
       ]
     },
     {
-      "id": "J19",
+      "id": "J11",
       "priority": 8,
-      "deadline": 2867,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 28,
+          "predecessors": [],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 47,
+          "predecessors": [
+            "J11:OP1"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 15,
+          "predecessors": [
+            "J11:OP2"
+          ],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 32,
+          "predecessors": [
+            "J11:OP3"
+          ],
+          "material": "E-Bike_Antrieb_installiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 23,
+          "predecessors": [
+            "J11:OP4"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        }
+      ]
+    },
+    {
+      "id": "J12",
+      "priority": 9,
+      "deadline": 2746,
       "operations": [
         {
           "id": "OP1",
           "machineId": "M2",
-          "processingTime": 19,
+          "processingTime": 10,
           "predecessors": [],
-          "material": "Racebike_Rahmen_lackiert"
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 46,
+          "predecessors": [
+            "J12:OP1"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 38,
+          "predecessors": [
+            "J12:OP2"
+          ],
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J12:OP3"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 49,
+          "predecessors": [
+            "J12:OP4"
+          ],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 20,
+          "predecessors": [
+            "J12:OP5"
+          ],
+          "material": "E-Bike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 31,
+          "predecessors": [
+            "J12:OP6"
+          ],
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M3",
+          "processingTime": 45,
+          "predecessors": [
+            "J12:OP7"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        }
+      ]
+    },
+    {
+      "id": "J13",
+      "priority": 2,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 38,
+          "predecessors": [],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 50,
+          "predecessors": [
+            "J13:OP1"
+          ],
+          "material": "Citybike_Bremsen_justiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 26,
+          "predecessors": [
+            "J13:OP2"
+          ],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 23,
+          "predecessors": [
+            "J13:OP3"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J13:OP4"
+          ],
+          "material": "Citybike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 54,
+          "predecessors": [
+            "J13:OP5"
+          ],
+          "material": "Citybike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 45,
+          "predecessors": [
+            "J13:OP6"
+          ],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J14",
+      "priority": 6,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 50,
+          "predecessors": [],
+          "material": "Mountainbike_Bremsen_justiert"
         },
         {
           "id": "OP2",
           "machineId": "M2",
           "processingTime": 24,
           "predecessors": [
-            "J19:OP1"
+            "J14:OP1"
           ],
-          "material": "Racebike_Fahrrad_endmontiert"
+          "material": "Mountainbike_Tretlager_gefraest"
         },
         {
           "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 14,
+          "machineId": "M1",
+          "processingTime": 28,
           "predecessors": [
-            "J19:OP2"
+            "J14:OP2"
           ],
-          "material": "Racebike_Bremsaufnahme_gebohrt"
+          "material": "Mountainbike_Hinterbau_vorbereitet"
         },
         {
           "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 23,
+          "machineId": "M1",
+          "processingTime": 38,
           "predecessors": [
-            "J19:OP3"
+            "J14:OP3"
           ],
-          "material": "Racebike_Rahmen_komplettiert"
+          "material": "Mountainbike_Antrieb_installiert"
         },
         {
           "id": "OP5",
           "machineId": "M2",
-          "processingTime": 23,
+          "processingTime": 16,
           "predecessors": [
-            "J19:OP4"
+            "J14:OP4"
           ],
-          "material": "Racebike_Schaltauge_bearbeitet"
+          "material": "Mountainbike_Bremsaufnahme_gebohrt"
         },
         {
           "id": "OP6",
           "machineId": "M3",
+          "processingTime": 25,
+          "predecessors": [
+            "J14:OP5"
+          ],
+          "material": "Mountainbike_Steuerrohr_montiert"
+        }
+      ]
+    },
+    {
+      "id": "J15",
+      "priority": 6,
+      "deadline": 2801,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 24,
+          "predecessors": [],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 13,
+          "predecessors": [
+            "J15:OP1"
+          ],
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 45,
+          "predecessors": [
+            "J15:OP2"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
           "processingTime": 21,
           "predecessors": [
-            "J19:OP5"
+            "J15:OP3"
           ],
-          "material": "Racebike_Antrieb_installiert"
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 23,
+          "predecessors": [
+            "J15:OP4"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 59,
+          "predecessors": [
+            "J15:OP5"
+          ],
+          "material": "Citybike_Schaltauge_bearbeitet"
         },
         {
           "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 22,
+          "predecessors": [
+            "J15:OP6"
+          ],
+          "material": "Citybike_Rahmen_lackiert"
+        }
+      ]
+    },
+    {
+      "id": "J16",
+      "priority": 7,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 48,
+          "predecessors": [],
+          "material": "E-Bike_Bremsen_justiert"
+        },
+        {
+          "id": "OP2",
           "machineId": "M2",
+          "processingTime": 24,
+          "predecessors": [
+            "J16:OP1"
+          ],
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 27,
+          "predecessors": [
+            "J16:OP2"
+          ],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 29,
+          "predecessors": [
+            "J16:OP3"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 49,
+          "predecessors": [
+            "J16:OP4"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J17",
+      "priority": 8,
+      "deadline": 2795,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 25,
+          "predecessors": [],
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 23,
+          "predecessors": [
+            "J17:OP1"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 28,
+          "predecessors": [
+            "J17:OP2"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 59,
+          "predecessors": [
+            "J17:OP3"
+          ],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 23,
+          "predecessors": [
+            "J17:OP4"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J18",
+      "priority": 10,
+      "deadline": 2770,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [],
+          "material": "Racebike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 21,
+          "predecessors": [
+            "J18:OP1"
+          ],
+          "material": "Racebike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 43,
+          "predecessors": [
+            "J18:OP2"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
           "processingTime": 18,
           "predecessors": [
-            "J19:OP6"
+            "J18:OP3"
+          ],
+          "material": "Racebike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 15,
+          "predecessors": [
+            "J18:OP4"
+          ],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 29,
+          "predecessors": [
+            "J18:OP5"
           ],
           "material": "Racebike_Tretlager_gefraest"
         }
       ]
     },
     {
-      "id": "J20",
-      "priority": 7,
-      "deadline": 2818,
+      "id": "J19",
+      "priority": 1,
+      "deadline": 2866,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M1",
-          "processingTime": 26,
+          "machineId": "M2",
+          "processingTime": 11,
           "predecessors": [],
-          "material": "Mountainbike_Rahmen_lackiert"
+          "material": "Citybike_Tretlager_gefraest"
         },
         {
           "id": "OP2",
           "machineId": "M1",
-          "processingTime": 19,
+          "processingTime": 25,
           "predecessors": [
-            "J20:OP1"
+            "J19:OP1"
           ],
-          "material": "Mountainbike_Schaltauge_bearbeitet"
+          "material": "Citybike_Steuerrohr_montiert"
         },
         {
           "id": "OP3",
           "machineId": "M1",
-          "processingTime": 37,
+          "processingTime": 40,
+          "predecessors": [
+            "J19:OP2"
+          ],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 33,
+          "predecessors": [
+            "J19:OP3"
+          ],
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 26,
+          "predecessors": [
+            "J19:OP4"
+          ],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 16,
+          "predecessors": [
+            "J19:OP5"
+          ],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 59,
+          "predecessors": [
+            "J19:OP6"
+          ],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J20",
+      "priority": 2,
+      "deadline": 2739,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [],
+          "material": "Mountainbike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 44,
+          "predecessors": [
+            "J20:OP1"
+          ],
+          "material": "Mountainbike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 29,
           "predecessors": [
             "J20:OP2"
           ],
@@ -1208,197 +1244,206 @@
         {
           "id": "OP4",
           "machineId": "M1",
-          "processingTime": 24,
+          "processingTime": 38,
           "predecessors": [
             "J20:OP3"
           ],
-          "material": "Mountainbike_Laufraeder_montiert"
+          "material": "Mountainbike_Tretlager_gefraest"
         },
         {
           "id": "OP5",
-          "machineId": "M3",
-          "processingTime": 54,
+          "machineId": "M1",
+          "processingTime": 37,
           "predecessors": [
             "J20:OP4"
           ],
-          "material": "Mountainbike_Fahrrad_endmontiert"
+          "material": "Mountainbike_Antrieb_installiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 21,
+          "predecessors": [
+            "J20:OP5"
+          ],
+          "material": "Mountainbike_Rahmen_komplettiert"
         }
       ]
     },
     {
       "id": "J21",
-      "priority": 7,
-      "deadline": 2880,
+      "priority": 5,
+      "deadline": 2798,
       "operations": [
         {
           "id": "OP1",
           "machineId": "M1",
-          "processingTime": 19,
+          "processingTime": 23,
           "predecessors": [],
-          "material": "Racebike_Rahmen_lackiert"
+          "material": "Mountainbike_Rahmen_komplettiert"
         },
         {
           "id": "OP2",
-          "machineId": "M3",
-          "processingTime": 53,
+          "machineId": "M1",
+          "processingTime": 39,
           "predecessors": [
             "J21:OP1"
           ],
-          "material": "Racebike_Fahrrad_endmontiert"
+          "material": "Mountainbike_Laufraeder_montiert"
         },
         {
           "id": "OP3",
           "machineId": "M3",
-          "processingTime": 37,
+          "processingTime": 35,
           "predecessors": [
             "J21:OP2"
           ],
-          "material": "Racebike_Steuerrohr_montiert"
+          "material": "Mountainbike_Schaltauge_bearbeitet"
         },
         {
           "id": "OP4",
-          "machineId": "M1",
-          "processingTime": 43,
+          "machineId": "M2",
+          "processingTime": 28,
           "predecessors": [
             "J21:OP3"
           ],
-          "material": "Racebike_Steuerrohr_ausgerieben"
+          "material": "Mountainbike_Fahrrad_endmontiert"
         },
         {
           "id": "OP5",
-          "machineId": "M1",
-          "processingTime": 42,
+          "machineId": "M2",
+          "processingTime": 25,
           "predecessors": [
             "J21:OP4"
           ],
-          "material": "Racebike_Laufraeder_montiert"
-        },
-        {
-          "id": "OP6",
-          "machineId": "M3",
-          "processingTime": 39,
-          "predecessors": [
-            "J21:OP5"
-          ],
-          "material": "Racebike_Schaltauge_bearbeitet"
-        },
-        {
-          "id": "OP7",
-          "machineId": "M2",
-          "processingTime": 20,
-          "predecessors": [
-            "J21:OP6"
-          ],
-          "material": "Racebike_Bremsen_justiert"
+          "material": "Mountainbike_Bremsen_justiert"
         }
       ]
     },
     {
       "id": "J22",
-      "priority": 5,
-      "deadline": 2880,
+      "priority": 9,
+      "deadline": 2751,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M1",
-          "processingTime": 30,
+          "machineId": "M3",
+          "processingTime": 57,
           "predecessors": [],
-          "material": "Mountainbike_Bremsen_justiert"
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
         },
         {
           "id": "OP2",
-          "machineId": "M2",
-          "processingTime": 28,
+          "machineId": "M1",
+          "processingTime": 45,
           "predecessors": [
             "J22:OP1"
           ],
-          "material": "Mountainbike_Antrieb_installiert"
+          "material": "E-Bike_Hinterbau_vorbereitet"
         },
         {
           "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 30,
+          "machineId": "M1",
+          "processingTime": 43,
           "predecessors": [
             "J22:OP2"
           ],
-          "material": "Mountainbike_Rahmen_komplettiert"
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
         },
         {
           "id": "OP4",
-          "machineId": "M3",
-          "processingTime": 29,
+          "machineId": "M1",
+          "processingTime": 26,
           "predecessors": [
             "J22:OP3"
           ],
-          "material": "Mountainbike_Steuerrohr_ausgerieben"
+          "material": "E-Bike_Rahmen_komplettiert"
         },
         {
           "id": "OP5",
           "machineId": "M2",
-          "processingTime": 20,
+          "processingTime": 26,
           "predecessors": [
             "J22:OP4"
           ],
-          "material": "Mountainbike_Laufraeder_montiert"
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
         },
         {
           "id": "OP6",
-          "machineId": "M3",
-          "processingTime": 30,
+          "machineId": "M1",
+          "processingTime": 42,
           "predecessors": [
             "J22:OP5"
           ],
-          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
+          "material": "E-Bike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 60,
+          "predecessors": [
+            "J22:OP6"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M1",
+          "processingTime": 45,
+          "predecessors": [
+            "J22:OP7"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
         }
       ]
     },
     {
       "id": "J23",
-      "priority": 5,
-      "deadline": 2842,
+      "priority": 6,
+      "deadline": 2813,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 14,
+          "machineId": "M3",
+          "processingTime": 57,
           "predecessors": [],
-          "material": "Mountainbike_Laufraeder_montiert"
+          "material": "Mountainbike_Bremsaufnahme_gebohrt"
         },
         {
           "id": "OP2",
-          "machineId": "M1",
-          "processingTime": 28,
+          "machineId": "M3",
+          "processingTime": 25,
           "predecessors": [
             "J23:OP1"
           ],
-          "material": "Mountainbike_Tretlager_gefraest"
+          "material": "Mountainbike_Steuerrohr_montiert"
         },
         {
           "id": "OP3",
           "machineId": "M3",
-          "processingTime": 58,
+          "processingTime": 51,
           "predecessors": [
             "J23:OP2"
           ],
-          "material": "Mountainbike_Rahmen_lackiert"
+          "material": "Mountainbike_Antrieb_installiert"
         },
         {
           "id": "OP4",
           "machineId": "M1",
-          "processingTime": 42,
+          "processingTime": 22,
           "predecessors": [
             "J23:OP3"
           ],
-          "material": "Mountainbike_Steuerrohr_ausgerieben"
+          "material": "Mountainbike_Schaltauge_bearbeitet"
         },
         {
           "id": "OP5",
-          "machineId": "M3",
-          "processingTime": 22,
+          "machineId": "M2",
+          "processingTime": 24,
           "predecessors": [
             "J23:OP4"
           ],
-          "material": "Mountainbike_Fahrrad_endmontiert"
+          "material": "Mountainbike_Steuerrohr_ausgerieben"
         },
         {
           "id": "OP6",
@@ -1411,49 +1456,58 @@
         },
         {
           "id": "OP7",
-          "machineId": "M3",
-          "processingTime": 57,
+          "machineId": "M1",
+          "processingTime": 22,
           "predecessors": [
             "J23:OP6"
           ],
-          "material": "Mountainbike_Hinterbau_vorbereitet"
+          "material": "Mountainbike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 21,
+          "predecessors": [
+            "J23:OP7"
+          ],
+          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
         }
       ]
     },
     {
       "id": "J24",
-      "priority": 7,
-      "deadline": 2830,
+      "priority": 8,
+      "deadline": 2534,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 17,
+          "machineId": "M3",
+          "processingTime": 57,
           "predecessors": [],
-          "material": "Racebike_Tretlageraufnahme_geschweisst"
+          "material": "Racebike_Hinterbau_vorbereitet"
         },
         {
           "id": "OP2",
-          "machineId": "M2",
-          "processingTime": 13,
+          "machineId": "M3",
+          "processingTime": 37,
           "predecessors": [
             "J24:OP1"
           ],
-          "material": "Racebike_Steuerrohr_ausgerieben"
+          "material": "Racebike_Laufraeder_montiert"
         },
         {
           "id": "OP3",
           "machineId": "M2",
-          "processingTime": 15,
+          "processingTime": 10,
           "predecessors": [
             "J24:OP2"
           ],
-          "material": "Racebike_Hauptrahmen_zugeschnitten"
+          "material": "Racebike_Rahmen_lackiert"
         },
         {
           "id": "OP4",
-          "machineId": "M3",
-          "processingTime": 36,
+          "machineId": "M2",
+          "processingTime": 27,
           "predecessors": [
             "J24:OP3"
           ],
@@ -1462,234 +1516,234 @@
         {
           "id": "OP5",
           "machineId": "M2",
-          "processingTime": 11,
+          "processingTime": 15,
           "predecessors": [
             "J24:OP4"
           ],
-          "material": "Racebike_Schaltauge_bearbeitet"
+          "material": "Racebike_Steuerrohr_montiert"
+        }
+      ]
+    },
+    {
+      "id": "J25",
+      "priority": 7,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 60,
+          "predecessors": [],
+          "material": "Racebike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 53,
+          "predecessors": [
+            "J25:OP1"
+          ],
+          "material": "Racebike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 24,
+          "predecessors": [
+            "J25:OP2"
+          ],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 12,
+          "predecessors": [
+            "J25:OP3"
+          ],
+          "material": "Racebike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [
+            "J25:OP4"
+          ],
+          "material": "Racebike_Steuerrohr_ausgerieben"
         },
         {
           "id": "OP6",
-          "machineId": "M1",
-          "processingTime": 31,
-          "predecessors": [
-            "J24:OP5"
-          ],
-          "material": "Racebike_Steuerrohr_montiert"
-        },
-        {
-          "id": "OP7",
           "machineId": "M2",
-          "processingTime": 17,
+          "processingTime": 15,
           "predecessors": [
-            "J24:OP6"
-          ],
-          "material": "Racebike_Hinterbau_vorbereitet"
-        },
-        {
-          "id": "OP8",
-          "machineId": "M2",
-          "processingTime": 21,
-          "predecessors": [
-            "J24:OP7"
+            "J25:OP5"
           ],
           "material": "Racebike_Antrieb_installiert"
         }
       ]
     },
     {
-      "id": "J25",
-      "priority": 10,
-      "deadline": 2880,
+      "id": "J26",
+      "priority": 4,
+      "deadline": 2778,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 23,
+          "machineId": "M3",
+          "processingTime": 43,
           "predecessors": [],
-          "material": "E-Bike_Fahrrad_endmontiert"
+          "material": "Mountainbike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 38,
+          "predecessors": [
+            "J26:OP1"
+          ],
+          "material": "Mountainbike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [
+            "J26:OP2"
+          ],
+          "material": "Mountainbike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 34,
+          "predecessors": [
+            "J26:OP3"
+          ],
+          "material": "Mountainbike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 36,
+          "predecessors": [
+            "J26:OP4"
+          ],
+          "material": "Mountainbike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J26:OP5"
+          ],
+          "material": "Mountainbike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 27,
+          "predecessors": [
+            "J26:OP6"
+          ],
+          "material": "Mountainbike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [
+            "J26:OP7"
+          ],
+          "material": "Mountainbike_Rahmen_nachbearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J27",
+      "priority": 7,
+      "deadline": 2853,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 44,
+          "predecessors": [],
+          "material": "Racebike_Rahmen_nachbearbeitet"
         },
         {
           "id": "OP2",
           "machineId": "M2",
           "processingTime": 12,
           "predecessors": [
-            "J25:OP1"
-          ],
-          "material": "E-Bike_Hinterbau_vorbereitet"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 30,
-          "predecessors": [
-            "J25:OP2"
-          ],
-          "material": "E-Bike_Rahmen_lackiert"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M1",
-          "processingTime": 27,
-          "predecessors": [
-            "J25:OP3"
-          ],
-          "material": "E-Bike_Tretlageraufnahme_geschweisst"
-        },
-        {
-          "id": "OP5",
-          "machineId": "M1",
-          "processingTime": 41,
-          "predecessors": [
-            "J25:OP4"
-          ],
-          "material": "E-Bike_Hauptrahmen_zugeschnitten"
-        },
-        {
-          "id": "OP6",
-          "machineId": "M3",
-          "processingTime": 47,
-          "predecessors": [
-            "J25:OP5"
-          ],
-          "material": "E-Bike_Rahmen_nachbearbeitet"
-        },
-        {
-          "id": "OP7",
-          "machineId": "M3",
-          "processingTime": 20,
-          "predecessors": [
-            "J25:OP6"
-          ],
-          "material": "E-Bike_Bremsen_justiert"
-        }
-      ]
-    },
-    {
-      "id": "J26",
-      "priority": 8,
-      "deadline": 2536,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M2",
-          "processingTime": 20,
-          "predecessors": [],
-          "material": "Citybike_Steuerrohr_montiert"
-        },
-        {
-          "id": "OP2",
-          "machineId": "M3",
-          "processingTime": 29,
-          "predecessors": [
-            "J26:OP1"
-          ],
-          "material": "Citybike_Antrieb_installiert"
-        },
-        {
-          "id": "OP3",
-          "machineId": "M3",
-          "processingTime": 28,
-          "predecessors": [
-            "J26:OP2"
-          ],
-          "material": "Citybike_Hinterbau_vorbereitet"
-        },
-        {
-          "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 22,
-          "predecessors": [
-            "J26:OP3"
-          ],
-          "material": "Citybike_Tretlager_gefraest"
-        },
-        {
-          "id": "OP5",
-          "machineId": "M3",
-          "processingTime": 53,
-          "predecessors": [
-            "J26:OP4"
-          ],
-          "material": "Citybike_Rahmen_lackiert"
-        }
-      ]
-    },
-    {
-      "id": "J27",
-      "priority": 2,
-      "deadline": 2748,
-      "operations": [
-        {
-          "id": "OP1",
-          "machineId": "M3",
-          "processingTime": 46,
-          "predecessors": [],
-          "material": "Citybike_Tretlager_gefraest"
-        },
-        {
-          "id": "OP2",
-          "machineId": "M3",
-          "processingTime": 54,
-          "predecessors": [
             "J27:OP1"
           ],
-          "material": "Citybike_Steuerrohr_montiert"
+          "material": "Racebike_Bremsaufnahme_gebohrt"
         },
         {
           "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 14,
+          "machineId": "M1",
+          "processingTime": 37,
           "predecessors": [
             "J27:OP2"
           ],
-          "material": "Citybike_Bremsen_justiert"
+          "material": "Racebike_Antrieb_installiert"
         },
         {
           "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 11,
+          "machineId": "M3",
+          "processingTime": 53,
           "predecessors": [
             "J27:OP3"
           ],
-          "material": "Citybike_Rahmen_nachbearbeitet"
+          "material": "Racebike_Rahmen_lackiert"
         },
         {
           "id": "OP5",
           "machineId": "M3",
-          "processingTime": 37,
+          "processingTime": 22,
           "predecessors": [
             "J27:OP4"
           ],
-          "material": "Citybike_Bremsaufnahme_gebohrt"
+          "material": "Racebike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J27:OP5"
+          ],
+          "material": "Racebike_Schaltauge_bearbeitet"
         }
       ]
     },
     {
       "id": "J28",
-      "priority": 1,
+      "priority": 2,
       "deadline": 2880,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M3",
-          "processingTime": 23,
+          "machineId": "M2",
+          "processingTime": 16,
           "predecessors": [],
-          "material": "Citybike_Rahmen_nachbearbeitet"
+          "material": "Citybike_Steuerrohr_montiert"
         },
         {
           "id": "OP2",
           "machineId": "M2",
-          "processingTime": 13,
+          "processingTime": 16,
           "predecessors": [
             "J28:OP1"
           ],
-          "material": "Citybike_Rahmen_lackiert"
+          "material": "Citybike_Fahrrad_endmontiert"
         },
         {
           "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 14,
+          "machineId": "M3",
+          "processingTime": 23,
           "predecessors": [
             "J28:OP2"
           ],
@@ -1697,8 +1751,8 @@
         },
         {
           "id": "OP4",
-          "machineId": "M1",
-          "processingTime": 27,
+          "machineId": "M3",
+          "processingTime": 32,
           "predecessors": [
             "J28:OP3"
           ],
@@ -1706,103 +1760,103 @@
         },
         {
           "id": "OP5",
-          "machineId": "M2",
-          "processingTime": 29,
+          "machineId": "M1",
+          "processingTime": 24,
           "predecessors": [
             "J28:OP4"
           ],
-          "material": "Citybike_Bremsaufnahme_gebohrt"
+          "material": "Citybike_Hinterbau_vorbereitet"
         },
         {
           "id": "OP6",
           "machineId": "M3",
-          "processingTime": 34,
+          "processingTime": 54,
           "predecessors": [
             "J28:OP5"
           ],
-          "material": "Citybike_Steuerrohr_ausgerieben"
+          "material": "Citybike_Bremsaufnahme_gebohrt"
         },
         {
           "id": "OP7",
-          "machineId": "M1",
-          "processingTime": 23,
+          "machineId": "M2",
+          "processingTime": 24,
           "predecessors": [
             "J28:OP6"
           ],
-          "material": "Citybike_Hauptrahmen_zugeschnitten"
+          "material": "Citybike_Rahmen_nachbearbeitet"
         },
         {
           "id": "OP8",
-          "machineId": "M1",
-          "processingTime": 37,
+          "machineId": "M2",
+          "processingTime": 21,
           "predecessors": [
             "J28:OP7"
           ],
-          "material": "Citybike_Rahmen_komplettiert"
+          "material": "Citybike_Antrieb_installiert"
         }
       ]
     },
     {
       "id": "J29",
-      "priority": 7,
-      "deadline": 2781,
+      "priority": 9,
+      "deadline": 2880,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M3",
-          "processingTime": 26,
+          "machineId": "M2",
+          "processingTime": 18,
           "predecessors": [],
-          "material": "E-Bike_Bremsaufnahme_gebohrt"
+          "material": "E-Bike_Bremsen_justiert"
         },
         {
           "id": "OP2",
           "machineId": "M1",
-          "processingTime": 23,
+          "processingTime": 42,
           "predecessors": [
             "J29:OP1"
           ],
-          "material": "E-Bike_Steuerrohr_ausgerieben"
+          "material": "E-Bike_Laufraeder_montiert"
         },
         {
           "id": "OP3",
-          "machineId": "M2",
-          "processingTime": 18,
+          "machineId": "M1",
+          "processingTime": 41,
           "predecessors": [
             "J29:OP2"
           ],
-          "material": "E-Bike_Tretlager_gefraest"
+          "material": "E-Bike_Steuerrohr_montiert"
         },
         {
           "id": "OP4",
           "machineId": "M1",
-          "processingTime": 31,
+          "processingTime": 27,
           "predecessors": [
             "J29:OP3"
           ],
-          "material": "E-Bike_Schaltauge_bearbeitet"
+          "material": "E-Bike_Rahmen_nachbearbeitet"
         },
         {
           "id": "OP5",
-          "machineId": "M2",
-          "processingTime": 25,
+          "machineId": "M1",
+          "processingTime": 45,
           "predecessors": [
             "J29:OP4"
           ],
-          "material": "E-Bike_Fahrrad_endmontiert"
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
         },
         {
           "id": "OP6",
           "machineId": "M3",
-          "processingTime": 48,
+          "processingTime": 33,
           "predecessors": [
             "J29:OP5"
           ],
-          "material": "E-Bike_Bremsen_justiert"
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
         },
         {
           "id": "OP7",
           "machineId": "M3",
-          "processingTime": 57,
+          "processingTime": 49,
           "predecessors": [
             "J29:OP6"
           ],
@@ -1812,51 +1866,51 @@
     },
     {
       "id": "J30",
-      "priority": 2,
+      "priority": 5,
       "deadline": 2880,
       "operations": [
         {
           "id": "OP1",
-          "machineId": "M3",
-          "processingTime": 48,
+          "machineId": "M2",
+          "processingTime": 28,
           "predecessors": [],
-          "material": "Mountainbike_Fahrrad_endmontiert"
+          "material": "Citybike_Rahmen_nachbearbeitet"
         },
         {
           "id": "OP2",
           "machineId": "M1",
-          "processingTime": 41,
+          "processingTime": 30,
           "predecessors": [
             "J30:OP1"
           ],
-          "material": "Mountainbike_Hinterbau_vorbereitet"
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
         },
         {
           "id": "OP3",
-          "machineId": "M3",
-          "processingTime": 37,
+          "machineId": "M2",
+          "processingTime": 10,
           "predecessors": [
             "J30:OP2"
           ],
-          "material": "Mountainbike_Bremsaufnahme_gebohrt"
+          "material": "Citybike_Steuerrohr_montiert"
         },
         {
           "id": "OP4",
-          "machineId": "M2",
-          "processingTime": 17,
+          "machineId": "M3",
+          "processingTime": 59,
           "predecessors": [
             "J30:OP3"
           ],
-          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
+          "material": "Citybike_Laufraeder_montiert"
         },
         {
           "id": "OP5",
           "machineId": "M3",
-          "processingTime": 38,
+          "processingTime": 53,
           "predecessors": [
             "J30:OP4"
           ],
-          "material": "Mountainbike_Schaltauge_bearbeitet"
+          "material": "Citybike_Bremsaufnahme_gebohrt"
         },
         {
           "id": "OP6",
@@ -1865,7 +1919,4542 @@
           "predecessors": [
             "J30:OP5"
           ],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 44,
+          "predecessors": [
+            "J30:OP6"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        }
+      ]
+    },
+    {
+      "id": "J31",
+      "priority": 3,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 41,
+          "predecessors": [],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 24,
+          "predecessors": [
+            "J31:OP1"
+          ],
+          "material": "Citybike_Bremsen_justiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 28,
+          "predecessors": [
+            "J31:OP2"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 21,
+          "predecessors": [
+            "J31:OP3"
+          ],
+          "material": "Citybike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 30,
+          "predecessors": [
+            "J31:OP4"
+          ],
+          "material": "Citybike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [
+            "J31:OP5"
+          ],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J32",
+      "priority": 9,
+      "deadline": 2833,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 58,
+          "predecessors": [],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 13,
+          "predecessors": [
+            "J32:OP1"
+          ],
+          "material": "E-Bike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 12,
+          "predecessors": [
+            "J32:OP2"
+          ],
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 16,
+          "predecessors": [
+            "J32:OP3"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J32:OP4"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J33",
+      "priority": 5,
+      "deadline": 2838,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 22,
+          "predecessors": [],
+          "material": "Citybike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 31,
+          "predecessors": [
+            "J33:OP1"
+          ],
+          "material": "Citybike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 26,
+          "predecessors": [
+            "J33:OP2"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 24,
+          "predecessors": [
+            "J33:OP3"
+          ],
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 20,
+          "predecessors": [
+            "J33:OP4"
+          ],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        }
+      ]
+    },
+    {
+      "id": "J34",
+      "priority": 1,
+      "deadline": 2849,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 22,
+          "predecessors": [],
+          "material": "Mountainbike_Bremsen_justiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 46,
+          "predecessors": [
+            "J34:OP1"
+          ],
+          "material": "Mountainbike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 35,
+          "predecessors": [
+            "J34:OP2"
+          ],
+          "material": "Mountainbike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 34,
+          "predecessors": [
+            "J34:OP3"
+          ],
+          "material": "Mountainbike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 18,
+          "predecessors": [
+            "J34:OP4"
+          ],
+          "material": "Mountainbike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 19,
+          "predecessors": [
+            "J34:OP5"
+          ],
           "material": "Mountainbike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 24,
+          "predecessors": [
+            "J34:OP6"
+          ],
+          "material": "Mountainbike_Fahrrad_endmontiert"
+        }
+      ]
+    },
+    {
+      "id": "J35",
+      "priority": 10,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 38,
+          "predecessors": [],
+          "material": "Racebike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 20,
+          "predecessors": [
+            "J35:OP1"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 20,
+          "predecessors": [
+            "J35:OP2"
+          ],
+          "material": "Racebike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 27,
+          "predecessors": [
+            "J35:OP3"
+          ],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 18,
+          "predecessors": [
+            "J35:OP4"
+          ],
+          "material": "Racebike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 44,
+          "predecessors": [
+            "J35:OP5"
+          ],
+          "material": "Racebike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [
+            "J35:OP6"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        }
+      ]
+    },
+    {
+      "id": "J36",
+      "priority": 10,
+      "deadline": 2763,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 10,
+          "predecessors": [],
+          "material": "Racebike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 44,
+          "predecessors": [
+            "J36:OP1"
+          ],
+          "material": "Racebike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 24,
+          "predecessors": [
+            "J36:OP2"
+          ],
+          "material": "Racebike_Bremsen_justiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 17,
+          "predecessors": [
+            "J36:OP3"
+          ],
+          "material": "Racebike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 52,
+          "predecessors": [
+            "J36:OP4"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 39,
+          "predecessors": [
+            "J36:OP5"
+          ],
+          "material": "Racebike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 14,
+          "predecessors": [
+            "J36:OP6"
+          ],
+          "material": "Racebike_Tretlager_gefraest"
+        }
+      ]
+    },
+    {
+      "id": "J37",
+      "priority": 7,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 22,
+          "predecessors": [
+            "J37:OP1"
+          ],
+          "material": "Racebike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 50,
+          "predecessors": [
+            "J37:OP2"
+          ],
+          "material": "Racebike_Bremsen_justiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 24,
+          "predecessors": [
+            "J37:OP3"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 24,
+          "predecessors": [
+            "J37:OP4"
+          ],
+          "material": "Racebike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 47,
+          "predecessors": [
+            "J37:OP5"
+          ],
+          "material": "Racebike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 22,
+          "predecessors": [
+            "J37:OP6"
+          ],
+          "material": "Racebike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 27,
+          "predecessors": [
+            "J37:OP7"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        }
+      ]
+    },
+    {
+      "id": "J38",
+      "priority": 10,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 33,
+          "predecessors": [],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 41,
+          "predecessors": [
+            "J38:OP1"
+          ],
+          "material": "E-Bike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 33,
+          "predecessors": [
+            "J38:OP2"
+          ],
+          "material": "E-Bike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 19,
+          "predecessors": [
+            "J38:OP3"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 21,
+          "predecessors": [
+            "J38:OP4"
+          ],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 22,
+          "predecessors": [
+            "J38:OP5"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J39",
+      "priority": 10,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 45,
+          "predecessors": [],
+          "material": "Racebike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 34,
+          "predecessors": [
+            "J39:OP1"
+          ],
+          "material": "Racebike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 10,
+          "predecessors": [
+            "J39:OP2"
+          ],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 35,
+          "predecessors": [
+            "J39:OP3"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 17,
+          "predecessors": [
+            "J39:OP4"
+          ],
+          "material": "Racebike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 47,
+          "predecessors": [
+            "J39:OP5"
+          ],
+          "material": "Racebike_Tretlageraufnahme_geschweisst"
+        }
+      ]
+    },
+    {
+      "id": "J40",
+      "priority": 8,
+      "deadline": 2199,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 14,
+          "predecessors": [],
+          "material": "Racebike_Bremsen_justiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 30,
+          "predecessors": [
+            "J40:OP1"
+          ],
+          "material": "Racebike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [
+            "J40:OP2"
+          ],
+          "material": "Racebike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 35,
+          "predecessors": [
+            "J40:OP3"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 24,
+          "predecessors": [
+            "J40:OP4"
+          ],
+          "material": "Racebike_Hinterbau_vorbereitet"
+        }
+      ]
+    },
+    {
+      "id": "J41",
+      "priority": 9,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 19,
+          "predecessors": [],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 31,
+          "predecessors": [
+            "J41:OP1"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 45,
+          "predecessors": [
+            "J41:OP2"
+          ],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J41:OP3"
+          ],
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J41:OP4"
+          ],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 30,
+          "predecessors": [
+            "J41:OP5"
+          ],
+          "material": "E-Bike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 30,
+          "predecessors": [
+            "J41:OP6"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J42",
+      "priority": 8,
+      "deadline": 2697,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 22,
+          "predecessors": [],
+          "material": "Racebike_Bremsen_justiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 20,
+          "predecessors": [
+            "J42:OP1"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 32,
+          "predecessors": [
+            "J42:OP2"
+          ],
+          "material": "Racebike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 15,
+          "predecessors": [
+            "J42:OP3"
+          ],
+          "material": "Racebike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 13,
+          "predecessors": [
+            "J42:OP4"
+          ],
+          "material": "Racebike_Fahrrad_endmontiert"
+        }
+      ]
+    },
+    {
+      "id": "J43",
+      "priority": 5,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 25,
+          "predecessors": [],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 28,
+          "predecessors": [
+            "J43:OP1"
+          ],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [
+            "J43:OP2"
+          ],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [
+            "J43:OP3"
+          ],
+          "material": "Citybike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 16,
+          "predecessors": [
+            "J43:OP4"
+          ],
+          "material": "Citybike_Rahmen_lackiert"
+        }
+      ]
+    },
+    {
+      "id": "J44",
+      "priority": 10,
+      "deadline": 2840,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 14,
+          "predecessors": [],
+          "material": "Racebike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J44:OP1"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 24,
+          "predecessors": [
+            "J44:OP2"
+          ],
+          "material": "Racebike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 28,
+          "predecessors": [
+            "J44:OP3"
+          ],
+          "material": "Racebike_Bremsen_justiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 23,
+          "predecessors": [
+            "J44:OP4"
+          ],
+          "material": "Racebike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J44:OP5"
+          ],
+          "material": "Racebike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 41,
+          "predecessors": [
+            "J44:OP6"
+          ],
+          "material": "Racebike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [
+            "J44:OP7"
+          ],
+          "material": "Racebike_Schaltauge_bearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J45",
+      "priority": 4,
+      "deadline": 2850,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 45,
+          "predecessors": [],
+          "material": "Mountainbike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J45:OP1"
+          ],
+          "material": "Mountainbike_Antrieb_installiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 10,
+          "predecessors": [
+            "J45:OP2"
+          ],
+          "material": "Mountainbike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 16,
+          "predecessors": [
+            "J45:OP3"
+          ],
+          "material": "Mountainbike_Bremsen_justiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 36,
+          "predecessors": [
+            "J45:OP4"
+          ],
+          "material": "Mountainbike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 16,
+          "predecessors": [
+            "J45:OP5"
+          ],
+          "material": "Mountainbike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 18,
+          "predecessors": [
+            "J45:OP6"
+          ],
+          "material": "Mountainbike_Bremsaufnahme_gebohrt"
+        }
+      ]
+    },
+    {
+      "id": "J46",
+      "priority": 8,
+      "deadline": 2805,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 34,
+          "predecessors": [],
+          "material": "Racebike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 36,
+          "predecessors": [
+            "J46:OP1"
+          ],
+          "material": "Racebike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 37,
+          "predecessors": [
+            "J46:OP2"
+          ],
+          "material": "Racebike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 21,
+          "predecessors": [
+            "J46:OP3"
+          ],
+          "material": "Racebike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 35,
+          "predecessors": [
+            "J46:OP4"
+          ],
+          "material": "Racebike_Bremsen_justiert"
+        }
+      ]
+    },
+    {
+      "id": "J47",
+      "priority": 9,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [],
+          "material": "E-Bike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 33,
+          "predecessors": [
+            "J47:OP1"
+          ],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J47:OP2"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 20,
+          "predecessors": [
+            "J47:OP3"
+          ],
+          "material": "E-Bike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 20,
+          "predecessors": [
+            "J47:OP4"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 37,
+          "predecessors": [
+            "J47:OP5"
+          ],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 21,
+          "predecessors": [
+            "J47:OP6"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M1",
+          "processingTime": 39,
+          "predecessors": [
+            "J47:OP7"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        }
+      ]
+    },
+    {
+      "id": "J48",
+      "priority": 5,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 33,
+          "predecessors": [
+            "J48:OP1"
+          ],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [
+            "J48:OP2"
+          ],
+          "material": "Citybike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 16,
+          "predecessors": [
+            "J48:OP3"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 29,
+          "predecessors": [
+            "J48:OP4"
+          ],
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 25,
+          "predecessors": [
+            "J48:OP5"
+          ],
+          "material": "Citybike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 26,
+          "predecessors": [
+            "J48:OP6"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M3",
+          "processingTime": 34,
+          "predecessors": [
+            "J48:OP7"
+          ],
+          "material": "Citybike_Bremsaufnahme_gebohrt"
+        }
+      ]
+    },
+    {
+      "id": "J49",
+      "priority": 9,
+      "deadline": 2752,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [],
+          "material": "E-Bike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J49:OP1"
+          ],
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 21,
+          "predecessors": [
+            "J49:OP2"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 33,
+          "predecessors": [
+            "J49:OP3"
+          ],
+          "material": "E-Bike_Antrieb_installiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 19,
+          "predecessors": [
+            "J49:OP4"
+          ],
+          "material": "E-Bike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 19,
+          "predecessors": [
+            "J49:OP5"
+          ],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 18,
+          "predecessors": [
+            "J49:OP6"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [
+            "J49:OP7"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        }
+      ]
+    },
+    {
+      "id": "J50",
+      "priority": 8,
+      "deadline": 2749,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 29,
+          "predecessors": [
+            "J50:OP1"
+          ],
+          "material": "Citybike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 16,
+          "predecessors": [
+            "J50:OP2"
+          ],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [
+            "J50:OP3"
+          ],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 57,
+          "predecessors": [
+            "J50:OP4"
+          ],
+          "material": "Citybike_Bremsen_justiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 52,
+          "predecessors": [
+            "J50:OP5"
+          ],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 29,
+          "predecessors": [
+            "J50:OP6"
+          ],
+          "material": "Citybike_Fahrrad_endmontiert"
+        }
+      ]
+    },
+    {
+      "id": "J51",
+      "priority": 7,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 42,
+          "predecessors": [],
+          "material": "Mountainbike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 27,
+          "predecessors": [
+            "J51:OP1"
+          ],
+          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 44,
+          "predecessors": [
+            "J51:OP2"
+          ],
+          "material": "Mountainbike_Bremsen_justiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 27,
+          "predecessors": [
+            "J51:OP3"
+          ],
+          "material": "Mountainbike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J51:OP4"
+          ],
+          "material": "Mountainbike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 43,
+          "predecessors": [
+            "J51:OP5"
+          ],
+          "material": "Mountainbike_Antrieb_installiert"
+        }
+      ]
+    },
+    {
+      "id": "J52",
+      "priority": 7,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 32,
+          "predecessors": [],
+          "material": "Mountainbike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 31,
+          "predecessors": [
+            "J52:OP1"
+          ],
+          "material": "Mountainbike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 27,
+          "predecessors": [
+            "J52:OP2"
+          ],
+          "material": "Mountainbike_Bremsen_justiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [
+            "J52:OP3"
+          ],
+          "material": "Mountainbike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 32,
+          "predecessors": [
+            "J52:OP4"
+          ],
+          "material": "Mountainbike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [
+            "J52:OP5"
+          ],
+          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
+        }
+      ]
+    },
+    {
+      "id": "J53",
+      "priority": 7,
+      "deadline": 2879,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 39,
+          "predecessors": [],
+          "material": "E-Bike_Antrieb_installiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 35,
+          "predecessors": [
+            "J53:OP1"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J53:OP2"
+          ],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 12,
+          "predecessors": [
+            "J53:OP3"
+          ],
+          "material": "E-Bike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 14,
+          "predecessors": [
+            "J53:OP4"
+          ],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [
+            "J53:OP5"
+          ],
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 46,
+          "predecessors": [
+            "J53:OP6"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        }
+      ]
+    },
+    {
+      "id": "J54",
+      "priority": 9,
+      "deadline": 2749,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 52,
+          "predecessors": [],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 60,
+          "predecessors": [
+            "J54:OP1"
+          ],
+          "material": "E-Bike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J54:OP2"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 28,
+          "predecessors": [
+            "J54:OP3"
+          ],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 28,
+          "predecessors": [
+            "J54:OP4"
+          ],
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 42,
+          "predecessors": [
+            "J54:OP5"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 37,
+          "predecessors": [
+            "J54:OP6"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 12,
+          "predecessors": [
+            "J54:OP7"
+          ],
+          "material": "E-Bike_Rahmen_komplettiert"
+        }
+      ]
+    },
+    {
+      "id": "J55",
+      "priority": 1,
+      "deadline": 2795,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 18,
+          "predecessors": [],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [
+            "J55:OP1"
+          ],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 10,
+          "predecessors": [
+            "J55:OP2"
+          ],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [
+            "J55:OP3"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 23,
+          "predecessors": [
+            "J55:OP4"
+          ],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 37,
+          "predecessors": [
+            "J55:OP5"
+          ],
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 46,
+          "predecessors": [
+            "J55:OP6"
+          ],
+          "material": "Citybike_Bremsen_justiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M1",
+          "processingTime": 23,
+          "predecessors": [
+            "J55:OP7"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        }
+      ]
+    },
+    {
+      "id": "J56",
+      "priority": 9,
+      "deadline": 2805,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 40,
+          "predecessors": [],
+          "material": "Racebike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 34,
+          "predecessors": [
+            "J56:OP1"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 25,
+          "predecessors": [
+            "J56:OP2"
+          ],
+          "material": "Racebike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 37,
+          "predecessors": [
+            "J56:OP3"
+          ],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 29,
+          "predecessors": [
+            "J56:OP4"
+          ],
+          "material": "Racebike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 10,
+          "predecessors": [
+            "J56:OP5"
+          ],
+          "material": "Racebike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 46,
+          "predecessors": [
+            "J56:OP6"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        }
+      ]
+    },
+    {
+      "id": "J57",
+      "priority": 3,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 28,
+          "predecessors": [],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 13,
+          "predecessors": [
+            "J57:OP1"
+          ],
+          "material": "Citybike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 42,
+          "predecessors": [
+            "J57:OP2"
+          ],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J57:OP3"
+          ],
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J57:OP4"
+          ],
+          "material": "Citybike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 29,
+          "predecessors": [
+            "J57:OP5"
+          ],
+          "material": "Citybike_Bremsen_justiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [
+            "J57:OP6"
+          ],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M1",
+          "processingTime": 19,
+          "predecessors": [
+            "J57:OP7"
+          ],
+          "material": "Citybike_Tretlager_gefraest"
+        }
+      ]
+    },
+    {
+      "id": "J58",
+      "priority": 7,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 26,
+          "predecessors": [],
+          "material": "Citybike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 19,
+          "predecessors": [
+            "J58:OP1"
+          ],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 48,
+          "predecessors": [
+            "J58:OP2"
+          ],
+          "material": "Citybike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 57,
+          "predecessors": [
+            "J58:OP3"
+          ],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 38,
+          "predecessors": [
+            "J58:OP4"
+          ],
+          "material": "Citybike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [
+            "J58:OP5"
+          ],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J58:OP6"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 16,
+          "predecessors": [
+            "J58:OP7"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        }
+      ]
+    },
+    {
+      "id": "J59",
+      "priority": 2,
+      "deadline": 2816,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 55,
+          "predecessors": [],
+          "material": "Mountainbike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 38,
+          "predecessors": [
+            "J59:OP1"
+          ],
+          "material": "Mountainbike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 33,
+          "predecessors": [
+            "J59:OP2"
+          ],
+          "material": "Mountainbike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 47,
+          "predecessors": [
+            "J59:OP3"
+          ],
+          "material": "Mountainbike_Bremsen_justiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 49,
+          "predecessors": [
+            "J59:OP4"
+          ],
+          "material": "Mountainbike_Laufraeder_montiert"
+        }
+      ]
+    },
+    {
+      "id": "J60",
+      "priority": 10,
+      "deadline": 2822,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 42,
+          "predecessors": [],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 19,
+          "predecessors": [
+            "J60:OP1"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J60:OP2"
+          ],
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 13,
+          "predecessors": [
+            "J60:OP3"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [
+            "J60:OP4"
+          ],
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+        }
+      ]
+    },
+    {
+      "id": "J61",
+      "priority": 10,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [],
+          "material": "Racebike_Bremsen_justiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 24,
+          "predecessors": [
+            "J61:OP1"
+          ],
+          "material": "Racebike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [
+            "J61:OP2"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J61:OP3"
+          ],
+          "material": "Racebike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J61:OP4"
+          ],
+          "material": "Racebike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 57,
+          "predecessors": [
+            "J61:OP5"
+          ],
+          "material": "Racebike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 13,
+          "predecessors": [
+            "J61:OP6"
+          ],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M3",
+          "processingTime": 25,
+          "predecessors": [
+            "J61:OP7"
+          ],
+          "material": "Racebike_Hinterbau_vorbereitet"
+        }
+      ]
+    },
+    {
+      "id": "J62",
+      "priority": 1,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 60,
+          "predecessors": [],
+          "material": "Citybike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 55,
+          "predecessors": [
+            "J62:OP1"
+          ],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 34,
+          "predecessors": [
+            "J62:OP2"
+          ],
+          "material": "Citybike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J62:OP3"
+          ],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 43,
+          "predecessors": [
+            "J62:OP4"
+          ],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J62:OP5"
+          ],
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 38,
+          "predecessors": [
+            "J62:OP6"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        }
+      ]
+    },
+    {
+      "id": "J63",
+      "priority": 3,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 31,
+          "predecessors": [],
+          "material": "Mountainbike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 27,
+          "predecessors": [
+            "J63:OP1"
+          ],
+          "material": "Mountainbike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 53,
+          "predecessors": [
+            "J63:OP2"
+          ],
+          "material": "Mountainbike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 28,
+          "predecessors": [
+            "J63:OP3"
+          ],
+          "material": "Mountainbike_Bremsen_justiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 59,
+          "predecessors": [
+            "J63:OP4"
+          ],
+          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 16,
+          "predecessors": [
+            "J63:OP5"
+          ],
+          "material": "Mountainbike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 25,
+          "predecessors": [
+            "J63:OP6"
+          ],
+          "material": "Mountainbike_Hinterbau_vorbereitet"
+        }
+      ]
+    },
+    {
+      "id": "J64",
+      "priority": 5,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 37,
+          "predecessors": [],
+          "material": "Mountainbike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 28,
+          "predecessors": [
+            "J64:OP1"
+          ],
+          "material": "Mountainbike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 30,
+          "predecessors": [
+            "J64:OP2"
+          ],
+          "material": "Mountainbike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 44,
+          "predecessors": [
+            "J64:OP3"
+          ],
+          "material": "Mountainbike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 49,
+          "predecessors": [
+            "J64:OP4"
+          ],
+          "material": "Mountainbike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 45,
+          "predecessors": [
+            "J64:OP5"
+          ],
+          "material": "Mountainbike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 34,
+          "predecessors": [
+            "J64:OP6"
+          ],
+          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
+        }
+      ]
+    },
+    {
+      "id": "J65",
+      "priority": 8,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 29,
+          "predecessors": [],
+          "material": "Racebike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 16,
+          "predecessors": [
+            "J65:OP1"
+          ],
+          "material": "Racebike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 40,
+          "predecessors": [
+            "J65:OP2"
+          ],
+          "material": "Racebike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 33,
+          "predecessors": [
+            "J65:OP3"
+          ],
+          "material": "Racebike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 10,
+          "predecessors": [
+            "J65:OP4"
+          ],
+          "material": "Racebike_Steuerrohr_ausgerieben"
+        }
+      ]
+    },
+    {
+      "id": "J66",
+      "priority": 10,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 39,
+          "predecessors": [],
+          "material": "Racebike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 23,
+          "predecessors": [
+            "J66:OP1"
+          ],
+          "material": "Racebike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 13,
+          "predecessors": [
+            "J66:OP2"
+          ],
+          "material": "Racebike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 24,
+          "predecessors": [
+            "J66:OP3"
+          ],
+          "material": "Racebike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 16,
+          "predecessors": [
+            "J66:OP4"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 14,
+          "predecessors": [
+            "J66:OP5"
+          ],
+          "material": "Racebike_Laufraeder_montiert"
+        }
+      ]
+    },
+    {
+      "id": "J67",
+      "priority": 6,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 52,
+          "predecessors": [],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 42,
+          "predecessors": [
+            "J67:OP1"
+          ],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [
+            "J67:OP2"
+          ],
+          "material": "Citybike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [
+            "J67:OP3"
+          ],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 20,
+          "predecessors": [
+            "J67:OP4"
+          ],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 35,
+          "predecessors": [
+            "J67:OP5"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 27,
+          "predecessors": [
+            "J67:OP6"
+          ],
+          "material": "Citybike_Steuerrohr_montiert"
+        }
+      ]
+    },
+    {
+      "id": "J68",
+      "priority": 7,
+      "deadline": 2840,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 26,
+          "predecessors": [
+            "J68:OP1"
+          ],
+          "material": "Racebike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [
+            "J68:OP2"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 38,
+          "predecessors": [
+            "J68:OP3"
+          ],
+          "material": "Racebike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 45,
+          "predecessors": [
+            "J68:OP4"
+          ],
+          "material": "Racebike_Rahmen_komplettiert"
+        }
+      ]
+    },
+    {
+      "id": "J69",
+      "priority": 2,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 56,
+          "predecessors": [],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 60,
+          "predecessors": [
+            "J69:OP1"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 24,
+          "predecessors": [
+            "J69:OP2"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J69:OP3"
+          ],
+          "material": "Citybike_Bremsen_justiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 20,
+          "predecessors": [
+            "J69:OP4"
+          ],
+          "material": "Citybike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 38,
+          "predecessors": [
+            "J69:OP5"
+          ],
+          "material": "Citybike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 24,
+          "predecessors": [
+            "J69:OP6"
+          ],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        }
+      ]
+    },
+    {
+      "id": "J70",
+      "priority": 5,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 40,
+          "predecessors": [],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 10,
+          "predecessors": [
+            "J70:OP1"
+          ],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 13,
+          "predecessors": [
+            "J70:OP2"
+          ],
+          "material": "Citybike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 19,
+          "predecessors": [
+            "J70:OP3"
+          ],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 50,
+          "predecessors": [
+            "J70:OP4"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 42,
+          "predecessors": [
+            "J70:OP5"
+          ],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [
+            "J70:OP6"
+          ],
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
+        }
+      ]
+    },
+    {
+      "id": "J71",
+      "priority": 8,
+      "deadline": 2850,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 50,
+          "predecessors": [],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 15,
+          "predecessors": [
+            "J71:OP1"
+          ],
+          "material": "E-Bike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 57,
+          "predecessors": [
+            "J71:OP2"
+          ],
+          "material": "E-Bike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 30,
+          "predecessors": [
+            "J71:OP3"
+          ],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [
+            "J71:OP4"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 16,
+          "predecessors": [
+            "J71:OP5"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 17,
+          "predecessors": [
+            "J71:OP6"
+          ],
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+        }
+      ]
+    },
+    {
+      "id": "J72",
+      "priority": 7,
+      "deadline": 2809,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 33,
+          "predecessors": [],
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 37,
+          "predecessors": [
+            "J72:OP1"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 30,
+          "predecessors": [
+            "J72:OP2"
+          ],
+          "material": "E-Bike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J72:OP3"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 35,
+          "predecessors": [
+            "J72:OP4"
+          ],
+          "material": "E-Bike_Antrieb_installiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 24,
+          "predecessors": [
+            "J72:OP5"
+          ],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J72:OP6"
+          ],
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J72:OP7"
+          ],
+          "material": "E-Bike_Steuerrohr_montiert"
+        }
+      ]
+    },
+    {
+      "id": "J73",
+      "priority": 10,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 20,
+          "predecessors": [],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 38,
+          "predecessors": [
+            "J73:OP1"
+          ],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 34,
+          "predecessors": [
+            "J73:OP2"
+          ],
+          "material": "E-Bike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 28,
+          "predecessors": [
+            "J73:OP3"
+          ],
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [
+            "J73:OP4"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        }
+      ]
+    },
+    {
+      "id": "J74",
+      "priority": 9,
+      "deadline": 2774,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 42,
+          "predecessors": [
+            "J74:OP1"
+          ],
+          "material": "E-Bike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 28,
+          "predecessors": [
+            "J74:OP2"
+          ],
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 42,
+          "predecessors": [
+            "J74:OP3"
+          ],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 26,
+          "predecessors": [
+            "J74:OP4"
+          ],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 34,
+          "predecessors": [
+            "J74:OP5"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 28,
+          "predecessors": [
+            "J74:OP6"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        }
+      ]
+    },
+    {
+      "id": "J75",
+      "priority": 5,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 12,
+          "predecessors": [],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 43,
+          "predecessors": [
+            "J75:OP1"
+          ],
+          "material": "Citybike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [
+            "J75:OP2"
+          ],
+          "material": "Citybike_Bremsen_justiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J75:OP3"
+          ],
+          "material": "Citybike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 60,
+          "predecessors": [
+            "J75:OP4"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        }
+      ]
+    },
+    {
+      "id": "J76",
+      "priority": 7,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 26,
+          "predecessors": [],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J76:OP1"
+          ],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 57,
+          "predecessors": [
+            "J76:OP2"
+          ],
+          "material": "E-Bike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [
+            "J76:OP3"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 50,
+          "predecessors": [
+            "J76:OP4"
+          ],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 14,
+          "predecessors": [
+            "J76:OP5"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 44,
+          "predecessors": [
+            "J76:OP6"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J76:OP7"
+          ],
+          "material": "E-Bike_Rahmen_komplettiert"
+        }
+      ]
+    },
+    {
+      "id": "J77",
+      "priority": 5,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 37,
+          "predecessors": [],
+          "material": "Citybike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 34,
+          "predecessors": [
+            "J77:OP1"
+          ],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 30,
+          "predecessors": [
+            "J77:OP2"
+          ],
+          "material": "Citybike_Bremsen_justiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 20,
+          "predecessors": [
+            "J77:OP3"
+          ],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 52,
+          "predecessors": [
+            "J77:OP4"
+          ],
+          "material": "Citybike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 34,
+          "predecessors": [
+            "J77:OP5"
+          ],
+          "material": "Citybike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [
+            "J77:OP6"
+          ],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J77:OP7"
+          ],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J78",
+      "priority": 8,
+      "deadline": 2818,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 42,
+          "predecessors": [
+            "J78:OP1"
+          ],
+          "material": "Citybike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 30,
+          "predecessors": [
+            "J78:OP2"
+          ],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 47,
+          "predecessors": [
+            "J78:OP3"
+          ],
+          "material": "Citybike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 32,
+          "predecessors": [
+            "J78:OP4"
+          ],
+          "material": "Citybike_Rahmen_lackiert"
+        }
+      ]
+    },
+    {
+      "id": "J79",
+      "priority": 9,
+      "deadline": 2767,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 35,
+          "predecessors": [],
+          "material": "E-Bike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 45,
+          "predecessors": [
+            "J79:OP1"
+          ],
+          "material": "E-Bike_Antrieb_installiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 33,
+          "predecessors": [
+            "J79:OP2"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 22,
+          "predecessors": [
+            "J79:OP3"
+          ],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 30,
+          "predecessors": [
+            "J79:OP4"
+          ],
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
+        }
+      ]
+    },
+    {
+      "id": "J80",
+      "priority": 7,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 21,
+          "predecessors": [],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 40,
+          "predecessors": [
+            "J80:OP1"
+          ],
+          "material": "Citybike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 21,
+          "predecessors": [
+            "J80:OP2"
+          ],
+          "material": "Citybike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [
+            "J80:OP3"
+          ],
+          "material": "Citybike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 20,
+          "predecessors": [
+            "J80:OP4"
+          ],
+          "material": "Citybike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 14,
+          "predecessors": [
+            "J80:OP5"
+          ],
+          "material": "Citybike_Bremsen_justiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 21,
+          "predecessors": [
+            "J80:OP6"
+          ],
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M3",
+          "processingTime": 49,
+          "predecessors": [
+            "J80:OP7"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        }
+      ]
+    },
+    {
+      "id": "J81",
+      "priority": 4,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 38,
+          "predecessors": [],
+          "material": "Mountainbike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 34,
+          "predecessors": [
+            "J81:OP1"
+          ],
+          "material": "Mountainbike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J81:OP2"
+          ],
+          "material": "Mountainbike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J81:OP3"
+          ],
+          "material": "Mountainbike_Bremsen_justiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J81:OP4"
+          ],
+          "material": "Mountainbike_Steuerrohr_ausgerieben"
+        }
+      ]
+    },
+    {
+      "id": "J82",
+      "priority": 9,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [],
+          "material": "Racebike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 42,
+          "predecessors": [
+            "J82:OP1"
+          ],
+          "material": "Racebike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 17,
+          "predecessors": [
+            "J82:OP2"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 23,
+          "predecessors": [
+            "J82:OP3"
+          ],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 17,
+          "predecessors": [
+            "J82:OP4"
+          ],
+          "material": "Racebike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [
+            "J82:OP5"
+          ],
+          "material": "Racebike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 57,
+          "predecessors": [
+            "J82:OP6"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 20,
+          "predecessors": [
+            "J82:OP7"
+          ],
+          "material": "Racebike_Tretlageraufnahme_geschweisst"
+        }
+      ]
+    },
+    {
+      "id": "J83",
+      "priority": 7,
+      "deadline": 2784,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 45,
+          "predecessors": [],
+          "material": "Racebike_Bremsen_justiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 29,
+          "predecessors": [
+            "J83:OP1"
+          ],
+          "material": "Racebike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J83:OP2"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 60,
+          "predecessors": [
+            "J83:OP3"
+          ],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 33,
+          "predecessors": [
+            "J83:OP4"
+          ],
+          "material": "Racebike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 57,
+          "predecessors": [
+            "J83:OP5"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 41,
+          "predecessors": [
+            "J83:OP6"
+          ],
+          "material": "Racebike_Rahmen_nachbearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J84",
+      "priority": 6,
+      "deadline": 2842,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 42,
+          "predecessors": [],
+          "material": "Mountainbike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 22,
+          "predecessors": [
+            "J84:OP1"
+          ],
+          "material": "Mountainbike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 49,
+          "predecessors": [
+            "J84:OP2"
+          ],
+          "material": "Mountainbike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 21,
+          "predecessors": [
+            "J84:OP3"
+          ],
+          "material": "Mountainbike_Antrieb_installiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 14,
+          "predecessors": [
+            "J84:OP4"
+          ],
+          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
+        }
+      ]
+    },
+    {
+      "id": "J85",
+      "priority": 7,
+      "deadline": 2792,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [],
+          "material": "Racebike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 44,
+          "predecessors": [
+            "J85:OP1"
+          ],
+          "material": "Racebike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 35,
+          "predecessors": [
+            "J85:OP2"
+          ],
+          "material": "Racebike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 49,
+          "predecessors": [
+            "J85:OP3"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 41,
+          "predecessors": [
+            "J85:OP4"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 30,
+          "predecessors": [
+            "J85:OP5"
+          ],
+          "material": "Racebike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 46,
+          "predecessors": [
+            "J85:OP6"
+          ],
+          "material": "Racebike_Steuerrohr_montiert"
+        }
+      ]
+    },
+    {
+      "id": "J86",
+      "priority": 3,
+      "deadline": 2795,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 58,
+          "predecessors": [],
+          "material": "Mountainbike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J86:OP1"
+          ],
+          "material": "Mountainbike_Antrieb_installiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 15,
+          "predecessors": [
+            "J86:OP2"
+          ],
+          "material": "Mountainbike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 41,
+          "predecessors": [
+            "J86:OP3"
+          ],
+          "material": "Mountainbike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 26,
+          "predecessors": [
+            "J86:OP4"
+          ],
+          "material": "Mountainbike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 37,
+          "predecessors": [
+            "J86:OP5"
+          ],
+          "material": "Mountainbike_Bremsen_justiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J86:OP6"
+          ],
+          "material": "Mountainbike_Hinterbau_vorbereitet"
+        }
+      ]
+    },
+    {
+      "id": "J87",
+      "priority": 9,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 41,
+          "predecessors": [],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 32,
+          "predecessors": [
+            "J87:OP1"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J87:OP2"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 42,
+          "predecessors": [
+            "J87:OP3"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 30,
+          "predecessors": [
+            "J87:OP4"
+          ],
+          "material": "E-Bike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 40,
+          "predecessors": [
+            "J87:OP5"
+          ],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 20,
+          "predecessors": [
+            "J87:OP6"
+          ],
+          "material": "E-Bike_Rahmen_lackiert"
+        }
+      ]
+    },
+    {
+      "id": "J88",
+      "priority": 8,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 19,
+          "predecessors": [],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 10,
+          "predecessors": [
+            "J88:OP1"
+          ],
+          "material": "E-Bike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 40,
+          "predecessors": [
+            "J88:OP2"
+          ],
+          "material": "E-Bike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 37,
+          "predecessors": [
+            "J88:OP3"
+          ],
+          "material": "E-Bike_Antrieb_installiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 40,
+          "predecessors": [
+            "J88:OP4"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 14,
+          "predecessors": [
+            "J88:OP5"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M3",
+          "processingTime": 34,
+          "predecessors": [
+            "J88:OP6"
+          ],
+          "material": "E-Bike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J88:OP7"
+          ],
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
+        }
+      ]
+    },
+    {
+      "id": "J89",
+      "priority": 4,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 43,
+          "predecessors": [],
+          "material": "Citybike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 54,
+          "predecessors": [
+            "J89:OP1"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 17,
+          "predecessors": [
+            "J89:OP2"
+          ],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 49,
+          "predecessors": [
+            "J89:OP3"
+          ],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 10,
+          "predecessors": [
+            "J89:OP4"
+          ],
+          "material": "Citybike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [
+            "J89:OP5"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 28,
+          "predecessors": [
+            "J89:OP6"
+          ],
+          "material": "Citybike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M3",
+          "processingTime": 50,
+          "predecessors": [
+            "J89:OP7"
+          ],
+          "material": "Citybike_Tretlager_gefraest"
+        }
+      ]
+    },
+    {
+      "id": "J90",
+      "priority": 10,
+      "deadline": 2844,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 20,
+          "predecessors": [],
+          "material": "E-Bike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 59,
+          "predecessors": [
+            "J90:OP1"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 30,
+          "predecessors": [
+            "J90:OP2"
+          ],
+          "material": "E-Bike_Antrieb_installiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 19,
+          "predecessors": [
+            "J90:OP3"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 27,
+          "predecessors": [
+            "J90:OP4"
+          ],
+          "material": "E-Bike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 24,
+          "predecessors": [
+            "J90:OP5"
+          ],
+          "material": "E-Bike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 38,
+          "predecessors": [
+            "J90:OP6"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J91",
+      "priority": 9,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 45,
+          "predecessors": [],
+          "material": "Racebike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 50,
+          "predecessors": [
+            "J91:OP1"
+          ],
+          "material": "Racebike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 18,
+          "predecessors": [
+            "J91:OP2"
+          ],
+          "material": "Racebike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 29,
+          "predecessors": [
+            "J91:OP3"
+          ],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 22,
+          "predecessors": [
+            "J91:OP4"
+          ],
+          "material": "Racebike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 49,
+          "predecessors": [
+            "J91:OP5"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 15,
+          "predecessors": [
+            "J91:OP6"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP8",
+          "machineId": "M3",
+          "processingTime": 24,
+          "predecessors": [
+            "J91:OP7"
+          ],
+          "material": "Racebike_Tretlager_gefraest"
+        }
+      ]
+    },
+    {
+      "id": "J92",
+      "priority": 6,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 32,
+          "predecessors": [],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 20,
+          "predecessors": [
+            "J92:OP1"
+          ],
+          "material": "Citybike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 30,
+          "predecessors": [
+            "J92:OP2"
+          ],
+          "material": "Citybike_Bremsen_justiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 45,
+          "predecessors": [
+            "J92:OP3"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 20,
+          "predecessors": [
+            "J92:OP4"
+          ],
+          "material": "Citybike_Antrieb_installiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 45,
+          "predecessors": [
+            "J92:OP5"
+          ],
+          "material": "Citybike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 13,
+          "predecessors": [
+            "J92:OP6"
+          ],
+          "material": "Citybike_Steuerrohr_montiert"
+        }
+      ]
+    },
+    {
+      "id": "J93",
+      "priority": 3,
+      "deadline": 2800,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 19,
+          "predecessors": [],
+          "material": "Citybike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 17,
+          "predecessors": [
+            "J93:OP1"
+          ],
+          "material": "Citybike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 55,
+          "predecessors": [
+            "J93:OP2"
+          ],
+          "material": "Citybike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 21,
+          "predecessors": [
+            "J93:OP3"
+          ],
+          "material": "Citybike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 17,
+          "predecessors": [
+            "J93:OP4"
+          ],
+          "material": "Citybike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 25,
+          "predecessors": [
+            "J93:OP5"
+          ],
+          "material": "Citybike_Hauptrahmen_zugeschnitten"
+        }
+      ]
+    },
+    {
+      "id": "J94",
+      "priority": 9,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [],
+          "material": "Racebike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 48,
+          "predecessors": [
+            "J94:OP1"
+          ],
+          "material": "Racebike_Bremsen_justiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M3",
+          "processingTime": 21,
+          "predecessors": [
+            "J94:OP2"
+          ],
+          "material": "Racebike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 22,
+          "predecessors": [
+            "J94:OP3"
+          ],
+          "material": "Racebike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 21,
+          "predecessors": [
+            "J94:OP4"
+          ],
+          "material": "Racebike_Rahmen_komplettiert"
+        }
+      ]
+    },
+    {
+      "id": "J95",
+      "priority": 1,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 38,
+          "predecessors": [],
+          "material": "Mountainbike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 26,
+          "predecessors": [
+            "J95:OP1"
+          ],
+          "material": "Mountainbike_Hinterbau_vorbereitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 31,
+          "predecessors": [
+            "J95:OP2"
+          ],
+          "material": "Mountainbike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 20,
+          "predecessors": [
+            "J95:OP3"
+          ],
+          "material": "Mountainbike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 26,
+          "predecessors": [
+            "J95:OP4"
+          ],
+          "material": "Mountainbike_Antrieb_installiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 30,
+          "predecessors": [
+            "J95:OP5"
+          ],
+          "material": "Mountainbike_Tretlager_gefraest"
+        }
+      ]
+    },
+    {
+      "id": "J96",
+      "priority": 8,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 16,
+          "predecessors": [],
+          "material": "Racebike_Bremsen_justiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M2",
+          "processingTime": 20,
+          "predecessors": [
+            "J96:OP1"
+          ],
+          "material": "Racebike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 10,
+          "predecessors": [
+            "J96:OP2"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M2",
+          "processingTime": 21,
+          "predecessors": [
+            "J96:OP3"
+          ],
+          "material": "Racebike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 23,
+          "predecessors": [
+            "J96:OP4"
+          ],
+          "material": "Racebike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J96:OP5"
+          ],
+          "material": "Racebike_Rahmen_nachbearbeitet"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 19,
+          "predecessors": [
+            "J96:OP6"
+          ],
+          "material": "Racebike_Schaltauge_bearbeitet"
+        }
+      ]
+    },
+    {
+      "id": "J97",
+      "priority": 10,
+      "deadline": 2853,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M3",
+          "processingTime": 46,
+          "predecessors": [],
+          "material": "E-Bike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 42,
+          "predecessors": [
+            "J97:OP1"
+          ],
+          "material": "E-Bike_Schaltauge_bearbeitet"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 27,
+          "predecessors": [
+            "J97:OP2"
+          ],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 54,
+          "predecessors": [
+            "J97:OP3"
+          ],
+          "material": "E-Bike_Bremsen_justiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J97:OP4"
+          ],
+          "material": "E-Bike_Steuerrohr_montiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M3",
+          "processingTime": 47,
+          "predecessors": [
+            "J97:OP5"
+          ],
+          "material": "E-Bike_Antrieb_installiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 15,
+          "predecessors": [
+            "J97:OP6"
+          ],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        }
+      ]
+    },
+    {
+      "id": "J98",
+      "priority": 8,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 44,
+          "predecessors": [],
+          "material": "Citybike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M3",
+          "processingTime": 43,
+          "predecessors": [
+            "J98:OP1"
+          ],
+          "material": "Citybike_Bremsaufnahme_gebohrt"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M2",
+          "processingTime": 21,
+          "predecessors": [
+            "J98:OP2"
+          ],
+          "material": "Citybike_Rahmen_lackiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 20,
+          "predecessors": [
+            "J98:OP3"
+          ],
+          "material": "Citybike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M2",
+          "processingTime": 17,
+          "predecessors": [
+            "J98:OP4"
+          ],
+          "material": "Citybike_Tretlager_gefraest"
+        }
+      ]
+    },
+    {
+      "id": "J99",
+      "priority": 10,
+      "deadline": 2880,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M2",
+          "processingTime": 28,
+          "predecessors": [],
+          "material": "Racebike_Steuerrohr_ausgerieben"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 38,
+          "predecessors": [
+            "J99:OP1"
+          ],
+          "material": "Racebike_Bremsen_justiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 29,
+          "predecessors": [
+            "J99:OP2"
+          ],
+          "material": "Racebike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M3",
+          "processingTime": 55,
+          "predecessors": [
+            "J99:OP3"
+          ],
+          "material": "Racebike_Tretlageraufnahme_geschweisst"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M1",
+          "processingTime": 24,
+          "predecessors": [
+            "J99:OP4"
+          ],
+          "material": "Racebike_Antrieb_installiert"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 17,
+          "predecessors": [
+            "J99:OP5"
+          ],
+          "material": "Racebike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M1",
+          "processingTime": 42,
+          "predecessors": [
+            "J99:OP6"
+          ],
+          "material": "Racebike_Steuerrohr_montiert"
+        }
+      ]
+    },
+    {
+      "id": "J100",
+      "priority": 9,
+      "deadline": 2777,
+      "operations": [
+        {
+          "id": "OP1",
+          "machineId": "M1",
+          "processingTime": 38,
+          "predecessors": [],
+          "material": "E-Bike_Fahrrad_endmontiert"
+        },
+        {
+          "id": "OP2",
+          "machineId": "M1",
+          "processingTime": 43,
+          "predecessors": [
+            "J100:OP1"
+          ],
+          "material": "E-Bike_Laufraeder_montiert"
+        },
+        {
+          "id": "OP3",
+          "machineId": "M1",
+          "processingTime": 42,
+          "predecessors": [
+            "J100:OP2"
+          ],
+          "material": "E-Bike_Tretlager_gefraest"
+        },
+        {
+          "id": "OP4",
+          "machineId": "M1",
+          "processingTime": 33,
+          "predecessors": [
+            "J100:OP3"
+          ],
+          "material": "E-Bike_Antrieb_installiert"
+        },
+        {
+          "id": "OP5",
+          "machineId": "M3",
+          "processingTime": 46,
+          "predecessors": [
+            "J100:OP4"
+          ],
+          "material": "E-Bike_Hauptrahmen_zugeschnitten"
+        },
+        {
+          "id": "OP6",
+          "machineId": "M1",
+          "processingTime": 31,
+          "predecessors": [
+            "J100:OP5"
+          ],
+          "material": "E-Bike_Rahmen_komplettiert"
+        },
+        {
+          "id": "OP7",
+          "machineId": "M2",
+          "processingTime": 11,
+          "predecessors": [
+            "J100:OP6"
+          ],
+          "material": "E-Bike_Rahmen_nachbearbeitet"
         }
       ]
     }
@@ -1904,54 +6493,54 @@
       "standard": 25,
       "materialChange": 40,
       "materialTransitions": {
-        "Mountainbike_to_Racebike": 49,
-        "Mountainbike_to_Citybike": 31,
-        "Mountainbike_to_E-Bike": 52,
-        "Racebike_to_Mountainbike": 36,
-        "Racebike_to_Citybike": 42,
-        "Racebike_to_E-Bike": 53,
-        "Citybike_to_Mountainbike": 44,
-        "Citybike_to_Racebike": 40,
-        "Citybike_to_E-Bike": 53,
-        "E-Bike_to_Mountainbike": 50,
-        "E-Bike_to_Racebike": 58,
-        "E-Bike_to_Citybike": 40
+        "Mountainbike_to_Racebike": 50,
+        "Mountainbike_to_Citybike": 45,
+        "Mountainbike_to_E-Bike": 54,
+        "Racebike_to_Mountainbike": 48,
+        "Racebike_to_Citybike": 38,
+        "Racebike_to_E-Bike": 47,
+        "Citybike_to_Mountainbike": 30,
+        "Citybike_to_Racebike": 33,
+        "Citybike_to_E-Bike": 47,
+        "E-Bike_to_Mountainbike": 51,
+        "E-Bike_to_Racebike": 60,
+        "E-Bike_to_Citybike": 54
       }
     },
     "M2": {
       "standard": 15,
       "materialChange": 20,
       "materialTransitions": {
-        "Mountainbike_to_Racebike": 21,
-        "Mountainbike_to_Citybike": 19,
-        "Mountainbike_to_E-Bike": 20,
-        "Racebike_to_Mountainbike": 18,
-        "Racebike_to_Citybike": 23,
-        "Racebike_to_E-Bike": 30,
-        "Citybike_to_Mountainbike": 20,
-        "Citybike_to_Racebike": 15,
-        "Citybike_to_E-Bike": 29,
-        "E-Bike_to_Mountainbike": 25,
-        "E-Bike_to_Racebike": 25,
-        "E-Bike_to_Citybike": 20
+        "Mountainbike_to_Racebike": 22,
+        "Mountainbike_to_Citybike": 15,
+        "Mountainbike_to_E-Bike": 22,
+        "Racebike_to_Mountainbike": 25,
+        "Racebike_to_Citybike": 25,
+        "Racebike_to_E-Bike": 21,
+        "Citybike_to_Mountainbike": 15,
+        "Citybike_to_Racebike": 16,
+        "Citybike_to_E-Bike": 22,
+        "E-Bike_to_Mountainbike": 30,
+        "E-Bike_to_Racebike": 30,
+        "E-Bike_to_Citybike": 29
       }
     },
     "M3": {
       "standard": 10,
       "materialChange": 15,
       "materialTransitions": {
-        "Mountainbike_to_Racebike": 19,
+        "Mountainbike_to_Racebike": 15,
         "Mountainbike_to_Citybike": 12,
-        "Mountainbike_to_E-Bike": 15,
-        "Racebike_to_Mountainbike": 17,
-        "Racebike_to_Citybike": 14,
-        "Racebike_to_E-Bike": 22,
-        "Citybike_to_Mountainbike": 14,
-        "Citybike_to_Racebike": 14,
-        "Citybike_to_E-Bike": 15,
-        "E-Bike_to_Mountainbike": 16,
-        "E-Bike_to_Racebike": 19,
-        "E-Bike_to_Citybike": 17
+        "Mountainbike_to_E-Bike": 22,
+        "Racebike_to_Mountainbike": 14,
+        "Racebike_to_Citybike": 11,
+        "Racebike_to_E-Bike": 25,
+        "Citybike_to_Mountainbike": 12,
+        "Citybike_to_Racebike": 13,
+        "Citybike_to_E-Bike": 23,
+        "E-Bike_to_Mountainbike": 17,
+        "E-Bike_to_Racebike": 23,
+        "E-Bike_to_Citybike": 23
       }
     }
   }
