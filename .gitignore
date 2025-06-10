@@ -1,4 +1,3 @@
-lsexp
 # Ignore specific log files
 jsp_env_*.log
 venv
@@ -6,5 +5,9 @@ venv
 # Ignore all log files in root directory
 /*.log
 
-# Alternatively, ignore all log files throughout the project
+# Ignore all log files throughout the project
 **/*.log
+
+# Exception: Include step_logs.csv specifically
+!**/step_logs.csv
+!step_logs.csv
