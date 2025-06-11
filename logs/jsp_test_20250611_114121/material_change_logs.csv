@@ -1,0 +1,6 @@
+episode,step,machine_idx,old_material,new_material,setup_time
+1,3,1,E-Bike_Laufraeder_montiert,E-Bike_Laufraeder_montiert,20
+1,4,1,E-Bike_Schaltauge_bearbeitet,E-Bike_Schaltauge_bearbeitet,20
+1,5,0,E-Bike_Rahmen_komplettiert,E-Bike_Rahmen_komplettiert,40
+1,6,0,E-Bike_Steuerrohr_ausgerieben,E-Bike_Steuerrohr_ausgerieben,40
+1,8,0,E-Bike_Hauptrahmen_zugeschnitten,E-Bike_Hauptrahmen_zugeschnitten,40

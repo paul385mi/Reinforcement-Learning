@@ -1,0 +1,28 @@
+{
+  "M1": {
+    "total_changes": 4,
+    "total_setup_time": 120,
+    "material_counts": {
+      "E-Bike_Bremsen_justiert": 1,
+      "E-Bike_Rahmen_komplettiert": 1,
+      "E-Bike_Steuerrohr_ausgerieben": 1,
+      "E-Bike_Hauptrahmen_zugeschnitten": 1
+    }
+  },
+  "M2": {
+    "total_changes": 3,
+    "total_setup_time": 40,
+    "material_counts": {
+      "E-Bike_Rahmen_nachbearbeitet": 1,
+      "E-Bike_Laufraeder_montiert": 1,
+      "E-Bike_Schaltauge_bearbeitet": 1
+    }
+  },
+  "M3": {
+    "total_changes": 1,
+    "total_setup_time": 0,
+    "material_counts": {
+      "E-Bike_Hinterbau_vorbereitet": 1
+    }
+  }
+}
