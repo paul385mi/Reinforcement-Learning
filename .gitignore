@@ -2,7 +2,6 @@
 venv
 
 # Ignore all log files in root directory
-*.log
 
 # Ignore all log files throughout the project
 
