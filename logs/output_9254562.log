@@ -1,0 +1,15 @@
+================================================================================
+JobID = 9254562
+User = u17597, Account = scc_uwba_schumann
+Partition = scc-gpu, Nodelist = ggpu138
+================================================================================
+Python path: /mnt/vast-standard/home/paul.mill/u17597/Reinforcement-Learning/venv/bin/python
+Python 3.6.8
+============ Job Information ===================================================
+Submitted: 2025-06-19T11:47:51
+Started: 2025-06-19T11:47:52
+Ended: 2025-06-19T11:48:26
+Elapsed: 1 min, Limit: 2880 min, Difference: 2879 min
+CPUs: 32, Nodes: 1
+Estimated Consumption: 2.50 core-hours
+================================================================================

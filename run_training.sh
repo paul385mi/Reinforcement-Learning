@@ -8,5 +8,12 @@
 #SBATCH -o logs/output_%j.log
 #SBATCH -e logs/error_%j.log
 
-source ~/venv/bin/activate  # falls du eine virtuelle Umgebung nutzt
-python3 train_gym_ppo.py --episodes 1
+# Aktivieren der virtuellen Umgebung mit absolutem Pfad
+source /user/paul.mill/u17597/Reinforcement-Learning/venv/bin/activate
+
+# Debug: Ausgabe des verwendeten Python-Interpreters
+echo "Python path:" $(which python)
+python --version
+
+# Start des Trainings
+python train_gym_ppo.py --episodes 1
