@@ -597,7 +597,7 @@
       "name": "Rahmenfertigung",
       "capabilities": [
         "Rohrzuschnitt",
-        "Rahmenlötung",
+        "Rahmenl\u00f6tung",
         "Rahmenschweissung"
       ]
     },
@@ -605,7 +605,7 @@
       "id": "M2",
       "name": "CNC-Bearbeitung",
       "capabilities": [
-        "Fräsen",
+        "Fr\u00e4sen",
         "Bohren",
         "Gewindeschneiden"
       ]
@@ -616,7 +616,7 @@
       "capabilities": [
         "Radmontage",
         "Komponentenmontage",
-        "Qualitätskontrolle"
+        "Qualit\u00e4tskontrolle"
       ]
     }
   ],

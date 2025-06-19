@@ -1,0 +1,69 @@
+{
+  "M1": {
+    "total_changes": 29,
+    "total_setup_time": 1171,
+    "material_counts": {
+      "Mountainbike_Laufraeder_montiert": 2,
+      "Mountainbike_Rahmen_nachbearbeitet": 2,
+      "Racebike_Rahmen_lackiert": 2,
+      "Racebike_Rahmen_nachbearbeitet": 1,
+      "E-Bike_Tretlageraufnahme_geschweisst": 1,
+      "Racebike_Bremsaufnahme_gebohrt": 1,
+      "Racebike_Bremsen_justiert": 1,
+      "Mountainbike_Steuerrohr_montiert": 1,
+      "Racebike_Steuerrohr_ausgerieben": 1,
+      "Mountainbike_Hinterbau_vorbereitet": 2,
+      "Racebike_Rahmen_komplettiert": 2,
+      "Mountainbike_Schaltauge_bearbeitet": 1,
+      "Mountainbike_Antrieb_installiert": 1,
+      "Racebike_Hinterbau_vorbereitet": 1,
+      "Mountainbike_Tretlager_gefraest": 2,
+      "Mountainbike_Hauptrahmen_zugeschnitten": 1,
+      "Mountainbike_Rahmen_komplettiert": 1,
+      "Mountainbike_Tretlageraufnahme_geschweisst": 2,
+      "Racebike_Tretlageraufnahme_geschweisst": 1,
+      "Racebike_Steuerrohr_montiert": 1,
+      "Citybike_Fahrrad_endmontiert": 1,
+      "Citybike_Rahmen_komplettiert": 1
+    }
+  },
+  "M2": {
+    "total_changes": 16,
+    "total_setup_time": 352,
+    "material_counts": {
+      "Racebike_Bremsaufnahme_gebohrt": 1,
+      "Mountainbike_Laufraeder_montiert": 1,
+      "E-Bike_Antrieb_installiert": 1,
+      "Racebike_Tretlageraufnahme_geschweisst": 1,
+      "Racebike_Hinterbau_vorbereitet": 1,
+      "E-Bike_Fahrrad_endmontiert": 1,
+      "Mountainbike_Steuerrohr_ausgerieben": 1,
+      "Racebike_Steuerrohr_ausgerieben": 1,
+      "Mountainbike_Tretlager_gefraest": 1,
+      "E-Bike_Schaltauge_bearbeitet": 1,
+      "Racebike_Rahmen_lackiert": 1,
+      "Racebike_Fahrrad_endmontiert": 2,
+      "Mountainbike_Steuerrohr_montiert": 1,
+      "Citybike_Hinterbau_vorbereitet": 1,
+      "Mountainbike_Hauptrahmen_zugeschnitten": 1
+    }
+  },
+  "M3": {
+    "total_changes": 14,
+    "total_setup_time": 200,
+    "material_counts": {
+      "Racebike_Steuerrohr_montiert": 2,
+      "Racebike_Hauptrahmen_zugeschnitten": 1,
+      "E-Bike_Rahmen_komplettiert": 1,
+      "Mountainbike_Rahmen_komplettiert": 1,
+      "Mountainbike_Bremsaufnahme_gebohrt": 1,
+      "Citybike_Steuerrohr_ausgerieben": 1,
+      "Mountainbike_Schaltauge_bearbeitet": 1,
+      "Mountainbike_Hinterbau_vorbereitet": 1,
+      "Mountainbike_Hauptrahmen_zugeschnitten": 1,
+      "Citybike_Hauptrahmen_zugeschnitten": 1,
+      "Mountainbike_Fahrrad_endmontiert": 2,
+      "Mountainbike_Antrieb_installiert": 1
+    }
+  }
+}

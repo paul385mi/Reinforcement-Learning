@@ -1,0 +1,11 @@
+episode,step,job_idx,completion_time,deadline_met
+1,9,1,426.0,False
+1,20,0,1024.0,False
+1,24,2,1311.0,False
+1,33,6,1890.0,False
+1,47,9,2781.0,False
+1,50,8,2972.0,False
+1,51,4,3030.0,False
+1,53,7,3177.0,False
+1,55,5,3284.0,False
+1,60,3,3599.0,False
