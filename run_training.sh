@@ -8,5 +8,5 @@
 #SBATCH -o logs/output_%j.log
 #SBATCH -e logs/error_%j.log
 
-source venv/bin/activate  # falls du eine virtuelle Umgebung nutzt
+source ~/venv/bin/activate  # falls du eine virtuelle Umgebung nutzt
 python3 train_gym_ppo.py --episodes 1
