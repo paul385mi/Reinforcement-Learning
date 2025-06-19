@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "train_gym_ppo.py", line 7, in <module>
+    from torch_ppo_agent import TorchPPOAgent
+  File "/mnt/vast-standard/home/paul.mill/u17597/Reinforcement-Learning/torch_ppo_agent.py", line 5, in <module>
+    import torch_geometric.nn as pyg_nn
+  File "/mnt/vast-standard/home/paul.mill/u17597/Reinforcement-Learning/venv/lib64/python3.6/site-packages/torch_geometric/__init__.py", line 4, in <module>
+    import torch_geometric.data
+  File "/mnt/vast-standard/home/paul.mill/u17597/Reinforcement-Learning/venv/lib64/python3.6/site-packages/torch_geometric/data/__init__.py", line 1, in <module>
+    from .data import Data
+  File "/mnt/vast-standard/home/paul.mill/u17597/Reinforcement-Learning/venv/lib64/python3.6/site-packages/torch_geometric/data/data.py", line 3, in <module>
+    from torch_geometric.typing import OptTensor, NodeType, EdgeType
+  File "/mnt/vast-standard/home/paul.mill/u17597/Reinforcement-Learning/venv/lib64/python3.6/site-packages/torch_geometric/typing.py", line 4, in <module>
+    from torch_sparse import SparseTensor
+  File "/mnt/vast-standard/home/paul.mill/u17597/Reinforcement-Learning/venv/lib64/python3.6/site-packages/torch_sparse/__init__.py", line 16, in <module>
+    f'{library}_{suffix}', [osp.dirname(__file__)]).origin)
+AttributeError: 'NoneType' object has no attribute 'origin'
