@@ -1,0 +1,4111 @@
+2025-06-19 11:35:37,236 - JSPGymEnvironment - INFO - Environment reset
+2025-06-19 11:35:37,262 - JSPGymEnvironment - INFO - Environment reset
+2025-06-19 11:35:37,275 - JSPGymEnvironment - INFO - Material change on machine M2:  -> Citybike_Fahrrad_endmontiert, setup time: 0
+2025-06-19 11:35:37,275 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 0, Machine M2, Start: 0, End: 16, Setup: 0
+2025-06-19 11:35:37,275 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 1 =====
+Job: J15, Operation: 0, Job Completed: False
+Current Time: 0.00 -> 16.00, Setup Time: 0.00
+Processing Time: 16.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M2, Material: Citybike_Fahrrad_endmontiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.0800
+- setup_reward: 0.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.1658
+- machine_idle_penalty: -0.5000
+
+TOTAL REWARD: 8.5858
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -0.0800
+- setup_reward: 0.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.1658
+- machine_idle_penalty: -0.5000
+
+CUMULATIVE TOTAL: 8.5858
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=0.00, Idle=16.00, Material=None
+  - Machine M2: Time=16.00, Idle=0.00, Material=Citybike_Fahrrad_endmontiert
+  - Machine M3: Time=0.00, Idle=16.00, Material=None
+==================================================
+
+2025-06-19 11:35:37,287 - JSPGymEnvironment - INFO - Material change on machine M1:  -> Citybike_Tretlageraufnahme_geschweisst, setup time: 0
+2025-06-19 11:35:37,287 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 0, Machine M1, Start: 16, End: 58, Setup: 0
+2025-06-19 11:35:37,287 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 2 =====
+Job: J14, Operation: 0, Job Completed: False
+Current Time: 16.00 -> 58.00, Setup Time: 0.00
+Processing Time: 42.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M1, Material: Citybike_Tretlageraufnahme_geschweisst
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2100
+- setup_reward: 0.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.1802
+- machine_idle_penalty: -1.3500
+
+TOTAL REWARD: 7.6202
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -0.2900
+- setup_reward: 0.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 18.3460
+- machine_idle_penalty: -1.8500
+
+CUMULATIVE TOTAL: 16.2060
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=58.00, Idle=0.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M2: Time=16.00, Idle=42.00, Material=Citybike_Fahrrad_endmontiert
+  - Machine M3: Time=0.00, Idle=58.00, Material=None
+==================================================
+
+2025-06-19 11:35:37,297 - JSPGymEnvironment - INFO - Material change on machine M3:  -> E-Bike_Rahmen_lackiert, setup time: 0
+2025-06-19 11:35:37,297 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 0, Machine M3, Start: 58, End: 88, Setup: 0
+2025-06-19 11:35:37,297 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 3 =====
+Job: J16, Operation: 0, Job Completed: False
+Current Time: 58.00 -> 88.00, Setup Time: 0.00
+Processing Time: 30.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M3, Material: E-Bike_Rahmen_lackiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1500
+- setup_reward: 0.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 9.1933
+- machine_idle_penalty: -1.3250
+
+TOTAL REWARD: 8.2183
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -0.4400
+- setup_reward: 0.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 27.5393
+- machine_idle_penalty: -3.1750
+
+CUMULATIVE TOTAL: 24.4243
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=58.00, Idle=30.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M2: Time=16.00, Idle=72.00, Material=Citybike_Fahrrad_endmontiert
+  - Machine M3: Time=88.00, Idle=0.00, Material=E-Bike_Rahmen_lackiert
+==================================================
+
+2025-06-19 11:35:37,307 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Rahmen_lackiert -> Racebike_Bremsaufnahme_gebohrt, setup time: 22
+2025-06-19 11:35:37,308 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 0, Machine M3, Start: 110, End: 147, Setup: 22
+2025-06-19 11:35:37,308 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 4 =====
+Job: J10, Operation: 0, Job Completed: False
+Current Time: 88.00 -> 147.00, Setup Time: 22.00
+Processing Time: 37.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M3, Material: Racebike_Bremsaufnahme_gebohrt
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2950
+- setup_reward: -5.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2073
+- machine_idle_penalty: -2.8500
+
+TOTAL REWARD: 1.0623
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -0.7350
+- setup_reward: -5.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 1.0000
+- placement_reward: 0.0000
+- timeliness_reward: 36.7466
+- machine_idle_penalty: -6.0250
+
+CUMULATIVE TOTAL: 25.4866
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=58.00, Idle=89.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M2: Time=16.00, Idle=131.00, Material=Citybike_Fahrrad_endmontiert
+  - Machine M3: Time=147.00, Idle=0.00, Material=Racebike_Bremsaufnahme_gebohrt
+==================================================
+
+2025-06-19 11:35:37,317 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Bremsaufnahme_gebohrt -> Mountainbike_Tretlager_gefraest, setup time: 18
+2025-06-19 11:35:37,317 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 0, Machine M3, Start: 165, End: 204, Setup: 18
+2025-06-19 11:35:37,317 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 5 =====
+Job: J6, Operation: 0, Job Completed: False
+Current Time: 147.00 -> 204.00, Setup Time: 18.00
+Processing Time: 39.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M3, Material: Mountainbike_Tretlager_gefraest
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2850
+- setup_reward: -4.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2241
+- machine_idle_penalty: -4.2750
+
+TOTAL REWARD: 0.1641
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -1.0200
+- setup_reward: -10.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 1.0000
+- placement_reward: 0.0000
+- timeliness_reward: 45.9707
+- machine_idle_penalty: -10.3000
+
+CUMULATIVE TOTAL: 25.6507
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=58.00, Idle=146.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M2: Time=16.00, Idle=188.00, Material=Citybike_Fahrrad_endmontiert
+  - Machine M3: Time=204.00, Idle=0.00, Material=Mountainbike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,327 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Fahrrad_endmontiert -> E-Bike_Hinterbau_vorbereitet, setup time: 21
+2025-06-19 11:35:37,327 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 1, Machine M2, Start: 225, End: 242, Setup: 21
+2025-06-19 11:35:37,327 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 6 =====
+Job: J16, Operation: 1, Job Completed: False
+Current Time: 204.00 -> 242.00, Setup Time: 21.00
+Processing Time: 17.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M2, Material: E-Bike_Hinterbau_vorbereitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1900
+- setup_reward: -5.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2467
+- machine_idle_penalty: -2.8250
+
+TOTAL REWARD: 1.4817
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -1.2100
+- setup_reward: -15.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 1.5000
+- placement_reward: 0.0000
+- timeliness_reward: 55.2174
+- machine_idle_penalty: -13.1250
+
+CUMULATIVE TOTAL: 27.1324
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=58.00, Idle=184.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M2: Time=242.00, Idle=0.00, Material=E-Bike_Hinterbau_vorbereitet
+  - Machine M3: Time=204.00, Idle=38.00, Material=Mountainbike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,337 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Hinterbau_vorbereitet -> E-Bike_Steuerrohr_ausgerieben, setup time: 20
+2025-06-19 11:35:37,337 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 0, Machine M2, Start: 262, End: 284, Setup: 20
+2025-06-19 11:35:37,337 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 7 =====
+Job: J17, Operation: 0, Job Completed: False
+Current Time: 242.00 -> 284.00, Setup Time: 20.00
+Processing Time: 22.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M2, Material: E-Bike_Steuerrohr_ausgerieben
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2100
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2462
+- machine_idle_penalty: -3.8750
+
+TOTAL REWARD: 0.1612
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -1.4200
+- setup_reward: -20.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 1.5000
+- placement_reward: 0.0000
+- timeliness_reward: 64.4636
+- machine_idle_penalty: -17.0000
+
+CUMULATIVE TOTAL: 27.2936
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=58.00, Idle=226.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M2: Time=284.00, Idle=0.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=204.00, Idle=80.00, Material=Mountainbike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,347 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Tretlager_gefraest -> Citybike_Bremsen_justiert, setup time: 12
+2025-06-19 11:35:37,347 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 1, Machine M3, Start: 296, End: 319, Setup: 12
+2025-06-19 11:35:37,347 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 8 =====
+Job: J15, Operation: 1, Job Completed: False
+Current Time: 284.00 -> 319.00, Setup Time: 12.00
+Processing Time: 23.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M3, Material: Citybike_Bremsen_justiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1750
+- setup_reward: -3.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2572
+- machine_idle_penalty: -3.7500
+
+TOTAL REWARD: 2.3322
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -1.5950
+- setup_reward: -23.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 1.5000
+- placement_reward: 0.0000
+- timeliness_reward: 73.7208
+- machine_idle_penalty: -20.7500
+
+CUMULATIVE TOTAL: 29.6258
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=58.00, Idle=261.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M2: Time=284.00, Idle=35.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=319.00, Idle=0.00, Material=Citybike_Bremsen_justiert
+==================================================
+
+2025-06-19 11:35:37,357 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Steuerrohr_ausgerieben -> Citybike_Rahmen_komplettiert, setup time: 21
+2025-06-19 11:35:37,357 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 1, Machine M2, Start: 340, End: 365, Setup: 21
+2025-06-19 11:35:37,357 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 9 =====
+Job: J14, Operation: 1, Job Completed: False
+Current Time: 319.00 -> 365.00, Setup Time: 21.00
+Processing Time: 25.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M2, Material: Citybike_Rahmen_komplettiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2300
+- setup_reward: -5.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2710
+- machine_idle_penalty: -4.4625
+
+TOTAL REWARD: -0.6715
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -1.8250
+- setup_reward: -28.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 1.5000
+- placement_reward: 0.0000
+- timeliness_reward: 82.9918
+- machine_idle_penalty: -25.2125
+
+CUMULATIVE TOTAL: 28.9543
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=58.00, Idle=307.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M2: Time=365.00, Idle=0.00, Material=Citybike_Rahmen_komplettiert
+  - Machine M3: Time=319.00, Idle=46.00, Material=Citybike_Bremsen_justiert
+==================================================
+
+2025-06-19 11:35:37,367 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Tretlageraufnahme_geschweisst -> Citybike_Antrieb_installiert, setup time: 40
+2025-06-19 11:35:37,367 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 2, Machine M1, Start: 405, End: 437, Setup: 40
+2025-06-19 11:35:37,367 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 10 =====
+Job: J15, Operation: 2, Job Completed: False
+Current Time: 365.00 -> 437.00, Setup Time: 40.00
+Processing Time: 32.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M1, Material: Citybike_Antrieb_installiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3600
+- setup_reward: -10.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2852
+- machine_idle_penalty: -2.3750
+
+TOTAL REWARD: -3.4498
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -2.1850
+- setup_reward: -38.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 1.5000
+- placement_reward: 0.0000
+- timeliness_reward: 92.2770
+- machine_idle_penalty: -27.5875
+
+CUMULATIVE TOTAL: 25.5045
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=437.00, Idle=0.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=365.00, Idle=72.00, Material=Citybike_Rahmen_komplettiert
+  - Machine M3: Time=319.00, Idle=118.00, Material=Citybike_Bremsen_justiert
+==================================================
+
+2025-06-19 11:35:37,376 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Rahmen_komplettiert -> Citybike_Tretlager_gefraest, setup time: 20
+2025-06-19 11:35:37,376 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 3, Machine M2, Start: 457, End: 467, Setup: 20
+2025-06-19 11:35:37,377 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 11 =====
+Job: J15, Operation: 3, Job Completed: False
+Current Time: 437.00 -> 467.00, Setup Time: 20.00
+Processing Time: 10.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M2, Material: Citybike_Tretlager_gefraest
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1500
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2914
+- machine_idle_penalty: -2.2250
+
+TOTAL REWARD: 1.9164
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -2.3350
+- setup_reward: -43.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 1.5000
+- placement_reward: 0.0000
+- timeliness_reward: 101.5684
+- machine_idle_penalty: -29.8125
+
+CUMULATIVE TOTAL: 27.4209
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=437.00, Idle=30.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=467.00, Idle=0.00, Material=Citybike_Tretlager_gefraest
+  - Machine M3: Time=319.00, Idle=148.00, Material=Citybike_Bremsen_justiert
+==================================================
+
+2025-06-19 11:35:37,386 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Tretlager_gefraest -> Mountainbike_Antrieb_installiert, setup time: 22
+2025-06-19 11:35:37,386 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 1, Machine M2, Start: 489, End: 505, Setup: 22
+2025-06-19 11:35:37,387 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 12 =====
+Job: J6, Operation: 1, Job Completed: False
+Current Time: 467.00 -> 505.00, Setup Time: 22.00
+Processing Time: 16.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M2, Material: Mountainbike_Antrieb_installiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1900
+- setup_reward: -5.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2956
+- machine_idle_penalty: -3.1750
+
+TOTAL REWARD: 0.4306
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -2.5250
+- setup_reward: -49.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 1.5000
+- placement_reward: 0.0000
+- timeliness_reward: 110.8640
+- machine_idle_penalty: -32.9875
+
+CUMULATIVE TOTAL: 27.8515
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=437.00, Idle=68.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=505.00, Idle=0.00, Material=Mountainbike_Antrieb_installiert
+  - Machine M3: Time=319.00, Idle=186.00, Material=Citybike_Bremsen_justiert
+==================================================
+
+2025-06-19 11:35:37,397 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsen_justiert -> E-Bike_Schaltauge_bearbeitet, setup time: 25
+2025-06-19 11:35:37,397 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 2, Machine M3, Start: 530, End: 557, Setup: 25
+2025-06-19 11:35:37,397 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 13 =====
+Job: J16, Operation: 2, Job Completed: False
+Current Time: 505.00 -> 557.00, Setup Time: 25.00
+Processing Time: 27.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M3, Material: E-Bike_Schaltauge_bearbeitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2600
+- setup_reward: -6.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 9.3312
+- machine_idle_penalty: -2.1500
+
+TOTAL REWARD: 1.1711
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -2.7850
+- setup_reward: -55.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 2.0000
+- placement_reward: 0.0000
+- timeliness_reward: 120.1951
+- machine_idle_penalty: -35.1375
+
+CUMULATIVE TOTAL: 29.0226
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=437.00, Idle=120.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=505.00, Idle=52.00, Material=Mountainbike_Antrieb_installiert
+  - Machine M3: Time=557.00, Idle=0.00, Material=E-Bike_Schaltauge_bearbeitet
+==================================================
+
+2025-06-19 11:35:37,406 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Antrieb_installiert -> Racebike_Rahmen_nachbearbeitet, setup time: 16
+2025-06-19 11:35:37,406 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 1, Machine M2, Start: 573, End: 598, Setup: 16
+2025-06-19 11:35:37,406 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 14 =====
+Job: J10, Operation: 1, Job Completed: False
+Current Time: 557.00 -> 598.00, Setup Time: 16.00
+Processing Time: 25.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M2, Material: Racebike_Rahmen_nachbearbeitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2050
+- setup_reward: -4.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 9.3095
+- machine_idle_penalty: -2.5250
+
+TOTAL REWARD: 3.0795
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -2.9900
+- setup_reward: -59.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 2.5000
+- placement_reward: 0.0000
+- timeliness_reward: 129.5046
+- machine_idle_penalty: -37.6625
+
+CUMULATIVE TOTAL: 32.1021
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=437.00, Idle=161.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=598.00, Idle=0.00, Material=Racebike_Rahmen_nachbearbeitet
+  - Machine M3: Time=557.00, Idle=41.00, Material=E-Bike_Schaltauge_bearbeitet
+==================================================
+
+2025-06-19 11:35:37,415 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Schaltauge_bearbeitet -> Mountainbike_Steuerrohr_montiert, setup time: 20
+2025-06-19 11:35:37,415 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 0, Machine M3, Start: 618, End: 649, Setup: 20
+2025-06-19 11:35:37,416 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 15 =====
+Job: J3, Operation: 0, Job Completed: False
+Current Time: 598.00 -> 649.00, Setup Time: 20.00
+Processing Time: 31.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M3, Material: Mountainbike_Steuerrohr_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2550
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.3219
+- machine_idle_penalty: -3.2875
+
+TOTAL REWARD: 0.7794
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -3.2450
+- setup_reward: -64.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 2.5000
+- placement_reward: 0.0000
+- timeliness_reward: 138.8266
+- machine_idle_penalty: -40.9500
+
+CUMULATIVE TOTAL: 32.8815
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=437.00, Idle=212.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=598.00, Idle=51.00, Material=Racebike_Rahmen_nachbearbeitet
+  - Machine M3: Time=649.00, Idle=0.00, Material=Mountainbike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:37,425 - JSPGymEnvironment - INFO - Material change on machine M3: Mountainbike_Steuerrohr_montiert -> E-Bike_Fahrrad_endmontiert, setup time: 22
+2025-06-19 11:35:37,425 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 3, Machine M3, Start: 671, End: 712, Setup: 22
+2025-06-19 11:35:37,425 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 16 =====
+Job: J16, Operation: 3, Job Completed: False
+Current Time: 649.00 -> 712.00, Setup Time: 22.00
+Processing Time: 41.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M3, Material: E-Bike_Fahrrad_endmontiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3150
+- setup_reward: -5.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 9.3540
+- machine_idle_penalty: -4.8625
+
+TOTAL REWARD: -0.8235
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -3.5600
+- setup_reward: -69.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 3.0000
+- placement_reward: 0.0000
+- timeliness_reward: 148.1806
+- machine_idle_penalty: -45.8125
+
+CUMULATIVE TOTAL: 32.0581
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=437.00, Idle=275.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=598.00, Idle=114.00, Material=Racebike_Rahmen_nachbearbeitet
+  - Machine M3: Time=712.00, Idle=0.00, Material=E-Bike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:37,434 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Fahrrad_endmontiert -> Racebike_Tretlager_gefraest, setup time: 22
+2025-06-19 11:35:37,434 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 0, Machine M3, Start: 734, End: 761, Setup: 22
+2025-06-19 11:35:37,434 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 17 =====
+Job: J9, Operation: 0, Job Completed: False
+Current Time: 712.00 -> 761.00, Setup Time: 22.00
+Processing Time: 27.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M3, Material: Racebike_Tretlager_gefraest
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2450
+- setup_reward: -5.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 9.3256
+- machine_idle_penalty: -6.1375
+
+TOTAL REWARD: -2.0569
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -3.8050
+- setup_reward: -75.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 3.5000
+- placement_reward: 0.0000
+- timeliness_reward: 157.5061
+- machine_idle_penalty: -51.9500
+
+CUMULATIVE TOTAL: 30.0011
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=437.00, Idle=324.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=598.00, Idle=163.00, Material=Racebike_Rahmen_nachbearbeitet
+  - Machine M3: Time=761.00, Idle=0.00, Material=Racebike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,444 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_nachbearbeitet -> Citybike_Fahrrad_endmontiert, setup time: 22
+2025-06-19 11:35:37,444 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 2, Machine M2, Start: 783, End: 793, Setup: 22
+2025-06-19 11:35:37,444 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 18 =====
+Job: J14, Operation: 2, Job Completed: False
+Current Time: 761.00 -> 793.00, Setup Time: 22.00
+Processing Time: 10.00, Idle Time: 0.00
+Completed Jobs: 0/20
+Machine: M2, Material: Citybike_Fahrrad_endmontiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1600
+- setup_reward: -5.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.3299
+- machine_idle_penalty: -4.9000
+
+TOTAL REWARD: -1.2301
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -3.9650
+- setup_reward: -80.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 3.5000
+- placement_reward: 0.0000
+- timeliness_reward: 166.8361
+- machine_idle_penalty: -56.8500
+
+CUMULATIVE TOTAL: 28.7711
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J16', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=437.00, Idle=356.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=793.00, Idle=0.00, Material=Citybike_Fahrrad_endmontiert
+  - Machine M3: Time=761.00, Idle=32.00, Material=Racebike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,453 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Antrieb_installiert -> E-Bike_Tretlageraufnahme_geschweisst, setup time: 50
+2025-06-19 11:35:37,453 - JSPGymEnvironment - INFO - Executed operation: Job J16, Op 4, Machine M1, Start: 843, End: 874, Setup: 50
+2025-06-19 11:35:37,453 - JSPGymEnvironment - INFO - Job J16 completed at time 874, deadline: 2578, met: True, priority: 8
+2025-06-19 11:35:37,454 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 19 =====
+Job: J16, Operation: 4, Job Completed: True
+Current Time: 793.00 -> 874.00, Setup Time: 50.00
+Processing Time: 31.00, Idle Time: 0.00
+Completed Jobs: 1/20
+Machine: M1, Material: E-Bike_Tretlageraufnahme_geschweisst
+Job Deadline: 2578.00 (Met), Priority: 8
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4050
+- setup_reward: -12.5000
+- deadline_reward: 20.0000
+- priority_reward: 32.0000
+- critical_job_reward: 20.4317
+- placement_reward: 0.0000
+- timeliness_reward: 9.3603
+- machine_idle_penalty: -2.4250
+
+TOTAL REWARD: 66.4621
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -4.3700
+- setup_reward: -93.2500
+- deadline_reward: 20.0000
+- priority_reward: 32.0000
+- critical_job_reward: 23.9317
+- placement_reward: 0.0000
+- timeliness_reward: 176.1964
+- machine_idle_penalty: -59.2750
+
+CUMULATIVE TOTAL: 95.2332
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=874.00, Idle=0.00, Material=E-Bike_Tretlageraufnahme_geschweisst
+  - Machine M2: Time=793.00, Idle=81.00, Material=Citybike_Fahrrad_endmontiert
+  - Machine M3: Time=761.00, Idle=113.00, Material=Racebike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,454 - JSPGymEnvironment - INFO - Retro-Bonus für Job J16: +15.0
+2025-06-19 11:35:37,463 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Tretlageraufnahme_geschweisst -> Citybike_Laufraeder_montiert, setup time: 55
+2025-06-19 11:35:37,463 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 4, Machine M1, Start: 929, End: 951, Setup: 55
+2025-06-19 11:35:37,463 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 20 =====
+Job: J15, Operation: 4, Job Completed: False
+Current Time: 874.00 -> 951.00, Setup Time: 55.00
+Processing Time: 22.00, Idle Time: 0.00
+Completed Jobs: 1/20
+Machine: M1, Material: Citybike_Laufraeder_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3850
+- setup_reward: -13.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.3128
+- machine_idle_penalty: -4.3500
+
+TOTAL REWARD: -9.1722
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -4.7550
+- setup_reward: -107.0000
+- deadline_reward: 20.0000
+- priority_reward: 32.0000
+- critical_job_reward: 23.9317
+- placement_reward: 0.0000
+- timeliness_reward: 185.5092
+- machine_idle_penalty: -63.6250
+
+CUMULATIVE TOTAL: 86.0610
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=951.00, Idle=0.00, Material=Citybike_Laufraeder_montiert
+  - Machine M2: Time=793.00, Idle=158.00, Material=Citybike_Fahrrad_endmontiert
+  - Machine M3: Time=761.00, Idle=190.00, Material=Racebike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,472 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Fahrrad_endmontiert -> Citybike_Tretlageraufnahme_geschweisst, setup time: 20
+2025-06-19 11:35:37,472 - JSPGymEnvironment - INFO - Executed operation: Job J15, Op 5, Machine M2, Start: 971, End: 996, Setup: 20
+2025-06-19 11:35:37,472 - JSPGymEnvironment - INFO - Job J15 completed at time 996, deadline: 2839, met: True, priority: 6
+2025-06-19 11:35:37,472 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 21 =====
+Job: J15, Operation: 5, Job Completed: True
+Current Time: 951.00 -> 996.00, Setup Time: 20.00
+Processing Time: 25.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M2, Material: Citybike_Tretlageraufnahme_geschweisst
+Job Deadline: 2839.00 (Met), Priority: 6
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2250
+- setup_reward: -5.0000
+- deadline_reward: 20.0000
+- priority_reward: 24.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.3037
+- machine_idle_penalty: -3.5000
+
+TOTAL REWARD: 44.5787
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -4.9800
+- setup_reward: -112.0000
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 23.9317
+- placement_reward: 0.0000
+- timeliness_reward: 194.8130
+- machine_idle_penalty: -67.1250
+
+CUMULATIVE TOTAL: 130.6397
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=951.00, Idle=45.00, Material=Citybike_Laufraeder_montiert
+  - Machine M2: Time=996.00, Idle=0.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M3: Time=761.00, Idle=235.00, Material=Racebike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,472 - JSPGymEnvironment - INFO - Retro-Bonus für Job J15: +10.0
+2025-06-19 11:35:37,481 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Laufraeder_montiert -> Racebike_Schaltauge_bearbeitet, setup time: 30
+2025-06-19 11:35:37,481 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 2, Machine M1, Start: 1026, End: 1069, Setup: 30
+2025-06-19 11:35:37,481 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 22 =====
+Job: J10, Operation: 2, Job Completed: False
+Current Time: 996.00 -> 1069.00, Setup Time: 30.00
+Processing Time: 43.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M1, Material: Racebike_Schaltauge_bearbeitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3650
+- setup_reward: -7.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2766
+- machine_idle_penalty: -4.7625
+
+TOTAL REWARD: -2.8509
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -5.3450
+- setup_reward: -119.5000
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 24.4317
+- placement_reward: 0.0000
+- timeliness_reward: 204.0895
+- machine_idle_penalty: -71.8875
+
+CUMULATIVE TOTAL: 127.7888
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1069.00, Idle=0.00, Material=Racebike_Schaltauge_bearbeitet
+  - Machine M2: Time=996.00, Idle=73.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M3: Time=761.00, Idle=308.00, Material=Racebike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,491 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Schaltauge_bearbeitet -> E-Bike_Rahmen_nachbearbeitet, setup time: 51
+2025-06-19 11:35:37,491 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 0, Machine M1, Start: 1120, End: 1157, Setup: 51
+2025-06-19 11:35:37,491 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 23 =====
+Job: J4, Operation: 0, Job Completed: False
+Current Time: 1069.00 -> 1157.00, Setup Time: 51.00
+Processing Time: 37.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M1, Material: E-Bike_Rahmen_nachbearbeitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4400
+- setup_reward: -12.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2402
+- machine_idle_penalty: -6.9625
+
+TOTAL REWARD: -10.4123
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -5.7850
+- setup_reward: -132.2500
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 24.9317
+- placement_reward: 0.0000
+- timeliness_reward: 213.3297
+- machine_idle_penalty: -78.8500
+
+CUMULATIVE TOTAL: 117.3764
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1157.00, Idle=0.00, Material=E-Bike_Rahmen_nachbearbeitet
+  - Machine M2: Time=996.00, Idle=161.00, Material=Citybike_Tretlageraufnahme_geschweisst
+  - Machine M3: Time=761.00, Idle=396.00, Material=Racebike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,500 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Tretlageraufnahme_geschweisst -> Citybike_Antrieb_installiert, setup time: 20
+2025-06-19 11:35:37,500 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 3, Machine M2, Start: 1177, End: 1191, Setup: 20
+2025-06-19 11:35:37,500 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 24 =====
+Job: J14, Operation: 3, Job Completed: False
+Current Time: 1157.00 -> 1191.00, Setup Time: 20.00
+Processing Time: 14.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M2, Material: Citybike_Antrieb_installiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1700
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2370
+- machine_idle_penalty: -5.8000
+
+TOTAL REWARD: -1.7330
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -5.9550
+- setup_reward: -137.2500
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 24.9317
+- placement_reward: 0.0000
+- timeliness_reward: 222.5667
+- machine_idle_penalty: -84.6500
+
+CUMULATIVE TOTAL: 115.6435
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1157.00, Idle=34.00, Material=E-Bike_Rahmen_nachbearbeitet
+  - Machine M2: Time=1191.00, Idle=0.00, Material=Citybike_Antrieb_installiert
+  - Machine M3: Time=761.00, Idle=430.00, Material=Racebike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,600 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Antrieb_installiert -> Citybike_Schaltauge_bearbeitet, setup time: 20
+2025-06-19 11:35:37,600 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 4, Machine M2, Start: 1211, End: 1236, Setup: 20
+2025-06-19 11:35:37,600 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 25 =====
+Job: J14, Operation: 4, Job Completed: False
+Current Time: 1191.00 -> 1236.00, Setup Time: 20.00
+Processing Time: 25.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M2, Material: Citybike_Schaltauge_bearbeitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2250
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.2107
+- machine_idle_penalty: -6.9250
+
+TOTAL REWARD: -2.9393
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -6.1800
+- setup_reward: -142.2500
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 24.9317
+- placement_reward: 0.0000
+- timeliness_reward: 231.7775
+- machine_idle_penalty: -91.5750
+
+CUMULATIVE TOTAL: 112.7042
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1157.00, Idle=79.00, Material=E-Bike_Rahmen_nachbearbeitet
+  - Machine M2: Time=1236.00, Idle=0.00, Material=Citybike_Schaltauge_bearbeitet
+  - Machine M3: Time=761.00, Idle=475.00, Material=Racebike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,609 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Tretlager_gefraest -> Citybike_Bremsaufnahme_gebohrt, setup time: 12
+2025-06-19 11:35:37,609 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 5, Machine M3, Start: 1248, End: 1277, Setup: 12
+2025-06-19 11:35:37,610 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 26 =====
+Job: J14, Operation: 5, Job Completed: False
+Current Time: 1236.00 -> 1277.00, Setup Time: 12.00
+Processing Time: 29.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M3, Material: Citybike_Bremsaufnahme_gebohrt
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2050
+- setup_reward: -3.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.1831
+- machine_idle_penalty: -2.0125
+
+TOTAL REWARD: 3.9656
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -6.3850
+- setup_reward: -145.2500
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 24.9317
+- placement_reward: 0.0000
+- timeliness_reward: 240.9606
+- machine_idle_penalty: -93.5875
+
+CUMULATIVE TOTAL: 116.6698
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1157.00, Idle=120.00, Material=E-Bike_Rahmen_nachbearbeitet
+  - Machine M2: Time=1236.00, Idle=41.00, Material=Citybike_Schaltauge_bearbeitet
+  - Machine M3: Time=1277.00, Idle=0.00, Material=Citybike_Bremsaufnahme_gebohrt
+==================================================
+
+2025-06-19 11:35:37,618 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsaufnahme_gebohrt -> Racebike_Rahmen_komplettiert, setup time: 12
+2025-06-19 11:35:37,618 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 0, Machine M3, Start: 1289, End: 1343, Setup: 12
+2025-06-19 11:35:37,618 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 27 =====
+Job: J12, Operation: 0, Job Completed: False
+Current Time: 1277.00 -> 1343.00, Setup Time: 12.00
+Processing Time: 54.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M3, Material: Racebike_Rahmen_komplettiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3300
+- setup_reward: -3.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 9.1354
+- machine_idle_penalty: -3.6625
+
+TOTAL REWARD: 2.6429
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -6.7150
+- setup_reward: -148.2500
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 25.4317
+- placement_reward: 0.0000
+- timeliness_reward: 250.0960
+- machine_idle_penalty: -97.2500
+
+CUMULATIVE TOTAL: 119.3127
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1157.00, Idle=186.00, Material=E-Bike_Rahmen_nachbearbeitet
+  - Machine M2: Time=1236.00, Idle=107.00, Material=Citybike_Schaltauge_bearbeitet
+  - Machine M3: Time=1343.00, Idle=0.00, Material=Racebike_Rahmen_komplettiert
+==================================================
+
+2025-06-19 11:35:37,627 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Rahmen_nachbearbeitet -> Mountainbike_Laufraeder_montiert, setup time: 47
+2025-06-19 11:35:37,627 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 2, Machine M1, Start: 1390, End: 1431, Setup: 47
+2025-06-19 11:35:37,627 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 28 =====
+Job: J6, Operation: 2, Job Completed: False
+Current Time: 1343.00 -> 1431.00, Setup Time: 47.00
+Processing Time: 41.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M1, Material: Mountainbike_Laufraeder_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4400
+- setup_reward: -11.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 9.0257
+- machine_idle_penalty: -3.5375
+
+TOTAL REWARD: -6.7018
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -7.1550
+- setup_reward: -160.0000
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 25.4317
+- placement_reward: 0.0000
+- timeliness_reward: 259.1217
+- machine_idle_penalty: -100.7875
+
+CUMULATIVE TOTAL: 112.6109
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1431.00, Idle=0.00, Material=Mountainbike_Laufraeder_montiert
+  - Machine M2: Time=1236.00, Idle=195.00, Material=Citybike_Schaltauge_bearbeitet
+  - Machine M3: Time=1343.00, Idle=88.00, Material=Racebike_Rahmen_komplettiert
+==================================================
+
+2025-06-19 11:35:37,636 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Schaltauge_bearbeitet -> Mountainbike_Steuerrohr_montiert, setup time: 22
+2025-06-19 11:35:37,636 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 3, Machine M2, Start: 1453, End: 1466, Setup: 22
+2025-06-19 11:35:37,636 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 29 =====
+Job: J6, Operation: 3, Job Completed: False
+Current Time: 1431.00 -> 1466.00, Setup Time: 22.00
+Processing Time: 13.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M2, Material: Mountainbike_Steuerrohr_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1750
+- setup_reward: -5.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 8.9844
+- machine_idle_penalty: -1.9750
+
+TOTAL REWARD: 1.3344
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -7.3300
+- setup_reward: -165.5000
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 25.4317
+- placement_reward: 0.0000
+- timeliness_reward: 268.1061
+- machine_idle_penalty: -102.7625
+
+CUMULATIVE TOTAL: 113.9453
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1431.00, Idle=35.00, Material=Mountainbike_Laufraeder_montiert
+  - Machine M2: Time=1466.00, Idle=0.00, Material=Mountainbike_Steuerrohr_montiert
+  - Machine M3: Time=1343.00, Idle=123.00, Material=Racebike_Rahmen_komplettiert
+==================================================
+
+2025-06-19 11:35:37,646 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Rahmen_komplettiert -> Citybike_Tretlager_gefraest, setup time: 12
+2025-06-19 11:35:37,646 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 6, Machine M3, Start: 1478, End: 1529, Setup: 12
+2025-06-19 11:35:37,646 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 30 =====
+Job: J14, Operation: 6, Job Completed: False
+Current Time: 1466.00 -> 1529.00, Setup Time: 12.00
+Processing Time: 51.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M3, Material: Citybike_Tretlager_gefraest
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3150
+- setup_reward: -3.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 8.9189
+- machine_idle_penalty: -2.0125
+
+TOTAL REWARD: 3.5914
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -7.6450
+- setup_reward: -168.5000
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 25.4317
+- placement_reward: 0.0000
+- timeliness_reward: 277.0250
+- machine_idle_penalty: -104.7750
+
+CUMULATIVE TOTAL: 117.5368
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1431.00, Idle=98.00, Material=Mountainbike_Laufraeder_montiert
+  - Machine M2: Time=1466.00, Idle=63.00, Material=Mountainbike_Steuerrohr_montiert
+  - Machine M3: Time=1529.00, Idle=0.00, Material=Citybike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,656 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Steuerrohr_montiert -> Racebike_Fahrrad_endmontiert, setup time: 16
+2025-06-19 11:35:37,657 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 1, Machine M2, Start: 1545, End: 1556, Setup: 16
+2025-06-19 11:35:37,657 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 31 =====
+Job: J12, Operation: 1, Job Completed: False
+Current Time: 1529.00 -> 1556.00, Setup Time: 16.00
+Processing Time: 11.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M2, Material: Racebike_Fahrrad_endmontiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1350
+- setup_reward: -4.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 8.8846
+- machine_idle_penalty: -1.9000
+
+TOTAL REWARD: 3.3496
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -7.7800
+- setup_reward: -172.5000
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 25.9317
+- placement_reward: 0.0000
+- timeliness_reward: 285.9096
+- machine_idle_penalty: -106.6750
+
+CUMULATIVE TOTAL: 120.8863
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1431.00, Idle=125.00, Material=Mountainbike_Laufraeder_montiert
+  - Machine M2: Time=1556.00, Idle=0.00, Material=Racebike_Fahrrad_endmontiert
+  - Machine M3: Time=1529.00, Idle=27.00, Material=Citybike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,666 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> E-Bike_Steuerrohr_ausgerieben, setup time: 24
+2025-06-19 11:35:37,666 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 0, Machine M2, Start: 1580, End: 1607, Setup: 24
+2025-06-19 11:35:37,666 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 32 =====
+Job: J8, Operation: 0, Job Completed: False
+Current Time: 1556.00 -> 1607.00, Setup Time: 24.00
+Processing Time: 27.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M2, Material: E-Bike_Steuerrohr_ausgerieben
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2550
+- setup_reward: -6.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 8.8086
+- machine_idle_penalty: -3.1750
+
+TOTAL REWARD: -0.1214
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -8.0350
+- setup_reward: -178.5000
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 26.4317
+- placement_reward: 0.0000
+- timeliness_reward: 294.7182
+- machine_idle_penalty: -109.8500
+
+CUMULATIVE TOTAL: 120.7649
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1431.00, Idle=176.00, Material=Mountainbike_Laufraeder_montiert
+  - Machine M2: Time=1607.00, Idle=0.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=1529.00, Idle=78.00, Material=Citybike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:37,675 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Tretlager_gefraest -> E-Bike_Fahrrad_endmontiert, setup time: 25
+2025-06-19 11:35:37,676 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 1, Machine M3, Start: 1632, End: 1687, Setup: 25
+2025-06-19 11:35:37,676 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 33 =====
+Job: J4, Operation: 1, Job Completed: False
+Current Time: 1607.00 -> 1687.00, Setup Time: 25.00
+Processing Time: 55.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M3, Material: E-Bike_Fahrrad_endmontiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4000
+- setup_reward: -6.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 8.6258
+- machine_idle_penalty: -4.2000
+
+TOTAL REWARD: -1.7242
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -8.4350
+- setup_reward: -184.7500
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 26.9317
+- placement_reward: 0.0000
+- timeliness_reward: 303.3439
+- machine_idle_penalty: -114.0500
+
+CUMULATIVE TOTAL: 119.0407
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1431.00, Idle=256.00, Material=Mountainbike_Laufraeder_montiert
+  - Machine M2: Time=1607.00, Idle=80.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=1687.00, Idle=0.00, Material=E-Bike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:37,684 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Laufraeder_montiert -> E-Bike_Steuerrohr_ausgerieben, setup time: 47
+2025-06-19 11:35:37,684 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 2, Machine M1, Start: 1734, End: 1754, Setup: 47
+2025-06-19 11:35:37,684 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 34 =====
+Job: J4, Operation: 2, Job Completed: False
+Current Time: 1687.00 -> 1754.00, Setup Time: 47.00
+Processing Time: 20.00, Idle Time: 0.00
+Completed Jobs: 2/20
+Machine: M1, Material: E-Bike_Steuerrohr_ausgerieben
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3350
+- setup_reward: -11.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 8.4778
+- machine_idle_penalty: -2.6750
+
+TOTAL REWARD: -5.7822
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -8.7700
+- setup_reward: -196.5000
+- deadline_reward: 40.0000
+- priority_reward: 56.0000
+- critical_job_reward: 27.4317
+- placement_reward: 0.0000
+- timeliness_reward: 311.8217
+- machine_idle_penalty: -116.7250
+
+CUMULATIVE TOTAL: 113.2584
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1754.00, Idle=0.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M2: Time=1607.00, Idle=147.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=1687.00, Idle=67.00, Material=E-Bike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:37,694 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Steuerrohr_ausgerieben -> Citybike_Bremsen_justiert, setup time: 55
+2025-06-19 11:35:37,694 - JSPGymEnvironment - INFO - Executed operation: Job J14, Op 7, Machine M1, Start: 1809, End: 1844, Setup: 55
+2025-06-19 11:35:37,694 - JSPGymEnvironment - INFO - Job J14 completed at time 1844, deadline: 2798, met: True, priority: 4
+2025-06-19 11:35:37,694 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 35 =====
+Job: J14, Operation: 7, Job Completed: True
+Current Time: 1754.00 -> 1844.00, Setup Time: 55.00
+Processing Time: 35.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M1, Material: Citybike_Bremsen_justiert
+Job Deadline: 2798.00 (Met), Priority: 4
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4500
+- setup_reward: -13.7500
+- deadline_reward: 20.0000
+- priority_reward: 16.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 8.2690
+- machine_idle_penalty: -4.9250
+
+TOTAL REWARD: 25.1440
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -9.2200
+- setup_reward: -210.2500
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 27.4317
+- placement_reward: 0.0000
+- timeliness_reward: 320.0908
+- machine_idle_penalty: -121.6500
+
+CUMULATIVE TOTAL: 138.4025
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1844.00, Idle=0.00, Material=Citybike_Bremsen_justiert
+  - Machine M2: Time=1607.00, Idle=237.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=1687.00, Idle=157.00, Material=E-Bike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:37,694 - JSPGymEnvironment - INFO - Retro-Bonus für Job J14: +10.0
+2025-06-19 11:35:37,704 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Fahrrad_endmontiert -> Citybike_Schaltauge_bearbeitet, setup time: 15
+2025-06-19 11:35:37,704 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 0, Machine M3, Start: 1859, End: 1900, Setup: 15
+2025-06-19 11:35:37,704 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 36 =====
+Job: J19, Operation: 0, Job Completed: False
+Current Time: 1844.00 -> 1900.00, Setup Time: 15.00
+Processing Time: 41.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M3, Material: Citybike_Schaltauge_bearbeitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2800
+- setup_reward: -3.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 8.0803
+- machine_idle_penalty: -4.3625
+
+TOTAL REWARD: -0.3122
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -9.5000
+- setup_reward: -214.0000
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 27.4317
+- placement_reward: 0.0000
+- timeliness_reward: 328.1711
+- machine_idle_penalty: -126.0125
+
+CUMULATIVE TOTAL: 138.0903
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1844.00, Idle=56.00, Material=Citybike_Bremsen_justiert
+  - Machine M2: Time=1607.00, Idle=293.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=1900.00, Idle=0.00, Material=Citybike_Schaltauge_bearbeitet
+==================================================
+
+2025-06-19 11:35:37,713 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Bremsen_justiert -> Racebike_Rahmen_nachbearbeitet, setup time: 30
+2025-06-19 11:35:37,713 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 0, Machine M1, Start: 1930, End: 1955, Setup: 30
+2025-06-19 11:35:37,713 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 37 =====
+Job: J20, Operation: 0, Job Completed: False
+Current Time: 1900.00 -> 1955.00, Setup Time: 30.00
+Processing Time: 25.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M1, Material: Racebike_Rahmen_nachbearbeitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2750
+- setup_reward: -7.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 7.9116
+- machine_idle_penalty: -5.0375
+
+TOTAL REWARD: -4.4009
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -9.7750
+- setup_reward: -221.5000
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 27.9317
+- placement_reward: 0.0000
+- timeliness_reward: 336.0826
+- machine_idle_penalty: -131.0500
+
+CUMULATIVE TOTAL: 133.6894
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=1955.00, Idle=0.00, Material=Racebike_Rahmen_nachbearbeitet
+  - Machine M2: Time=1607.00, Idle=348.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=1900.00, Idle=55.00, Material=Citybike_Schaltauge_bearbeitet
+==================================================
+
+2025-06-19 11:35:37,722 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Rahmen_nachbearbeitet -> Racebike_Hauptrahmen_zugeschnitten, setup time: 40
+2025-06-19 11:35:37,722 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 3, Machine M1, Start: 1995, End: 2039, Setup: 40
+2025-06-19 11:35:37,722 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 38 =====
+Job: J10, Operation: 3, Job Completed: False
+Current Time: 1955.00 -> 2039.00, Setup Time: 40.00
+Processing Time: 44.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M1, Material: Racebike_Hauptrahmen_zugeschnitten
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4200
+- setup_reward: -10.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 7.5892
+- machine_idle_penalty: -7.1375
+
+TOTAL REWARD: -9.4683
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -10.1950
+- setup_reward: -231.5000
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 28.4317
+- placement_reward: 0.0000
+- timeliness_reward: 343.6718
+- machine_idle_penalty: -138.1875
+
+CUMULATIVE TOTAL: 124.2211
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2039.00, Idle=0.00, Material=Racebike_Hauptrahmen_zugeschnitten
+  - Machine M2: Time=1607.00, Idle=432.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=1900.00, Idle=139.00, Material=Citybike_Schaltauge_bearbeitet
+==================================================
+
+2025-06-19 11:35:37,731 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Schaltauge_bearbeitet -> E-Bike_Steuerrohr_montiert, setup time: 25
+2025-06-19 11:35:37,731 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 1, Machine M3, Start: 2064, End: 2096, Setup: 25
+2025-06-19 11:35:37,731 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 39 =====
+Job: J17, Operation: 1, Job Completed: False
+Current Time: 2039.00 -> 2096.00, Setup Time: 25.00
+Processing Time: 32.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M3, Material: E-Bike_Steuerrohr_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2850
+- setup_reward: -6.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 7.3531
+- machine_idle_penalty: -6.8250
+
+TOTAL REWARD: -6.0069
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -10.4800
+- setup_reward: -237.7500
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 28.4317
+- placement_reward: 0.0000
+- timeliness_reward: 351.0250
+- machine_idle_penalty: -145.0125
+
+CUMULATIVE TOTAL: 118.2142
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2039.00, Idle=57.00, Material=Racebike_Hauptrahmen_zugeschnitten
+  - Machine M2: Time=1607.00, Idle=489.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=2096.00, Idle=0.00, Material=E-Bike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:37,739 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Hauptrahmen_zugeschnitten -> Citybike_Antrieb_installiert, setup time: 41
+2025-06-19 11:35:37,740 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 1, Machine M1, Start: 2137, End: 2169, Setup: 41
+2025-06-19 11:35:37,740 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 40 =====
+Job: J19, Operation: 1, Job Completed: False
+Current Time: 2096.00 -> 2169.00, Setup Time: 41.00
+Processing Time: 32.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M1, Material: Citybike_Antrieb_installiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3650
+- setup_reward: -10.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 7.0198
+- machine_idle_penalty: -7.9375
+
+TOTAL REWARD: -11.5327
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -10.8450
+- setup_reward: -248.0000
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 28.4317
+- placement_reward: 0.0000
+- timeliness_reward: 358.0448
+- machine_idle_penalty: -152.9500
+
+CUMULATIVE TOTAL: 106.6816
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2169.00, Idle=0.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=1607.00, Idle=562.00, Material=E-Bike_Steuerrohr_ausgerieben
+  - Machine M3: Time=2096.00, Idle=73.00, Material=E-Bike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:37,749 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Steuerrohr_ausgerieben -> Citybike_Hauptrahmen_zugeschnitten, setup time: 21
+2025-06-19 11:35:37,749 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 2, Machine M2, Start: 2190, End: 2205, Setup: 21
+2025-06-19 11:35:37,749 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 41 =====
+Job: J19, Operation: 2, Job Completed: False
+Current Time: 2169.00 -> 2205.00, Setup Time: 21.00
+Processing Time: 15.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M2, Material: Citybike_Hauptrahmen_zugeschnitten
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1800
+- setup_reward: -5.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 6.8424
+- machine_idle_penalty: -1.8125
+
+TOTAL REWARD: -0.4001
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -11.0250
+- setup_reward: -253.2500
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 28.4317
+- placement_reward: 0.0000
+- timeliness_reward: 364.8872
+- machine_idle_penalty: -154.7625
+
+CUMULATIVE TOTAL: 106.2815
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2169.00, Idle=36.00, Material=Citybike_Antrieb_installiert
+  - Machine M2: Time=2205.00, Idle=0.00, Material=Citybike_Hauptrahmen_zugeschnitten
+  - Machine M3: Time=2096.00, Idle=109.00, Material=E-Bike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:37,758 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Antrieb_installiert -> E-Bike_Bremsen_justiert, setup time: 50
+2025-06-19 11:35:37,758 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 3, Machine M1, Start: 2255, End: 2280, Setup: 50
+2025-06-19 11:35:37,759 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 42 =====
+Job: J4, Operation: 3, Job Completed: False
+Current Time: 2205.00 -> 2280.00, Setup Time: 50.00
+Processing Time: 25.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M1, Material: E-Bike_Bremsen_justiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3750
+- setup_reward: -12.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 6.4450
+- machine_idle_penalty: -3.2375
+
+TOTAL REWARD: -9.1675
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -11.4000
+- setup_reward: -265.7500
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 28.9317
+- placement_reward: 0.0000
+- timeliness_reward: 371.3323
+- machine_idle_penalty: -158.0000
+
+CUMULATIVE TOTAL: 97.1140
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2280.00, Idle=0.00, Material=E-Bike_Bremsen_justiert
+  - Machine M2: Time=2205.00, Idle=75.00, Material=Citybike_Hauptrahmen_zugeschnitten
+  - Machine M3: Time=2096.00, Idle=184.00, Material=E-Bike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:37,768 - JSPGymEnvironment - INFO - Material change on machine M2: Citybike_Hauptrahmen_zugeschnitten -> Racebike_Bremsen_justiert, setup time: 19
+2025-06-19 11:35:37,768 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 2, Machine M2, Start: 2299, End: 2319, Setup: 19
+2025-06-19 11:35:37,768 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 43 =====
+Job: J12, Operation: 2, Job Completed: False
+Current Time: 2280.00 -> 2319.00, Setup Time: 19.00
+Processing Time: 20.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M2, Material: Racebike_Bremsen_justiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1950
+- setup_reward: -4.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 6.2603
+- machine_idle_penalty: -3.2750
+
+TOTAL REWARD: -1.4597
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -11.5950
+- setup_reward: -270.5000
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 29.4317
+- placement_reward: 0.0000
+- timeliness_reward: 377.5926
+- machine_idle_penalty: -161.2750
+
+CUMULATIVE TOTAL: 95.6543
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2280.00, Idle=39.00, Material=E-Bike_Bremsen_justiert
+  - Machine M2: Time=2319.00, Idle=0.00, Material=Racebike_Bremsen_justiert
+  - Machine M3: Time=2096.00, Idle=223.00, Material=E-Bike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:37,778 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Bremsen_justiert -> E-Bike_Laufraeder_montiert, setup time: 40
+2025-06-19 11:35:37,778 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 4, Machine M1, Start: 2359, End: 2381, Setup: 40
+2025-06-19 11:35:37,778 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 44 =====
+Job: J4, Operation: 4, Job Completed: False
+Current Time: 2319.00 -> 2381.00, Setup Time: 40.00
+Processing Time: 22.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M1, Material: E-Bike_Laufraeder_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3100
+- setup_reward: -10.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 5.8520
+- machine_idle_penalty: -4.3375
+
+TOTAL REWARD: -8.2955
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -11.9050
+- setup_reward: -280.5000
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 29.9317
+- placement_reward: 0.0000
+- timeliness_reward: 383.4445
+- machine_idle_penalty: -165.6125
+
+CUMULATIVE TOTAL: 87.3587
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2381.00, Idle=0.00, Material=E-Bike_Laufraeder_montiert
+  - Machine M2: Time=2319.00, Idle=62.00, Material=Racebike_Bremsen_justiert
+  - Machine M3: Time=2096.00, Idle=285.00, Material=E-Bike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:37,788 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Laufraeder_montiert -> Mountainbike_Rahmen_komplettiert, setup time: 47
+2025-06-19 11:35:37,788 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 4, Machine M1, Start: 2428, End: 2448, Setup: 47
+2025-06-19 11:35:37,788 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 45 =====
+Job: J6, Operation: 4, Job Completed: False
+Current Time: 2381.00 -> 2448.00, Setup Time: 47.00
+Processing Time: 20.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M1, Material: Mountainbike_Rahmen_komplettiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3350
+- setup_reward: -11.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 5.4243
+- machine_idle_penalty: -6.0125
+
+TOTAL REWARD: -12.6732
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -12.2400
+- setup_reward: -292.2500
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 29.9317
+- placement_reward: 0.0000
+- timeliness_reward: 388.8688
+- machine_idle_penalty: -171.6250
+
+CUMULATIVE TOTAL: 74.6855
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2448.00, Idle=0.00, Material=Mountainbike_Rahmen_komplettiert
+  - Machine M2: Time=2319.00, Idle=129.00, Material=Racebike_Bremsen_justiert
+  - Machine M3: Time=2096.00, Idle=352.00, Material=E-Bike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:37,797 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Rahmen_komplettiert -> E-Bike_Tretlager_gefraest, setup time: 47
+2025-06-19 11:35:37,797 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 2, Machine M1, Start: 2495, End: 2513, Setup: 47
+2025-06-19 11:35:37,797 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 46 =====
+Job: J17, Operation: 2, Job Completed: False
+Current Time: 2448.00 -> 2513.00, Setup Time: 47.00
+Processing Time: 18.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M1, Material: E-Bike_Tretlager_gefraest
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3250
+- setup_reward: -11.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 4.9783
+- machine_idle_penalty: -7.6375
+
+TOTAL REWARD: -14.7342
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -12.5650
+- setup_reward: -304.0000
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 29.9317
+- placement_reward: 0.0000
+- timeliness_reward: 393.8471
+- machine_idle_penalty: -179.2625
+
+CUMULATIVE TOTAL: 59.9513
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2513.00, Idle=0.00, Material=E-Bike_Tretlager_gefraest
+  - Machine M2: Time=2319.00, Idle=194.00, Material=Racebike_Bremsen_justiert
+  - Machine M3: Time=2096.00, Idle=417.00, Material=E-Bike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:37,806 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Tretlager_gefraest -> Racebike_Bremsaufnahme_gebohrt, setup time: 56
+2025-06-19 11:35:37,806 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 3, Machine M1, Start: 2569, End: 2606, Setup: 56
+2025-06-19 11:35:37,806 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 47 =====
+Job: J12, Operation: 3, Job Completed: False
+Current Time: 2513.00 -> 2606.00, Setup Time: 56.00
+Processing Time: 37.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M1, Material: Racebike_Bremsaufnahme_gebohrt
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4650
+- setup_reward: -14.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 4.3145
+- machine_idle_penalty: -9.9625
+
+TOTAL REWARD: -19.6130
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -13.0300
+- setup_reward: -318.0000
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 30.4317
+- placement_reward: 0.0000
+- timeliness_reward: 398.1617
+- machine_idle_penalty: -189.2250
+
+CUMULATIVE TOTAL: 40.3384
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2606.00, Idle=0.00, Material=Racebike_Bremsaufnahme_gebohrt
+  - Machine M2: Time=2319.00, Idle=287.00, Material=Racebike_Bremsen_justiert
+  - Machine M3: Time=2096.00, Idle=510.00, Material=E-Bike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:37,814 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Steuerrohr_montiert -> Racebike_Tretlageraufnahme_geschweisst, setup time: 22
+2025-06-19 11:35:37,814 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 4, Machine M3, Start: 2628, End: 2685, Setup: 22
+2025-06-19 11:35:37,815 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 48 =====
+Job: J12, Operation: 4, Job Completed: False
+Current Time: 2606.00 -> 2685.00, Setup Time: 22.00
+Processing Time: 57.00, Idle Time: 0.00
+Completed Jobs: 3/20
+Machine: M3, Material: Racebike_Tretlageraufnahme_geschweisst
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3950
+- setup_reward: -5.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: 3.7121
+- machine_idle_penalty: -5.5625
+
+TOTAL REWARD: -7.2454
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -13.4250
+- setup_reward: -323.5000
+- deadline_reward: 60.0000
+- priority_reward: 72.0000
+- critical_job_reward: 30.9317
+- placement_reward: 0.0000
+- timeliness_reward: 401.8737
+- machine_idle_penalty: -194.7875
+
+CUMULATIVE TOTAL: 33.0930
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2606.00, Idle=79.00, Material=Racebike_Bremsaufnahme_gebohrt
+  - Machine M2: Time=2319.00, Idle=366.00, Material=Racebike_Bremsen_justiert
+  - Machine M3: Time=2685.00, Idle=0.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,823 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Bremsaufnahme_gebohrt -> Mountainbike_Hauptrahmen_zugeschnitten, setup time: 37
+2025-06-19 11:35:37,823 - JSPGymEnvironment - INFO - Executed operation: Job J6, Op 5, Machine M1, Start: 2722, End: 2761, Setup: 37
+2025-06-19 11:35:37,823 - JSPGymEnvironment - INFO - Job J6 completed at time 2761, deadline: 2880, met: True, priority: 2
+2025-06-19 11:35:37,823 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 49 =====
+Job: J6, Operation: 5, Job Completed: True
+Current Time: 2685.00 -> 2761.00, Setup Time: 37.00
+Processing Time: 39.00, Idle Time: 0.00
+Completed Jobs: 4/20
+Machine: M1, Material: Mountainbike_Hauptrahmen_zugeschnitten
+Job Deadline: 2880.00 (Met), Priority: 2
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3800
+- setup_reward: -9.2500
+- deadline_reward: 20.0000
+- priority_reward: 8.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 3.0707
+- machine_idle_penalty: -6.4750
+
+TOTAL REWARD: 14.9657
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -13.8050
+- setup_reward: -332.7500
+- deadline_reward: 80.0000
+- priority_reward: 80.0000
+- critical_job_reward: 30.9317
+- placement_reward: 0.0000
+- timeliness_reward: 404.9445
+- machine_idle_penalty: -201.2625
+
+CUMULATIVE TOTAL: 48.0587
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2761.00, Idle=0.00, Material=Mountainbike_Hauptrahmen_zugeschnitten
+  - Machine M2: Time=2319.00, Idle=442.00, Material=Racebike_Bremsen_justiert
+  - Machine M3: Time=2685.00, Idle=76.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,823 - JSPGymEnvironment - INFO - Retro-Bonus für Job J6: +10.0
+2025-06-19 11:35:37,833 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Bremsen_justiert -> Racebike_Hauptrahmen_zugeschnitten, setup time: 20
+2025-06-19 11:35:37,833 - JSPGymEnvironment - INFO - Executed operation: Job J12, Op 5, Machine M2, Start: 2781, End: 2806, Setup: 20
+2025-06-19 11:35:37,833 - JSPGymEnvironment - INFO - Job J12 completed at time 2806, deadline: 2775, met: False, priority: 9
+2025-06-19 11:35:37,833 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 50 =====
+Job: J12, Operation: 5, Job Completed: True
+Current Time: 2761.00 -> 2806.00, Setup Time: 20.00
+Processing Time: 25.00, Idle Time: 0.00
+Completed Jobs: 5/20
+Machine: M2, Material: Racebike_Hauptrahmen_zugeschnitten
+Job Deadline: 2775.00 (Missed), Priority: 9
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2250
+- setup_reward: -5.0000
+- deadline_reward: -0.0279
+- priority_reward: 36.0000
+- critical_job_reward: 12.3659
+- placement_reward: 0.0000
+- timeliness_reward: 2.7966
+- machine_idle_penalty: -2.0750
+
+TOTAL REWARD: 43.8346
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -14.0300
+- setup_reward: -337.7500
+- deadline_reward: 79.9721
+- priority_reward: 116.0000
+- critical_job_reward: 43.2977
+- placement_reward: 0.0000
+- timeliness_reward: 407.7411
+- machine_idle_penalty: -203.3375
+
+CUMULATIVE TOTAL: 91.8933
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J4', 'J5', 'J7', 'J8', 'J9', 'J10', 'J11', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2761.00, Idle=45.00, Material=Mountainbike_Hauptrahmen_zugeschnitten
+  - Machine M2: Time=2806.00, Idle=0.00, Material=Racebike_Hauptrahmen_zugeschnitten
+  - Machine M3: Time=2685.00, Idle=121.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,834 - JSPGymEnvironment - INFO - Retro-Bonus für Job J12: -5.0
+2025-06-19 11:35:37,843 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Hauptrahmen_zugeschnitten -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 24
+2025-06-19 11:35:37,843 - JSPGymEnvironment - INFO - Executed operation: Job J4, Op 5, Machine M2, Start: 2830, End: 2857, Setup: 24
+2025-06-19 11:35:37,843 - JSPGymEnvironment - INFO - Job J4 completed at time 2857, deadline: 2880, met: True, priority: 9
+2025-06-19 11:35:37,844 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 51 =====
+Job: J4, Operation: 5, Job Completed: True
+Current Time: 2806.00 -> 2857.00, Setup Time: 24.00
+Processing Time: 27.00, Idle Time: 0.00
+Completed Jobs: 6/20
+Machine: M2, Material: E-Bike_Hauptrahmen_zugeschnitten
+Job Deadline: 2880.00 (Met), Priority: 9
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2550
+- setup_reward: -6.0000
+- deadline_reward: 20.0000
+- priority_reward: 36.0000
+- critical_job_reward: 12.5958
+- placement_reward: 0.0000
+- timeliness_reward: 2.3357
+- machine_idle_penalty: -3.3500
+
+TOTAL REWARD: 61.3266
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -14.2850
+- setup_reward: -343.7500
+- deadline_reward: 99.9721
+- priority_reward: 152.0000
+- critical_job_reward: 55.8935
+- placement_reward: 0.0000
+- timeliness_reward: 410.0768
+- machine_idle_penalty: -206.6875
+
+CUMULATIVE TOTAL: 153.2199
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J10', 'J11', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2761.00, Idle=96.00, Material=Mountainbike_Hauptrahmen_zugeschnitten
+  - Machine M2: Time=2857.00, Idle=0.00, Material=E-Bike_Hauptrahmen_zugeschnitten
+  - Machine M3: Time=2685.00, Idle=172.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,844 - JSPGymEnvironment - INFO - Retro-Bonus für Job J4: +15.0
+2025-06-19 11:35:37,854 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Hauptrahmen_zugeschnitten -> E-Bike_Bremsaufnahme_gebohrt, setup time: 20
+2025-06-19 11:35:37,854 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 3, Machine M2, Start: 2877, End: 2906, Setup: 20
+2025-06-19 11:35:37,854 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 52 =====
+Job: J17, Operation: 3, Job Completed: False
+Current Time: 2857.00 -> 2906.00, Setup Time: 20.00
+Processing Time: 29.00, Idle Time: 0.00
+Completed Jobs: 6/20
+Machine: M2, Material: E-Bike_Bremsaufnahme_gebohrt
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2450
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 1.9333
+- machine_idle_penalty: -4.5750
+
+TOTAL REWARD: -7.8867
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -14.5300
+- setup_reward: -348.7500
+- deadline_reward: 99.9721
+- priority_reward: 152.0000
+- critical_job_reward: 55.8935
+- placement_reward: 0.0000
+- timeliness_reward: 412.0101
+- machine_idle_penalty: -211.2625
+
+CUMULATIVE TOTAL: 145.3332
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J10', 'J11', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2761.00, Idle=145.00, Material=Mountainbike_Hauptrahmen_zugeschnitten
+  - Machine M2: Time=2906.00, Idle=0.00, Material=E-Bike_Bremsaufnahme_gebohrt
+  - Machine M3: Time=2685.00, Idle=221.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,864 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Hauptrahmen_zugeschnitten -> E-Bike_Antrieb_installiert, setup time: 47
+2025-06-19 11:35:37,864 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 4, Machine M1, Start: 2953, End: 2980, Setup: 47
+2025-06-19 11:35:37,864 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 53 =====
+Job: J17, Operation: 4, Job Completed: False
+Current Time: 2906.00 -> 2980.00, Setup Time: 47.00
+Processing Time: 27.00, Idle Time: 0.00
+Completed Jobs: 6/20
+Machine: M1, Material: E-Bike_Antrieb_installiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3700
+- setup_reward: -11.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 1.3164
+- machine_idle_penalty: -4.6125
+
+TOTAL REWARD: -15.4161
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -14.9000
+- setup_reward: -360.5000
+- deadline_reward: 99.9721
+- priority_reward: 152.0000
+- critical_job_reward: 55.8935
+- placement_reward: 0.0000
+- timeliness_reward: 413.3265
+- machine_idle_penalty: -215.8750
+
+CUMULATIVE TOTAL: 129.9171
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J10', 'J11', 'J13', 'J17', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2980.00, Idle=0.00, Material=E-Bike_Antrieb_installiert
+  - Machine M2: Time=2906.00, Idle=74.00, Material=E-Bike_Bremsaufnahme_gebohrt
+  - Machine M3: Time=2685.00, Idle=295.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,875 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Bremsaufnahme_gebohrt -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 20
+2025-06-19 11:35:37,875 - JSPGymEnvironment - INFO - Executed operation: Job J17, Op 5, Machine M2, Start: 3000, End: 3020, Setup: 20
+2025-06-19 11:35:37,875 - JSPGymEnvironment - INFO - Job J17 completed at time 3020, deadline: 2880, met: False, priority: 7
+2025-06-19 11:35:37,875 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 54 =====
+Job: J17, Operation: 5, Job Completed: True
+Current Time: 2980.00 -> 3020.00, Setup Time: 20.00
+Processing Time: 20.00, Idle Time: 0.00
+Completed Jobs: 7/20
+Machine: M2, Material: E-Bike_Hauptrahmen_zugeschnitten
+Job Deadline: 2880.00 (Missed), Priority: 7
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2000
+- setup_reward: -5.0000
+- deadline_reward: -0.1215
+- priority_reward: 28.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: 0.9714
+- machine_idle_penalty: -4.6875
+
+TOTAL REWARD: 18.9624
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -15.1000
+- setup_reward: -365.5000
+- deadline_reward: 99.8505
+- priority_reward: 180.0000
+- critical_job_reward: 55.8935
+- placement_reward: 0.0000
+- timeliness_reward: 414.2979
+- machine_idle_penalty: -220.5625
+
+CUMULATIVE TOTAL: 148.8795
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J10', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2980.00, Idle=40.00, Material=E-Bike_Antrieb_installiert
+  - Machine M2: Time=3020.00, Idle=0.00, Material=E-Bike_Hauptrahmen_zugeschnitten
+  - Machine M3: Time=2685.00, Idle=335.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,875 - JSPGymEnvironment - INFO - Retro-Bonus für Job J17: -10.0
+2025-06-19 11:35:37,885 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Hauptrahmen_zugeschnitten -> Racebike_Rahmen_komplettiert, setup time: 29
+2025-06-19 11:35:37,885 - JSPGymEnvironment - INFO - Executed operation: Job J10, Op 4, Machine M2, Start: 3049, End: 3077, Setup: 29
+2025-06-19 11:35:37,885 - JSPGymEnvironment - INFO - Job J10 completed at time 3077, deadline: 2880, met: False, priority: 10
+2025-06-19 11:35:37,886 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 55 =====
+Job: J10, Operation: 4, Job Completed: True
+Current Time: 3020.00 -> 3077.00, Setup Time: 29.00
+Processing Time: 28.00, Idle Time: 0.00
+Completed Jobs: 8/20
+Machine: M2, Material: Racebike_Rahmen_komplettiert
+Job Deadline: 2880.00 (Missed), Priority: 10
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2850
+- setup_reward: -7.2500
+- deadline_reward: -0.1710
+- priority_reward: 40.0000
+- critical_job_reward: 11.6792
+- placement_reward: 0.0000
+- timeliness_reward: 0.4711
+- machine_idle_penalty: -6.1125
+
+TOTAL REWARD: 38.3318
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -15.3850
+- setup_reward: -372.7500
+- deadline_reward: 99.6795
+- priority_reward: 220.0000
+- critical_job_reward: 67.5727
+- placement_reward: 0.0000
+- timeliness_reward: 414.7690
+- machine_idle_penalty: -226.6750
+
+CUMULATIVE TOTAL: 187.2113
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=2980.00, Idle=97.00, Material=E-Bike_Antrieb_installiert
+  - Machine M2: Time=3077.00, Idle=0.00, Material=Racebike_Rahmen_komplettiert
+  - Machine M3: Time=2685.00, Idle=392.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,886 - JSPGymEnvironment - INFO - Retro-Bonus für Job J10: -5.0
+2025-06-19 11:35:37,894 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Antrieb_installiert -> Racebike_Steuerrohr_ausgerieben, setup time: 56
+2025-06-19 11:35:37,894 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 1, Machine M1, Start: 3133, End: 3163, Setup: 56
+2025-06-19 11:35:37,895 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 56 =====
+Job: J20, Operation: 1, Job Completed: False
+Current Time: 3077.00 -> 3163.00, Setup Time: 56.00
+Processing Time: 30.00, Idle Time: 0.00
+Completed Jobs: 8/20
+Machine: M1, Material: Racebike_Steuerrohr_ausgerieben
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4300
+- setup_reward: -14.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -0.1961
+- machine_idle_penalty: -7.0500
+
+TOTAL REWARD: -21.1761
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -15.8150
+- setup_reward: -386.7500
+- deadline_reward: 99.6795
+- priority_reward: 220.0000
+- critical_job_reward: 68.0727
+- placement_reward: 0.0000
+- timeliness_reward: 414.5730
+- machine_idle_penalty: -233.7250
+
+CUMULATIVE TOTAL: 166.0352
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=3163.00, Idle=0.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M2: Time=3077.00, Idle=86.00, Material=Racebike_Rahmen_komplettiert
+  - Machine M3: Time=2685.00, Idle=478.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,904 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Rahmen_komplettiert -> Racebike_Steuerrohr_montiert, setup time: 20
+2025-06-19 11:35:37,904 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 0, Machine M2, Start: 3183, End: 3201, Setup: 20
+2025-06-19 11:35:37,904 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 57 =====
+Job: J2, Operation: 0, Job Completed: False
+Current Time: 3163.00 -> 3201.00, Setup Time: 20.00
+Processing Time: 18.00, Idle Time: 0.00
+Completed Jobs: 8/20
+Machine: M2, Material: Racebike_Steuerrohr_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1900
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -0.4791
+- machine_idle_penalty: -6.9250
+
+TOTAL REWARD: -12.0941
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -16.0050
+- setup_reward: -391.7500
+- deadline_reward: 99.6795
+- priority_reward: 220.0000
+- critical_job_reward: 68.5727
+- placement_reward: 0.0000
+- timeliness_reward: 414.0938
+- machine_idle_penalty: -240.6500
+
+CUMULATIVE TOTAL: 153.9410
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=3163.00, Idle=38.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M2: Time=3201.00, Idle=0.00, Material=Racebike_Steuerrohr_montiert
+  - Machine M3: Time=2685.00, Idle=516.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,913 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Tretlageraufnahme_geschweisst -> Racebike_Laufraeder_montiert, setup time: 15
+2025-06-19 11:35:37,913 - JSPGymEnvironment - INFO - Executed operation: Job J13, Op 0, Machine M3, Start: 3216, End: 3243, Setup: 15
+2025-06-19 11:35:37,913 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 58 =====
+Job: J13, Operation: 0, Job Completed: False
+Current Time: 3201.00 -> 3243.00, Setup Time: 15.00
+Processing Time: 27.00, Idle Time: 0.00
+Completed Jobs: 8/20
+Machine: M3, Material: Racebike_Laufraeder_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2100
+- setup_reward: -3.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -0.7827
+- machine_idle_penalty: -1.5250
+
+TOTAL REWARD: -6.2677
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -16.2150
+- setup_reward: -395.5000
+- deadline_reward: 99.6795
+- priority_reward: 220.0000
+- critical_job_reward: 68.5727
+- placement_reward: 0.0000
+- timeliness_reward: 413.3112
+- machine_idle_penalty: -242.1750
+
+CUMULATIVE TOTAL: 147.6734
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=3163.00, Idle=80.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M2: Time=3201.00, Idle=42.00, Material=Racebike_Steuerrohr_montiert
+  - Machine M3: Time=3243.00, Idle=0.00, Material=Racebike_Laufraeder_montiert
+==================================================
+
+2025-06-19 11:35:37,922 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Laufraeder_montiert -> E-Bike_Fahrrad_endmontiert, setup time: 21
+2025-06-19 11:35:37,923 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 0, Machine M3, Start: 3264, End: 3289, Setup: 21
+2025-06-19 11:35:37,923 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 59 =====
+Job: J1, Operation: 0, Job Completed: False
+Current Time: 3243.00 -> 3289.00, Setup Time: 21.00
+Processing Time: 25.00, Idle Time: 0.00
+Completed Jobs: 8/20
+Machine: M3, Material: E-Bike_Fahrrad_endmontiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2300
+- setup_reward: -5.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -1.1030
+- machine_idle_penalty: -2.6750
+
+TOTAL REWARD: -9.2580
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -16.4450
+- setup_reward: -400.7500
+- deadline_reward: 99.6795
+- priority_reward: 220.0000
+- critical_job_reward: 68.5727
+- placement_reward: 0.0000
+- timeliness_reward: 412.2082
+- machine_idle_penalty: -244.8500
+
+CUMULATIVE TOTAL: 138.4154
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=3163.00, Idle=126.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M2: Time=3201.00, Idle=88.00, Material=Racebike_Steuerrohr_montiert
+  - Machine M3: Time=3289.00, Idle=0.00, Material=E-Bike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:37,931 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Fahrrad_endmontiert -> Racebike_Tretlageraufnahme_geschweisst, setup time: 22
+2025-06-19 11:35:37,931 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 2, Machine M3, Start: 3311, End: 3360, Setup: 22
+2025-06-19 11:35:37,931 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 60 =====
+Job: J20, Operation: 2, Job Completed: False
+Current Time: 3289.00 -> 3360.00, Setup Time: 22.00
+Processing Time: 49.00, Idle Time: 0.00
+Completed Jobs: 8/20
+Machine: M3, Material: Racebike_Tretlageraufnahme_geschweisst
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3550
+- setup_reward: -5.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -1.5711
+- machine_idle_penalty: -4.4500
+
+TOTAL REWARD: -11.3761
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -16.8000
+- setup_reward: -406.2500
+- deadline_reward: 99.6795
+- priority_reward: 220.0000
+- critical_job_reward: 69.0727
+- placement_reward: 0.0000
+- timeliness_reward: 410.6371
+- machine_idle_penalty: -249.3000
+
+CUMULATIVE TOTAL: 127.0394
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=3163.00, Idle=197.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M2: Time=3201.00, Idle=159.00, Material=Racebike_Steuerrohr_montiert
+  - Machine M3: Time=3360.00, Idle=0.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:37,940 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Steuerrohr_montiert -> Racebike_Antrieb_installiert, setup time: 20
+2025-06-19 11:35:37,940 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 1, Machine M2, Start: 3380, End: 3408, Setup: 20
+2025-06-19 11:35:37,941 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 61 =====
+Job: J2, Operation: 1, Job Completed: False
+Current Time: 3360.00 -> 3408.00, Setup Time: 20.00
+Processing Time: 28.00, Idle Time: 0.00
+Completed Jobs: 8/20
+Machine: M2, Material: Racebike_Antrieb_installiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2400
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -1.8686
+- machine_idle_penalty: -3.6625
+
+TOTAL REWARD: -10.2711
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -17.0400
+- setup_reward: -411.2500
+- deadline_reward: 99.6795
+- priority_reward: 220.0000
+- critical_job_reward: 69.5727
+- placement_reward: 0.0000
+- timeliness_reward: 408.7686
+- machine_idle_penalty: -252.9625
+
+CUMULATIVE TOTAL: 116.7683
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=3163.00, Idle=245.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M2: Time=3408.00, Idle=0.00, Material=Racebike_Antrieb_installiert
+  - Machine M3: Time=3360.00, Idle=48.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:38,023 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Tretlageraufnahme_geschweisst -> Citybike_Bremsaufnahme_gebohrt, setup time: 12
+2025-06-19 11:35:38,023 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 3, Machine M3, Start: 3420, End: 3463, Setup: 12
+2025-06-19 11:35:38,023 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 62 =====
+Job: J19, Operation: 3, Job Completed: False
+Current Time: 3408.00 -> 3463.00, Setup Time: 12.00
+Processing Time: 43.00, Idle Time: 0.00
+Completed Jobs: 8/20
+Machine: M3, Material: Citybike_Bremsaufnahme_gebohrt
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2750
+- setup_reward: -3.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -2.1903
+- machine_idle_penalty: -4.4375
+
+TOTAL REWARD: -9.9028
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -17.3150
+- setup_reward: -414.2500
+- deadline_reward: 99.6795
+- priority_reward: 220.0000
+- critical_job_reward: 69.5727
+- placement_reward: 0.0000
+- timeliness_reward: 406.5782
+- machine_idle_penalty: -257.4000
+
+CUMULATIVE TOTAL: 106.8655
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=3163.00, Idle=300.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M2: Time=3408.00, Idle=55.00, Material=Racebike_Antrieb_installiert
+  - Machine M3: Time=3463.00, Idle=0.00, Material=Citybike_Bremsaufnahme_gebohrt
+==================================================
+
+2025-06-19 11:35:38,032 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Bremsaufnahme_gebohrt -> Racebike_Bremsaufnahme_gebohrt, setup time: 12
+2025-06-19 11:35:38,032 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 3, Machine M3, Start: 3475, End: 3523, Setup: 12
+2025-06-19 11:35:38,032 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 63 =====
+Job: J20, Operation: 3, Job Completed: False
+Current Time: 3463.00 -> 3523.00, Setup Time: 12.00
+Processing Time: 48.00, Idle Time: 0.00
+Completed Jobs: 8/20
+Machine: M3, Material: Racebike_Bremsaufnahme_gebohrt
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3000
+- setup_reward: -3.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -2.5176
+- machine_idle_penalty: -5.9375
+
+TOTAL REWARD: -11.2551
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -17.6150
+- setup_reward: -417.2500
+- deadline_reward: 99.6795
+- priority_reward: 220.0000
+- critical_job_reward: 70.0727
+- placement_reward: 0.0000
+- timeliness_reward: 404.0606
+- machine_idle_penalty: -263.3375
+
+CUMULATIVE TOTAL: 95.6104
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=3163.00, Idle=360.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M2: Time=3408.00, Idle=115.00, Material=Racebike_Antrieb_installiert
+  - Machine M3: Time=3523.00, Idle=0.00, Material=Racebike_Bremsaufnahme_gebohrt
+==================================================
+
+2025-06-19 11:35:38,040 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Antrieb_installiert -> Racebike_Fahrrad_endmontiert, setup time: 20
+2025-06-19 11:35:38,040 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 1, Machine M2, Start: 3543, End: 3564, Setup: 20
+2025-06-19 11:35:38,040 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 64 =====
+Job: J9, Operation: 1, Job Completed: False
+Current Time: 3523.00 -> 3564.00, Setup Time: 20.00
+Processing Time: 21.00, Idle Time: 0.00
+Completed Jobs: 8/20
+Machine: M2, Material: Racebike_Fahrrad_endmontiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2050
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -2.7272
+- machine_idle_penalty: -5.5250
+
+TOTAL REWARD: -12.9572
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -17.8200
+- setup_reward: -422.2500
+- deadline_reward: 99.6795
+- priority_reward: 220.0000
+- critical_job_reward: 70.5727
+- placement_reward: 0.0000
+- timeliness_reward: 401.3335
+- machine_idle_penalty: -268.8625
+
+CUMULATIVE TOTAL: 82.6532
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19', 'J20']
+- Machine states:
+  - Machine M1: Time=3163.00, Idle=401.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M2: Time=3564.00, Idle=0.00, Material=Racebike_Fahrrad_endmontiert
+  - Machine M3: Time=3523.00, Idle=41.00, Material=Racebike_Bremsaufnahme_gebohrt
+==================================================
+
+2025-06-19 11:35:38,050 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Bremsaufnahme_gebohrt -> Racebike_Rahmen_lackiert, setup time: 15
+2025-06-19 11:35:38,050 - JSPGymEnvironment - INFO - Executed operation: Job J20, Op 4, Machine M3, Start: 3579, End: 3605, Setup: 15
+2025-06-19 11:35:38,050 - JSPGymEnvironment - INFO - Job J20 completed at time 3605, deadline: 2839, met: False, priority: 9
+2025-06-19 11:35:38,050 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 65 =====
+Job: J20, Operation: 4, Job Completed: True
+Current Time: 3564.00 -> 3605.00, Setup Time: 15.00
+Processing Time: 26.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M3, Material: Racebike_Rahmen_lackiert
+Job Deadline: 2839.00 (Missed), Priority: 9
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2050
+- setup_reward: -3.7500
+- deadline_reward: -0.6745
+- priority_reward: 36.0000
+- critical_job_reward: 9.2622
+- placement_reward: 0.0000
+- timeliness_reward: -2.9214
+- machine_idle_penalty: -6.0375
+
+TOTAL REWARD: 31.6738
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -18.0250
+- setup_reward: -426.0000
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 79.8349
+- placement_reward: 0.0000
+- timeliness_reward: 398.4120
+- machine_idle_penalty: -274.9000
+
+CUMULATIVE TOTAL: 114.3270
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3163.00, Idle=442.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M2: Time=3564.00, Idle=41.00, Material=Racebike_Fahrrad_endmontiert
+  - Machine M3: Time=3605.00, Idle=0.00, Material=Racebike_Rahmen_lackiert
+==================================================
+
+2025-06-19 11:35:38,050 - JSPGymEnvironment - INFO - Retro-Bonus für Job J20: -5.0
+2025-06-19 11:35:38,059 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Steuerrohr_ausgerieben -> Racebike_Antrieb_installiert, setup time: 40
+2025-06-19 11:35:38,059 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 2, Machine M1, Start: 3645, End: 3672, Setup: 40
+2025-06-19 11:35:38,059 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 66 =====
+Job: J9, Operation: 2, Job Completed: False
+Current Time: 3605.00 -> 3672.00, Setup Time: 40.00
+Processing Time: 27.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M1, Material: Racebike_Antrieb_installiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3350
+- setup_reward: -10.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -3.2220
+- machine_idle_penalty: -2.1875
+
+TOTAL REWARD: -15.2445
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -18.3600
+- setup_reward: -436.0000
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 80.3349
+- placement_reward: 0.0000
+- timeliness_reward: 395.1901
+- machine_idle_penalty: -277.0875
+
+CUMULATIVE TOTAL: 99.0825
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3672.00, Idle=0.00, Material=Racebike_Antrieb_installiert
+  - Machine M2: Time=3564.00, Idle=108.00, Material=Racebike_Fahrrad_endmontiert
+  - Machine M3: Time=3605.00, Idle=67.00, Material=Racebike_Rahmen_lackiert
+==================================================
+
+2025-06-19 11:35:38,068 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Antrieb_installiert -> Citybike_Rahmen_komplettiert, setup time: 41
+2025-06-19 11:35:38,068 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 4, Machine M1, Start: 3713, End: 3753, Setup: 41
+2025-06-19 11:35:38,068 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 67 =====
+Job: J19, Operation: 4, Job Completed: False
+Current Time: 3672.00 -> 3753.00, Setup Time: 41.00
+Processing Time: 40.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M1, Material: Citybike_Rahmen_komplettiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4050
+- setup_reward: -10.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -3.5475
+- machine_idle_penalty: -4.2125
+
+TOTAL REWARD: -18.4150
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -18.7650
+- setup_reward: -446.2500
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 80.3349
+- placement_reward: 0.0000
+- timeliness_reward: 391.6425
+- machine_idle_penalty: -281.3000
+
+CUMULATIVE TOTAL: 80.6675
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3753.00, Idle=0.00, Material=Citybike_Rahmen_komplettiert
+  - Machine M2: Time=3564.00, Idle=189.00, Material=Racebike_Fahrrad_endmontiert
+  - Machine M3: Time=3605.00, Idle=148.00, Material=Racebike_Rahmen_lackiert
+==================================================
+
+2025-06-19 11:35:38,077 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Fahrrad_endmontiert -> Racebike_Hinterbau_vorbereitet, setup time: 20
+2025-06-19 11:35:38,077 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 2, Machine M2, Start: 3773, End: 3786, Setup: 20
+2025-06-19 11:35:38,078 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 68 =====
+Job: J2, Operation: 2, Job Completed: False
+Current Time: 3753.00 -> 3786.00, Setup Time: 20.00
+Processing Time: 13.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M2, Material: Racebike_Hinterbau_vorbereitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1650
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -3.6689
+- machine_idle_penalty: -2.6750
+
+TOTAL REWARD: -11.0089
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -18.9300
+- setup_reward: -451.2500
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 80.8349
+- placement_reward: 0.0000
+- timeliness_reward: 387.9737
+- machine_idle_penalty: -283.9750
+
+CUMULATIVE TOTAL: 69.6586
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3753.00, Idle=33.00, Material=Citybike_Rahmen_komplettiert
+  - Machine M2: Time=3786.00, Idle=0.00, Material=Racebike_Hinterbau_vorbereitet
+  - Machine M3: Time=3605.00, Idle=181.00, Material=Racebike_Rahmen_lackiert
+==================================================
+
+2025-06-19 11:35:38,087 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Rahmen_komplettiert -> Mountainbike_Rahmen_nachbearbeitet, setup time: 36
+2025-06-19 11:35:38,087 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 1, Machine M1, Start: 3822, End: 3863, Setup: 36
+2025-06-19 11:35:38,087 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 69 =====
+Job: J3, Operation: 1, Job Completed: False
+Current Time: 3786.00 -> 3863.00, Setup Time: 36.00
+Processing Time: 41.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M1, Material: Mountainbike_Rahmen_nachbearbeitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3850
+- setup_reward: -9.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -3.9281
+- machine_idle_penalty: -4.1875
+
+TOTAL REWARD: -17.5006
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -19.3150
+- setup_reward: -460.2500
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 80.8349
+- placement_reward: 0.0000
+- timeliness_reward: 384.0455
+- machine_idle_penalty: -288.1625
+
+CUMULATIVE TOTAL: 52.1580
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3863.00, Idle=0.00, Material=Mountainbike_Rahmen_nachbearbeitet
+  - Machine M2: Time=3786.00, Idle=77.00, Material=Racebike_Hinterbau_vorbereitet
+  - Machine M3: Time=3605.00, Idle=258.00, Material=Racebike_Rahmen_lackiert
+==================================================
+
+2025-06-19 11:35:38,096 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Rahmen_nachbearbeitet -> Racebike_Bremsen_justiert, setup time: 43
+2025-06-19 11:35:38,096 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 3, Machine M1, Start: 3906, End: 3933, Setup: 43
+2025-06-19 11:35:38,096 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 70 =====
+Job: J2, Operation: 3, Job Completed: False
+Current Time: 3863.00 -> 3933.00, Setup Time: 43.00
+Processing Time: 27.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M1, Material: Racebike_Bremsen_justiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3500
+- setup_reward: -10.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -4.1366
+- machine_idle_penalty: -5.9375
+
+TOTAL REWARD: -20.6741
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -19.6650
+- setup_reward: -471.0000
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 81.3349
+- placement_reward: 0.0000
+- timeliness_reward: 379.9089
+- machine_idle_penalty: -294.1000
+
+CUMULATIVE TOTAL: 31.4838
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3933.00, Idle=0.00, Material=Racebike_Bremsen_justiert
+  - Machine M2: Time=3786.00, Idle=147.00, Material=Racebike_Hinterbau_vorbereitet
+  - Machine M3: Time=3605.00, Idle=328.00, Material=Racebike_Rahmen_lackiert
+==================================================
+
+2025-06-19 11:35:38,105 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Hinterbau_vorbereitet -> Racebike_Steuerrohr_ausgerieben, setup time: 20
+2025-06-19 11:35:38,105 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 4, Machine M2, Start: 3953, End: 3979, Setup: 20
+2025-06-19 11:35:38,105 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 71 =====
+Job: J2, Operation: 4, Job Completed: False
+Current Time: 3933.00 -> 3979.00, Setup Time: 20.00
+Processing Time: 26.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M2, Material: Racebike_Steuerrohr_ausgerieben
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2300
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -4.2606
+- machine_idle_penalty: -5.2500
+
+TOTAL REWARD: -14.2406
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -19.8950
+- setup_reward: -476.0000
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 81.8349
+- placement_reward: 0.0000
+- timeliness_reward: 375.6483
+- machine_idle_penalty: -299.3500
+
+CUMULATIVE TOTAL: 17.2432
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3933.00, Idle=46.00, Material=Racebike_Bremsen_justiert
+  - Machine M2: Time=3979.00, Idle=0.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M3: Time=3605.00, Idle=374.00, Material=Racebike_Rahmen_lackiert
+==================================================
+
+2025-06-19 11:35:38,115 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Rahmen_lackiert -> Racebike_Steuerrohr_montiert, setup time: 15
+2025-06-19 11:35:38,115 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 3, Machine M3, Start: 3994, End: 4019, Setup: 15
+2025-06-19 11:35:38,115 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 72 =====
+Job: J9, Operation: 3, Job Completed: False
+Current Time: 3979.00 -> 4019.00, Setup Time: 15.00
+Processing Time: 25.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M3, Material: Racebike_Steuerrohr_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2000
+- setup_reward: -3.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -4.3606
+- machine_idle_penalty: -1.5750
+
+TOTAL REWARD: -9.3856
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -20.0950
+- setup_reward: -479.7500
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 82.3349
+- placement_reward: 0.0000
+- timeliness_reward: 371.2877
+- machine_idle_penalty: -300.9250
+
+CUMULATIVE TOTAL: 7.8576
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3933.00, Idle=86.00, Material=Racebike_Bremsen_justiert
+  - Machine M2: Time=3979.00, Idle=40.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M3: Time=4019.00, Idle=0.00, Material=Racebike_Steuerrohr_montiert
+==================================================
+
+2025-06-19 11:35:38,124 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Steuerrohr_montiert -> Racebike_Tretlager_gefraest, setup time: 15
+2025-06-19 11:35:38,124 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 5, Machine M3, Start: 4034, End: 4054, Setup: 15
+2025-06-19 11:35:38,124 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 73 =====
+Job: J2, Operation: 5, Job Completed: False
+Current Time: 4019.00 -> 4054.00, Setup Time: 15.00
+Processing Time: 20.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M3, Material: Racebike_Tretlager_gefraest
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1750
+- setup_reward: -3.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -4.4424
+- machine_idle_penalty: -2.4500
+
+TOTAL REWARD: -10.3174
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -20.2700
+- setup_reward: -483.5000
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 82.8349
+- placement_reward: 0.0000
+- timeliness_reward: 366.8453
+- machine_idle_penalty: -303.3750
+
+CUMULATIVE TOTAL: -2.4598
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3933.00, Idle=121.00, Material=Racebike_Bremsen_justiert
+  - Machine M2: Time=3979.00, Idle=75.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M3: Time=4054.00, Idle=0.00, Material=Racebike_Tretlager_gefraest
+==================================================
+
+2025-06-19 11:35:38,133 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Tretlager_gefraest -> Racebike_Tretlageraufnahme_geschweisst, setup time: 15
+2025-06-19 11:35:38,133 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 4, Machine M3, Start: 4069, End: 4111, Setup: 15
+2025-06-19 11:35:38,133 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 74 =====
+Job: J9, Operation: 4, Job Completed: False
+Current Time: 4054.00 -> 4111.00, Setup Time: 15.00
+Processing Time: 42.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M3, Material: Racebike_Tretlageraufnahme_geschweisst
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2850
+- setup_reward: -3.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -4.5651
+- machine_idle_penalty: -3.8750
+
+TOTAL REWARD: -11.9751
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -20.5550
+- setup_reward: -487.2500
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 83.3349
+- placement_reward: 0.0000
+- timeliness_reward: 362.2802
+- machine_idle_penalty: -307.2500
+
+CUMULATIVE TOTAL: -14.4349
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3933.00, Idle=178.00, Material=Racebike_Bremsen_justiert
+  - Machine M2: Time=3979.00, Idle=132.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M3: Time=4111.00, Idle=0.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:38,142 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 6, Machine M3, Start: 4121, End: 4156, Setup: 10
+2025-06-19 11:35:38,142 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 75 =====
+Job: J2, Operation: 6, Job Completed: False
+Current Time: 4111.00 -> 4156.00, Setup Time: 10.00
+Processing Time: 35.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M3, Material: Racebike_Tretlageraufnahme_geschweisst
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2250
+- setup_reward: -2.5000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -4.6533
+- machine_idle_penalty: -5.0000
+
+TOTAL REWARD: -11.8783
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -20.7800
+- setup_reward: -489.7500
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 83.8349
+- placement_reward: 0.0000
+- timeliness_reward: 357.6269
+- machine_idle_penalty: -312.2500
+
+CUMULATIVE TOTAL: -26.3132
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3933.00, Idle=223.00, Material=Racebike_Bremsen_justiert
+  - Machine M2: Time=3979.00, Idle=177.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M3: Time=4156.00, Idle=0.00, Material=Racebike_Tretlageraufnahme_geschweisst
+==================================================
+
+2025-06-19 11:35:38,151 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Tretlageraufnahme_geschweisst -> Citybike_Rahmen_nachbearbeitet, setup time: 12
+2025-06-19 11:35:38,151 - JSPGymEnvironment - INFO - Executed operation: Job J18, Op 0, Machine M3, Start: 4168, End: 4207, Setup: 12
+2025-06-19 11:35:38,151 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 76 =====
+Job: J18, Operation: 0, Job Completed: False
+Current Time: 4156.00 -> 4207.00, Setup Time: 12.00
+Processing Time: 39.00, Idle Time: 0.00
+Completed Jobs: 9/20
+Machine: M3, Material: Citybike_Rahmen_nachbearbeitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2550
+- setup_reward: -3.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -4.7446
+- machine_idle_penalty: -6.2750
+
+TOTAL REWARD: -14.2746
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -21.0350
+- setup_reward: -492.7500
+- deadline_reward: 99.0050
+- priority_reward: 256.0000
+- critical_job_reward: 83.8349
+- placement_reward: 0.0000
+- timeliness_reward: 352.8823
+- machine_idle_penalty: -318.5250
+
+CUMULATIVE TOTAL: -40.5878
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J2', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=3933.00, Idle=274.00, Material=Racebike_Bremsen_justiert
+  - Machine M2: Time=3979.00, Idle=228.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M3: Time=4207.00, Idle=0.00, Material=Citybike_Rahmen_nachbearbeitet
+==================================================
+
+2025-06-19 11:35:38,159 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Bremsen_justiert -> Racebike_Rahmen_komplettiert, setup time: 40
+2025-06-19 11:35:38,159 - JSPGymEnvironment - INFO - Executed operation: Job J2, Op 7, Machine M1, Start: 4247, End: 4271, Setup: 40
+2025-06-19 11:35:38,159 - JSPGymEnvironment - INFO - Job J2 completed at time 4271, deadline: 2880, met: False, priority: 10
+2025-06-19 11:35:38,159 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 77 =====
+Job: J2, Operation: 7, Job Completed: True
+Current Time: 4207.00 -> 4271.00, Setup Time: 40.00
+Processing Time: 24.00, Idle Time: 0.00
+Completed Jobs: 10/20
+Machine: M1, Material: Racebike_Rahmen_komplettiert
+Job Deadline: 2880.00 (Missed), Priority: 10
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3200
+- setup_reward: -10.0000
+- deadline_reward: -1.2075
+- priority_reward: 40.0000
+- critical_job_reward: 6.7042
+- placement_reward: 0.0000
+- timeliness_reward: -4.8643
+- machine_idle_penalty: -4.4500
+
+TOTAL REWARD: 25.8624
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -21.3550
+- setup_reward: -502.7500
+- deadline_reward: 97.7975
+- priority_reward: 296.0000
+- critical_job_reward: 90.5391
+- placement_reward: 0.0000
+- timeliness_reward: 348.0180
+- machine_idle_penalty: -322.9750
+
+CUMULATIVE TOTAL: -14.7254
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J9', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4271.00, Idle=0.00, Material=Racebike_Rahmen_komplettiert
+  - Machine M2: Time=3979.00, Idle=292.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M3: Time=4207.00, Idle=64.00, Material=Citybike_Rahmen_nachbearbeitet
+==================================================
+
+2025-06-19 11:35:38,159 - JSPGymEnvironment - INFO - Retro-Bonus für Job J2: -5.0
+2025-06-19 11:35:38,168 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Rahmen_nachbearbeitet -> Racebike_Rahmen_nachbearbeitet, setup time: 12
+2025-06-19 11:35:38,168 - JSPGymEnvironment - INFO - Executed operation: Job J9, Op 5, Machine M3, Start: 4283, End: 4334, Setup: 12
+2025-06-19 11:35:38,168 - JSPGymEnvironment - INFO - Job J9 completed at time 4334, deadline: 2835, met: False, priority: 9
+2025-06-19 11:35:38,168 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 78 =====
+Job: J9, Operation: 5, Job Completed: True
+Current Time: 4271.00 -> 4334.00, Setup Time: 12.00
+Processing Time: 51.00, Idle Time: 0.00
+Completed Jobs: 11/20
+Machine: M3, Material: Racebike_Rahmen_nachbearbeitet
+Job Deadline: 2835.00 (Missed), Priority: 9
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3150
+- setup_reward: -3.0000
+- deadline_reward: -1.3219
+- priority_reward: 36.0000
+- critical_job_reward: 6.1550
+- placement_reward: 0.0000
+- timeliness_reward: -4.9515
+- machine_idle_penalty: -5.2250
+
+TOTAL REWARD: 27.3417
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -21.6700
+- setup_reward: -505.7500
+- deadline_reward: 96.4757
+- priority_reward: 332.0000
+- critical_job_reward: 96.6941
+- placement_reward: 0.0000
+- timeliness_reward: 343.0666
+- machine_idle_penalty: -328.2000
+
+CUMULATIVE TOTAL: 12.6163
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4271.00, Idle=63.00, Material=Racebike_Rahmen_komplettiert
+  - Machine M2: Time=3979.00, Idle=355.00, Material=Racebike_Steuerrohr_ausgerieben
+  - Machine M3: Time=4334.00, Idle=0.00, Material=Racebike_Rahmen_nachbearbeitet
+==================================================
+
+2025-06-19 11:35:38,169 - JSPGymEnvironment - INFO - Retro-Bonus für Job J9: -5.0
+2025-06-19 11:35:38,178 - JSPGymEnvironment - INFO - Material change on machine M2: Racebike_Steuerrohr_ausgerieben -> E-Bike_Hauptrahmen_zugeschnitten, setup time: 24
+2025-06-19 11:35:38,178 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 1, Machine M2, Start: 4358, End: 4371, Setup: 24
+2025-06-19 11:35:38,178 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 79 =====
+Job: J8, Operation: 1, Job Completed: False
+Current Time: 4334.00 -> 4371.00, Setup Time: 24.00
+Processing Time: 13.00, Idle Time: 0.00
+Completed Jobs: 11/20
+Machine: M2, Material: E-Bike_Hauptrahmen_zugeschnitten
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1850
+- setup_reward: -6.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -4.9984
+- machine_idle_penalty: -1.7125
+
+TOTAL REWARD: -12.3959
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -21.8550
+- setup_reward: -511.7500
+- deadline_reward: 96.4757
+- priority_reward: 332.0000
+- critical_job_reward: 97.1941
+- placement_reward: 0.0000
+- timeliness_reward: 338.0681
+- machine_idle_penalty: -329.9125
+
+CUMULATIVE TOTAL: 0.2204
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4271.00, Idle=100.00, Material=Racebike_Rahmen_komplettiert
+  - Machine M2: Time=4371.00, Idle=0.00, Material=E-Bike_Hauptrahmen_zugeschnitten
+  - Machine M3: Time=4334.00, Idle=37.00, Material=Racebike_Rahmen_nachbearbeitet
+==================================================
+
+2025-06-19 11:35:38,189 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Hauptrahmen_zugeschnitten -> E-Bike_Laufraeder_montiert, setup time: 20
+2025-06-19 11:35:38,189 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 1, Machine M2, Start: 4391, End: 4402, Setup: 20
+2025-06-19 11:35:38,189 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 80 =====
+Job: J1, Operation: 1, Job Completed: False
+Current Time: 4371.00 -> 4402.00, Setup Time: 20.00
+Processing Time: 11.00, Idle Time: 0.00
+Completed Jobs: 11/20
+Machine: M2, Material: E-Bike_Laufraeder_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1550
+- setup_reward: -5.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.0353
+- machine_idle_penalty: -2.4875
+
+TOTAL REWARD: -12.6778
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -22.0100
+- setup_reward: -516.7500
+- deadline_reward: 96.4757
+- priority_reward: 332.0000
+- critical_job_reward: 97.1941
+- placement_reward: 0.0000
+- timeliness_reward: 333.0329
+- machine_idle_penalty: -332.4000
+
+CUMULATIVE TOTAL: -12.4574
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4271.00, Idle=131.00, Material=Racebike_Rahmen_komplettiert
+  - Machine M2: Time=4402.00, Idle=0.00, Material=E-Bike_Laufraeder_montiert
+  - Machine M3: Time=4334.00, Idle=68.00, Material=Racebike_Rahmen_nachbearbeitet
+==================================================
+
+2025-06-19 11:35:38,199 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Laufraeder_montiert -> Mountainbike_Tretlager_gefraest, setup time: 28
+2025-06-19 11:35:38,200 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 0, Machine M2, Start: 4430, End: 4453, Setup: 28
+2025-06-19 11:35:38,200 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 81 =====
+Job: J11, Operation: 0, Job Completed: False
+Current Time: 4402.00 -> 4453.00, Setup Time: 28.00
+Processing Time: 23.00, Idle Time: 0.00
+Completed Jobs: 11/20
+Machine: M2, Material: Mountainbike_Tretlager_gefraest
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2550
+- setup_reward: -7.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.0911
+- machine_idle_penalty: -3.7625
+
+TOTAL REWARD: -16.1086
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -22.2650
+- setup_reward: -523.7500
+- deadline_reward: 96.4757
+- priority_reward: 332.0000
+- critical_job_reward: 97.1941
+- placement_reward: 0.0000
+- timeliness_reward: 327.9417
+- machine_idle_penalty: -336.1625
+
+CUMULATIVE TOTAL: -28.5660
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4271.00, Idle=182.00, Material=Racebike_Rahmen_komplettiert
+  - Machine M2: Time=4453.00, Idle=0.00, Material=Mountainbike_Tretlager_gefraest
+  - Machine M3: Time=4334.00, Idle=119.00, Material=Racebike_Rahmen_nachbearbeitet
+==================================================
+
+2025-06-19 11:35:38,209 - JSPGymEnvironment - INFO - Material change on machine M1: Racebike_Rahmen_komplettiert -> E-Bike_Hinterbau_vorbereitet, setup time: 51
+2025-06-19 11:35:38,209 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 0, Machine M1, Start: 4504, End: 4540, Setup: 51
+2025-06-19 11:35:38,209 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 82 =====
+Job: J5, Operation: 0, Job Completed: False
+Current Time: 4453.00 -> 4540.00, Setup Time: 51.00
+Processing Time: 36.00, Idle Time: 0.00
+Completed Jobs: 11/20
+Machine: M1, Material: E-Bike_Hinterbau_vorbereitet
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4350
+- setup_reward: -12.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -5.1744
+- machine_idle_penalty: -3.6625
+
+TOTAL REWARD: -21.5219
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -22.7000
+- setup_reward: -536.5000
+- deadline_reward: 96.4757
+- priority_reward: 332.0000
+- critical_job_reward: 97.6941
+- placement_reward: 0.0000
+- timeliness_reward: 322.7673
+- machine_idle_penalty: -339.8250
+
+CUMULATIVE TOTAL: -50.0879
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4540.00, Idle=0.00, Material=E-Bike_Hinterbau_vorbereitet
+  - Machine M2: Time=4453.00, Idle=87.00, Material=Mountainbike_Tretlager_gefraest
+  - Machine M3: Time=4334.00, Idle=206.00, Material=Racebike_Rahmen_nachbearbeitet
+==================================================
+
+2025-06-19 11:35:38,219 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Tretlager_gefraest -> E-Bike_Rahmen_komplettiert, setup time: 29
+2025-06-19 11:35:38,219 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 2, Machine M2, Start: 4569, End: 4598, Setup: 29
+2025-06-19 11:35:38,219 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 83 =====
+Job: J1, Operation: 2, Job Completed: False
+Current Time: 4540.00 -> 4598.00, Setup Time: 29.00
+Processing Time: 29.00, Idle Time: 0.00
+Completed Jobs: 11/20
+Machine: M2, Material: E-Bike_Rahmen_komplettiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2900
+- setup_reward: -7.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.2223
+- machine_idle_penalty: -4.0250
+
+TOTAL REWARD: -16.7873
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -22.9900
+- setup_reward: -543.7500
+- deadline_reward: 96.4757
+- priority_reward: 332.0000
+- critical_job_reward: 97.6941
+- placement_reward: 0.0000
+- timeliness_reward: 317.5450
+- machine_idle_penalty: -343.8500
+
+CUMULATIVE TOTAL: -66.8752
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4540.00, Idle=58.00, Material=E-Bike_Hinterbau_vorbereitet
+  - Machine M2: Time=4598.00, Idle=0.00, Material=E-Bike_Rahmen_komplettiert
+  - Machine M3: Time=4334.00, Idle=264.00, Material=Racebike_Rahmen_nachbearbeitet
+==================================================
+
+2025-06-19 11:35:38,228 - JSPGymEnvironment - INFO - Material change on machine M3: Racebike_Rahmen_nachbearbeitet -> Citybike_Rahmen_lackiert, setup time: 12
+2025-06-19 11:35:38,228 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 5, Machine M3, Start: 4610, End: 4633, Setup: 12
+2025-06-19 11:35:38,228 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 84 =====
+Job: J19, Operation: 5, Job Completed: False
+Current Time: 4598.00 -> 4633.00, Setup Time: 12.00
+Processing Time: 23.00, Idle Time: 0.00
+Completed Jobs: 11/20
+Machine: M3, Material: Citybike_Rahmen_lackiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.1750
+- setup_reward: -3.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.2487
+- machine_idle_penalty: -1.6000
+
+TOTAL REWARD: -10.0237
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -23.1650
+- setup_reward: -546.7500
+- deadline_reward: 96.4757
+- priority_reward: 332.0000
+- critical_job_reward: 97.6941
+- placement_reward: 0.0000
+- timeliness_reward: 312.2963
+- machine_idle_penalty: -345.4500
+
+CUMULATIVE TOTAL: -76.8989
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4540.00, Idle=93.00, Material=E-Bike_Hinterbau_vorbereitet
+  - Machine M2: Time=4598.00, Idle=35.00, Material=E-Bike_Rahmen_komplettiert
+  - Machine M3: Time=4633.00, Idle=0.00, Material=Citybike_Rahmen_lackiert
+==================================================
+
+2025-06-19 11:35:38,237 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Hinterbau_vorbereitet -> Citybike_Steuerrohr_ausgerieben, setup time: 55
+2025-06-19 11:35:38,237 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 6, Machine M1, Start: 4688, End: 4722, Setup: 55
+2025-06-19 11:35:38,237 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 85 =====
+Job: J19, Operation: 6, Job Completed: False
+Current Time: 4633.00 -> 4722.00, Setup Time: 55.00
+Processing Time: 34.00, Idle Time: 0.00
+Completed Jobs: 11/20
+Machine: M1, Material: Citybike_Steuerrohr_ausgerieben
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4450
+- setup_reward: -13.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.3079
+- machine_idle_penalty: -2.6625
+
+TOTAL REWARD: -22.1654
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -23.6100
+- setup_reward: -560.5000
+- deadline_reward: 96.4757
+- priority_reward: 332.0000
+- critical_job_reward: 97.6941
+- placement_reward: 0.0000
+- timeliness_reward: 306.9884
+- machine_idle_penalty: -348.1125
+
+CUMULATIVE TOTAL: -99.0643
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4722.00, Idle=0.00, Material=Citybike_Steuerrohr_ausgerieben
+  - Machine M2: Time=4598.00, Idle=124.00, Material=E-Bike_Rahmen_komplettiert
+  - Machine M3: Time=4633.00, Idle=89.00, Material=Citybike_Rahmen_lackiert
+==================================================
+
+2025-06-19 11:35:38,246 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Rahmen_lackiert -> E-Bike_Bremsen_justiert, setup time: 25
+2025-06-19 11:35:38,246 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 1, Machine M3, Start: 4747, End: 4803, Setup: 25
+2025-06-19 11:35:38,246 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 86 =====
+Job: J5, Operation: 1, Job Completed: False
+Current Time: 4722.00 -> 4803.00, Setup Time: 25.00
+Processing Time: 56.00, Idle Time: 0.00
+Completed Jobs: 11/20
+Machine: M3, Material: E-Bike_Bremsen_justiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.4050
+- setup_reward: -6.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -5.3531
+- machine_idle_penalty: -3.5750
+
+TOTAL REWARD: -15.0831
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -24.0150
+- setup_reward: -566.7500
+- deadline_reward: 96.4757
+- priority_reward: 332.0000
+- critical_job_reward: 98.1941
+- placement_reward: 0.0000
+- timeliness_reward: 301.6353
+- machine_idle_penalty: -351.6875
+
+CUMULATIVE TOTAL: -114.1474
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4722.00, Idle=81.00, Material=Citybike_Steuerrohr_ausgerieben
+  - Machine M2: Time=4598.00, Idle=205.00, Material=E-Bike_Rahmen_komplettiert
+  - Machine M3: Time=4803.00, Idle=0.00, Material=E-Bike_Bremsen_justiert
+==================================================
+
+2025-06-19 11:35:38,256 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_komplettiert -> Mountainbike_Rahmen_komplettiert, setup time: 28
+2025-06-19 11:35:38,256 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 2, Machine M2, Start: 4831, End: 4852, Setup: 28
+2025-06-19 11:35:38,256 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 87 =====
+Job: J3, Operation: 2, Job Completed: False
+Current Time: 4803.00 -> 4852.00, Setup Time: 28.00
+Processing Time: 21.00, Idle Time: 0.00
+Completed Jobs: 11/20
+Machine: M2, Material: Mountainbike_Rahmen_komplettiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2450
+- setup_reward: -7.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.3771
+- machine_idle_penalty: -2.2375
+
+TOTAL REWARD: -14.8596
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -24.2600
+- setup_reward: -573.7500
+- deadline_reward: 96.4757
+- priority_reward: 332.0000
+- critical_job_reward: 98.1941
+- placement_reward: 0.0000
+- timeliness_reward: 296.2582
+- machine_idle_penalty: -353.9250
+
+CUMULATIVE TOTAL: -129.0070
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18', 'J19']
+- Machine states:
+  - Machine M1: Time=4722.00, Idle=130.00, Material=Citybike_Steuerrohr_ausgerieben
+  - Machine M2: Time=4852.00, Idle=0.00, Material=Mountainbike_Rahmen_komplettiert
+  - Machine M3: Time=4803.00, Idle=49.00, Material=E-Bike_Bremsen_justiert
+==================================================
+
+2025-06-19 11:35:38,266 - JSPGymEnvironment - INFO - Material change on machine M3: E-Bike_Bremsen_justiert -> Citybike_Fahrrad_endmontiert, setup time: 15
+2025-06-19 11:35:38,266 - JSPGymEnvironment - INFO - Executed operation: Job J19, Op 7, Machine M3, Start: 4867, End: 4908, Setup: 15
+2025-06-19 11:35:38,266 - JSPGymEnvironment - INFO - Job J19 completed at time 4908, deadline: 2880, met: False, priority: 4
+2025-06-19 11:35:38,267 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 88 =====
+Job: J19, Operation: 7, Job Completed: True
+Current Time: 4852.00 -> 4908.00, Setup Time: 15.00
+Processing Time: 41.00, Idle Time: 0.00
+Completed Jobs: 12/20
+Machine: M3, Material: Citybike_Fahrrad_endmontiert
+Job Deadline: 2880.00 (Missed), Priority: 4
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2800
+- setup_reward: -3.7500
+- deadline_reward: -1.7604
+- priority_reward: 16.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.4029
+- machine_idle_penalty: -3.0250
+
+TOTAL REWARD: 1.7816
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -24.5400
+- setup_reward: -577.5000
+- deadline_reward: 94.7153
+- priority_reward: 348.0000
+- critical_job_reward: 98.1941
+- placement_reward: 0.0000
+- timeliness_reward: 290.8553
+- machine_idle_penalty: -356.9500
+
+CUMULATIVE TOTAL: -127.2254
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18']
+- Machine states:
+  - Machine M1: Time=4722.00, Idle=186.00, Material=Citybike_Steuerrohr_ausgerieben
+  - Machine M2: Time=4852.00, Idle=56.00, Material=Mountainbike_Rahmen_komplettiert
+  - Machine M3: Time=4908.00, Idle=0.00, Material=Citybike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:38,267 - JSPGymEnvironment - INFO - Retro-Bonus für Job J19: -10.0
+2025-06-19 11:35:38,275 - JSPGymEnvironment - INFO - Material change on machine M1: Citybike_Steuerrohr_ausgerieben -> Mountainbike_Rahmen_lackiert, setup time: 36
+2025-06-19 11:35:38,275 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 3, Machine M1, Start: 4944, End: 4965, Setup: 36
+2025-06-19 11:35:38,275 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 89 =====
+Job: J3, Operation: 3, Job Completed: False
+Current Time: 4908.00 -> 4965.00, Setup Time: 36.00
+Processing Time: 21.00, Idle Time: 0.00
+Completed Jobs: 12/20
+Machine: M1, Material: Mountainbike_Rahmen_lackiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2850
+- setup_reward: -9.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.4251
+- machine_idle_penalty: -2.1250
+
+TOTAL REWARD: -16.8351
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -24.8250
+- setup_reward: -586.5000
+- deadline_reward: 94.7153
+- priority_reward: 348.0000
+- critical_job_reward: 98.1941
+- placement_reward: 0.0000
+- timeliness_reward: 285.4302
+- machine_idle_penalty: -359.0750
+
+CUMULATIVE TOTAL: -144.0605
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18']
+- Machine states:
+  - Machine M1: Time=4965.00, Idle=0.00, Material=Mountainbike_Rahmen_lackiert
+  - Machine M2: Time=4852.00, Idle=113.00, Material=Mountainbike_Rahmen_komplettiert
+  - Machine M3: Time=4908.00, Idle=57.00, Material=Citybike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:38,285 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Rahmen_lackiert -> E-Bike_Bremsen_justiert, setup time: 47
+2025-06-19 11:35:38,285 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 3, Machine M1, Start: 5012, End: 5029, Setup: 47
+2025-06-19 11:35:38,285 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 90 =====
+Job: J1, Operation: 3, Job Completed: False
+Current Time: 4965.00 -> 5029.00, Setup Time: 47.00
+Processing Time: 17.00, Idle Time: 0.00
+Completed Jobs: 12/20
+Machine: M1, Material: E-Bike_Bremsen_justiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3200
+- setup_reward: -11.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.4470
+- machine_idle_penalty: -3.7250
+
+TOTAL REWARD: -21.2420
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -25.1450
+- setup_reward: -598.2500
+- deadline_reward: 94.7153
+- priority_reward: 348.0000
+- critical_job_reward: 98.1941
+- placement_reward: 0.0000
+- timeliness_reward: 279.9832
+- machine_idle_penalty: -362.8000
+
+CUMULATIVE TOTAL: -165.3025
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18']
+- Machine states:
+  - Machine M1: Time=5029.00, Idle=0.00, Material=E-Bike_Bremsen_justiert
+  - Machine M2: Time=4852.00, Idle=177.00, Material=Mountainbike_Rahmen_komplettiert
+  - Machine M3: Time=4908.00, Idle=121.00, Material=Citybike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:38,295 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Bremsen_justiert -> E-Bike_Fahrrad_endmontiert, setup time: 40
+2025-06-19 11:35:38,295 - JSPGymEnvironment - INFO - Executed operation: Job J8, Op 2, Machine M1, Start: 5069, End: 5095, Setup: 40
+2025-06-19 11:35:38,295 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 91 =====
+Job: J8, Operation: 2, Job Completed: False
+Current Time: 5029.00 -> 5095.00, Setup Time: 40.00
+Processing Time: 26.00, Idle Time: 0.00
+Completed Jobs: 12/20
+Machine: M1, Material: E-Bike_Fahrrad_endmontiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3300
+- setup_reward: -10.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -5.4668
+- machine_idle_penalty: -5.3750
+
+TOTAL REWARD: -20.6718
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -25.4750
+- setup_reward: -608.2500
+- deadline_reward: 94.7153
+- priority_reward: 348.0000
+- critical_job_reward: 98.6941
+- placement_reward: 0.0000
+- timeliness_reward: 274.5164
+- machine_idle_penalty: -368.1750
+
+CUMULATIVE TOTAL: -185.9743
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18']
+- Machine states:
+  - Machine M1: Time=5095.00, Idle=0.00, Material=E-Bike_Fahrrad_endmontiert
+  - Machine M2: Time=4852.00, Idle=243.00, Material=Mountainbike_Rahmen_komplettiert
+  - Machine M3: Time=4908.00, Idle=187.00, Material=Citybike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:38,305 - JSPGymEnvironment - INFO - Material change on machine M1: E-Bike_Fahrrad_endmontiert -> Mountainbike_Rahmen_lackiert, setup time: 47
+2025-06-19 11:35:38,305 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 1, Machine M1, Start: 5142, End: 5166, Setup: 47
+2025-06-19 11:35:38,305 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 92 =====
+Job: J11, Operation: 1, Job Completed: False
+Current Time: 5095.00 -> 5166.00, Setup Time: 47.00
+Processing Time: 24.00, Idle Time: 0.00
+Completed Jobs: 12/20
+Machine: M1, Material: Mountainbike_Rahmen_lackiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3550
+- setup_reward: -11.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.4852
+- machine_idle_penalty: -7.1500
+
+TOTAL REWARD: -24.7402
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -25.8300
+- setup_reward: -620.0000
+- deadline_reward: 94.7153
+- priority_reward: 348.0000
+- critical_job_reward: 98.6941
+- placement_reward: 0.0000
+- timeliness_reward: 269.0311
+- machine_idle_penalty: -375.3250
+
+CUMULATIVE TOTAL: -210.7145
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18']
+- Machine states:
+  - Machine M1: Time=5166.00, Idle=0.00, Material=Mountainbike_Rahmen_lackiert
+  - Machine M2: Time=4852.00, Idle=314.00, Material=Mountainbike_Rahmen_komplettiert
+  - Machine M3: Time=4908.00, Idle=258.00, Material=Citybike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:38,315 - JSPGymEnvironment - INFO - Material change on machine M1: Mountainbike_Rahmen_lackiert -> E-Bike_Antrieb_installiert, setup time: 47
+2025-06-19 11:35:38,315 - JSPGymEnvironment - INFO - Executed operation: Job J5, Op 2, Machine M1, Start: 5213, End: 5237, Setup: 47
+2025-06-19 11:35:38,315 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 93 =====
+Job: J5, Operation: 2, Job Completed: False
+Current Time: 5166.00 -> 5237.00, Setup Time: 47.00
+Processing Time: 24.00, Idle Time: 0.00
+Completed Jobs: 12/20
+Machine: M1, Material: E-Bike_Antrieb_installiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3550
+- setup_reward: -11.7500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.5000
+- placement_reward: 0.0000
+- timeliness_reward: -5.5012
+- machine_idle_penalty: -8.9250
+
+TOTAL REWARD: -26.0312
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -26.1850
+- setup_reward: -631.7500
+- deadline_reward: 94.7153
+- priority_reward: 348.0000
+- critical_job_reward: 99.1941
+- placement_reward: 0.0000
+- timeliness_reward: 263.5299
+- machine_idle_penalty: -384.2500
+
+CUMULATIVE TOTAL: -236.7457
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18']
+- Machine states:
+  - Machine M1: Time=5237.00, Idle=0.00, Material=E-Bike_Antrieb_installiert
+  - Machine M2: Time=4852.00, Idle=385.00, Material=Mountainbike_Rahmen_komplettiert
+  - Machine M3: Time=4908.00, Idle=329.00, Material=Citybike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:38,324 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Rahmen_komplettiert -> E-Bike_Rahmen_lackiert, setup time: 29
+2025-06-19 11:35:38,324 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 4, Machine M2, Start: 5266, End: 5286, Setup: 29
+2025-06-19 11:35:38,324 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 94 =====
+Job: J1, Operation: 4, Job Completed: False
+Current Time: 5237.00 -> 5286.00, Setup Time: 29.00
+Processing Time: 20.00, Idle Time: 0.00
+Completed Jobs: 12/20
+Machine: M2, Material: E-Bike_Rahmen_lackiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2450
+- setup_reward: -7.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.5108
+- machine_idle_penalty: -5.3375
+
+TOTAL REWARD: -18.3433
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -26.4300
+- setup_reward: -639.0000
+- deadline_reward: 94.7153
+- priority_reward: 348.0000
+- critical_job_reward: 99.1941
+- placement_reward: 0.0000
+- timeliness_reward: 258.0191
+- machine_idle_penalty: -389.5875
+
+CUMULATIVE TOTAL: -255.0890
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18']
+- Machine states:
+  - Machine M1: Time=5237.00, Idle=49.00, Material=E-Bike_Antrieb_installiert
+  - Machine M2: Time=5286.00, Idle=0.00, Material=E-Bike_Rahmen_lackiert
+  - Machine M3: Time=4908.00, Idle=378.00, Material=Citybike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:38,411 - JSPGymEnvironment - INFO - Material change on machine M2: E-Bike_Rahmen_lackiert -> Mountainbike_Bremsen_justiert, setup time: 28
+2025-06-19 11:35:38,411 - JSPGymEnvironment - INFO - Executed operation: Job J3, Op 4, Machine M2, Start: 5314, End: 5336, Setup: 28
+2025-06-19 11:35:38,412 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 95 =====
+Job: J3, Operation: 4, Job Completed: False
+Current Time: 5286.00 -> 5336.00, Setup Time: 28.00
+Processing Time: 22.00, Idle Time: 0.00
+Completed Jobs: 12/20
+Machine: M2, Material: Mountainbike_Bremsen_justiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2500
+- setup_reward: -7.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.5197
+- machine_idle_penalty: -6.5875
+
+TOTAL REWARD: -19.3572
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -26.6800
+- setup_reward: -646.0000
+- deadline_reward: 94.7153
+- priority_reward: 348.0000
+- critical_job_reward: 99.1941
+- placement_reward: 0.0000
+- timeliness_reward: 252.4994
+- machine_idle_penalty: -396.1750
+
+CUMULATIVE TOTAL: -274.4463
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18']
+- Machine states:
+  - Machine M1: Time=5237.00, Idle=99.00, Material=E-Bike_Antrieb_installiert
+  - Machine M2: Time=5336.00, Idle=0.00, Material=Mountainbike_Bremsen_justiert
+  - Machine M3: Time=4908.00, Idle=428.00, Material=Citybike_Fahrrad_endmontiert
+==================================================
+
+2025-06-19 11:35:38,421 - JSPGymEnvironment - INFO - Material change on machine M3: Citybike_Fahrrad_endmontiert -> Mountainbike_Rahmen_komplettiert, setup time: 12
+2025-06-19 11:35:38,421 - JSPGymEnvironment - INFO - Executed operation: Job J11, Op 2, Machine M3, Start: 5348, End: 5399, Setup: 12
+2025-06-19 11:35:38,421 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 96 =====
+Job: J11, Operation: 2, Job Completed: False
+Current Time: 5336.00 -> 5399.00, Setup Time: 12.00
+Processing Time: 51.00, Idle Time: 0.00
+Completed Jobs: 12/20
+Machine: M3, Material: Mountainbike_Rahmen_komplettiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.3150
+- setup_reward: -3.0000
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.5297
+- machine_idle_penalty: -2.8125
+
+TOTAL REWARD: -11.6572
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -26.9950
+- setup_reward: -649.0000
+- deadline_reward: 94.7153
+- priority_reward: 348.0000
+- critical_job_reward: 99.1941
+- placement_reward: 0.0000
+- timeliness_reward: 246.9697
+- machine_idle_penalty: -398.9875
+
+CUMULATIVE TOTAL: -286.1035
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18']
+- Machine states:
+  - Machine M1: Time=5237.00, Idle=162.00, Material=E-Bike_Antrieb_installiert
+  - Machine M2: Time=5336.00, Idle=63.00, Material=Mountainbike_Bremsen_justiert
+  - Machine M3: Time=5399.00, Idle=0.00, Material=Mountainbike_Rahmen_komplettiert
+==================================================
+
+2025-06-19 11:35:38,430 - JSPGymEnvironment - INFO - Material change on machine M2: Mountainbike_Bremsen_justiert -> E-Bike_Steuerrohr_montiert, setup time: 29
+2025-06-19 11:35:38,430 - JSPGymEnvironment - INFO - Executed operation: Job J1, Op 5, Machine M2, Start: 5428, End: 5443, Setup: 29
+2025-06-19 11:35:38,430 - JSPGymEnvironment - INFO - 
+===== REWARD DETAILS FOR STEP 97 =====
+Job: J1, Operation: 5, Job Completed: False
+Current Time: 5399.00 -> 5443.00, Setup Time: 29.00
+Processing Time: 15.00, Idle Time: 0.00
+Completed Jobs: 12/20
+Machine: M2, Material: E-Bike_Steuerrohr_montiert
+
+REWARD COMPONENTS:
+- makespan_reward: -0.2200
+- setup_reward: -7.2500
+- deadline_reward: 0.0000
+- priority_reward: 0.0000
+- critical_job_reward: 0.0000
+- placement_reward: 0.0000
+- timeliness_reward: -5.5359
+- machine_idle_penalty: -3.1250
+
+TOTAL REWARD: -16.1309
+
+CUMULATIVE REWARD COMPONENTS:
+- makespan_reward: -27.2150
+- setup_reward: -656.2500
+- deadline_reward: 94.7153
+- priority_reward: 348.0000
+- critical_job_reward: 99.1941
+- placement_reward: 0.0000
+- timeliness_reward: 241.4337
+- machine_idle_penalty: -402.1125
+
+CUMULATIVE TOTAL: -302.2344
+
+CRITICAL STATE INFO:
+- Valid actions: ['J1', 'J3', 'J5', 'J7', 'J8', 'J11', 'J13', 'J18']
+- Machine states:
+  - Machine M1: Time=5237.00, Idle=206.00, Material=E-Bike_Antrieb_installiert
+  - Machine M2: Time=5443.00, Idle=0.00, Material=E-Bike_Steuerrohr_montiert
+  - Machine M3: Time=5399.00, Idle=44.00, Material=Mountainbike_Rahmen_komplettiert
+==================================================
+
