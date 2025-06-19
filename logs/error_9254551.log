@@ -1,0 +1,5 @@
+/var/spool/slurmd/job9254551/slurm_script: line 11: /user/paul.mill/u17597/venv/bin/activate: No such file or directory
+Traceback (most recent call last):
+  File "train_gym_ppo.py", line 3, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
