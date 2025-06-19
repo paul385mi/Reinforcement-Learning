@@ -29,6 +29,85 @@ def lifo_heuristic(state, jsp_data):
             return job_idx
     return 0  # Fallback
 
+def lpt_heuristic(state, jsp_data):
+    """Longest Processing Time - selects the job with the longest next operation"""
+    valid_actions_mask = state['valid_actions_mask']
+    job_progress = state['job_progress']
+    
+    max_time = -1
+    selected_job = 0
+    
+    for job_idx, is_valid in enumerate(valid_actions_mask):
+        if is_valid == 1:
+            op_idx = job_progress[job_idx]
+            if op_idx < len(jsp_data["jobs"][job_idx]["operations"]):
+                proc_time = jsp_data["jobs"][job_idx]["operations"][op_idx]["processingTime"]
+                if proc_time > max_time:
+                    max_time = proc_time
+                    selected_job = job_idx
+    
+    return selected_job
+
+def mwkr_heuristic(state, jsp_data):
+    """Most Work Remaining - selects the job with the most total processing time remaining"""
+    valid_actions_mask = state['valid_actions_mask']
+    job_progress = state['job_progress']
+    
+    max_remaining_time = -1
+    selected_job = 0
+    
+    for job_idx, is_valid in enumerate(valid_actions_mask):
+        if is_valid == 1:
+            op_idx = job_progress[job_idx]
+            remaining_time = 0
+            
+            # Sum up the processing times of all remaining operations
+            for i in range(op_idx, len(jsp_data["jobs"][job_idx]["operations"])):
+                remaining_time += jsp_data["jobs"][job_idx]["operations"][i]["processingTime"]
+            
+            if remaining_time > max_remaining_time:
+                max_remaining_time = remaining_time
+                selected_job = job_idx
+    
+    return selected_job
+
+def cr_heuristic(state, jsp_data):
+    """Critical Ratio - balances processing time with due dates
+    CR = (Due Date - Current Time) / Remaining Processing Time
+    Lower CR means more critical job"""
+    valid_actions_mask = state['valid_actions_mask']
+    job_progress = state['job_progress']
+    current_time = max(state.get('machine_times', [0]))  # Current time is max of machine times
+    
+    # Assume due dates as 2x the sum of all processing times for each job if not provided
+    due_dates = []
+    for job in jsp_data["jobs"]:
+        total_time = sum(op["processingTime"] for op in job["operations"])
+        due_dates.append(total_time * 2)  # Simple heuristic for due date
+    
+    min_cr = float('inf')
+    selected_job = 0
+    
+    for job_idx, is_valid in enumerate(valid_actions_mask):
+        if is_valid == 1:
+            op_idx = job_progress[job_idx]
+            remaining_time = 0
+            
+            # Calculate remaining processing time
+            for i in range(op_idx, len(jsp_data["jobs"][job_idx]["operations"])):
+                remaining_time += jsp_data["jobs"][job_idx]["operations"][i]["processingTime"]
+            
+            # Calculate critical ratio
+            time_left = due_dates[job_idx] - current_time
+            cr = time_left / remaining_time if remaining_time > 0 else float('inf')
+            
+            # Lower CR is more critical
+            if cr < min_cr:
+                min_cr = cr
+                selected_job = job_idx
+    
+    return selected_job
+
 def spt_heuristic(state, jsp_data):
     """Shortest Processing Time - selects the job with the shortest next operation"""
     valid_actions_mask = state['valid_actions_mask']
@@ -276,15 +355,18 @@ def compare_heuristics(jsp_data_path, model_path, num_episodes=10):
     fifo_makespan, fifo_util = run_heuristic(env, fifo_heuristic, jsp_data, num_episodes)
     lifo_makespan, lifo_util = run_heuristic(env, lifo_heuristic, jsp_data, num_episodes)
     spt_makespan, spt_util = run_heuristic(env, spt_heuristic, jsp_data, num_episodes)
+    lpt_makespan, lpt_util = run_heuristic(env, lpt_heuristic, jsp_data, num_episodes)
+    mwkr_makespan, mwkr_util = run_heuristic(env, mwkr_heuristic, jsp_data, num_episodes)
+    cr_makespan, cr_util = run_heuristic(env, cr_heuristic, jsp_data, num_episodes)
     random_makespan, random_util = run_heuristic(env, random_heuristic, jsp_data, num_episodes)
     
     # Run PPO agent
     ppo_makespan, ppo_util = run_ppo_agent(env, model_path, jsp_data, num_episodes)
     
     # Prepare data for plotting
-    heuristics = ['FIFO', 'LIFO', 'SPT', 'RANDOM', 'PPO']
-    makespans = [fifo_makespan, lifo_makespan, spt_makespan, random_makespan, ppo_makespan]
-    utilizations = [fifo_util, lifo_util, spt_util, random_util, ppo_util]
+    heuristics = ['FIFO', 'LIFO', 'SPT', 'LPT', 'MWKR', 'CR', 'RANDOM', 'PPO']
+    makespans = [fifo_makespan, lifo_makespan, spt_makespan, lpt_makespan, mwkr_makespan, cr_makespan, random_makespan, ppo_makespan]
+    utilizations = [fifo_util, lifo_util, spt_util, lpt_util, mwkr_util, cr_util, random_util, ppo_util]
     
     # Create figure with two subplots
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
