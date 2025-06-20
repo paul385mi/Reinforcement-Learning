@@ -77,7 +77,7 @@ class TorchPPOAgent:
 
         # Learning Rate Scheduler (Linear Decay)
         # Decay over lr_decay_episodes, starting after 0 episodes
-        self.scheduler = lr_scheduler.LinearLR(
+        self.lr_scheduler = lr_scheduler.LinearLR(
             self.optimizer,
             start_factor=1.0,      # Start with initial_lr
             end_factor=final_lr / initial_lr, # Ratio of final_lr to initial_lr
@@ -520,6 +520,32 @@ class TorchPPOAgent:
         for i, norm_state in enumerate(model_state['layer_norms']):  # Layer-Norms laden
             self.layer_norms[i].load_state_dict(norm_state)
         self.output_layer.load_state_dict(model_state['output_layer'])
+
+    def save_checkpoint(self, path: str, episode: int):
+            torch.save({
+                'agent_state': {
+                    'node_embedding': self.node_embedding.state_dict(),
+                    'graph_transformer_layers': [layer.state_dict() for layer in self.graph_transformer_layers],
+                    'layer_norms':            [norm.state_dict()  for norm  in self.layer_norms],
+                    'output_layer':           self.output_layer.state_dict()
+                },
+                'optimizer': self.optimizer.state_dict(),
+                'scheduler': self.lr_scheduler.state_dict(),
+                'episode':   episode
+            }, path)  
+
+    def load_checkpoint(self, path: str) -> int:
+        ckpt = torch.load(path)
+        st  = ckpt['agent_state']
+        self.node_embedding.load_state_dict(st['node_embedding'])
+        for i, gs in enumerate(st['graph_transformer_layers']):
+            self.graph_transformer_layers[i].load_state_dict(gs)
+        for i, ls in enumerate(st['layer_norms']):
+            self.layer_norms[i].load_state_dict(ls)
+        self.output_layer.load_state_dict(st['output_layer'])
+        self.optimizer.load_state_dict(ckpt['optimizer'])
+        self.lr_scheduler.load_state_dict(ckpt['scheduler'])
+        return ckpt['episode']
         
     def parameters(self):
         return list(self.node_embedding.parameters()) + \

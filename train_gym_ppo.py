@@ -1,5 +1,6 @@
 import json
 import os
+import torch
 import numpy as np
 from datetime import datetime
 import matplotlib.pyplot as plt
@@ -39,7 +40,15 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
     agent = TorchPPOAgent(len(jsp_data["jobs"]), jsp_data,
                           initial_lr=initial_lr, final_lr=final_lr, lr_decay_episodes=num_episodes,
                           initial_entropy_coef=initial_entropy_coef) # Pass initial entropy coef
-    
+
+    checkpoint_path = os.path.join('results', 'models', 'gym_ppo_checkpoint_latest.pth')
+    if os.path.isfile(checkpoint_path):
+        start_episode = agent.load_checkpoint(checkpoint_path) + 1
+        print(f"Resuming training from episode {start_episode}")
+    else:
+        start_episode = 1
+    end_episode = start_episode + num_episodes - 1
+
     # Initialize logger
     experiment_name = f"jsp_ppo_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     logger = JSPLogger(log_dir=log_dir, experiment_name=experiment_name)
@@ -53,7 +62,7 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
     episode_util = []        # Machine utilization
     
     # Training
-    for episode in range(1, num_episodes + 1):
+    for episode in range(start_episode, end_episode + 1):
         # Log episode start
         logger.log_episode_start(episode, jsp_data if episode == 1 else None)
         
@@ -111,7 +120,12 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
         loss = agent.update(batch_size=batch_size, current_entropy_coef=current_entropy_coef) # Pass current coef
         
         # Step the LR scheduler
-        agent.scheduler.step()
+        agent.lr_scheduler.step()
+        # — neu: aktuellen Checkpoint immer überschreiben —
+        checkpoint_path = os.path.join('results', 'models', 'gym_ppo_checkpoint_latest.pth')
+        agent.save_checkpoint(checkpoint_path, episode)
+        if verbose:
+            print(f"Checkpoint updated → {checkpoint_path}")
 
         # Calculate makespan
         makespan = max(state['machine_times'])
@@ -157,22 +171,19 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
             reward_stats = env.get_reward_stats()
             reward_components_str = ", ".join([f"{k}: {v:.2f}" for k, v in reward_stats.items()])
             
-            print(f"Episode {episode}/{num_episodes}, Reward: {total_reward:.2f}, Makespan: {makespan}, "
+            print(f"Episode {episode}/{end_episode}, Reward: {total_reward:.2f}, Makespan: {makespan}, "
                   f"Loss: {loss:.4f}, Deadlines: {met_deadlines}/{len(agent.jsp_data['jobs'])}, "
                   f"Util: {machine_util:.2f}, LR: {agent.optimizer.param_groups[0]['lr']:.6f}, " # Show LR
                   f"Entropy Coef: {current_entropy_coef:.4f}") # Show Entropy Coef
             print(f"Reward Components: {reward_components_str}")
-        
-        # Save checkpoint
-        if episode % save_interval == 0:
-            # Ensure directories exist
+
+        if episode % save_interval == 0 or episode == num_episodes:
             os.makedirs('results/models', exist_ok=True)
-            
-            # Save model
-            checkpoint_path = f"results/models/gym_ppo_checkpoint_ep{episode}.pt"
-            agent.save_model(checkpoint_path)
+            checkpoint_path = os.path.join('results', 'models', 'gym_ppo_checkpoint_latest.pth')
+            agent.save_checkpoint(checkpoint_path, episode)
             if verbose:
-                print(f"Checkpoint saved at: {checkpoint_path}")
+                print(f"Checkpoint saved (episode {episode}) → {checkpoint_path}")
+        
     
     # Ensure directories exist
     os.makedirs('results/models', exist_ok=True)
@@ -277,17 +288,26 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
     
     # Visualize learning progress with extended metrics
     plt.figure(figsize=(15, 10))
-    
+    # Absolute Episoden-Nummern für die x-Achse
+    x_vals = list(range(start_episode, end_episode + 1))
+
+    # Fenstergröße für gleitenden Durchschnitt
+    ma_window = 10
+    # x-Werte für den gleitenden Durchschnitt: ab Episode (start + window - 1)
+    x_ma = list(range(start_episode + ma_window - 1, end_episode + 1))
+
     # Moving average for smoother curves
     def moving_average(data, window_size=10):
         return np.convolve(data, np.ones(window_size)/window_size, mode='valid')
     
     # Rewards
     plt.subplot(2, 3, 1)
-    plt.plot(range(1, num_episodes + 1), episode_rewards, 'b-', alpha=0.3)
-    if num_episodes > 10:
-        ma_rewards = moving_average(episode_rewards)
-        plt.plot(range(10, num_episodes + 1), ma_rewards, 'b-', linewidth=2)
+    
+    plt.plot(x_vals, episode_rewards, 'b-', alpha=0.3)
+    if len(episode_rewards) >= ma_window:
+        ma_rewards = moving_average(episode_rewards, window_size=ma_window)
+        plt.plot(x_ma, ma_rewards, 'b-', linewidth=2)
+
     plt.title('Rewards per Episode')
     plt.xlabel('Episode')
     plt.ylabel('Total Reward')
@@ -296,10 +316,10 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
     
     # Makespan
     plt.subplot(2, 3, 2)
-    plt.plot(range(1, num_episodes + 1), episode_makespans, 'r-', alpha=0.3)
-    if num_episodes > 10:
-        ma_makespans = moving_average(episode_makespans)
-        plt.plot(range(10, num_episodes + 1), ma_makespans, 'r-', linewidth=2)
+    plt.plot(x_vals, episode_makespans, 'r-', alpha=0.3)
+    if len(episode_makespans) >= ma_window:
+        ma_makespans = moving_average(episode_makespans, window_size=ma_window)
+        plt.plot(x_ma, ma_makespans, 'r-', linewidth=2)
     plt.title('Makespan per Episode')
     plt.xlabel('Episode')
     plt.ylabel('Makespan')
@@ -308,10 +328,10 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
     
     # Loss
     plt.subplot(2, 3, 3)
-    plt.plot(range(1, num_episodes + 1), episode_losses, 'g-', alpha=0.3)
-    if num_episodes > 10:
-        ma_losses = moving_average(episode_losses)
-        plt.plot(range(10, num_episodes + 1), ma_losses, 'g-', linewidth=2)
+    plt.plot(x_vals, episode_losses, 'g-', alpha=0.3)
+    if len(episode_losses) >= ma_window:
+        ma_losses = moving_average(episode_losses, window_size=ma_window)
+        plt.plot(x_ma, ma_losses, 'g-', linewidth=2)
     plt.title('Loss per Episode')
     plt.xlabel('Episode')
     plt.ylabel('Loss')
@@ -320,10 +340,10 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
     
     # Priorities
     plt.subplot(2, 3, 4)
-    plt.plot(range(1, num_episodes + 1), episode_priorities, 'm-', alpha=0.3)
-    if num_episodes > 10:
-        ma_priorities = moving_average(episode_priorities)
-        plt.plot(range(10, num_episodes + 1), ma_priorities, 'm-', linewidth=2)
+    plt.plot(x_vals, episode_priorities, 'm-', alpha=0.3)
+    if len(episode_priorities) >= ma_window:
+        ma_priorities = moving_average(episode_priorities, window_size=ma_window)
+        plt.plot(x_ma, ma_priorities, 'm-', linewidth=2)
     plt.title('Average Priority of Completed Jobs')
     plt.xlabel('Episode')
     plt.ylabel('Priority')
@@ -332,10 +352,10 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
     
     # Deadlines
     plt.subplot(2, 3, 5)
-    plt.plot(range(1, num_episodes + 1), episode_deadlines, 'c-', alpha=0.3)
-    if num_episodes > 10:
-        ma_deadlines = moving_average(episode_deadlines)
-        plt.plot(range(10, num_episodes + 1), ma_deadlines, 'c-', linewidth=2)
+    plt.plot(x_vals, episode_deadlines, 'c-', alpha=0.3)
+    if len(episode_deadlines) >= ma_window:
+        ma_deadlines = moving_average(episode_deadlines, window_size=ma_window)
+        plt.plot(x_ma, ma_deadlines, 'c-', linewidth=2)
     plt.title('Met Deadlines')
     plt.xlabel('Episode')
     plt.ylabel('Count')
@@ -344,10 +364,10 @@ def train_gym_ppo(jsp_data_path, num_episodes=500, verbose=True, save_interval=5
     
     # Machine utilization
     plt.subplot(2, 3, 6)
-    plt.plot(range(1, num_episodes + 1), episode_util, 'y-', alpha=0.3)
-    if num_episodes > 10:
-        ma_util = moving_average(episode_util)
-        plt.plot(range(10, num_episodes + 1), ma_util, 'y-', linewidth=2)
+    plt.plot(x_vals, episode_util, 'y-', alpha=0.3)
+    if len(episode_util) >= ma_window:
+        ma_util = moving_average(episode_util, window_size=ma_window)
+        plt.plot(x_ma, ma_util, 'y-', linewidth=2)
     plt.title('Machine Utilization')
     plt.xlabel('Episode')
     plt.ylabel('Utilization')
