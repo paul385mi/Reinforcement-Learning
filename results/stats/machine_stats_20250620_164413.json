@@ -1,0 +1,20 @@
+{
+  "M1": {
+    "utilization": 0.0,
+    "setup_time_ratio": 0.0,
+    "idle_time_ratio": 0.0,
+    "processing_time_ratio": 0.0
+  },
+  "M2": {
+    "utilization": 0.0,
+    "setup_time_ratio": 0.0,
+    "idle_time_ratio": 0.0,
+    "processing_time_ratio": 0.0
+  },
+  "M3": {
+    "utilization": 0.0,
+    "setup_time_ratio": 0.0,
+    "idle_time_ratio": 0.0,
+    "processing_time_ratio": 0.0
+  }
+}
