@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\begin{document}
+
+\section{ JSP MODEL EVALUATION REPORT
+
+\textbf{Evaluationsdatum:\textbf{ 25.06.2025 11:33:30
+\textbf{Modell:\textbf{ results/models/gym_ppo_model_20250625_100324.pt
+
+\section{\section{ 🎯 EXECUTIVE SUMMARY
+
+\section{\section{\section{ PPO-GNN Performance
+- \textbf{Overall Ranking:\textbf{ 7/10 (Score: 4.40)
+- \textbf{Makespan Ranking:\textbf{ 9/10
+- \textbf{Deadline Ranking:\textbf{ 1/10
+- \textbf{Timeliness Ranking:\textbf{ 9/10
+
+\section{\section{\section{ Key Performance Indicators
+- \textbf{Makespan:\textbf{ 6847.1 ± 49.6
+- \textbf{Deadline-Einhaltung:\textbf{ 0.0%
+- \textbf{Timeliness Score:\textbf{ -1.442
+- \textbf{Maschinenauslastung:\textbf{ 97.6%
+- \textbf{Durchschnittlicher Reward:\textbf{ -946.6
+
+\section{\section{ 📊 VERGLEICHSANALYSE
+
+\section{\section{\section{ Performance vs. Beste Heuristik (EDD)
+- \textbf{Gap (absolut):\textbf{ +208.1 Einheiten
+- \textbf{Gap (relativ):\textbf{ +3.1%
+- \textbf{Konsistenz (Std):\textbf{ 49.6 vs. 0.0
+
+\section{\section{\section{ Top 3 Heuristiken (Makespan)
+\textbf{1. EDD:\textbf{ 6639.0
+\textbf{2. Priority:\textbf{ 6668.0
+\textbf{3. LPT:\textbf{ 6677.0
+
+\section{\section{\section{ Statistische Signifikanz
+- \textbf{Signifikante Unterschiede:\textbf{ 7/9 Vergleiche (p < 0.05)
+- \textbf{vs. FIFO:\textbf{ p = 0.000, Cohen's d = 3.95 (large)
+- \textbf{vs. LIFO:\textbf{ p = 0.000, Cohen's d = 3.98 (large)
+- \textbf{vs. SPT:\textbf{ p = 0.000, Cohen's d = 2.06 (large)
+- \textbf{vs. LPT:\textbf{ p = 0.000, Cohen's d = 4.73 (large)
+- \textbf{vs. EDD:\textbf{ p = 0.000, Cohen's d = 5.78 (large)
+- \textbf{vs. Priority:\textbf{ p = 0.000, Cohen's d = 4.98 (large)
+- \textbf{vs. WSPT:\textbf{ p = 0.000, Cohen's d = 3.89 (large)
+
+\section{\section{ 💡 VERBESSERUNGSEMPFEHLUNGEN
+
+\section{\section{\section{ Kurz- bis mittelfristig
+1. \textbf{Reward Function Optimization\textbf{
+   - Fokus auf Makespan-Minimierung verstärken
+   - Gewichtung der Reward-Komponenten anpassen
+   
+2. \textbf{Training Enhancement\textbf{
+   - Erhöhung der Episodenanzahl (aktuell vs. empfohlen: +50%)
+   - Learning Rate Schedule optimieren
+   
+3. \textbf{Architecture Tuning\textbf{
+   - Graph Neural Network Dimensionen adjustieren
+   - Attention Mechanisms überprüfen
+
+\section{\section{\section{ Langfristig
+1. \textbf{Feature Engineering\textbf{
+   - Zusätzliche State-Features (kritischer Pfad, Slack)
+   - Bessere Normalisierung der Input-Features
+   
+2. \textbf{Multi-Objective Optimization\textbf{
+   - Simultane Optimierung von Makespan und Timeliness
+   - Pareto-Front Exploration
+
+\section{\section{ 🎯 BENCHMARK-ZIELE
+
+\section{\section{\section{ Realistische Ziele (3-6 Monate)
+- \textbf{Top 5 erreichen:\textbf{ Makespan < 6705.0
+- \textbf{Konsistenz verbessern:\textbf{ Standardabweichung < 49.6
+
+\section{\section{\section{ Optimistische Ziele (6-12 Monate)  
+- \textbf{Top 3 erreichen:\textbf{ Makespan < 6677.0
+- \textbf{Neue Bestleistung:\textbf{ Makespan < 6639.0
+
+\section{\section{\section{ Stretch-Ziele (12+ Monate)
+- \textbf{Dominanz etablieren:\textbf{ Konsistent beste Performance
+- \textbf{Robustheit:\textbf{ Gute Performance über verschiedene Problem-Größen
+
+\section{\section{ 📈 STÄRKEN & SCHWÄCHEN
+
+\section{\section{\section{ Identifizierte Stärken
+- \textbf{Deadline-Management:\textbf{ Rang 1/10
+
+\section{\section{\section{ Verbesserungsfelder
+- \textbf{Makespan-Optimierung:\textbf{ Rang 9/10 zeigt Potenzial
+- \textbf{Timeliness Performance:\textbf{ Rang 9/10 verbesserungsfähig
+- \textbf{Konsistenz:\textbf{ Höhere Varianz als beste klassische Heuristik
+
+\section{\section{ 📋 METHODISCHE VALIDIERUNG
+
+\section{\section{\section{ Experimentelles Setup
+- \textbf{Anzahl Durchläufe:\textbf{ 20 pro Heuristik
+- \textbf{Getestete Heuristiken:\textbf{ 10
+- \textbf{Statistische Tests:\textbf{ T-Tests, Cohen's d Effect Size
+
+\section{\section{\section{ Konfidenz-Level
+- \textbf{Hohe Konfidenz:\textbf{ Makespan-Unterschiede statistisch validiert
+- \textbf{Mittlere Konfidenz:\textbf{ Deadline und Timeliness Performance
+- \textbf{Empfehlung:\textbf{ Mehr Durchläufe für höhere statistische Power
+
+\section{\section{ 📁 VERFÜGBARE ANALYSEDATEN
+
+\section{\section{\section{ Generierte Dateien
+- `summary_results.csv` - Hauptergebnisse aller Heuristiken
+- `detailed_results.csv` - Einzelergebnisse aller Durchläufe  
+- `statistical_tests.csv` - Statistische Signifikanztests
+- `rankings.csv` - Rankings nach verschiedenen Kriterien
+- `complete_analysis.xlsx` - Alle Daten in Excel-Format
+
+\section{\section{\section{ Visualisierungen
+- `comprehensive_comparison.png` - Hauptvergleich 4-Panel
+- `ppo_gnn_focus_analysis.png` - PPO-GNN spezifische Analyse
+- `statistical_significance.png` - Statistische Signifikanz Heatmap
+- `distribution_analysis.png` - Verteilungsanalysen
+
+---
+\textit{Generiert mit JSP Model Evaluation Framework v2.0\textit{
+\textit{Timestamp: 20250625_113259\textit{
+
+\end{document}

@@ -1,0 +1,10 @@
+{
+  "timestamp": "20250625_113259",
+  "num_jobs": 20,
+  "num_machines": 3,
+  "total_operations": 123,
+  "avg_operations_per_job": 6.15,
+  "avg_processing_time": 27.83739837398374,
+  "avg_priority": 6.7,
+  "avg_deadline": 2817.45
+}
