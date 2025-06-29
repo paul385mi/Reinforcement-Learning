@@ -2,6 +2,7 @@ import json
 import numpy as np
 import sys
 import os
+import random
 
 # Füge das übergeordnete Verzeichnis zum Python-Pfad hinzu
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -125,6 +126,12 @@ class HeuristicDispatcher:
                 best_job = job_idx
         
         return best_job
+    
+    def random_choice(self, valid_jobs, state):
+        """Random - wähle zufällig einen verfügbaren Job"""
+        if not valid_jobs:
+            return 0
+        return random.choice(valid_jobs)
 
 
 def run_heuristic(env, heuristic_func, heuristic_name):
@@ -260,7 +267,7 @@ def compare_methods(jsp_data_path, model_path, num_runs=5):
     # Definiere Heuristiken - verwende jsp_data statt env.jobs
     dispatcher = HeuristicDispatcher(jsp_data)
     
-    # Definiere Heuristiken
+    # Definiere Heuristiken (Random hinzugefügt)
     heuristics = [
         (dispatcher.fifo, "FIFO"),
         (dispatcher.filo, "FILO"),
@@ -268,12 +275,13 @@ def compare_methods(jsp_data_path, model_path, num_runs=5):
         (dispatcher.lpt, "LPT"),
         (dispatcher.earliest_due_date, "Earliest Due Date"),
         (dispatcher.critical_ratio, "Critical Ratio"),
-        (dispatcher.slack_time, "Slack Time")
+        (dispatcher.slack_time, "Slack Time"),
+        (dispatcher.random_choice, "Random")  # Neue Random-Heuristik
     ]
     
     results = []
     
-    print("Vergleiche PPO-Agent mit Dispatching-Heuristiken...\n")
+    print("Vergleiche PPO-Agent mit Dispatching-Heuristiken (inkl. Random)...\n")
     
     # Teste PPO-Agent
     print("Teste PPO-Agent...")
@@ -298,6 +306,9 @@ def compare_methods(jsp_data_path, model_path, num_runs=5):
         print(f"Teste {name}...")
         heuristic_results = []
         for run in range(num_runs):
+            # Setze Seed für Random-Heuristik für reproduzierbare Ergebnisse
+            if name == "Random":
+                random.seed(run * 42)  # Unterschiedliche Seeds pro Run
             result = run_heuristic(env, heuristic_func, name)
             heuristic_results.append(result)
         
