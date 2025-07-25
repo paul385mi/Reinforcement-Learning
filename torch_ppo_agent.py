@@ -271,6 +271,7 @@ class TorchPPOAgent:
         
         # Maskiere ungültige Aktionen
         valid_probs = torch.tensor([probs[i].item() if i in valid_jobs else 0.0 for i in range(self.num_jobs)])
+        
         if torch.sum(valid_probs) > 0:
             valid_probs = valid_probs / torch.sum(valid_probs)
         else:

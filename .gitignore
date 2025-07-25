@@ -1,5 +1,7 @@
 # Ignore specific log files
 venv
+docs
+analysis
 
 # Ignore all log files in root directory
 
